@@ -128,4 +128,33 @@ perl/*.o
 perl/*.bs
 perl/_eumm/
 
+#Lua ignore
+lua/luac.out
+lua/*.src.rock
+lua/*.zip
+lua/*.tar.gz
+lua/*.o
+lua/*.os
+lua/*.ko
+lua/*.obj
+lua/*.elf
+lua/*.gch
+lua/*.pch
+lua/*.lib
+lua/*.a
+lua/*.la
+lua/*.lo
+lua/*.def
+lua/*.exp
+lua/*.dll
+lua/*.so
+lua/*.so.*
+lua/*.dylib
+lua/*.exe
+lua/*.out
+lua/*.app
+lua/*.i*86
+lua/*.x86_64
+lua/*.hex
+
 #directories
