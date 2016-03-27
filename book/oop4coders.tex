@@ -1,5 +1,11 @@
 \documentclass[12pt]{book}
 
+%To prevent other chapters from creating a new document
+\let\wholebook=\relax
+
+%The calls (includes) for other packages are in a separate file
+\input{calls}
+
 %opening
 \title{Oriented-Object Programming\\ for\\ Coders}
 \author{Abdelkrime Aries}
@@ -9,6 +15,7 @@
 \maketitle
 
 \chapter*{Preface}
+\input{preface}
 
 \chapter{Introduction to OOP}
 
