@@ -67,5 +67,23 @@ nosetests.xml
 .project
 .pydevproject
 
+#Ruby ignore
+*.gem
+*.rbc
+ruby/.config
+ruby/coverage/
+ruby/InstalledFiles
+ruby/pkg/
+ruby/spec/reports/
+ruby/spec/examples.txt
+ruby/test/tmp/
+ruby/test/version_tmp/
+ruby/tmp/
+.dat*
+.repl_history
+build/
+*.bridgesupport
+.rvmrc
+
 #directories
 java/bin
