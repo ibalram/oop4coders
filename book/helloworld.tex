@@ -1,0 +1,58 @@
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass[12pt]{book}
+	\input{calls}
+	\begin{document}
+	\chapter{Hello World}
+\fi
+%=====================================================================
+
+%Introduction
+
+
+\section{How to begin}
+
+\section{Hello world}
+
+\subsection{C++}
+
+\lstset{language=C++}
+\lstinputlisting[language=C++, style=codeStyle]{../cpp/helloworld.cpp}
+%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
+
+\subsection{Java}
+
+\lstinputlisting[language=Java, style=codeStyle]{../java/src/HelloWorld.java}
+
+\subsection{Javascript}
+
+\lstinputlisting[style=codeStyle, firstline=6, lastline=9]{../javascript/helloworld.htm}
+
+\subsection{Lua}
+
+\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/helloworld.lua}
+
+\subsection{Perl}
+
+\lstinputlisting[language=Perl, style=codeStyle]{../perl/helloworld.pl}
+
+\subsection{PHP}
+
+\lstinputlisting[language=PHP, style=codeStyle]{../php/helloworld.php}
+
+\subsection{Python}
+
+\lstinputlisting[language=Python, style=codeStyle]{../python/helloworld.py}
+
+\subsection{Ruby}
+
+\lstinputlisting[language=Ruby, style=codeStyle]{../ruby/helloworld.rb}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================
