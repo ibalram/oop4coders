@@ -1,3 +1,4 @@
+#Tex ignore
 *.acn
 *.acr
 *.alg
@@ -33,3 +34,12 @@
 
 *.directory
 *.pdf
+
+#Java ignore
+*.class
+*.war
+*.ear
+*.jar
+
+#directories
+java/bin
