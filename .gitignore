@@ -81,7 +81,7 @@ ruby/test/version_tmp/
 ruby/tmp/
 .dat*
 .repl_history
-build/
+ruby/build/
 *.bridgesupport
 .rvmrc
 
