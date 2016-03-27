@@ -85,5 +85,24 @@ ruby/build/
 *.bridgesupport
 .rvmrc
 
+#C++ ignore
+*.slo
+*.lo
+*.o
+*.obj
+*.gch
+*.pch
+*.so
+*.dylib
+*.dll
+*.mod
+*.lai
+*.la
+*.a
+*.lib
+*.exe
+*.out
+*.app
+
 #directories
 java/bin
