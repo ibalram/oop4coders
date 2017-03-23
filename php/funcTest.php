@@ -13,7 +13,7 @@
 			require_once('./func.php');
 			$n = $_POST["n"];
 			$r = fact($n);
-			echo "<div>Fact($n)= $r</div>";
+			echo "<div>Fact($n)= $r</div>\n";
 		}
 		?>
     </body>

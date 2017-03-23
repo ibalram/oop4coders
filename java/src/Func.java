@@ -4,6 +4,7 @@ public class Func {
 		System.out.print("Please enter an integer value: ");
 		Scanner cs = new Scanner(System.in);
 		int n = cs.nextInt();
+		cs.close();
 		System.out.print("Fact(" + n + ")=");
 		System.out.println(fact(n));
 	}
