@@ -134,26 +134,26 @@
 }
 
 
-\immediate\newwrite\auttable
-\immediate\newwrite\imgcopy
+%\immediate\newwrite\auttable
+%\immediate\newwrite\imgcopy
 
 
 \AtBeginDocument{%
-\openout\auttable=authors.tex
-\openout\imgcopy=LICENSE.img
-
-\write\auttable{\@backslashchar begin{longtable}{llp{10cm}}}
-\write\auttable{\@backslashchar textbf{\@backslashchar Large image} & \@backslashchar textbf{\@backslashchar Large owner}  & \@backslashchar textbf{\@backslashchar Large More info} \@backslashchar\@backslashchar}
+%\openout\auttable=authors.tex
+%\openout\imgcopy=LICENSE.img
+%
+%\write\auttable{\@backslashchar begin{longtable}{llp{10cm}}}
+%\write\auttable{\@backslashchar textbf{\@backslashchar Large image} & \@backslashchar textbf{\@backslashchar Large owner}  & \@backslashchar textbf{\@backslashchar Large More info} \@backslashchar\@backslashchar}
 %\write\auttable{\@backslashchar endhead}
 }
 
 \AtEndDocument{%
-\immediate\closeout\auttable
+%\immediate\closeout\auttable
 }
 
 \newcommand{\writeinfo}[4]{
-\write\auttable{#1 & #2  & \@backslashchar getalllinks{#4} \@backslashchar\@backslashchar}
-\write\imgcopy{\the\@imgdir #1 & #2  & #3 & #4}
+%\write\auttable{#1 & #2  & \@backslashchar getalllinks{#4} \@backslashchar\@backslashchar}
+%\write\imgcopy{\the\@imgdir #1 & #2  & #3 & #4}
 }
 
 \def\getalllinks#1{%
@@ -178,9 +178,9 @@
 %\def\returntoline{\newline}
 
 \newcommand{\writecatinfo}[1]{
-\write\auttable{&& \@backslashchar\@backslashchar}
-\write\auttable{\@backslashchar multicolumn{3}{l}{#1} \@backslashchar\@backslashchar\@backslashchar hline}
-\write\auttable{&& \@backslashchar\@backslashchar}
+%\write\auttable{&& \@backslashchar\@backslashchar}
+%\write\auttable{\@backslashchar multicolumn{3}{l}{#1} \@backslashchar\@backslashchar\@backslashchar hline}
+%\write\auttable{&& \@backslashchar\@backslashchar}
 }
 
 %\newif\iffirst\firsttrue
@@ -235,7 +235,7 @@
 
 \renewcommand{\chapter}[1]{
 \renewcommand{\addref}{
-\phantomsection
+%\phantomsection
 %\addcontentsline{toc}{chapter}{\arabic{catcount} - \the\@chaptitle}
 \addcontentsline{toc}{chapter}{#1}
 \writecatinfo{#1}
@@ -245,8 +245,8 @@
 
 \noindent
 \begin{tikzpicture}
-\addref
-\renewcommand{\addref}{}
+%\addref
+%\renewcommand{\addref}{}
 
 \node[anchor=north west,minimum width=\textwidth,minimum height=2cm,fill=blue] (RB) at (current page.north west){
 \begin{minipage}[t!]{14cm}
@@ -256,7 +256,7 @@
 \end{minipage}	
 };
 
-\node[anchor=north west,minimum width=3cm,minimum height=1.5cm,fill=yellow] at ([shift={(0.5cm,3.5cm)}] RB.south west){
+\node[anchor=north west,minimum width=3cm,minimum height=1.5cm,fill=yellow] at ([shift={(0.5cm,1.75cm)}] RB.south west){
 	\begin{minipage}[t!]{3cm}
 	\begin{center}
 	{\fontsize{18pt}{1em}\selectfont\bf \textcolor{blue}{\arabic{catcount}}}
