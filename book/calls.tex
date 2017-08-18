@@ -25,3 +25,25 @@
   lineskip=.2em
 %  frameround=tttt
 }
+
+\lstdefinestyle{shellStyle}{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=shadwbox,
+	rulesepcolor=\color{blue},
+	xleftmargin=\parindent,
+	basicstyle=\scriptsize\ttfamily\bfseries,
+	identifierstyle=\color{green},
+	backgroundcolor=\color{black},
+	lineskip=.2em,
+	morekeywords={sudo},keywordstyle=\color{red},
+	literate = {-}{-}1,
+	%  frameround=tttt
+}
+
+\hypersetup{
+	colorlinks,
+	urlcolor=blue
+}
+
+\renewcommand{\UrlFont}{\ttfamily\footnotesize}

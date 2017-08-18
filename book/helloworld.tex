@@ -14,14 +14,18 @@
 
 \subsection{C++}
 
+C++ is a general-purpose compiled programming language which affords object-oriented paradigm among others. 
+It was developed by \textbf{Bjarne Stroustrup} at Bell Labs since 1979.
+
 To use C++ you have to install its compiler. 
 The most used one is GNU g++\footnote{GNU g++: \url{gcc.gnu.org/}} which is distributed freely and available for most systems.
 
 \subsubsection{Linux}
 Simply install g++ on your system; on Ubuntu you, simply, type:
-\begin{verbatim}
->> sudo install g++
-\end{verbatim}
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install g++
+\end{lstlisting}
 
 \subsubsection{Windows}
 
@@ -37,74 +41,166 @@ Also, you can install Turbo C++ on \url{https://turboc.codeplex.com}
 
 \subsection{Java}
 
-Install OracleJDK or OpenJDK
+Java is a general-purpose compiled programming language which is concurrent, class-based, object-oriented. 
+It is intended to generate platform-independent programs. 
+That is, the same compiled program called bytecodes will be able to execute in different machines and operating systems using a virtual machine. 
+Developed by \textbf{James Gosling} at Sun Microsystems (acquired by Oracle Corporation) in 1995.
+
+This is a detailed description on how to install Java \url{https://www.java.com/en/download/help/download_options.xml}.
+Simply, to install Oracle JDK, download it from this link: \url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}. 
+
+As for OpenJDK, you can install it on Linux distributions following these instructions: \url{http://openjdk.java.net/install/}. 
+On some distributions such as \textbf{Linux Mint}, it is installed by default.
+For example, in Ubuntu you type:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install openjdk-8-jdk
+\end{lstlisting}
+
+It is recommended to use an IDE:
+\begin{itemize}
+	\item Eclipse: which is used in our case. \url{http://www.eclipse.org}
+	\item IntelliJ IDEA: \url{https://www.jetbrains.com/idea/}
+	\item NetBeans: \url{https://netbeans.org}
+\end{itemize}
 
 \subsection{Javascript}
 
-Install node
+JavaScript is an interpreted programming language for the web, which supports object-oriented paradigm. 
+It is meant to be used as client-side programming language executed on different browser, but it can also execute on server side using NodeJs for example.
+It was developed by Netscape Communications Corporation, and designed by \textbf{Brendan Eich} in 1995. 
+
+Javascript can be used directly on any browser. 
+Suppose we have a file called "func.js" containing a function "fact(n)" which calculates the factorial of a number. 
+To use it, all you have to do is linking the file and calling the function in an HTML file:
+\begin{lstlisting}[style=codeStyle]
+<html>
+  <head>
+    <title>Functions</title>
+      <script type="text/javascript" src="func.js">
+      </script>
+      <script type="text/javascript">
+          function exec(){
+              var n = document.getElementById("n").value;
+              var res = "Fact(" + n + ")= ";
+              res += fact(n);
+              document.getElementById("result").innerHTML = res;
+          }
+      </script>
+  </head>
+    <body>
+        Please enter an integer value: 
+        <input type="number" id="n" />
+        <button id="func" onclick="exec()">Factorial</button>
+        <div id="result"></div>
+    </body>
+</html>
+\end{lstlisting}
+
+
+Or you can use \textbf{NodeJs} to execute it directly on the shell which is the case in our late examples. 
+You can download it here: \url{https://nodejs.org/en/download/}. 
+In case of some Linux distributions, you can install it from their repositories:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install nodejs
+\end{lstlisting}
 
 \subsection{Lua}
 
-Install lua
+Lua is an interpreted programming language, which supports object-oriented paradigm. 
+It was designed primarily for embedded systems.
+Designed by Roberto Ierusalimschy, Luiz Henrique de Figueiredo, and Waldemar Celes in 1993.
+It is mostly used as a scripting language for games development.
+
+Download it from here: \url{http://lua-users.org/wiki/LuaBinaries}. 
+In Ubuntu, you can install it by using its version number as:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install lua5.2
+\end{lstlisting}
+
 
 \subsection{Perl}
 
-Install perl
+Lua is a general-purpose interpreted programming language, which supports oriented-object paradigm. 
+It was developed by \textbf{Larry Wall} in 1987 to simplify report processing on Unix.
+It is used as a CGI scripting language for web servers.
+
+To install Perl, please refer to this page: \url{https://www.perl.org/get.html}. 
+It is high probable that you have Perl installed on your Linux. 
+As for Windows users, there are two projects: 
+\begin{itemize}
+	\item Strawberry Perl: \url{http://strawberryperl.com}
+	\item ActiveState Perl: \url{http://www.activestate.com/activeperl/downloads}
+\end{itemize}
 
 \subsection{PHP}
 
-install php
+PHP is a general-purpose server-side scripting language which supports oriented-object programming since version 3.0  and improved in version 5.0.
+It was originally created by \textbf{Rasmus Lerdorf} in 1994. 
+
+For a detailed description on how to install the server, please refer to this page: \url{http://php.net/manual/en/install.php}.
+On Ubuntu, we just need the language:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install php
+\end{lstlisting}
+It will install a command-line interface (CLI) called "php"; used to execute a php file directly from the shell.
 
 \subsection{Python}
 
-install python
+Python is an interpreted general-purpose programming language, support multiple paradigms including OOP. 
+It was created by \textbf{Guido van Rossum} and released in 1991.
+It supports code readability as a design philosophy by using indentations as a mean of defining code blocks.
+
+Refer to this page: \url{https://www.python.org/downloads/}. 
+For Ubuntu, you can type:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install python
+\end{lstlisting}
+Or you can refer to this page for further information: \url{http://docs.python-guide.org/en/latest/starting/install3/linux/}.
+You have to verify if it is already installed (Linux Mint has it by default).
 
 \subsection{Ruby}
 
-install ruby
+Ruby is an interpreted, object-oriented, general-purpose programming language. 
+It was designed and developed by \textbf{Yukihiro Matsumoto} in 1990.
 
-\section{Functions}
-Let take the factorial function as an example. 
-
-\subsection{C++}
-
-\lstinputlisting[language=C++, style=codeStyle]{../cpp/func.cpp}
-%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
-
-\subsection{Java}
-
-\lstinputlisting[language=Java, style=codeStyle]{../java/src/Func.java}
-
-\subsection{Javascript}
-
-\lstinputlisting[style=codeStyle]{../javascript/func.js}
-
-\subsection{Lua}
-
-\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/func.lua}
-
-\subsection{Perl}
-
-\lstinputlisting[language=Perl, style=codeStyle]{../perl/func.pl}
-
-\subsection{PHP}
-
-\lstinputlisting[language=PHP, style=codeStyle]{../php/func.php}
-
-\subsection{Python}
-
-\lstinputlisting[language=Python, style=codeStyle]{../python/func.py}
-
-\subsection{Ruby}
-
+To install it, please refer to this page: \url{http://www.ruby-lang.org/en/documentation/installation/}. 
+On Windows, you can use RubyInstaller: \url{https://rubyinstaller.org}.
+On Linux systems, you can find it on their repositories, such as Ubuntu:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install ruby
+\end{lstlisting}
+You have to verify if it is already installed (Linux Mint has it by default).
 
 \section{Hello world}
 
+Let's start with a Hello World introductory set of codes. 
+
+
 \subsection{C++}
 
-\lstset{language=C++}
+A C++ program always has a main function, which represents the interface with the operating system. 
+When you call a program (from shell for example), you actually calling this function. 
+%
 \lstinputlisting[language=C++, style=codeStyle]{../cpp/helloworld.cpp}
-%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
+%
+In our example, the function "main" doesn't have any arguments. 
+If we want to pass some arguments to our program, we have to add a list of arguments to the "main" function
+%
+\begin{lstlisting}[language=C++, style=codeStyle]
+int main(int argc, char * argv[])
+\end{lstlisting}
+Where:
+\begin{itemize}
+	\item argv: is a table of pointers on chars (a table of strings).
+	\item argc: is the size of that table
+\end{itemize}
+
 
 \subsection{Java}
 
@@ -169,6 +265,42 @@ Let take the factorial function as an example.
 \subsection{Ruby}
 
 \lstinputlisting[language=Ruby, style=codeStyle]{../ruby/func.rb}
+
+\section{Functions}
+
+
+Let take the factorial function as an example. 
+
+\subsection{C++}
+
+\lstinputlisting[language=C++, style=codeStyle]{../cpp/func.cpp}
+%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
+
+\subsection{Java}
+
+\lstinputlisting[language=Java, style=codeStyle]{../java/src/Func.java}
+
+\subsection{Javascript}
+
+\lstinputlisting[style=codeStyle]{../javascript/func.js}
+
+\subsection{Lua}
+
+\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/func.lua}
+
+\subsection{Perl}
+
+\lstinputlisting[language=Perl, style=codeStyle]{../perl/func.pl}
+
+\subsection{PHP}
+
+\lstinputlisting[language=PHP, style=codeStyle]{../php/func.php}
+
+\subsection{Python}
+
+\lstinputlisting[language=Python, style=codeStyle]{../python/func.py}
+
+\subsection{Ruby}
 
 %=====================================================================
 \ifx\wholebook\relax\else
