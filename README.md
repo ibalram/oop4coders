@@ -19,11 +19,12 @@ So, "**Less talking, more coding**"
 
 ## License
 
-Copyright (C) 2016-2017  Abdelkrime Aries
+Copyright (C) 2016-2018  Abdelkrime Aries
 
 This project has two different licenses: the codes and the book.
 
 ## Codes licenses
+
 The codes present in here, including latex files.
 
 Licensed under the Apache License, Version 2.0 (the "License");
