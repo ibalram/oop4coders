@@ -23,9 +23,9 @@ Copyright (C) 2016-2018  Abdelkrime Aries
 
 This project has two different licenses: the codes and the book.
 
-## Codes licenses
+## Codes' license
 
-The codes present in here, including latex files.
+The codes, present in here, including latex files.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-## Book license
+## Book's license
 
 The book is licensed under
 [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)

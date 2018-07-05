@@ -41,3 +41,8 @@
 * https://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/oothinking.html
 * https://www.tutorialspoint.com/ruby/ruby_object_oriented.htm
 * http://www.poodr.com
+
+## Comparison
+
+* https://en.wikipedia.org/wiki/Comparison_of_programming_languages_by_type_system
+* http://www.jvoegele.com/software/langcomp.html
