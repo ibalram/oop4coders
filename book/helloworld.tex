@@ -355,12 +355,28 @@ The language can accept many forms:
 
 \section{Exceptions}
 
+\subsection{C++}
 
+In C++, exceptions can be of any type. 
+They are thrown using the keyword \textbf{throw}, and handled using \textbf{try} and \textbf{catch}.
 
-%\subsection{C++}
-%
-%\lstinputlisting[language=C++, style=codeStyle]{../cpp/func.cpp}
-%%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
+\lstinputlisting[language=C++, style=codeStyle]{../cpp/except.cpp}
+
+If you want to specify the type of the exception, here comes the OOP solution. 
+You have to define new types by inheritance from \textbf{std::exception}. 
+Then, redefine the function \textbf{what()}.
+
+\lstinputlisting[language=C++, firstline=3, lastline=16, style=codeStyle]{../cpp/except2.cpp}
+
+The exceptions can be thrown by creating a new instance of the defined classes. 
+
+\lstinputlisting[language=C++, firstline=19, lastline=22, style=codeStyle]{../cpp/except2.cpp}
+
+We catch them either by they parent's type, or by catching each type apart. 
+
+\lstinputlisting[language=C++, firstline=43, lastline=45, style=codeStyle]{../cpp/except2.cpp}
+
+%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
 %
 %\subsection{Java}
 %
