@@ -4,6 +4,7 @@
 
 * https://www.tutorialspoint.com/cplusplus/cpp_object_oriented.htm
 * https://www3.ntu.edu.sg/home/ehchua/programming/cpp/cp3_OOP.html
+* https://www.tutorialspoint.com/cplusplus/cpp_exceptions_handling.htm
 
 ## Java
 
