@@ -416,10 +416,22 @@ Using \textbf{eval}, you can capture the error into \textbf{\$@}.
 
 \lstinputlisting[language=Perl, firstline=6, lastline=12, style=codeStyle]{../perl/except.pl}
 
-%\subsection{PHP}
-%
-%\lstinputlisting[language=PHP, style=codeStyle]{../php/func.php}
-%
+\subsection{PHP}
+
+In PHP, Exception handling is available in version 5 and greater.
+To raise an exception, either you create an instance of the class \textbf{Exception} with a message as parameter, 
+or you create custom exceptions by inheriting from that class.
+
+\lstinputlisting[language=PHP, firstline=4, lastline=14, style=codeStyle]{../php/except.php}
+
+To raise the exception, all you have to do is calling the keyword \textbf{throw} followed by an instance of the custom exception.
+
+\lstinputlisting[language=PHP, firstline=16, lastline=18, style=codeStyle]{../php/except.php}
+
+Then, to capture the exception, you can use \textbf{try} and \textbf{catch}.
+
+\lstinputlisting[language=PHP, firstline=30, lastline=39, style=codeStyle]{../php/except.php}
+
 %\subsection{Python}
 %
 %\lstinputlisting[language=Python, style=codeStyle]{../python/func.py}
