@@ -37,6 +37,7 @@
 
 * https://docs.python.org/3/tutorial/classes.html
 * http://www.tutorialspoint.com/python/python_classes_objects.htm
+* https://docs.python.org/3/tutorial/errors.html
 
 ## Ruby
 
