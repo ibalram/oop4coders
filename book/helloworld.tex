@@ -395,14 +395,27 @@ We catch them either by they parent's type, or by catching each type apart.
 
 \subsection{Lua}
 
+As mentioned in Lua manual, you do not need error handling for most applications. 
+To throw an error, you can use the function \textbf{error}
+
 \lstinputlisting[language={[5.2]Lua}, firstline=1, lastline=3, style=codeStyle]{../lua/except.lua}
+
+Then, if you want to handle this error, you can use the function \textbf{pcall} to encapsulate your previous code. 
+It will return a success indicator and the returned value from your function.
+The value, here, is either the result from te function or the raised error. 
 
 \lstinputlisting[language={[5.2]Lua}, firstline=16, lastline=21, style=codeStyle]{../lua/except.lua}
 
-%\subsection{Perl}
-%
-%\lstinputlisting[language=Perl, style=codeStyle]{../perl/func.pl}
-%
+\subsection{Perl}
+
+One mechanism to throw errors is using the keyword \textbf{die}. 
+
+\lstinputlisting[language=Perl, firstline=14, lastline=17, style=codeStyle]{../perl/except.pl}
+
+Using \textbf{eval}, you can capture the error into \textbf{\$@}.
+
+\lstinputlisting[language=Perl, firstline=6, lastline=12, style=codeStyle]{../perl/except.pl}
+
 %\subsection{PHP}
 %
 %\lstinputlisting[language=PHP, style=codeStyle]{../php/func.php}
