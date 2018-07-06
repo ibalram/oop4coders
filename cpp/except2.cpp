@@ -16,19 +16,15 @@ struct BigException : public exception {
 };
 
 int fact(int i){
-  if (i < 0)
-    throw NegException();
-    if (i > 5)
-      throw BigException();
+  if (i < 0) throw NegException();
+  if (i > 5) throw BigException();
 
-	if (i ==1)
-		return 1;
+	if (i ==1) return 1;
 	return i * fact(i-1);
 }
 
 int main(int argc, char *argv[])
 {
-
   if (argc < 2) {
     cout << "Please enter an integer value\n";
     exit(0);
