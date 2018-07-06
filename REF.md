@@ -53,3 +53,18 @@
 ## Entry Point
 
 * https://en.wikipedia.org/wiki/Entry_point
+
+## TO ADD
+* https://en.wikipedia.org/wiki/Tcl
+* https://en.wikipedia.org/wiki/Smalltalk
+* https://en.wikipedia.org/wiki/Vala_(programming_language)
+* https://en.wikipedia.org/wiki/Apache_Groovy
+* https://en.wikipedia.org/wiki/Go_(programming_language)
+* https://en.wikipedia.org/wiki/D_(programming_language)#Object-oriented
+* https://en.wikipedia.org/wiki/Dart_(programming_language)
+* https://en.wikipedia.org/wiki/Self_(programming_language)
+* https://en.wikipedia.org/wiki/R_(programming_language)
+* https://en.wikipedia.org/wiki/Scala_(programming_language)#Object-oriented_extensions
+* https://en.wikipedia.org/wiki/Swift_(programming_language)#Comparisons_to_other_languages
+* https://en.wikipedia.org/wiki/Kotlin_(programming_language)
+* https://en.wikipedia.org/wiki/Racket_(programming_language)
