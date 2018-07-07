@@ -9,63 +9,141 @@
 
 %, firstline=6, lastline=9
 
-\section{Class, Prototype and Object}
-
-
+\section{Class declaration}
 
 \subsection{C++}
 
-\lstinputlisting[language=C++, style=codeStyle]{../cpp/person0.cpp}
-%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
+\lstinputlisting[language=C++, linerange={4-5,34-34}, style=codeStyle]{../cpp/person0.cpp}
 
 \subsection{Java}
 
-\lstinputlisting[language=Java, style=codeStyle]{../java/src/Person.java}
+\lstinputlisting[language=Java, linerange={1-1,19-19}, style=codeStyle]{../java/src/Person.java}
 
 \subsection{Javascript}
 
-\lstinputlisting[style=codeStyle]{../javascript/person.js}
+\lstinputlisting[linerange={1-1,11-11}, style=codeStyle]{../javascript/person.js}
 
 \subsection{Lua}
 
-\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/person.lua}
+\lstinputlisting[language={[5.2]Lua}, linerange={1-2}, style=codeStyle]{../lua/person.lua}
 
 \subsection{Perl}
 
-\lstinputlisting[language=Perl, style=codeStyle]{../perl/person.pl}
+\lstinputlisting[language=Perl, linerange={4-4}, style=codeStyle]{../perl/person.pl}
 
 \subsection{PHP}
 
-\lstinputlisting[language=PHP, style=codeStyle]{../php/person.php}
+\lstinputlisting[language=PHP, linerange={2-2,14-14}, style=codeStyle]{../php/person.php}
 
 \subsection{Python}
 
-\lstinputlisting[language=Python, style=codeStyle]{../python/person.py}
+\lstinputlisting[language=Python, linerange={4-4}, style=codeStyle]{../python/person.py}
 
 \subsection{Ruby}
 
-\lstinputlisting[language=Ruby, style=codeStyle]{../ruby/person.rb}
+\lstinputlisting[language=Ruby, linerange={3-3,13-13}, style=codeStyle]{../ruby/person.rb}
 
 
 \section{Constructors and destructors}
 
+\subsection{C++}
 
+\lstinputlisting[language=C++, linerange={4-19,34-34}, style=codeStyle]{../cpp/person0.cpp}
+
+\lstinputlisting[language=C++, linerange={40-41}, style=codeStyle]{../cpp/person0.cpp}
+
+\lstinputlisting[language=C++, linerange={48-48}, style=codeStyle]{../cpp/person0.cpp}
+
+\subsection{Java}
+
+\lstinputlisting[language=Java, linerange={1-1,5-8,19-19}, style=codeStyle]{../java/src/Person.java}
+
+\subsection{Javascript}
+
+\lstinputlisting[linerange={1-5,11-11}, style=codeStyle]{../javascript/person.js}
+
+\lstinputlisting[linerange={1-4}, style=codeStyle]{../javascript/person2.js}
+
+\subsection{Lua}
+
+\lstinputlisting[language={[5.2]Lua}, linerange={1-6}, style=codeStyle]{../lua/person.lua}
+
+\subsection{Perl}
+
+\lstinputlisting[language=Perl, linerange={3-15,21-21}, style=codeStyle]{../perl/person.pl}
+
+\subsection{PHP}
+
+\lstinputlisting[language=PHP, linerange={2-2,5-8,14-14}, style=codeStyle]{../php/person.php}
+
+\subsection{Python}
+
+\lstinputlisting[language=Python, linerange={4-7}, style=codeStyle]{../python/person.py}
+
+\subsection{Ruby}
+
+\lstinputlisting[language=Ruby, linerange={3-8,13-13}, style=codeStyle]{../ruby/person.rb}
 
 \section{Members}
 
+There are three types of members: 
 \begin{itemize}
-	\item Class member
-	\item Object member
+	\item Fields
+	\item Methods
+	\item Properties
+\end{itemize}
+
+A member can be accessed as: 
+\begin{itemize}
+	\item Class member: it is shared by all the instances of this class.
+	\item Object member: the member is specific to the instance (object)
 \end{itemize}
 
 
-\subsection{Fields}
+\subsection{C++}
+
+fields: 
+\lstinputlisting[language=C++, linerange={31-33}, style=codeStyle]{../cpp/person0.cpp}
+
+Non constant class fields must be initialized outside the header and not inside it. 
+
+\lstinputlisting[language=C++, linerange={36-36}, style=codeStyle]{../cpp/person0.cpp} 
+
+Methods:
+\lstinputlisting[language=C++, linerange={20-27}, style=codeStyle]{../cpp/person0.cpp}
+
+\lstinputlisting[language=C++, linerange={43-45}, style=codeStyle]{../cpp/person0.cpp}
 
 
-\subsection{Properties}
+There are no properties in C++.
 
-\subsection{Methods}
+\subsection{Java}
 
+\lstinputlisting[language=Java, linerange={1-1,19-19}, style=codeStyle]{../java/src/Person.java}
+
+\subsection{Javascript}
+
+\lstinputlisting[linerange={1-1,11-11}, style=codeStyle]{../javascript/person.js}
+
+\subsection{Lua}
+
+\lstinputlisting[language={[5.2]Lua}, linerange={1-2}, style=codeStyle]{../lua/person.lua}
+
+\subsection{Perl}
+
+\lstinputlisting[language=Perl, linerange={4-4}, style=codeStyle]{../perl/person.pl}
+
+\subsection{PHP}
+
+\lstinputlisting[language=PHP, linerange={2-2,14-14}, style=codeStyle]{../php/person.php}
+
+\subsection{Python}
+
+\lstinputlisting[language=Python, linerange={4-4}, style=codeStyle]{../python/person.py}
+
+\subsection{Ruby}
+
+\lstinputlisting[language=Ruby, linerange={3-3,13-13}, style=codeStyle]{../ruby/person.rb}
 
 
 \section{Type manipulation}
