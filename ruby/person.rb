@@ -1,17 +1,17 @@
 #!/usr/bin/ruby -w
 
-class Person 
+class Person
 
-	def initialize(name, age)
-		@name, @age = name, age
+	def initialize(name, byear)
+		@name, @byear = name, byear
 	end
-	
+
 	def info()
 		puts "My name: #@name"
-		puts "My age: #@age"
+		puts "My birth year: #@byear"
 	end
 end
 
-p = Person.new("Karim", 31)
+p = Person.new("Karim", 1986)
 
 p.info()

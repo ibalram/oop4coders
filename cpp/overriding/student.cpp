@@ -1,7 +1,7 @@
 #include "student.h"
 
-Student::Student(std::string name, int age, int grade):
-	Person(name, age)
+Student::Student(std::string name, int byear, int grade):
+	Person(name, byear)
 {
 	this->grade = grade;
 }
@@ -15,6 +15,6 @@ void Student::info()
 
 int main()
 {
-	Student s = Student("Karim", 19, 2);
+	Student s = Student("Karim", 1986, 2);
     s.info();
-} 
+}

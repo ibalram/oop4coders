@@ -60,7 +60,7 @@
       <UML:Class isLeaf="false" visibility="public" xmi.id="ucDFvl8rjfW5i" isAbstract="false" isRoot="false" namespace="Logical_View" isSpecification="false" name="Person">
        <UML:Classifier.feature>
         <UML:Attribute visibility="private" xmi.id="ufqR6c3bVZqeS" type="uAz2V8OTLVlya" isSpecification="false" name="name"/>
-        <UML:Attribute visibility="private" xmi.id="uPO2UhREaiFK3" type="uXGgUtPTw6zU0" isSpecification="false" name="age"/>
+        <UML:Attribute visibility="private" xmi.id="uPO2UhREaiFK3" type="uXGgUtPTw6zU0" isSpecification="false" name="byear"/>
         <UML:Operation isLeaf="false" visibility="public" xmi.id="ufaKuQm1neX2z" isAbstract="false" isQuery="false" isRoot="false" isSpecification="false" name="info" isOverride="false"/>
        </UML:Classifier.feature>
       </UML:Class>

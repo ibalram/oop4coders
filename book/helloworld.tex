@@ -442,9 +442,35 @@ Then, to capture the exception, you can use \textbf{try} and \textbf{catch}.
 
 \lstinputlisting[language=Python, firstline=34, lastline=38, style=codeStyle]{../python/except.py}
 
-%\subsection{Ruby}
-%
-%\lstinputlisting[language=Ruby, style=codeStyle]{../ruby/func.rb}
+\subsection{Ruby}
+
+In Ruby, you can raise an exception giving just a message creating a new instance of \textbf{RuntimeError}. 
+
+\lstinputlisting[language=Python, firstline=1, lastline=12, style=codeStyle]{../ruby/except.rb}
+
+To handle the exception, you can use the keywords: 
+\begin{itemize}
+	\item begin: to begin the block
+	\item rescue: to process the exception (you may have many of this)
+	\item else: executes if there was no exception
+	\item ensure: executes always in the end
+	\item end: to close the block
+\end{itemize}
+
+\lstinputlisting[language=Python, firstline=21, lastline=28, style=codeStyle]{../ruby/except.rb}
+
+You can specify custom classes to handle exceptions. 
+In here, I regrouped all the exceptions in one module.
+
+\lstinputlisting[language=Python, firstline=1, lastline=12, style=codeStyle]{../ruby/except2.rb}
+
+To raise them, create an instance
+
+\lstinputlisting[language=Python, firstline=16, lastline=19, style=codeStyle]{../ruby/except2.rb}
+
+You can capture them by their parent exception class \textbf{Exception}, or each by its class.
+
+\lstinputlisting[language=Python, firstline=37, lastline=40, style=codeStyle]{../ruby/except.rb}
 
 
 

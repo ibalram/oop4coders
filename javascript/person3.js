@@ -1,11 +1,11 @@
-function Person(name, age) {
+function Person(name, byear) {
   this.name = name;
-  this.age = age;
+  this.byear = byear;
   this.info = function(){
   	console.log("My name: " + this.name);
-  	console.log("My age: " + this.age);
+  	console.log("My birth year: " + this.byear);
   }
 }
 
-var p = new Person("Karim", 31);
+var p = new Person("Karim", 1986);
 p.info();

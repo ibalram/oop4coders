@@ -44,6 +44,7 @@
 * https://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/oothinking.html
 * https://www.tutorialspoint.com/ruby/ruby_object_oriented.htm
 * http://www.poodr.com
+* https://www.tutorialspoint.com/ruby/ruby_exceptions.htm
 
 ## Comparison
 

@@ -1,15 +1,15 @@
 local Person = {}
 Person.__index = Person
 
-function Person:new(name, age)    -- The constructor
-  return setmetatable({name = name, age = age}, Person)
+function Person:new(name, byear)    -- The constructor
+  return setmetatable({name = name, byear = byear}, Person)
 end
 
 function Person:info()
   print("My name: " .. self.name)
-  print("My age: " .. self.age)
+  print("My birth year: " .. self.byear)
 end
 
-local p = Person:new("Karim", 31)
+local p = Person:new("Karim", 1986)
 
 p:info()
