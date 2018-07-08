@@ -27,6 +27,7 @@
 
 * http://www.perltutorial.org/perl-oop/
 * https://perldoc.perl.org/perlootut.html
+* http://ods.com.ua/win/eng/program/Perl5Unleashed/ch5.phtml
 
 ## Php
 
