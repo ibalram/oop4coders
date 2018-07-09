@@ -221,12 +221,46 @@ Methods
 	\item Object comparison
 	\item Hash code
 	\item Object ID
-	\item 
 \end{itemize}
 
 
+\subsection{C++}
 
+There is no toString in C++, where an object can be transformed to a string when it is concatenated with one. 
+But, operators such as \textbf{<<} can be redefined to handle an object of a class as a string. 
+A condition to use such methods is to define them as friend, so they can access the class's internal elements.  
 
+\lstinputlisting[language=C++, style=codeStyle]{../cpp/obj_meth.cpp}
+
+\subsection{Java}
+
+\lstinputlisting[language=Java, linerange={1-1,40-40}, style=codeStyle]{../java/src/Person.java}
+
+\subsection{Javascript}
+
+\lstinputlisting[linerange={1-1,11-11}, style=codeStyle]{../javascript/person.js}
+
+\lstinputlisting[linerange={1-1,5-5}, style=codeStyle]{../javascript/person2.js}
+
+\subsection{Lua}
+
+\lstinputlisting[language={[5.2]Lua}, linerange={1-2}, style=codeStyle]{../lua/person.lua}
+
+\subsection{Perl}
+
+\lstinputlisting[language=Perl, linerange={4-4}, style=codeStyle]{../perl/person.pl}
+
+\subsection{PHP}
+
+\lstinputlisting[language=PHP, linerange={2-2,27-27}, style=codeStyle]{../php/person.php}
+
+\subsection{Python}
+
+\lstinputlisting[language=Python, linerange={4-4}, style=codeStyle]{../python/person.py}
+
+\subsection{Ruby}
+
+\lstinputlisting[language=Ruby, linerange={3-3,19-19}, style=codeStyle]{../ruby/person.rb}
 
 
 
