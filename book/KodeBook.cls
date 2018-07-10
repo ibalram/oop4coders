@@ -115,3 +115,5 @@
 	
 	\end{tikzpicture}
 }
+
+\def\thesection{\arabic{section}}

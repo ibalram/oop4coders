@@ -9,32 +9,32 @@ class Person
 		@name, @byear = name, byear
 	end
 
-  def initialize_clone(source)
-    c = super
+	def initialize_clone(source)
+		c = super
 		c.byear += 2
 		c
-  end
+	end
 
 	def to_s
 		"(#{@name}: #{@byear})"
-  end
+	end
 
 	def <=>(other)
-    cmp = byear <=> other.byear
+		cmp = byear <=> other.byear
 		if cmp == 0
 			name <=> other.name
 		else
 			cmp
 		end
-  end
+	end
 
 	def eql?(other)
 		name == other.name
-  end
+	end
 
-  def hash
-    name.hash
-  end
+	def hash
+		name.hash
+	end
 
 end
 
