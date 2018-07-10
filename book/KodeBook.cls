@@ -117,3 +117,13 @@
 }
 
 \def\thesection{\arabic{section}}
+
+\newenvironment{introduction}
+{
+	\begin{center}
+	\itshape \small
+	\bfseries \color{blue}
+}
+{
+	\end{center}
+}

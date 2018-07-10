@@ -9,6 +9,14 @@
 
 %Introduction
 
+\begin{introduction}
+	This chapter is meant to introduce different oriented-object programming languages used in this book. 
+	First of all, installing instructions must be presented to help anyone with zero knowledge about these languages. 
+	Then, we will present different implementations of these languages from ``Hello world" to functions and exceptions. 
+	We have to point out that this chapter introduces the basic syntax without diving in different OOP concepts.
+	But, in case of languages with strong OOP, we have to present some concepts such as ``override" in ``exceptions".
+\end{introduction}
+
 
 \section{Getting started}
 
@@ -182,16 +190,12 @@ You have to verify if it is already installed (Linux Mint has it by default).
 
 Before introducing oriented-object concepts of each language, how about a little comparison between our programming languages.
 
-\subsection{Type safety}
+\begin{itemize}
+	\item \textbf{Type safety}: is the extent to which a programming language prevents type errors. 
+	\item \textbf{Type expression}: represents the type declaration. If it is explicit, the programmer have to specify the type of a variable or a method. If it is implicit, the type is inferred based on how the variables are being used.
+	\item \textbf{Type checking}: When the code is verified for type constrains, this can be happen in compile-time (static check) or run-time (dynamic check).
+\end{itemize}
 
-
-
-\subsection{Type expression}
-
-
-\subsection{Type checking}
-
-\subsection{comparison}
 
 \begin{table}
 	\begin{tabular}{llll}
@@ -218,7 +222,6 @@ Before introducing oriented-object concepts of each language, how about a little
 \end{table}
 
 
-
 \section{Hello world}
 
 Let's start with a Hello World introductory set of codes. 
@@ -228,84 +231,193 @@ Let's start with a Hello World introductory set of codes.
 
 A C++ program always has a main function, which represents the interface with the operating system. 
 When you call a program (from shell for example), you actually calling this function. 
+The main function is defined directly in the file and not inside a class or a structure.
 %
 \lstinputlisting[language=C++, style=codeStyle]{../cpp/helloworld.cpp}
 %
-In our example, the function "main" doesn't have any arguments. 
-If we want to pass some arguments to our program, we have to add a list of arguments to the "main" function
-%
-\begin{lstlisting}[language=C++, style=codeStyle]
-int main(int argc, char * argv[])
-\end{lstlisting}
-Where:
-\begin{itemize}
-	\item argv: is a table of pointers on chars (a table of strings).
-	\item argc: is the size of that table
-\end{itemize}
 
+Suppose we use g++ for C++. 
+To compile this code, you can specify the output file's name or not
+\begin{lstlisting}[style=shellStyle]
+$ g++ helloworld.cpp 
+$ g++ helloworld.cpp -o exec 
+\end{lstlisting}
+This will create a file \textbf{a.out}, which we can execute as follows
+\begin{lstlisting}[style=shellStyle]
+$ ./a.out
+$ ./exec 
+\end{lstlisting}
 
 \subsection{Java}
+
+In Java, a .java file can contain many classes, but only one with a public keyword. 
+The public class must have the same name as the file. 
+The main function is defined inside the main class.
 
 \lstinputlisting[language=Java, style=codeStyle]{../java/src/HelloWorld.java}
 
+To compile this code using command-line
+\begin{lstlisting}[style=shellStyle]
+$ javac HelloWorld.java
+\end{lstlisting}
+This will create a file \textbf{HelloWorld.class}, which we can be executed as follows
+\begin{lstlisting}[style=shellStyle]
+$ java HelloWorld
+\end{lstlisting}
+
 \subsection{Javascript}
+
+Javascript is a scripting language; the instructions are written directly without a main class or a main function.
+The program can be used side-by-side HTML, and therefore executed in a browser.
 
 \lstinputlisting[style=codeStyle, firstline=6, lastline=9]{../javascript/helloworld.htm}
 
+It can, also, be executed using nodeJs. 
+
+\lstinputlisting[style=codeStyle]{../javascript/helloworld.js}
+
+To execute it in command-line, you can use either one of these two commands
+\begin{lstlisting}[style=shellStyle]
+$ node helloworld.js
+$ nodejs helloworld.js
+\end{lstlisting}
+
 \subsection{Lua}
+
+Lua is a scripting language; the instructions are written directly without a main class or a main function.
 
 \lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/helloworld.lua}
 
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ lua helloworld.lua
+\end{lstlisting}
+
 \subsection{Perl}
+
+Perl is a scripting language; the instructions are written directly without a main class or a main function.
 
 \lstinputlisting[language=Perl, style=codeStyle]{../perl/helloworld.pl}
 
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ perl helloworld.perl
+\end{lstlisting}
+
 \subsection{PHP}
+
+PHP is a scripting language; the instructions are written directly without a main class or a main function.
+A code in PHP is delimited by ``<?php" and ``?>"
 
 \lstinputlisting[language=PHP, style=codeStyle]{../php/helloworld.php}
 
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ php helloworld.php
+\end{lstlisting}
+
 \subsection{Python}
+
+Python is a scripting language; the instructions are written directly without a main class or a main function.
 
 \lstinputlisting[language=Python, style=codeStyle]{../python/helloworld.py}
 
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ python helloworld.py
+\end{lstlisting}
+
 \subsection{Ruby}
+
+Ruby is a scripting language; the instructions are written directly without a main class or a main function.
 
 \lstinputlisting[language=Ruby, style=codeStyle]{../ruby/helloworld.rb}
 
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ ruby helloworld.ruby
+\end{lstlisting}
+
 \section{Functions}
 
-Let take the factorial function as an example. 
+Let's take the factorial function as an example. 
+We implement the recursive version.  
+The program, first, ask the user to introduce an integer number via the keyboard. 
+Then it will call our function and print the result. 
+We will print the code just for the function and not the entire program.
+Please check the code to see how to read the keyboard.
 
 \subsection{C++}
 
-\lstinputlisting[language=C++, style=codeStyle]{../cpp/func.cpp}
-%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
+A function, mainly, contains a return type, its name and parameters. 
+The language uses \textbf{\{\}} to define instructions blocks.
+To return a value, the language uses the keyword \textbf{return}.
+Statements end with a semicolon (\textbf{;}).
+
+\lstinputlisting[language=C++, linerange={12-16}, style=codeStyle]{../cpp/func.cpp}
 
 \subsection{Java}
 
-\lstinputlisting[language=Java, style=codeStyle]{../java/src/Func.java}
+A function contains a modifier, a return type, its name and parameters.
+It is always included in a class.
+The language uses \textbf{\{\}} to define instructions blocks.
+To return a value, the language uses the keyword \textbf{return}.
+Statements end with a semicolon (\textbf{;}).
+
+\lstinputlisting[language=Java, linerange={2-2,12-17}, style=codeStyle]{../java/src/Func.java}
 
 \subsection{Javascript}
+
+A function starts with the keyword \textbf{function}, its name and parameters.
+The language uses \textbf{\{\}} to define instructions blocks.
+To return a value, the language uses the keyword \textbf{return}.
+Statements end with a semicolon (\textbf{;}).
 
 \lstinputlisting[style=codeStyle]{../javascript/func.js}
 
 \subsection{Lua}
 
-\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/func.lua}
+A function starts with the keyword \textbf{function}, its name and parameters.
+All blocks are ended with the keyword \textbf{end}.
+To return a value, the language uses the keyword \textbf{return}.
+Each line contains at most one statement, but it can contains many separated by a semicolon.
+
+\lstinputlisting[language={[5.2]Lua}, linerange={1-6}, style=codeStyle]{../lua/func.lua}
 
 \subsection{Perl}
 
-\lstinputlisting[language=Perl, style=codeStyle]{../perl/func.pl}
+A function starts with the keyword \textbf{sub} and its name.
+The parameters can be recovered by shifting them from an array \textbf{@\_}.
+The language uses \textbf{\{\}} to define instructions blocks.
+To return a value, the language uses the keyword \textbf{return}.
+Statements end with a semicolon (\textbf{;}).
+
+\lstinputlisting[language=Perl, linerange={7-13}, style=codeStyle]{../perl/func.pl}
 
 \subsection{PHP}
 
-\lstinputlisting[language=PHP, style=codeStyle]{../php/func.php}
+A function starts with the keyword \textbf{function},its name and parameters.
+The language uses \textbf{\{\}} to define statements blocks.
+To return a value, the language uses the keyword \textbf{return}.
+Statements end with a semicolon (\textbf{;}).
+
+\lstinputlisting[language=PHP, linerange={2-6}, style=codeStyle]{../php/func.php}
 
 \subsection{Python}
 
-\lstinputlisting[language=Python, style=codeStyle]{../python/func.py}
+A function starts with the keyword \textbf{def},its name and parameters.
+The language uses indentation to define statements blocks.
+To return a value, the language uses the keyword \textbf{return}.
+Each line contains at most one statement, but simple statements can be separated by a semicolon.
+
+\lstinputlisting[language=Python, linerange={12-15}, style=codeStyle]{../python/func.py}
 
 \subsection{Ruby}
+
+A function starts with the keyword \textbf{def},its name and parameters.
+All blocks are ended with the keyword \textbf{end}.
+To return a value, you can either use the keyword \textbf{return} or put the value directly in a line.
+Each line contains at most one statement, but simple statements can be separated by a semicolon.
 
 \lstinputlisting[language=Ruby, style=codeStyle]{../ruby/func.rb}
 
@@ -324,6 +436,18 @@ The language can accept many forms:
 
 \lstinputlisting[language=C++, style=codeStyle]{../cpp/func.cpp}
 %\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
+
+In our example, the function "main" doesn't have any arguments. 
+If we want to pass some arguments to our program, we have to add a list of arguments to the "main" function
+%
+\begin{lstlisting}[language=C++, style=codeStyle]
+int main(int argc, char * argv[])
+\end{lstlisting}
+Where:
+\begin{itemize}
+	\item argv: is a table of pointers on chars (a table of strings).
+	\item argc: is the size of that table
+\end{itemize}
 
 %\subsection{Java}
 %
