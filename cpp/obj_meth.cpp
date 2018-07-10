@@ -18,7 +18,7 @@ class Person
 };
 
 std::ostream& operator<<(std::ostream &strm, const Person &p) {
-  return strm << "(" << p.name << ", " << p.byear << ")";
+  return strm << "(" << p.name << ": " << p.byear << ")";
 }
 
 int main()
