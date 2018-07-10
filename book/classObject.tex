@@ -264,9 +264,17 @@ But, other comparison methods are: \textbf{\_\_lt\_\_}, \textbf{\_\_gt\_\_}, etc
 
 \subsection{Ruby}
 
-\lstinputlisting[language=Ruby, linerange={3-3,19-19}, style=codeStyle]{../ruby/person.rb}
+To create a copy, there are two methods: \textbf{clone} and \textbf{dup}. 
+\textbf{dup} creates a new copy of the object, but its original members are shared. 
+Which means, if I copy an object then modify the attributes in the copy, this will affect the original.
+
+\lstinputlisting[language=Ruby, style=codeStyle]{../ruby/objmeth.rb}
+
+The two methods (\textbf{initialize\_dup} and \textbf{initialize\_clone}) call \textbf{initialize\_copy} when they are done.
 
 
+The hashCode in Ruby changes between sessions.
+It means, if you execute the program and then re-execute it again, you will not have the same hashcode of an object.
 
 %=====================================================================
 \ifx\wholebook\relax\else

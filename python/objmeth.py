@@ -25,12 +25,12 @@ class Person(object):
 import copy
 
 p = Person("Karim", 1986)
-p2 = Person("Karim+1", 1986);
-print ("As string: " + str(p));
-print ("HashCode: " + str(hash(p)));
+p2 = Person("Karim+1", 1986)
+print ("As string: " + str(p))
+print ("HashCode: " + str(hash(p)))
 
 p3 = copy.copy(p)
-print ("Copy: " + str(p3));
-print("p == p3? " + str(p==p3));
-print("p == p2? " + str(p==p2));
-print("p < p3? " + str(p<p3));
+print ("Copy: " + str(p3))
+print("p == p3? " + str(p==p3))
+print("p == p2? " + str(p==p2))
+print("p < p3? " + str(p<p3))
