@@ -499,10 +499,35 @@ To get command-line arguments, \textbf{\$argv} vector is used; Where the first e
 
 \lstinputlisting[language=PHP, linerange={4-10}, style=codeStyle]{../php/entry.php}
 
-%\subsection{Python}
-%
-%\lstinputlisting[language=Python, style=codeStyle]{../python/func.py}
-%
+\subsection{Python}
+
+Python does not need a main function; The statements are executed one by one. 
+But to prevent instructions from executing when the file is exported as a library, there is a main mechanism. 
+A test if a built-in variable \textbf{\_\_name\_\_} contains the string \textbf{"\_\_main\_\_"} which means the module is being run directly from command-line.
+Otherwise, this variable will contain the current module's name.
+
+A function $ f1 $ can not be called before it was defined unless it is called inside another function $ f2 $. 
+Even so, the second function $ f2 $ must be called after the definition of $ f1 $ and not before. 
+In our example, if we define the factorial function after the \textbf{main} mechanism, we will get an error. 
+
+To get the command-line arguments, we must import \textbf{sys} module and recover the vector \textbf{sys.argv}. 
+The first element contains the name of the script and the rest contains the arguments.
+
+\lstinputlisting[language=Python, style=codeStyle]{../python/entry.py}
+
+If you want to put the function in the end so badly, there is a solution. 
+Just import the function from the same file under the main mechanism. 
+In the following example, our file is called \textbf{entry.py}.
+
+\begin{lstlisting}[language=Python, style=codeStyle]
+if __name__ == "__main__":
+	from entry import fact
+	...
+def fact(i):
+	...
+	
+\end{lstlisting}
+
 %\subsection{Ruby}
 %
 %\lstinputlisting[language=Ruby, style=codeStyle]{../ruby/func.rb}
