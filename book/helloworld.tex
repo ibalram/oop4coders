@@ -443,20 +443,26 @@ int main(int argc, char * argv[])
 
 When we want to recover command-line parameters, we have to use the main with arguments. 
 \begin{itemize}
-	\item argv: is a table of pointers on chars (a table of strings).
-	\item argc: is the size of that table
+	\item argv (argument vector): is a table of pointers on chars (a table of strings).
+	The first entry is the name of the program, and the others are parameters. 
+	\item argc (argument count): is the size of that table
 \end{itemize}
 
 \lstinputlisting[language=C++, linerange={1-17}, style=codeStyle]{../cpp/entry.cpp}
 
 The header of our function \textbf{fact} is put ahead of the main, so we can use it. 
-The compiler needs function declarations before the point of use. 
+The compiler needs function declarations before the point of use (forward declaration). 
 In our case, the implementation is after the main function.
 
-%\subsection{Java}
-%
-%\lstinputlisting[language=Java, style=codeStyle]{../java/src/Func.java}
-%
+\subsection{Java}
+
+The main function is mandatory if we want an executable out of our class. 
+It returns nothing (void) and have a list of string arguments. 
+The main function must be always defined in the \textbf{public} class (which have the same name as the file). 
+Also, it has to be \textbf{static}, so it can be executed without the need to create an instance of its containing class.
+
+\lstinputlisting[language=Java, style=codeStyle]{../java/src/Entry.java}
+
 %\subsection{Javascript}
 %
 %\lstinputlisting[style=codeStyle]{../javascript/func.js}
