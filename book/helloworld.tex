@@ -528,9 +528,44 @@ def fact(i):
 	
 \end{lstlisting}
 
-%\subsection{Ruby}
-%
-%\lstinputlisting[language=Ruby, style=codeStyle]{../ruby/func.rb}
+\subsection{Ruby}
+
+In Ruby, there is no main function, but there is a mechanism to prevent execution when the file is called as a module. 
+There is a variable called \textbf{\_\_FILE\_\_} which contains the file name which is stored in \textbf{\$0} and \textbf{\$PROGRAM\_NAME}. 
+The command-line arguments are stored in a variable \textbf{ARGV}.
+Functions must be defined before being used, otherwise you will get an error.
+
+\lstinputlisting[language=Ruby, style=codeStyle]{../ruby/entry.rb}
+
+For those who want it so badly to define a function after it is being called.
+If you import the file using \textbf{require} keyword inside the main block, you will get a warning about the method being redefined. 
+Another solution is to use the blocks: \textbf{BEGIN} or \textbf{END}. 
+The former tells the interpreter to begin with this code, and the latter tells it to finish with it.
+
+\begin{lstlisting}[language=Python, style=codeStyle]
+END {
+	if __FILE__ == $0
+		...
+	end
+}
+
+def fact(i)
+	...
+end
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, style=codeStyle]
+if __FILE__ == $0
+...
+end
+
+BEGIN {
+	def fact(i)
+		...
+	end
+}
+\end{lstlisting}
+
 
 \section{Exceptions}
 
