@@ -419,35 +419,39 @@ All blocks are ended with the keyword \textbf{end}.
 To return a value, you can either use the keyword \textbf{return} or put the value directly in a line.
 Each line contains at most one statement, but simple statements can be separated by a semicolon.
 
-\lstinputlisting[language=Ruby, style=codeStyle]{../ruby/func.rb}
+\lstinputlisting[language=Ruby, linerange={9-15}, style=codeStyle]{../ruby/func.rb}
 
 
 \section{Entry point}
 
-Let take the factorial function as an example. 
-
+When a program is called from command-line, it searches for a function as entry-point. 
+This is not the case for all languages; for instance, scripting languages execute without needing one. 
+Nevertheless, they need a mechanism to recover the command-line parameters. 
+Also, some languages, such as Python, afford a main function for entry-point lovers.
 
 \subsection{C++}
 
-In C++, main function is obligatory. 
-The language can accept many forms: 
-
-
-
-\lstinputlisting[language=C++, style=codeStyle]{../cpp/func.cpp}
-%\lstinputlisting[language=Python, firstline=37, lastline=45]{source_filename.py}
-
-In our example, the function "main" doesn't have any arguments. 
-If we want to pass some arguments to our program, we have to add a list of arguments to the "main" function
-%
+In C++, main function is obligatory,  it can have parameters or not. 
+The return type is an integer which indicates how the program exited. 
+The normal state is 0; Otherwise, it indicates that there was an error during the process.
+Contrary to C, in C++ you do not need to return explicitly.
+In this case, the return value is an implicit 0.
 \begin{lstlisting}[language=C++, style=codeStyle]
+int main()
 int main(int argc, char * argv[])
 \end{lstlisting}
-Where:
+
+When we want to recover command-line parameters, we have to use the main with arguments. 
 \begin{itemize}
 	\item argv: is a table of pointers on chars (a table of strings).
 	\item argc: is the size of that table
 \end{itemize}
+
+\lstinputlisting[language=C++, linerange={1-17}, style=codeStyle]{../cpp/entry.cpp}
+
+The header of our function \textbf{fact} is put ahead of the main, so we can use it. 
+The compiler needs function declarations before the point of use. 
+In our case, the implementation is after the main function.
 
 %\subsection{Java}
 %
