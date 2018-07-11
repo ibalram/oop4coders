@@ -573,62 +573,99 @@ BEGIN {
 
 In C++, exceptions can be of any type. 
 They are thrown using the keyword \textbf{throw}, and handled using \textbf{try} and \textbf{catch}.
+You can throw a string as an exception.
 
-\lstinputlisting[language=C++, style=codeStyle]{../cpp/except.cpp}
+\lstinputlisting[language=C++, linerange={4-6}, style=codeStyle]{../cpp/except.cpp}
+
+Then, capture it
+
+\lstinputlisting[language=C++, linerange={23-29}, style=codeStyle]{../cpp/except.cpp}
+
 
 If you want to specify the type of the exception, here comes the OOP solution. 
 You have to define new types by inheritance from \textbf{std::exception}. 
-Then, redefine the function \textbf{what()}.
+Then, redefine the function \textbf{what()} which affords the error message.
 
-\lstinputlisting[language=C++, firstline=3, lastline=16, style=codeStyle]{../cpp/except2.cpp}
+\lstinputlisting[language=C++, linerange={6-16}, style=codeStyle]{../cpp/except2.cpp}
 
 The exceptions can be thrown by creating a new instance of the defined classes. 
 
-\lstinputlisting[language=C++, firstline=19, lastline=20, style=codeStyle]{../cpp/except2.cpp}
+\lstinputlisting[language=C++, linerange={19-20}, style=codeStyle]{../cpp/except2.cpp}
 
-We catch them either by they parent's type, or by catching each type apart. 
+We catch them either by they parent's type \textbf{std::exception}, or by catching each type apart. 
 
-\lstinputlisting[language=C++, firstline=35, lastline=41, style=codeStyle]{../cpp/except2.cpp}
+\lstinputlisting[language=C++, linerange={35-41}, style=codeStyle]{../cpp/except2.cpp}
 
 
 \subsection{Java}
 
-\lstinputlisting[language=Java, firstline=4, lastline=15, style=codeStyle]{../java/src/Except.java}
+In Java, you can define exceptions by defining some classes which inherit from the class \textbf{Exception}. 
+Or you can throw a new instance of the latter. 
+The message in your new exception classes can be passed to the superclass, by the keyword \textbf{super} in their constructors. 
+Also, you can redefine the function \textbf{getMessage()} as shown in our example.
 
-\lstinputlisting[language=Java, firstline=17, lastline=26, style=codeStyle]{../java/src/Except.java}
+\lstinputlisting[language=Java, linerange={39-50}, style=codeStyle]{../java/src/Except.java}
 
-\lstinputlisting[language=Java, firstline=30, lastline=36, style=codeStyle]{../java/src/Except.java}
+The function which throw new instances of our exceptions, using the keyword \textbf{throw}, must declare that it have the potential to throw them in its header via the keyword \textbf{throws}. 
 
-\lstinputlisting[language=Java, firstline=40, lastline=53, style=codeStyle]{../java/src/Except.java}
+\lstinputlisting[language=Java, linerange={30-32}, style=codeStyle]{../java/src/Except.java}
+
+To capture these exceptions, you must use \textbf{try} and \textbf{catch}, or you can send them to an upper caller using \textbf{throws}. 
+There is a keyword \textbf{finally} which is used to execute code in either cases: exception or not. 
+Its benefit is to clean up before exiting; for instance: closing a file.
+
+\lstinputlisting[language=Java, linerange={17-26}, style=codeStyle]{../java/src/Except.java}
+
+There are some other types of exceptions called \textbf{unchecked exceptions} which they don't force the programmer to capture them. 
+You can define your own unchecked exceptions by inheriting from \textbf{RuntimeException}. 
+In this case, you will not need to declare that your function is capable of throwing them. 
+There are some built-in unchecked exceptions relative to arrays and number conversion as shown in this example.
+
+\lstinputlisting[language=Java, linerange={4-15}, style=codeStyle]{../java/src/Except.java}
 
 \subsection{Javascript}
 
-\lstinputlisting[language=Java, firstline=18, lastline=21, style=codeStyle]{../javascript/except.js}
+Using \textbf{throw} statement, you can throw an exception of any type: integer, string, object, etc. 
 
-\lstinputlisting[language=Java, firstline=10, lastline=16, style=codeStyle]{../javascript/except.js}
+\lstinputlisting[language=Java, linerange={21-23}, style=codeStyle]{../javascript/except.js}
+
+The function's execution will stop and the control will be passed to the first catch block where it is being called.
+If the error is not captured, the program will terminate.
+To capture an exception, you need to call the function inside \textbf{try} and \textbf{catch}. 
+You can add \textbf{finally} which will execute in both cases: failure or success.
+
+\lstinputlisting[language=Java, linerange={10-19}, style=codeStyle]{../javascript/except.js}
+
+You can throw an error  using the class \textbf{error}
+
+\begin{lstlisting}[style=codeStyle]
+new Error([message[, fileName[, lineNumber]]])
+\end{lstlisting}
 
 \subsection{Lua}
 
-As mentioned in Lua manual, you do not need error handling for most applications. 
-To throw an error, you can use the function \textbf{error}
+As mentioned in Lua manual: you do not need error handling for most applications. 
+But in case you want to throw an error, you can use the function \textbf{error}
 
-\lstinputlisting[language={[5.2]Lua}, firstline=1, lastline=3, style=codeStyle]{../lua/except.lua}
+\lstinputlisting[language={[5.2]Lua}, linerange={1-3}, style=codeStyle]{../lua/except.lua}
 
 Then, if you want to handle this error, you can use the function \textbf{pcall} to encapsulate your previous code. 
 It will return a success indicator and the returned value from your function.
 The value, here, is either the result from te function or the raised error. 
 
-\lstinputlisting[language={[5.2]Lua}, firstline=16, lastline=21, style=codeStyle]{../lua/except.lua}
+\lstinputlisting[language={[5.2]Lua}, linerange={14-20}, style=codeStyle]{../lua/except.lua}
 
 \subsection{Perl}
 
-One mechanism to throw errors is using the keyword \textbf{die}. 
+Perl does not have a good built-in mechanism for exceptions. 
+This is why there are some perl modules designed specially for exception handling.
+If you want to throw errors, you can use the keyword \textbf{die}. 
 
-\lstinputlisting[language=Perl, firstline=14, lastline=17, style=codeStyle]{../perl/except.pl}
+\lstinputlisting[language=Perl, linerange={14-17}, style=codeStyle]{../perl/except.pl}
 
 Using \textbf{eval}, you can capture the error into \textbf{\$@}.
 
-\lstinputlisting[language=Perl, firstline=6, lastline=12, style=codeStyle]{../perl/except.pl}
+\lstinputlisting[language=Perl, linerange={6-12}, style=codeStyle]{../perl/except.pl}
 
 \subsection{PHP}
 
@@ -636,31 +673,44 @@ In PHP, Exception handling is available in version 5 and greater.
 To raise an exception, either you create an instance of the class \textbf{Exception} with a message as parameter, 
 or you create custom exceptions by inheriting from that class.
 
-\lstinputlisting[language=PHP, firstline=4, lastline=14, style=codeStyle]{../php/except.php}
+\lstinputlisting[language=PHP, linerange={4-14}, style=codeStyle]{../php/except.php}
 
 To raise the exception, all you have to do is calling the keyword \textbf{throw} followed by an instance of the custom exception.
 
-\lstinputlisting[language=PHP, firstline=16, lastline=18, style=codeStyle]{../php/except.php}
+\lstinputlisting[language=PHP, linerange={16-18}, style=codeStyle]{../php/except.php}
 
 Then, to capture the exception, you can use \textbf{try} and \textbf{catch}.
 
-\lstinputlisting[language=PHP, firstline=30, lastline=39, style=codeStyle]{../php/except.php}
+\lstinputlisting[language=PHP, linerange={30-39}, style=codeStyle]{../php/except.php}
+
+From PHP5.5, a block of \textbf{finally} can be specified to execute code after normal execution or exception handling.
 
 \subsection{Python}
 
-\lstinputlisting[language=Python, firstline=6, lastline=12, style=codeStyle]{../python/except.py}
+The exceptions inherit from the class \textbf{Exception}.
 
-\lstinputlisting[language=Python, firstline=14, lastline=18, style=codeStyle]{../python/except.py}
+\lstinputlisting[language=Python, linerange={6-12}, style=codeStyle]{../python/except.py}
 
-\lstinputlisting[language=Python, firstline=28, lastline=32, style=codeStyle]{../python/except.py}
+To throw an exception, use the keyword \textbf{raise}
 
-\lstinputlisting[language=Python, firstline=34, lastline=38, style=codeStyle]{../python/except.py}
+\lstinputlisting[language=Python, linerange={14-18}, style=codeStyle]{../python/except.py}
+
+To capture these exceptions, use \textbf{try} and \textbf{except}. 
+You have to capture the most specific exception first, then the generic ones. 
+After \textbf{except} blocks, you can use a clean-up block: \textbf{finally}.
+
+\lstinputlisting[language=Python, linerange={28-32}, style=codeStyle]{../python/except.py}
+
+There are some built-in exceptions you can use, such as this example.
+
+\lstinputlisting[language=Python, linerange={34-38}, style=codeStyle]{../python/except.py}
 
 \subsection{Ruby}
 
-In Ruby, you can raise an exception giving just a message creating a new instance of \textbf{RuntimeError}. 
+In Ruby, you can throw an exception affording just a message which will create a new instance of \textbf{RuntimeError}. 
+To throw an exception, you need to use the keyword \textbf{raise}
 
-\lstinputlisting[language=Python, firstline=1, lastline=12, style=codeStyle]{../ruby/except.rb}
+\lstinputlisting[language=Python, linerange={1-6}, style=codeStyle]{../ruby/except.rb}
 
 To handle the exception, you can use the keywords: 
 \begin{itemize}
@@ -671,22 +721,20 @@ To handle the exception, you can use the keywords:
 	\item end: to close the block
 \end{itemize}
 
-\lstinputlisting[language=Python, firstline=21, lastline=28, style=codeStyle]{../ruby/except.rb}
+\lstinputlisting[language=Python, linerange={21-28}, style=codeStyle]{../ruby/except.rb}
 
-You can specify custom classes to handle exceptions. 
-In here, I regrouped all the exceptions in one module.
+You can specify custom classes to handle exceptions which can inherit from \textbf{StandardError}. 
+It is a good practice to regroup these errors all together.
 
-\lstinputlisting[language=Python, firstline=1, lastline=12, style=codeStyle]{../ruby/except2.rb}
+\lstinputlisting[language=Python, linerange={1-12}, style=codeStyle]{../ruby/except2.rb}
 
-To raise them, create an instance
+To throw them, all you have to do is creating an instance after calling \textbf{raise}.
 
-\lstinputlisting[language=Python, firstline=16, lastline=19, style=codeStyle]{../ruby/except2.rb}
+\lstinputlisting[language=Python, linerange={16-19}, style=codeStyle]{../ruby/except2.rb}
 
 You can capture them by their parent exception class \textbf{Exception}, or each by its class.
 
-\lstinputlisting[language=Python, firstline=37, lastline=40, style=codeStyle]{../ruby/except.rb}
-
-
+\lstinputlisting[language=Python, linerange={37-40}, style=codeStyle]{../ruby/except2.rb}
 
 
 %=====================================================================

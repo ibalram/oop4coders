@@ -14,6 +14,9 @@ try {
 catch(error) {
 	console.log(error);
 }
+finally {
+	console.log("That's all!");
+}
 
 function fact(i) {
 	if (i < 0) throw "Negative numbers don't have a factorial!";

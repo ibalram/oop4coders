@@ -31,7 +31,7 @@ try {
   $f = fact($n);
   echo "Fact($n)= " . $f . "\n";
 }
-catch (Exception $e) {
+catch (NegException $e) {
   echo $e->errorMessage() . "\n";
 }
 catch (BigException $e) {

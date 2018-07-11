@@ -40,13 +40,11 @@ class NegException extends Exception {
 	@Override
 	public String getMessage() {
 		return "Negative numbers don't have a factorial!";
-
 	}
 }
 
 class BigException extends Exception {
 	public String getMessage() {
 		return "The number is too big!";
-
 	}
 }
