@@ -483,7 +483,7 @@ To recover command-line arguments, \textbf{arg} array is used.
 
 \subsection{Perl}
 
-The whole file is a main in Perl.
+The whole file is a main in Perl, and functions can be called before being defined.
 The command-line arguments are stored in a vector \textbf{\$ARGV}. 
 In this code, we showed two methods to print the results.
 The first one is the more interesting: it interpolates the function's call and the variable inside a string. 
@@ -491,10 +491,14 @@ The second one is a simple concatenation-based one.
 
 \lstinputlisting[language=Perl, linerange={3-7}, style=codeStyle]{../perl/entry.pl}
 
-%\subsection{PHP}
-%
-%\lstinputlisting[language=PHP, style=codeStyle]{../php/func.php}
-%
+\subsection{PHP}
+
+PHP does not have a main function; the first line of code encountered in the file will be executed an on.
+A function can be called before it was defined. 
+To get command-line arguments, \textbf{\$argv} vector is used; Where the first element is the name of the script.
+
+\lstinputlisting[language=PHP, linerange={4-10}, style=codeStyle]{../php/entry.php}
+
 %\subsection{Python}
 %
 %\lstinputlisting[language=Python, style=codeStyle]{../python/func.py}

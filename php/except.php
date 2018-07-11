@@ -16,7 +16,7 @@ class BigException extends Exception {
 function fact($i) {
   if ($i < 0) throw new NegException();
   if ($i > 5) throw new BigException();
-  if ($i <= 1) return 1;
+  if ($i ==0) return 1;
 	return $i * fact($i - 1);
 }
 
