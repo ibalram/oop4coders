@@ -473,10 +473,14 @@ The arguments passed by Node.js are stored in an array of strings \textbf{proces
 
 \lstinputlisting[linerange={1-9}, style=codeStyle]{../javascript/entry.js}
 
-%\subsection{Lua}
-%
-%\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/func.lua}
-%
+\subsection{Lua}
+
+Lua does not have a main function, since all the code can be considered as one. 
+Also, functions must be defined before being called, because functions in lua are just values stored in a variable.
+To recover command-line arguments, \textbf{arg} array is used. 
+
+\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/entry.lua}
+
 %\subsection{Perl}
 %
 %\lstinputlisting[language=Perl, style=codeStyle]{../perl/func.pl}
