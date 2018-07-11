@@ -463,10 +463,16 @@ Also, it has to be \textbf{static}, so it can be executed without the need to cr
 
 \lstinputlisting[language=Java, style=codeStyle]{../java/src/Entry.java}
 
-%\subsection{Javascript}
-%
-%\lstinputlisting[style=codeStyle]{../javascript/func.js}
-%
+\subsection{Javascript}
+
+In Javascript, the entire file is a big main, which can contain declarations (variables and functions) and statements.
+The declarations are processed first, then the statements. 
+This is why a function can be called before it is defined without the need to declare its header first. 
+Being executed inside HTML, Javascript does not need arguments; But in case of Node.js, arguments are needed sometimes. 
+The arguments passed by Node.js are stored in an array of strings \textbf{process.argv} which has \textbf{node} as its first elements, the name of the script as the second, and the rest are the command-line arguments.
+
+\lstinputlisting[linerange={1-9}, style=codeStyle]{../javascript/entry.js}
+
 %\subsection{Lua}
 %
 %\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/func.lua}
