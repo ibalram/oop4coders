@@ -481,10 +481,16 @@ To recover command-line arguments, \textbf{arg} array is used.
 
 \lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/entry.lua}
 
-%\subsection{Perl}
-%
-%\lstinputlisting[language=Perl, style=codeStyle]{../perl/func.pl}
-%
+\subsection{Perl}
+
+The whole file is a main in Perl.
+The command-line arguments are stored in a vector \textbf{\$ARGV}. 
+In this code, we showed two methods to print the results.
+The first one is the more interesting: it interpolates the function's call and the variable inside a string. 
+The second one is a simple concatenation-based one. 
+
+\lstinputlisting[language=Perl, linerange={3-7}, style=codeStyle]{../perl/entry.pl}
+
 %\subsection{PHP}
 %
 %\lstinputlisting[language=PHP, style=codeStyle]{../php/func.php}
