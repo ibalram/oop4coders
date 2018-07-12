@@ -58,6 +58,9 @@
 
 * https://en.wikipedia.org/wiki/Entry_point
 
+## Other references
+* https://www.cs.drexel.edu/~introcs/Fa15/notes/06.1_OOP/titleslide.html?CurrentSlide=0
+
 ## TO ADD
 * https://en.wikipedia.org/wiki/Tcl
 * https://en.wikipedia.org/wiki/Smalltalk
