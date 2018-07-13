@@ -60,6 +60,7 @@
 
 ## Other references
 * https://www.cs.drexel.edu/~introcs/Fa15/notes/06.1_OOP/titleslide.html?CurrentSlide=0
+* http://web.eecs.utk.edu/~huangj/CS302S04/notes/oo-intro.html
 
 ## TO ADD
 * https://en.wikipedia.org/wiki/Tcl
