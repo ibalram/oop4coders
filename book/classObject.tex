@@ -16,6 +16,9 @@
 
 \section{Class declaration}
 
+Class definition in the following examples is self explanatory. 
+We will explain prototype-based implementations though.
+
 \subsection{C++}
 
 \lstinputlisting[language=C++, linerange={4-5,34-34}, style=codeStyle]{../cpp/person0.cpp}
@@ -26,15 +29,27 @@
 
 \subsection{Javascript}
 
-\lstinputlisting[linerange={1-1,11-11}, style=codeStyle]{../javascript/person.js}
+There are no classes in javascript, a function can be used to simulate a class. 
 
 \lstinputlisting[linerange={1-1,5-5}, style=codeStyle]{../javascript/person2.js}
 
+Since ES6, the \textbf{class} keyword has been introduced, but it still a syntactical sugar over the existing prototype-based classes.
+
+\lstinputlisting[linerange={1-1,15-15}, style=codeStyle]{../javascript/person.js}
+
+
 \subsection{Lua}
+
+There is class concept in Lua, but using its meta-programming we can create objects. 
+There are many ways to do this, one famous is to  use meta-tables.
+The \textbf{\_\_index} is used as fail-safe mechanism when it fails to lookup something in the table.
 
 \lstinputlisting[language={[5.2]Lua}, linerange={1-2}, style=codeStyle]{../lua/person.lua}
 
 \subsection{Perl}
+
+A perl class is simply a package which ends with \textbf{1;} 
+If you want to create many package inside one file, you can put their definitions inside curly braces \textbf{\{\}}.
 
 \lstinputlisting[language=Perl, linerange={4-4}, style=codeStyle]{../perl/person.pl}
 
