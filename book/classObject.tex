@@ -99,9 +99,20 @@ Deleting a pointer twice will cause problems; This is why it is recommended to s
 
 \subsection{Java}
 
+The constructor, in Java, is a function with the class name without a return type.
+There is no destructor in Java, because the objects are heap allocated and heap allocated. 
+Finalizers are like destructors in purpose: close files, sockets, etc. 
+But, they are not called immediately after the object is freed. 
+When the garbage collector collects an object with a finalizer, it enqueue it to be finalized. 
+But, there is no guarantee that the finalyzer will ever be called; The application can exit without waiting the object to be finalyzed. 
+
 \lstinputlisting[language=Java, linerange={1-1,5-17,40-40}, style=codeStyle]{../java/src/Person.java}
 
+To create a new object, use the keyword \textbf{new}.
+
 \lstinputlisting[language=Java, linerange={28-28}, style=codeStyle]{../java/src/Person.java}
+
+To fasten the destruction of an object, you can assign \textbf{null} to all variables referencing it.
 
 \lstinputlisting[language=Java, linerange={36-36}, style=codeStyle]{../java/src/Person.java}
 
