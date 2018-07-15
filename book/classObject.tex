@@ -68,11 +68,32 @@ If you want to create many package inside one file, you can put their definition
 
 \section{Constructors and destructors}
 
+A constructor is a special function which is responsible for preparing the object to be created. 
+The preparation, mostly, is concerned by initializing variables or calling some functions.
+
+Once an object is deleted or out of scope, it is no longer needed. 
+The destructor is a function which is called before deleting an object.
+It can be used to free external resources used by the object before it is terminated.
+
 \subsection{C++}
+
+The constructor in C++ takes the same name as the class without a return type;
+It can have arguments or not.
+As for the destructor, it has the same name as the class prefixed by a tilde \textbf{~}.
 
 \lstinputlisting[language=C++, linerange={4-19,34-34}, style=codeStyle]{../cpp/person0.cpp}
 
+To create an object in C++, you can create:
+\begin{itemize}
+	\item an automatically destroyed object when it goes out of scope, or
+	\item a dynamically created object of which the address is binded to a pointer
+\end{itemize}
+
 \lstinputlisting[language=C++, linerange={40-41}, style=codeStyle]{../cpp/person0.cpp}
+
+To free the allocated object memory, in the second case, you can call \textbf{delete}. 
+If the pointer you are deleting is zero, nothing will happen. 
+Deleting a pointer twice will cause problems; This is why it is recommended to set is to zero right after you delete it.
 
 \lstinputlisting[language=C++, linerange={48-48}, style=codeStyle]{../cpp/person0.cpp}
 
