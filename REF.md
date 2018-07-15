@@ -22,6 +22,7 @@
 * http://lua-users.org/wiki/ObjectOrientationTutorial
 * http://lua-users.org/wiki/ObjectOrientedProgramming
 * https://www.lua.org/pil/8.4.html
+* http://lua-users.org/wiki/MetamethodsTutorial
 
 ## Perl
 

@@ -134,9 +134,23 @@ To create a new object, you use the keyword \textbf{new}
 
 \subsection{Lua}
 
+In class declaration, we declared a class as a meta-table. 
+The constructor is a function which has a name chosen by the programmer, usually \textbf{new} or \textbf{create}. 
+This function must return an object to which you have to set a meta-table (our class) using the method \textbf{setmetatable}
+
 \lstinputlisting[language={[5.2]Lua}, linerange={4-7}, style=codeStyle]{../lua/person.lua}
 
+Then to create a new object, we simply call that function.
+
 \lstinputlisting[language={[5.2]Lua}, linerange={19-19}, style=codeStyle]{../lua/person.lua}
+
+Another fancy way to create a constructor is by using the meta-method \textbf{\_\_call} which allows us to call our meta-table as a function. 
+
+\lstinputlisting[language={[5.2]Lua}, linerange={4-9}, style=codeStyle]{../lua/person2.lua}
+
+Then, we create a new object as follows
+
+\lstinputlisting[language={[5.2]Lua}, linerange={21-21}, style=codeStyle]{../lua/person2.lua}
 
 \subsection{Perl}
 

@@ -1,10 +1,12 @@
 local Person = {}
 Person.__index = Person
 
-function Person.new(name, byear)    -- The constructor
-  Person.nbr = Person.nbr + 1
-  return setmetatable({name = name, byear = byear}, Person)
-end
+setmetatable(Person, {
+  __call = function (cls, name, byear)
+    Person.nbr = Person.nbr + 1
+    return setmetatable({name = name, byear = byear}, Person)
+  end,
+})
 
 Person.nbr = 0
 
@@ -16,8 +18,8 @@ function Person.population()
   return Person.nbr
 end
 
-local p = Person.new("Karim", 1986)
-local p2 = Person.new("Karim+1", 1987)
+local p = Person("Karim", 1986)
+local p2 = Person("Karim+1", 1987)
 
 p:info()
 p2:info()
