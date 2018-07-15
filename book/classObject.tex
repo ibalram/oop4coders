@@ -154,9 +154,21 @@ Then, we create a new object as follows
 
 \subsection{Perl}
 
+In Perl, the constructor is a subroutine called \textbf{new}. 
+The arguments are shifted from the global variable \textbf{@\_} where the first one is the class itself.
+You have to create a hash and marking it with a package (class = package) name using \textbf{bless}.
+
+When the last reference to an object goes away, the object is destroyed.
+In this case, Perl will call the method \textbf{DESTROY} if it is defined.
+
 \lstinputlisting[language=Perl, linerange={3-23,34-34}, style=codeStyle]{../perl/person.pl}
 
-\lstinputlisting[language=Perl, linerange={36-36}, style=codeStyle]{../perl/person.pl}
+To create a new object, either you use the keyword \textbf{new} or use the arrow function.  
+If you use the second method, you can call your constructor whatever you want; But  by convention it is \textbf{new}.
+
+\lstinputlisting[language=Perl, linerange={36-37}, style=codeStyle]{../perl/person.pl}
+
+To delete a reference, you use \textbf{undef} which will trigger the destructor.
 
 \lstinputlisting[language=Perl, linerange={44-44}, style=codeStyle]{../perl/person.pl}
 
