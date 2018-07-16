@@ -7,6 +7,12 @@ class Person
 	def initialize(name, byear)
 		@name, @byear = name, byear
 		@@nbr += 1
+		ObjectSpace.define_finalizer( self, proc {Person.finalize(@name)})
+	end
+
+	def self.finalize(n)
+		@@nbr -= 1
+		puts "#{n} is out"
 	end
 
 	def info

@@ -203,11 +203,20 @@ To delete a reference, the keyword \textbf{del} is used.
 
 \subsection{Ruby}
 
-\lstinputlisting[language=Ruby, linerange={3-10,19-19}, style=codeStyle]{../ruby/person.rb}
+The constructor is a function called \textbf{initialize}.
+Ruby does not have a destructor, but it has a finalizer.
+To bind the object with a finalizing function, you have to call \textbf{ObjectSpace.define\_finalizer} in the constructor.
+The finalizer, like Java, can never be called.
 
-\lstinputlisting[language=Ruby, linerange={21-21}, style=codeStyle]{../ruby/person.rb}
+\lstinputlisting[language=Ruby, linerange={3-17,25-25}, style=codeStyle]{../ruby/person.rb}
 
-\lstinputlisting[language=Ruby, linerange={29-29}, style=codeStyle]{../ruby/person.rb}
+To create a new object from our class, we call its function \textbf{new}.
+
+\lstinputlisting[language=Ruby, linerange={27-27}, style=codeStyle]{../ruby/person.rb}
+
+To free a reference from an object, you can assign it the \textbf{nil} value.
+
+\lstinputlisting[language=Ruby, linerange={35-35}, style=codeStyle]{../ruby/person.rb}
 
 \section{Members}
 
