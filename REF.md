@@ -62,6 +62,8 @@
 ## Other references
 * https://www.cs.drexel.edu/~introcs/Fa15/notes/06.1_OOP/titleslide.html?CurrentSlide=0
 * http://web.eecs.utk.edu/~huangj/CS302S04/notes/oo-intro.html
+* https://www.yegor256.com/2016/08/15/what-is-wrong-object-oriented-programming.html
+* https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53
 
 ## TO ADD
 * https://en.wikipedia.org/wiki/Tcl

@@ -17,9 +17,17 @@
 
 \section{History}
 
+
 \section{Concepts}
 
-\subsection{Objects and classes}
+\subsection{Abstraction}
+
+
+\subsubsection{Class-based}
+
+\subsubsection{Prototype-based}
+
+%Lua does not have the concept of class; each object defines its own behavior and has a shape of its own. Nevertheless, it is not difficult to emulate classes in Lua, following the lead from prototype-based languages, such as Self and NewtonScript. In those languages, objects have no classes. Instead, each object may have a prototype, which is a regular object where the first object looks up any operation that it does not know about. To represent a class in such languages, we simply create an object to be used exclusively as a prototype for other objects (its instances). Both classes and prototypes work as a place to put behavior to be shared by several objects.
 
 \subsection{Encapsulation}
 
@@ -30,29 +38,135 @@
 \subsection{Polymorphism}
 
 
-\section{Styles}
-
-\subsection{Class-based}
-
-\subsection{Prototype-based}
-
-%Lua does not have the concept of class; each object defines its own behavior and has a shape of its own. Nevertheless, it is not difficult to emulate classes in Lua, following the lead from prototype-based languages, such as Self and NewtonScript. In those languages, objects have no classes. Instead, each object may have a prototype, which is a regular object where the first object looks up any operation that it does not know about. To represent a class in such languages, we simply create an object to be used exclusively as a prototype for other objects (its instances). Both classes and prototypes work as a place to put behavior to be shared by several objects.
-
 \section{benefits}
 
+%TODO write about these
 
-	
+Simplicity
+
+Readability (throw modularity)
+
+Re-usability
+
+Maintainability: 
+
+
+\section{limits}
+
+Size 
+
+Effort
+
+Speed (not an issue nowadays)
+
+Learning curve
+
+
 \section{Some opinions about OOP}
 
 \subsection{With}
 
 \subsection{Against}
 
-Joe Armstrong, the principal inventor of Erlang:
+Edsger W. Dijkstra (1989), "TUG LINES," Issue 32, August 1989:
 \begin{quote}
-The problem with object-oriented languages is they've got all this implicit environment that they carry around with them. 
-You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.
+	Object-oriented programming is an exceptionally bad idea which could only have originated in California.
 \end{quote}
+
+Alan Kay (1997) The Computer Revolution hasn't happened yet:
+\begin{quote}
+	I invented the term object-oriented, and I can tell you I did not have C++ in mind.
+\end{quote}
+\begin{quote}
+	Java and C++ make you think that the new ideas are like the old ones. Java is the most distressing thing to happen to computing since MS-DOS.
+\end{quote}
+
+(https://www.cc.gatech.edu/fac/mark.guzdial/squeak/oopsla.html)
+
+Paul Graham (2003)
+The Hundred-Year Language
+\begin{quote}
+	Object-oriented programming offers a sustainable way to write spaghetti code.
+\end{quote}
+
+Richard Mansfield (2005)
+Has OOP Failed?
+\begin{quote}
+	With OOP-inflected programming languages, computer software becomes more verbose, less readable, less descriptive, and harder to modify and maintain.
+\end{quote}
+
+Eric Raymond (2005)
+The Art of UNIX Programming
+\begin{quote}
+	The OO design concept initially proved valuable in the design of graphics systems, graphical user interfaces, and certain kinds of simulation. To the surprise and gradual disillusionment of many, it has proven difficult to demonstrate significant benefits of OO outside those areas.
+\end{quote}
+
+Jeff Atwood (2007)
+Your Code: OOP or POO?
+\begin{quote}
+	OO seems to bring at least as many problems to the table as it solves.
+\end{quote}
+
+Linus Torvalds (2007)
+\begin{quote}
+	C++ is a horrible language. ... C++ leads to really, really bad design choices. ... In other words, the only way to do good, efficient, and system-level and portable C++ ends up to limit yourself to all the things that are basically available in C. And limiting your project to C means that people don't screw that up, and also means that you get a lot of programmers that do actually understand low-level issues and don't screw things up with any idiotic "object model" crap.
+\end{quote}
+
+Joe Armstrong, the principal inventor of Erlang, "Coders at Work: Reflections on the Craft of Programming" (2009)
+\begin{quote}
+	The problem with object-oriented languages is they've got all this implicit environment that they carry around with them. 
+	You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.
+\end{quote}
+
+Oscar Nierstrasz (2010)
+Ten Things I Hate About Object-Oriented Programming
+\begin{quote}
+	OOP is about taming complexity through modeling, but we have not mastered this yet, possibly because we have difficulty distinguishing real and accidental complexity.
+\end{quote}
+
+Rich Hickey (2010)
+SE Radio, Episode 158
+\begin{quote}
+	I think that large objected-oriented programs struggle with increasing complexity as you build this large object graph of mutable objects. You know, trying to understand and keep in your mind what will happen when you call a method and what will the side effects be.
+\end{quote}
+
+Eric Allman (2011)
+Programming Isn't Fun Any More
+\begin{quote}
+	I used to be enamored of object-oriented programming. I'm now finding myself leaning toward believing that it is a plot designed to destroy joy. The methodology looks clean and elegant at first, but when you actually get into real programs they rapidly turn into horrid messes.
+\end{quote}
+
+Joe Armstrong (2011)
+Why OO Sucks
+\begin{quote}
+	Objects bind functions and data structures together in indivisible units. I think this is a fundamental error since functions and data structures belong in totally different worlds.
+\end{quote}
+
+Rob Pike (2012)
+\begin{quote}
+	Object-oriented programming, whose essence is nothing more than programming using data with associated behaviors, is a powerful idea. It truly is. But it's not always the best idea. ... Sometimes data is just data and functions are just functions.
+\end{quote}
+
+John Barker (2013)
+All evidence points to OOP being bullshit
+\begin{quote}
+	What OOP introduces are abstractions that attempt to improve code sharing and security. In many ways, it is still essentially procedural code.
+\end{quote}
+
+Lawrence Krubner (2014)
+\begin{quote}
+	Object Oriented Programming is an expensive disaster which must end
+	We now know that OOP is an experiment that failed. It is time to move on. It is time that we, as a community, admit that this idea has failed us, and we must give up on it.
+\end{quote}
+
+Asaf Shelly (2015)
+Flaws of Object Oriented Modeling
+\begin{quote}
+	Reading an object oriented code you can't see the big picture and it is often impossible to review all the small functions that call the one function that you modified.
+\end{quote}
+
+
+https://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey
 
 
 %=====================================================================
