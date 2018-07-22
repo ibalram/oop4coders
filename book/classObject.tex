@@ -237,6 +237,14 @@ For properties, lets say: we have a class Rectangle which is composed of height 
 We want to keep the width, always, bigger or equal to the height.
 For the sake of the example, suppose when we want to get the height we add 1 and when we want to get the width we add 2.
 Also, suppose only the width has a setter and the height will receive its value based on the previous width and its setter's value.
+We assign the width twice: 50 and 20. 
+Then, we use an internal function \textbf{info} which shows the state of the two fields. 
+Finally, we use getters over the two fields and print the recovered values. 
+The result in the languages which support properties, or has a way to emulate them, should be as follows
+\begin{lstlisting}[style=shellStyle]
+Width: 50, Height: 20
+w: 52, h: 21
+\end{lstlisting}  
 
 \subsection{C++}
 
@@ -363,12 +371,24 @@ In the example, the implementation is omitted.
 
 \subsection{Ruby}
 
-\lstinputlisting[language=Ruby, linerange={3-10,19-19}, style=codeStyle]{../ruby/person.rb}
+Static fields are defined inside the class block using \textbf{\@\@}, while dynamic fields are defined inside the constructor or the class block using the keyword \textbf{\@}. 
 
-\lstinputlisting[language=Ruby, linerange={3-3,12-19}, style=codeStyle]{../ruby/person.rb}
+\lstinputlisting[language=Ruby, linerange={3-11,25-25}, style=codeStyle]{../ruby/person.rb}
 
-\lstinputlisting[language=Ruby, linerange={24-26}, style=codeStyle]{../ruby/person.rb}
+Methods are defined using the keyword \textbf{def} and delimited by the keyword \textbf{end}. 
+Static methods always begin with the keyword \textbf{self}.
+Also, methods without arguments do not need round brackets \textbf{()}.
 
+\lstinputlisting[language=Ruby, linerange={3-3,18-25}, style=codeStyle]{../ruby/person.rb}
+
+We call dynamic methods using the instance name and static ones using the class name. 
+Round brackets can be omitted if no argument is expected.
+
+\lstinputlisting[language=Ruby, linerange={30-32}, style=codeStyle]{../ruby/person.rb}
+
+Properties can be defined by a field using a no-arguments method as a getter and another with the template \textbf{<prperty name> = (value)} as a setter.
+
+\lstinputlisting[language=Ruby, linerange={3-3,9-17,24-24,30-36}, style=codeStyle]{../ruby/property.rb}
 
 \section{Object methods}
 

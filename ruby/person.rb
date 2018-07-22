@@ -28,7 +28,7 @@ p = Person.new("Karim", 1986)
 p2 = Person.new("Karim+1", 1987)
 
 p.info()
-p2.info()
+p2.info
 nbr = Person.population
 
 puts "The number of persons: #{nbr}"

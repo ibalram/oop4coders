@@ -26,8 +26,8 @@ class Rectangle(object):
 			self.height = self.width
 			self.width = value
 
-r = Rectangle();
-r.w = 50;
-r.w = 20;
-r.info();
-print("w: " + str(r.w) + ", h: " + str(r.h));
+r = Rectangle()
+r.w = 50
+r.w = 20
+r.info()
+print("w: " + str(r.w) + ", h: " + str(r.h))
