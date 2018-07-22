@@ -261,7 +261,7 @@ There are no properties in C++.
 
 \lstinputlisting[language=Java, linerange={18-25}, style=codeStyle]{../java/src/Person.java}
 
-There are no properties in Java.
+There are no properties in Java, you have to define your getters/setters and use them as methods. 
 
 
 \subsection{Javascript}
@@ -316,13 +316,25 @@ Methods
 
 \subsection{PHP}
 
+The fields are defined by access, type and name.
+In PHP, there are called properties; But, we rather call them fields to differentiate them from the properties we defined earlier.
+A static field is defined by the keyword \textbf{static}.
+
 \lstinputlisting[language=PHP, linerange={2-7,27-27}, style=codeStyle]{../php/person.php}
+
+There are no difference between static and dynamic functions in header syntax. 
+The difference is in implementation: the static one can access just static fields by using the keyword \textbf{self} instead of \textbf{this}.
 
 \lstinputlisting[language=PHP, linerange={2-2,19-25,27-27}, style=codeStyle]{../php/person.php}
 
+The call is different between dynamic and static functions.
+
 \lstinputlisting[language=PHP, linerange={32-34}, style=codeStyle]{../php/person.php}
 
-for static members, we use self, for dynamic we use this
+Properties getters/setters can be defined using php magic methods \textbf{\_\_get} and \textbf{\_\_set}.
+It is considered bad practice though, and the alternative is to define getters and setters specified for each property.
+
+\lstinputlisting[language=PHP, linerange={2-2,11-12,21-37}, style=codeStyle]{../php/property.php}
 
 \subsection{Python}
 
