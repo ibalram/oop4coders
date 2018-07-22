@@ -338,7 +338,28 @@ It is considered bad practice though, and the alternative is to define getters a
 
 \subsection{Python}
 
+Static fields are defined inside the class block, while dynamic fields are defined inside the constructor using the keyword \textbf{self}. 
+In pure Python, the dynamic fields of an object (instance) are stored in a dictionary \textbf{self.\_\_dict\_\_}.
+The static field is accessed by the class name, not by \textbf{self}.
+Also, static fields are stored in other dictionary bounded to the class, not the instance.
+
 \lstinputlisting[language=Python, linerange={4-11}, style=codeStyle]{../python/person.py}
+
+Methods are defined using the keyword \textbf{def} inside the class block. 
+There is no difference between static and dynamic methods in term of header syntax. 
+But in Python 2.6+, you can use the decorator \textbf{\@staticmethod} to mark a static method. 
+
+\lstinputlisting[language=Python, linerange={4-4,17-22}, style=codeStyle]{../python/person.py}
+
+The dynamic methods are accessed via the instance while the static ones are accessed using the class name.
+
+\lstinputlisting[language=Python, linerange={27-29}, style=codeStyle]{../python/person.py}
+
+Properties can be defined using the new style classes (object as superclass) for Python 2.2+.
+Starting from Python 2.6, there are decorators to define setters and getters.
+In the example, the implementation is omitted.
+
+\lstinputlisting[language=Python, linerange={4-4,13-14,16-18,20-22, 28-33}, style=codeStyle]{../python/property.py}
 
 \subsection{Ruby}
 

@@ -127,3 +127,17 @@
 {
 	\end{center}
 }
+
+
+\renewcommand{\@listI}{%
+	\leftmargin=25pt
+	\rightmargin=0pt
+	\labelsep=5pt
+	\labelwidth=20pt
+	\itemindent=0pt
+	\listparindent=0pt
+	\topsep=0pt plus 2pt minus 4pt
+	\partopsep=0pt plus 1pt minus 1pt
+	\parsep=0pt plus 1pt
+	\itemsep=\parsep
+}
