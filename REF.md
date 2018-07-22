@@ -64,6 +64,8 @@
 * http://web.eecs.utk.edu/~huangj/CS302S04/notes/oo-intro.html
 * https://www.yegor256.com/2016/08/15/what-is-wrong-object-oriented-programming.html
 * https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53
+* https://medium.com/@agent47darksoul/lets-talk-about-object-oriented-programming-d9f1602ebaa7
+* https://en.wikiquote.org/wiki/Object-orientation
 
 ## TO ADD
 * https://en.wikipedia.org/wiki/Tcl

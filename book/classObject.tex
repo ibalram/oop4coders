@@ -222,21 +222,25 @@ To free a reference from an object, you can assign it the \textbf{nil} value.
 
 There are three types of members: 
 \begin{itemize}
-	\item Field
-	\item Methods
-	\item Properties: are something between a field and a method
+	\item Field: They are state variables. For example: a person has a name, birth year, etc.
+	\item Methods: Procedures which define the behavior of the object. For example: a person can talk, walk, etc.
+	\item Properties: They are something between a field and a method. The read/write syntax is similar to fields' but it is translated into getters/setters methods.
 \end{itemize}
 
 A member can be accessed as: 
 \begin{itemize}
-	\item Class member: it is shared by all the instances of this class.
-	\item Object member: the member is specific to the instance (object)
+	\item Class member: It is shared between all the instances of this class.
+	\item Object member: The member is specific to the instance (object)
 \end{itemize}
 
+For properties, lets say: we have a class Rectangle which is composed of height and width. 
+We want to keep the width, always, bigger or equal to the height.
+For the sake of the example, suppose when we want to get the height we add 1 and when we want to get the width we add 2.
+Also, suppose only the width has a setter and the height will receive its value based on the previous width and its setter's value.
 
 \subsection{C++}
 
-fields: 
+Fields: 
 \lstinputlisting[language=C++, linerange={31-33}, style=codeStyle]{../cpp/person0.cpp}
 
 Non constant class fields must be initialized outside the header and not inside it. 
@@ -262,17 +266,29 @@ There are no properties in Java.
 
 \subsection{Javascript}
 
+The fields are defined inside the class body (either ES6 class or function) using the keyword \textbf{this}. 
+You can define them using two methods (they are the same), as shown in the example.
+
 \lstinputlisting[linerange={3-4}, style=codeStyle]{../javascript/person.js}
+
+As for static fields, you can use the pattern <class name>.<field> to access it. 
+The field must be initialized outside the class definition.
 
 \lstinputlisting[linerange={17-17}, style=codeStyle]{../javascript/person.js}
 
-Methods: 
+Methods are defined inside the class definition in ES6. 
+Also, static methods are preceded by the keyword \textbf{static}. 
 
 \lstinputlisting[linerange={1-1,8-15}, style=codeStyle]{../javascript/person.js}
 
+If the class is defined using a function (which is the real definition in javascript), you can define functions inside the constructor using the keyword \textbf{this}. 
+Also, you can define them outside the constructor by assigning a function to the class's prototype.
+
 \lstinputlisting[linerange={9-15}, style=codeStyle]{../javascript/person2.js}
 
-getters and setters can be defined using keywords \textbf{get} and \textbf{set} in ES6.
+Properties can be defined using \textbf{Object.defineProperties} and the keywords \textbf{get} and \textbf{set}.
+
+\lstinputlisting[linerange={9-11,13-14,22-25,27-35}, style=codeStyle]{../javascript/property.js}
 
 \subsection{Lua}
 
