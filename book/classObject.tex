@@ -318,12 +318,35 @@ Properties can be defined using \textbf{Object.defineProperties} and the keyword
 
 \subsection{Lua}
 
+The fields are defined inside the table which will be our object. 
+In our example, a table is created inside the constructor then the class table is set to be its meta-table. 
+To define a static field, it can be assigned to the meta-table (our class).
+
 \lstinputlisting[language={[5.2]Lua}, linerange={4-9}, style=codeStyle]{../lua/person.lua}
+
+To define dynamic methods, there are two ways where the colon (\textbf{:}) will add \textbf{self} implicitly.
+\begin{lstlisting}[style=codeStyle, language={[5.2]Lua}]
+function ClassName.method1(self)
+end
+function ClassName:method2()
+end
+\end{lstlisting} 
+
+As for static methods, they are defined as \textit{method1} without \textbf{self} keyword.
 
 \lstinputlisting[language={[5.2]Lua}, linerange={11-17}, style=codeStyle]{../lua/person.lua}
 
+To call the methods, there are two ways for dynamic methods.
+
 \lstinputlisting[language={[5.2]Lua}, linerange={22-24}, style=codeStyle]{../lua/person.lua}
 
+Properties can be defined by using the meta-methods \textbf{\_\_index} and \textbf{\_\_newindex}.
+When the interpreter can not find a field, it calls the \textbf{\_\_index} meta-method. 
+It has \textbf{self} and a key as arguments, and can be used to define getters in our case. 
+You have to verify if the key exists already and return the member, otherwise your methods will not be known by the interpreter. 
+\textbf{\_\_newindex} meta-method is used for table update and can be used as a setter. 
+
+\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/property.lua}
 
 \subsection{Perl}
 

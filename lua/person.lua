@@ -20,7 +20,7 @@ local p = Person.new("Karim", 1986)
 local p2 = Person.new("Karim+1", 1987)
 
 p:info()
-p2:info()
+p2.info(p2)
 local nbr = Person.population()
 
 print("The number of persons: " .. nbr)
