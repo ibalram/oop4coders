@@ -309,18 +309,32 @@ Properties can be defined using \textbf{Object.defineProperties} and the keyword
 
 \subsection{Perl}
 
+Object fields are defined in the hash which will be returned by the \textbf{new} subroutine as the new object. 
+
 \lstinputlisting[language=Perl, linerange={10-13}, style=codeStyle]{../perl/person.pl}
+
+Class (static) fields are defined outside the new subroutine as variable scoped at the file level using \textbf{my} keyword.
+Or you can define a package level variable using the keyword \textbf{our}.
 
 \lstinputlisting[language=Perl, linerange={6-6}, style=codeStyle]{../perl/person.pl}
 
-Methods
+There is no difference between dynamic and static methods. 
+If the method is called as an object one, the object will be passed as the first argument. 
+If it is called as a class one, the class name will be passed as the first argument. 
+The implementation of the method will decide its access type.
 
 \lstinputlisting[language=Perl, linerange={25-32}, style=codeStyle]{../perl/person.pl}
 
+As said, the difference between dynamic and static methods is in how they are called. 
+
 \lstinputlisting[language=Perl, linerange={39-41}, style=codeStyle]{../perl/person.pl}
 
-%TODO reedit
-``\textit{A static method applies functionality to the class as a whole because it uses the name of the class. Therefore, functionality in static methods is applicable to all objects of the class. Generally, static methods ignore the first argument because they already know which class they are in. Therefore, constructors are static methods.}"
+Properties in Perl do not follow the definition we gave in this section; 
+Sure we can define setters/getters, but they do not behave as attributes. 
+A subroutine which has two arguments (the object and the value) is a setter.
+If there is just one, then it is a getter. 
+
+\lstinputlisting[language=Perl, linerange={3-3,14-17,25-33,40-46}, style=codeStyle]{../perl/property.pl}
 
 \subsection{PHP}
 
@@ -389,6 +403,16 @@ Round brackets can be omitted if no argument is expected.
 Properties can be defined by a field using a no-arguments method as a getter and another with the template \textbf{<prperty name> = (value)} as a setter.
 
 \lstinputlisting[language=Ruby, linerange={3-3,9-17,24-24,30-36}, style=codeStyle]{../ruby/property.rb}
+
+Also, there are automatically implemented getters/setters in Ruby
+
+\begin{lstlisting}[style=codeStyle, language=Ruby]
+class Rectangle
+	attr_accessor :width # read/write
+	attr_reader :height # read only
+	attr_writer :bar # write only
+end 
+\end{lstlisting} 
 
 \section{Object methods}
 
