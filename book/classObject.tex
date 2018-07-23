@@ -248,20 +248,27 @@ w: 52, h: 21
 
 \subsection{C++}
 
-Fields: 
+Fields are defined by type and name inside the class header. 
+Static fields are defined using the keyword \textbf{static}.
+
 \lstinputlisting[language=C++, linerange={31-33}, style=codeStyle]{../cpp/person0.cpp}
 
-Non constant class fields must be initialized outside the header and not inside it. 
+Non constant class (static) fields must be initialized outside the header and not inside it. 
 
 \lstinputlisting[language=C++, linerange={36-36}, style=codeStyle]{../cpp/person0.cpp} 
 
-Methods:
+Methods can be defined inside the class header as in this example.
+Static methods must be defined using the keyword \textbf{static}. 
+
 \lstinputlisting[language=C++, linerange={20-27}, style=codeStyle]{../cpp/person0.cpp}
+
+To call a static method, you should use class name. 
+As for the object method, if the reference is a pointer use arrow annotation.
 
 \lstinputlisting[language=C++, linerange={43-45}, style=codeStyle]{../cpp/person0.cpp}
 
 
-There are no properties in C++.
+There are no properties in C++, but they can be emulated by overriding assigning operator.
 
 \subsection{Java}
 
