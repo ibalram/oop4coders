@@ -31,7 +31,6 @@ function Rectangle:info()
   print("Width: " .. self.width .. ", Height: " .. self.height)
 end
 
-
 local r = Rectangle.new()
 r.w = 50
 r.w = 20

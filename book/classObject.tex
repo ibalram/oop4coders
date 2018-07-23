@@ -346,7 +346,7 @@ It has \textbf{self} and a key as arguments, and can be used to define getters i
 You have to verify if the key exists already and return the member, otherwise your methods will not be known by the interpreter. 
 \textbf{\_\_newindex} meta-method is used for table update and can be used as a setter. 
 
-\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../lua/property.lua}
+\lstinputlisting[language={[5.2]Lua}, linerange={1-15,22-24,33-38}, style=codeStyle]{../lua/property.lua}
 
 \subsection{Perl}
 
@@ -457,12 +457,23 @@ end
 
 \section{Object methods}
 
+These are methods inherited from the Object class, or as called by some languages: magic methods.
+In here, we present the methods which most programming languages agree on:
 \begin{itemize}
-	\item String representation
-	\item Object copy
-	\item Value equality
-	\item Object comparison
-	\item Hash code
+	\item String representation: When an object is concatenated with a string, it can act as string by calling this function.
+	\item Object copy: A function which enables an object to create a clone of itself.
+	\item Value equality: A function which helps to decide if an object equals another based on some criteria (their fields).
+	\item Object comparison: A function which is used to decide if an object is greater, equal or lesser than another.
+	\item Hash code: A function which returns a hash code for the object. 
+\end{itemize}
+
+In our example, we will implement our \textbf{Person} class, and the previously presented methods as follows:
+\begin{itemize}
+	\item String representation: The function must return a string containing the name and the year of birth.
+	\item Object copy: The function must return a new object with the same name but with plus one year to the current birth year.
+	\item Value equality: The function returns true if the objects have the same value for the field called \textbf{name}.
+	\item Object comparison: The comparison is made on birth years; If they are equal, then on the name.
+	\item Hash code: The hash code will be based on the name (we can add the year as well, but it will be a long code). 
 \end{itemize}
 
 
