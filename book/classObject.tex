@@ -267,16 +267,27 @@ As for the object method, if the reference is a pointer use arrow annotation.
 
 \lstinputlisting[language=C++, linerange={43-45}, style=codeStyle]{../cpp/person0.cpp}
 
-
 There are no properties in C++, but they can be emulated by overriding assigning operator.
 
 \subsection{Java}
 
+Fields are defined by access modifier (See Encapsulation chapter), type and name. 
+Class (static) fields are defined using the keyword \textbf{static}.
+All fields must be defined inside the class block; They can be initialized without needing a constructor. 
+In fact, they are automatically initialized: integers to 0, objects no Null, etc. 
+
 \lstinputlisting[language=Java, linerange={2-4}, style=codeStyle]{../java/src/Person.java}
+
+Methods are defined inside the class block where static ones are distinguished by the keyword \textbf{static}.
 
 \lstinputlisting[language=Java, linerange={18-25}, style=codeStyle]{../java/src/Person.java}
 
+Static methods are called using the class name; But, also, they can be called from the instance. 
+
+\lstinputlisting[language=Java, linerange={31-33}, style=codeStyle]{../java/src/Person.java}
+
 There are no properties in Java, you have to define your getters/setters and use them as methods. 
+As far as we know, there is no mechanism to emulate their functionality either.
 
 
 \subsection{Javascript}
