@@ -16,7 +16,7 @@
 
 \NeedsTeXFormat{LaTeX2e} %[2009/09/24]
 \ProvidesClass{KodeBook}[2017/08/17 Create a book with codes]
-\LoadClass[11pt]{book}
+\LoadClass[12pt, twosides, a4paper]{book}
 
 %\RequirePackage[utf8]{inputenc}
 %\RequirePackage[arabic,french,english]{babel}
@@ -141,3 +141,43 @@
 	\parsep=0pt plus 1pt
 	\itemsep=\parsep
 }
+
+
+\RequirePackage{fontspec}
+\setmainfont
+[Path = fonts/CrimsonText/,
+Extension = .ttf,
+Ligatures=TeX, 
+UprightFont=*-Regular,
+BoldFont=*-Bold,
+ItalicFont=*-Italic,
+BoldItalicFont=*-BoldItalic
+]{CrimsonText} %
+
+%\newfontface\italianno{fonts/Italianno/Italianno-Regular.ttf}[Scale=MatchLowercase]
+\newfontface\merienda
+[Path = fonts/Merienda/,
+Extension = .ttf,
+Ligatures=TeX,
+Scale=1
+]{Merienda-Regular} %
+
+\newfontface\italianno
+[Path = fonts/Italianno/,
+Extension = .ttf,
+Ligatures=TeX,
+Scale=1.5
+]{Italianno-Regular} %
+
+% ============================================
+
+
+\RequirePackage[many]{tcolorbox}
+
+\newtcolorbox{kodequote}[1]{%
+colback=blue!5!white,
+colframe=blue!75!black,
+fontupper=\italianno,
+title={#1}
+}
+
