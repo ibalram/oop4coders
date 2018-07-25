@@ -16,7 +16,7 @@
 
 \NeedsTeXFormat{LaTeX2e} %[2009/09/24]
 \ProvidesClass{KodeBook}[2017/08/17 Create a book with codes]
-\LoadClass[12pt, twosides, a4paper]{book}
+\LoadClass[11pt, a4paper]{book}
 
 %\RequirePackage[utf8]{inputenc}
 %\RequirePackage[arabic,french,english]{babel}

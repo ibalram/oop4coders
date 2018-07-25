@@ -67,6 +67,9 @@
 * https://medium.com/@agent47darksoul/lets-talk-about-object-oriented-programming-d9f1602ebaa7
 * https://en.wikiquote.org/wiki/Object-orientation
 * http://web.eecs.utk.edu/~huangj/CS302S04/notes/oo-intro.html
+* http://web.cecs.pdx.edu/~black/publications/O-JDahl.pdf
+* http://www.exforsys.com/tutorials/oops-concepts/the-history-of-object-oriented-programming.html
+* http://wiki.c2.com/?AlanKaysDefinitionOfObjectOriented
 
 ## TO ADD
 * https://en.wikipedia.org/wiki/Tcl
