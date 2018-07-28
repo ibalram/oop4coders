@@ -61,12 +61,33 @@ When asked by \textbf{Stefan Ram} in 2003 on definition of OOP, \textbf{Alan Kay
 
 \subsection{Abstraction}
 
+Abstraction is the process to perceive an entity in the system and some context, then take out unnecessary details and keep those useful to that context.
+You can consider it as a generalization of objects.
+For example, a person can be represented as an object with some characteristics: first name, last name, birthday, gender, color of eyes, etc. with some behavior: walk, talk, eat, die, etc. 
+If we use this person as a student in the context of university, we will no more be needing some aspects: color of eyes, walk, talk, etc. 
+Also, we need some other aspects such as: inscription year, grades, etc. 
+
+It is, also, the process to hide internal complex implementation and show only necessary details to the user. 
+This will help the user to implement more complex logic using the afforded abstraction without the need to understand how it was implemented.
+For example, suppose we have an object called \textbf{car} with some behavior: start, stop, etc. 
+Users does not need to know how in detail how the car start moving when they ask it to start; they just need to know what parameters they have to afford.
+
+In term of programming, the different objects sharing same aspects can be represented by a class or a prototype as their abstraction. 
+This abstraction will be used to create new objects with the same behavior but with different characteristics. 
+Two major styles has raised in OOP world: class-based programming and prototype-based programming.
 
 \subsubsection{Class-based}
 
+In class-based programming, each object is an instance of a class. 
+A class may be seen as a template which describes the structure and behavior of its instances.
+The object will have: a state (data), a behavior (methods) and identity (unique existence among other objects).
+%TODO more
+
 \subsubsection{Prototype-based}
 
-%Lua does not have the concept of class; each object defines its own behavior and has a shape of its own. Nevertheless, it is not difficult to emulate classes in Lua, following the lead from prototype-based languages, such as Self and NewtonScript. In those languages, objects have no classes. Instead, each object may have a prototype, which is a regular object where the first object looks up any operation that it does not know about. To represent a class in such languages, we simply create an object to be used exclusively as a prototype for other objects (its instances). Both classes and prototypes work as a place to put behavior to be shared by several objects.
+In a prototype-based language, there is no distinction between class and object; there are just objects. 
+An object which has its state, behavior and identity can be used as a template to create new objects by cloning and mutation. 
+The first prototype-based language is \textbf{self} programming language.
 
 \subsection{Encapsulation}
 

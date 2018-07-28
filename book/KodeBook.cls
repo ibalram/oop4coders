@@ -181,3 +181,8 @@ fontupper=\italianno,
 title={#1}
 }
 
+\renewcommand{\baselinestretch}{1.5}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{\baselineskip}%
+
