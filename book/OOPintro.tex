@@ -81,21 +81,32 @@ Two major styles has raised in OOP world: class-based programming and prototype-
 In class-based programming, each object is an instance of a class. 
 A class may be seen as a template which describes the structure and behavior of its instances.
 The object will have: a state (data), a behavior (methods) and identity (unique existence among other objects).
-%TODO more
+%TODO more class-based explanation (methods lookup)
 
 \subsubsection{Prototype-based}
 
 In a prototype-based language, there is no distinction between class and object; there are just objects. 
 An object which has its state, behavior and identity can be used as a template to create new objects by cloning and mutation. 
 The first prototype-based language is \textbf{self} programming language.
+%TODO explain methos lookup: deligation vs embed
 
 \subsection{Encapsulation}
 
-\subsection{Associations}
+Encapsulation is the process to bind data and methods operating on these data into a single object while restricting access to them. 
+By hiding variables from the outside of this object, you can prevent misuse of these variables.
+So, encapsulation ensures basic integrity to the data by protecting it from the outside world.
+For example, a person has a first name and a last name besides other attributes. 
+A person can not exist without these two, so they are assigned upon instantiation (creation of the object). 
+Once created, the instance of person must not let the user modify these two attributes, otherwise it will affect some other tasks like statistics of clients in a market, etc. 
+
 
 \subsection{Inheritance}
 
+
+
 \subsection{Polymorphism}
+
+\subsection{Associations}
 
 
 \section{benefits}
