@@ -28,7 +28,7 @@ By the time, while being at the University of Utah, \textbf{Alan Kay} liked the 
 He has a vision of a personal computer which provides graphics-oriented applications. 
 He sold his vision to \textbf{Xerox Parc} and headed a team to create a personal computer called \textbf{Dynabook} which is programmed using \textbf{Smalltalk}.
 The term "object-oriented programming" was coined by Alan Kay referring to objects as the foundation for computation.
-In the contrary to simula, classes in smalltalk are objects because everything is an object collaborating with others by exchanging messages.
+%In the contrary to simula, classes in smalltalk are objects because everything is an object collaborating with others by exchanging messages.
 Alan Kay defines OOP in term of smalltalk as follows: %\citet{1993-kay}
 \begin{itemize}
 	\item everything is an object
@@ -61,7 +61,7 @@ When asked by \textbf{Stefan Ram} in 2003 on definition of OOP, \textbf{Alan Kay
 
 \subsection{Abstraction}
 
-Abstraction is the process to perceive an entity in the system and some context, then take out unnecessary details and keep those useful to that context.
+Abstraction is the mechanism of perceiving an entity in the system and some context, then taking out unnecessary details and keep those useful to that context.
 You can consider it as a generalization of objects.
 For example, a person can be represented as an object with some characteristics: first name, last name, birthday, gender, color of eyes, etc. with some behavior: walk, talk, eat, die, etc. 
 If we use this person as a student in the context of university, we will no more be needing some aspects: color of eyes, walk, talk, etc. 
@@ -92,7 +92,7 @@ The first prototype-based language is \textbf{self} programming language.
 
 \subsection{Encapsulation}
 
-Encapsulation is the process to bind data and methods operating on these data into a single object while restricting access to them. 
+Encapsulation is the mechanism of binding data and methods operating on these data into a single object while restricting access to them. 
 By hiding variables from the outside of this object, you can prevent misuse of these variables.
 So, encapsulation ensures basic integrity to the data by protecting it from the outside world.
 For example, a person has a first name and a last name besides other attributes. 
@@ -102,6 +102,25 @@ Once created, the instance of person must not let the user modify these two attr
 
 \subsection{Inheritance}
 
+Inheritance is the mechanism of basing a derived class from a parent class to reuse its existing attributes and methods. 
+It is used to create specialized classes from more generic ones by retaining the original class members and defining new ones. 
+For example, lets say we have a class \textbf{Person} and want to create two new classes: \textbf{Student} and \textbf{Professor}. 
+The idea is to not rewrite the same code for both these new classes. 
+Instead, we create an inheritance relation between the two new classes (which will be called derived classes or subclasses) and the class \textbf{Person} (which will be called: parent class or superclass). 
+
+A class can share the same members of more than one class; this is called: multiple inheritance. 
+For instance, a PhD student while being a student can teach and therefore has the same characteristics of a professor. 
+Not all programming languages support multiple inheritance due to increasing complexity due to:
+\begin{itemize}
+	\item If the two parents have the same method signature, so which one the subclass will inherit?
+	\item The diamond problem: from the previous point, we have this problem if these two parents have a shared parent having a method with the same signature.
+	\item The order of initialization when creating a new object of the subclass 
+\end{itemize}
+
+It is important to point out that inheritance is different from sub-typing. 
+Sub-typing will create a relation \textbf{is-a} between the type and subtype, while inheritance only reuses implementation.
+Some languages, such as: C++, Java and C\#, fuse these two concepts which leads to confusion.
+Go programming language, on the other hand, separates the two concepts.  
 
 
 \subsection{Polymorphism}
@@ -149,7 +168,7 @@ Learning curve
 	Java and C++ make you think that the new ideas are like the old ones. Java is the most distressing thing to happen to computing since MS-DOS.
 \end{kodequote}
 
-(https://www.cc.gatech.edu/fac/mark.guzdial/squeak/oopsla.html)
+%(https://www.cc.gatech.edu/fac/mark.guzdial/squeak/oopsla.html)
 
 \begin{kodequote}{Paul Graham (2003), The Hundred-Year Language}
 	Object-oriented programming offers a sustainable way to write spaghetti code.
@@ -211,7 +230,7 @@ Learning curve
 \end{kodequote}
 
 
-https://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey
+%https://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey
 
 
 \subsection{With}

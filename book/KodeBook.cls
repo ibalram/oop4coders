@@ -36,6 +36,7 @@
 %\RequirePackage{verbatim} 
 
 
+
 \if@compatibility\else
 
 \DeclareOption{a4paper}{%
@@ -183,8 +184,10 @@ fontupper=\italianno,
 title={#1}
 }
 
-\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\baselinestretch}{1}
 
 \setlength\parindent{0pt}
 \setlength{\parskip}{\baselineskip}%
+
+
 
