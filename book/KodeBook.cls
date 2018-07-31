@@ -206,9 +206,7 @@ title={#1}
 
 
 \RequirePackage{listings}
-\RequirePackage{textcomp}
-
-\lstset{upquote=true}
+%\RequirePackage{textcomp}
 
 \lstdefinestyle{codeStyle}{
 	belowcaptionskip=1\baselineskip,
@@ -223,8 +221,7 @@ title={#1}
 	stringstyle=\color{orange},
 	backgroundcolor=\color{blue!10!white},
 	lineskip=.2em,
-	numbers=left,
-	upquote=true
+	numbers=left
 	%  frameround=tttt
 }
 
@@ -236,7 +233,7 @@ title={#1}
 	xleftmargin=1.25cm,
 	basicstyle=\scriptsize\codefont\color{green},
 	backgroundcolor=\color{black},
-	lineskip=.2em,
+	lineskip=.2em
 	%	morekeywords={sudo},keywordstyle=\color{red},
 	%  frameround=tttt
 }
