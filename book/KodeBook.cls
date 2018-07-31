@@ -32,6 +32,7 @@
 \RequirePackage{xstring}
 
 \RequirePackage{fancyhdr} 
+\RequirePackage[T1]{fontenc}
 
 %\RequirePackage{verbatim} 
 
@@ -172,6 +173,20 @@ Ligatures=TeX,
 Scale=1.5
 ]{Italianno-Regular} %
 
+\newfontface\codefont
+[Path = fonts/SourceCodePro/,
+Extension = .ttf,
+Ligatures=TeX
+%Scale=1.5
+]{SourceCodePro-Bold} %
+
+%\newfontface\codefont
+%[Path = fonts/Inconsolata/,
+%Extension = .ttf,
+%Ligatures=TeX
+%%Scale=1.5
+%]{Inconsolata-Bold} %
+
 % ============================================
 
 
@@ -189,5 +204,41 @@ title={#1}
 \setlength\parindent{0pt}
 \setlength{\parskip}{\baselineskip}%
 
+
+\RequirePackage{listings}
+\RequirePackage{textcomp}
+
+\lstset{upquote=true}
+
+\lstdefinestyle{codeStyle}{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=L,
+	xleftmargin=1.5cm,%\parindent,
+	showstringspaces=false,
+	basicstyle=\scriptsize\codefont, %\ttfamily\bfseries
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+	backgroundcolor=\color{blue!10!white},
+	lineskip=.2em,
+	numbers=left,
+	upquote=true
+	%  frameround=tttt
+}
+
+\lstdefinestyle{shellStyle}{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=shadwbox,
+	rulesepcolor=\color{blue},
+	xleftmargin=1.25cm,
+	basicstyle=\scriptsize\codefont\color{green},
+	backgroundcolor=\color{black},
+	lineskip=.2em,
+	%	morekeywords={sudo},keywordstyle=\color{red},
+	%  frameround=tttt
+}
 
 
