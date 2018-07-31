@@ -239,3 +239,7 @@ title={#1}
 }
 
 
+\def\keyword#1{{\itshape\bfseries\color{blue} #1}}
+
+\def\nameword#1{{\itshape\bfseries\color{red} #1}}
+

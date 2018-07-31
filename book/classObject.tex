@@ -33,7 +33,7 @@ There are no classes in javascript, a function can be used to simulate a class.
 
 \lstinputlisting[linerange={1-1,5-5}, style=codeStyle]{../codes/javascript/person2.js}
 
-Since ES6, the \textbf{class} keyword has been introduced, but it still a syntactical sugar over the existing prototype-based classes.
+Since ES6, the \keyword{class} keyword has been introduced, but it still a syntactical sugar over the existing prototype-based classes.
 
 \lstinputlisting[linerange={1-1,15-15}, style=codeStyle]{../codes/javascript/person.js}
 
@@ -42,14 +42,14 @@ Since ES6, the \textbf{class} keyword has been introduced, but it still a syntac
 
 There is class concept in Lua, but using its meta-programming we can create objects. 
 There are many ways to do this, one famous is to  use meta-tables.
-The \textbf{\_\_index} is used as fail-safe mechanism when it fails to lookup something in the table.
+The \keyword{\_\_index} is used as fail-safe mechanism when it fails to lookup something in the table.
 
 \lstinputlisting[language={[5.2]Lua}, linerange={1-2}, style=codeStyle]{../codes/lua/person.lua}
 
 \subsection{Perl}
 
-A perl class is simply a package which ends with \textbf{1;} 
-If you want to create many package inside one file, you can put their definitions inside curly braces \textbf{\{\}}.
+A perl class is simply a package which ends with \keyword{1;} 
+If you want to create many package inside one file, you can put their definitions inside curly braces \keyword{\{\}}.
 
 \lstinputlisting[language=Perl, linerange={4-4}, style=codeStyle]{../codes/perl/person.pl}
 
@@ -79,7 +79,7 @@ It can be used to free external resources used by the object before it is termin
 
 The constructor in C++ takes the same name as the class without a return type;
 It can have arguments or not.
-As for the destructor, it has the same name as the class prefixed by a tilde \textbf{\~}.
+As for the destructor, it has the same name as the class prefixed by a tilde \keyword{\~}.
 
 \lstinputlisting[language=C++, linerange={4-19,34-34}, style=codeStyle]{../codes/cpp/person0.cpp}
 
@@ -91,7 +91,7 @@ To create an object in C++, you can create:
 
 \lstinputlisting[language=C++, linerange={40-41}, style=codeStyle]{../codes/cpp/person0.cpp}
 
-To free the allocated object memory, in the second case, you can call \textbf{delete}. 
+To free the allocated object memory, in the second case, you can call \keyword{delete}. 
 If the pointer you are deleting is zero, nothing will happen. 
 Deleting a pointer twice will cause problems; This is why it is recommended to set is to zero right after you delete it.
 
@@ -108,18 +108,18 @@ But, there is no guarantee that the finalyzer will ever be called; The applicati
 
 \lstinputlisting[language=Java, linerange={1-1,5-17,40-40}, style=codeStyle]{../codes/java/src/Person.java}
 
-To create a new object, use the keyword \textbf{new}.
+To create a new object, use the keyword \keyword{new}.
 
 \lstinputlisting[language=Java, linerange={28-28}, style=codeStyle]{../codes/java/src/Person.java}
 
-To fasten the destruction of an object, you can assign \textbf{null} to all variables referencing it.
+To fasten the destruction of an object, you can assign \keyword{null} to all variables referencing it.
 
 \lstinputlisting[language=Java, linerange={36-36}, style=codeStyle]{../codes/java/src/Person.java}
 
 \subsection{Javascript}
 
 
-In ES6, the constructor is a function defined using the keyword \textbf{constructor}.
+In ES6, the constructor is a function defined using the keyword \keyword{constructor}.
 There is no destructor function.
 
 \lstinputlisting[linerange={1-6,15-15}, style=codeStyle]{../codes/javascript/person.js}
@@ -128,15 +128,15 @@ Actually, a function can be used to define a prototype (class) and it is in the 
 
 \lstinputlisting[linerange={1-5}, style=codeStyle]{../codes/javascript/person2.js}
 
-To create a new object, you use the keyword \textbf{new}
+To create a new object, you use the keyword \keyword{new}
 
 \lstinputlisting[linerange={19-19}, style=codeStyle]{../codes/javascript/person.js}
 
 \subsection{Lua}
 
 In class declaration, we declared a class as a meta-table. 
-The constructor is a function which has a name chosen by the programmer, usually \textbf{new} or \textbf{create}. 
-This function must return an object to which you have to set a meta-table (our class) using the method \textbf{setmetatable}
+The constructor is a function which has a name chosen by the programmer, usually \keyword{new} or \keyword{create}. 
+This function must return an object to which you have to set a meta-table (our class) using the method \keyword{setmetatable}
 
 \lstinputlisting[language={[5.2]Lua}, linerange={4-7}, style=codeStyle]{../codes/lua/person.lua}
 
@@ -144,7 +144,7 @@ Then to create a new object, we simply call that function.
 
 \lstinputlisting[language={[5.2]Lua}, linerange={19-19}, style=codeStyle]{../codes/lua/person.lua}
 
-Another fancy way to create a constructor is by using the meta-method \textbf{\_\_call} which allows us to call our meta-table as a function. 
+Another fancy way to create a constructor is by using the meta-method \keyword{\_\_call} which allows us to call our meta-table as a function. 
 
 \lstinputlisting[language={[5.2]Lua}, linerange={4-9}, style=codeStyle]{../codes/lua/person2.lua}
 
@@ -154,41 +154,41 @@ Then, we create a new object as follows
 
 \subsection{Perl}
 
-In Perl, the constructor is a subroutine called \textbf{new}. 
-The arguments are shifted from the global variable \textbf{@\_} where the first one is the class itself.
-You have to create a hash and marking it with a package (class = package) name using \textbf{bless}.
+In Perl, the constructor is a subroutine called \keyword{new}. 
+The arguments are shifted from the global variable \keyword{@\_} where the first one is the class itself.
+You have to create a hash and marking it with a package (class = package) name using \keyword{bless}.
 
 When the last reference to an object goes away, the object is destroyed.
-In this case, Perl will call the method \textbf{DESTROY} if it is defined.
+In this case, Perl will call the method \keyword{DESTROY} if it is defined.
 
 \lstinputlisting[language=Perl, linerange={3-23,34-34}, style=codeStyle]{../codes/perl/person.pl}
 
-To create a new object, either you use the keyword \textbf{new} or use the arrow function.  
-If you use the second method, you can call your constructor whatever you want; But  by convention it is \textbf{new}.
+To create a new object, either you use the keyword \keyword{new} or use the arrow function.  
+If you use the second method, you can call your constructor whatever you want; But, by convention it is \keyword{new}.
 
 \lstinputlisting[language=Perl, linerange={36-37}, style=codeStyle]{../codes/perl/person.pl}
 
-To delete a reference, you use \textbf{undef} which will trigger the destructor.
+To delete a reference, you use \keyword{undef} which will trigger the destructor.
 
 \lstinputlisting[language=Perl, linerange={44-44}, style=codeStyle]{../codes/perl/person.pl}
 
 \subsection{PHP}
 
-The constructor is a function called \textbf{\_\_construct} and the destructor is a function called \textbf{\_\_destruct}.
+The constructor is a function called \keyword{\_\_construct} and the destructor is a function called \keyword{\_\_destruct}.
 
 \lstinputlisting[language=PHP, linerange={2-2,8-17,27-27}, style=codeStyle]{../codes/php/person.php}
 
-To create an instance of the class, the keyword \textbf{new} is used.
+To create an instance of the class, the keyword \keyword{new} is used.
 
 \lstinputlisting[language=PHP, linerange={29-29}, style=codeStyle]{../codes/php/person.php}
 
-To delete a reference, the keyword \textbf{unset} is used.
+To delete a reference, the keyword \keyword{unset} is used.
 
 \lstinputlisting[language=PHP, linerange={37-37}, style=codeStyle]{../codes/php/person.php}
 
 \subsection{Python}
 
-The constructor is a function called \textbf{\_\_init\_\_} and the destructor is a function called \textbf{\_\_del\_\_}.
+The constructor is a function called \keyword{\_\_init\_\_} and the destructor is a function called \keyword{\_\_del\_\_}.
 
 \lstinputlisting[language=Python, linerange={4-4,8-15}, style=codeStyle]{../codes/python/person.py}
 
@@ -196,25 +196,25 @@ To create an object, we call the class as a function
 
 \lstinputlisting[language=Python, linerange={24-24}, style=codeStyle]{../codes/python/person.py}
 
-To delete a reference, the keyword \textbf{del} is used.
+To delete a reference, the keyword \keyword{del} is used.
 
 \lstinputlisting[language=Python, linerange={32-32}, style=codeStyle]{../codes/python/person.py}
 
 
 \subsection{Ruby}
 
-The constructor is a function called \textbf{initialize}.
+The constructor is a function called \keyword{initialize}.
 Ruby does not have a destructor, but it has a finalizer.
-To bind the object with a finalizing function, you have to call \textbf{ObjectSpace.define\_finalizer} in the constructor.
+To bind the object with a finalizing function, you have to call \keyword{ObjectSpace.define\_finalizer} in the constructor.
 The finalizer, like Java, can never be called.
 
 \lstinputlisting[language=Ruby, linerange={3-17,25-25}, style=codeStyle]{../codes/ruby/person.rb}
 
-To create a new object from our class, we call its function \textbf{new}.
+To create a new object from our class, we call its function \keyword{new}.
 
 \lstinputlisting[language=Ruby, linerange={27-27}, style=codeStyle]{../codes/ruby/person.rb}
 
-To free a reference from an object, you can assign it the \textbf{nil} value.
+To free a reference from an object, you can assign it the \keyword{nil} value.
 
 \lstinputlisting[language=Ruby, linerange={35-35}, style=codeStyle]{../codes/ruby/person.rb}
 
@@ -249,7 +249,7 @@ w: 52, h: 21
 \subsection{C++}
 
 Fields are defined by type and name inside the class header. 
-Static fields are defined using the keyword \textbf{static}.
+Static fields are defined using the keyword \keyword{static}.
 
 \lstinputlisting[language=C++, linerange={31-33}, style=codeStyle]{../codes/cpp/person0.cpp}
 
@@ -258,7 +258,7 @@ Non constant class (static) fields must be initialized outside the header and no
 \lstinputlisting[language=C++, linerange={36-36}, style=codeStyle]{../codes/cpp/person0.cpp} 
 
 Methods can be defined inside the class header as in this example.
-Static methods must be defined using the keyword \textbf{static}. 
+Static methods must be defined using the keyword \keyword{static}. 
 
 \lstinputlisting[language=C++, linerange={20-27}, style=codeStyle]{../codes/cpp/person0.cpp}
 
@@ -272,13 +272,13 @@ There are no properties in C++, but they can be emulated by overriding assigning
 \subsection{Java}
 
 Fields are defined by access modifier (See Encapsulation chapter), type and name. 
-Class (static) fields are defined using the keyword \textbf{static}.
+Class (static) fields are defined using the keyword \keyword{static}.
 All fields must be defined inside the class block; They can be initialized without needing a constructor. 
 In fact, they are automatically initialized: integers to 0, objects no Null, etc. 
 
 \lstinputlisting[language=Java, linerange={2-4}, style=codeStyle]{../codes/java/src/Person.java}
 
-Methods are defined inside the class block where static ones are distinguished by the keyword \textbf{static}.
+Methods are defined inside the class block where static ones are distinguished by the keyword \keyword{static}.
 
 \lstinputlisting[language=Java, linerange={18-25}, style=codeStyle]{../codes/java/src/Person.java}
 
@@ -292,7 +292,7 @@ As far as we know, there is no mechanism to emulate their functionality either.
 
 \subsection{Javascript}
 
-The fields are defined inside the class body (either ES6 class or function) using the keyword \textbf{this}. 
+The fields are defined inside the class body (either ES6 class or function) using the keyword \keyword{this}. 
 You can define them using two methods (they are the same), as shown in the example.
 
 \lstinputlisting[linerange={3-4}, style=codeStyle]{../codes/javascript/person.js}
@@ -303,16 +303,16 @@ The field must be initialized outside the class definition.
 \lstinputlisting[linerange={17-17}, style=codeStyle]{../codes/javascript/person.js}
 
 Methods are defined inside the class definition in ES6. 
-Also, static methods are preceded by the keyword \textbf{static}. 
+Also, static methods are preceded by the keyword \keyword{static}. 
 
 \lstinputlisting[linerange={1-1,8-15}, style=codeStyle]{../codes/javascript/person.js}
 
-If the class is defined using a function (which is the real definition in javascript), you can define functions inside the constructor using the keyword \textbf{this}. 
+If the class is defined using a function (which is the real definition in javascript), you can define functions inside the constructor using the keyword \keyword{this}. 
 Also, you can define them outside the constructor by assigning a function to the class's prototype.
 
 \lstinputlisting[linerange={9-15}, style=codeStyle]{../codes/javascript/person2.js}
 
-Properties can be defined using \textbf{Object.defineProperties} and the keywords \textbf{get} and \textbf{set}.
+Properties can be defined using \keyword{Object.defineProperties} and the keywords \keyword{get} and \keyword{set}.
 
 \lstinputlisting[linerange={9-11,13-14,22-25,27-35}, style=codeStyle]{../codes/javascript/property.js}
 
@@ -324,7 +324,7 @@ To define a static field, it can be assigned to the meta-table (our class).
 
 \lstinputlisting[language={[5.2]Lua}, linerange={4-9}, style=codeStyle]{../codes/lua/person.lua}
 
-To define dynamic methods, there are two ways where the colon (\textbf{:}) will add \textbf{self} implicitly.
+To define dynamic methods, there are two ways where the colon (\keyword{:}) will add \keyword{self} implicitly.
 \begin{lstlisting}[style=codeStyle, language={[5.2]Lua}]
 function ClassName.method1(self)
 end
@@ -332,7 +332,7 @@ function ClassName:method2()
 end
 \end{lstlisting} 
 
-As for static methods, they are defined as \textit{method1} without \textbf{self} keyword.
+As for static methods, they are defined as \textit{method1} without \keyword{self} keyword.
 
 \lstinputlisting[language={[5.2]Lua}, linerange={11-17}, style=codeStyle]{../codes/lua/person.lua}
 
@@ -340,22 +340,22 @@ To call the methods, there are two ways for dynamic methods.
 
 \lstinputlisting[language={[5.2]Lua}, linerange={22-24}, style=codeStyle]{../codes/lua/person.lua}
 
-Properties can be defined by using the meta-methods \textbf{\_\_index} and \textbf{\_\_newindex}.
-When the interpreter can not find a field, it calls the \textbf{\_\_index} meta-method. 
-It has \textbf{self} and a key as arguments, and can be used to define getters in our case. 
+Properties can be defined by using the meta-methods \keyword{\_\_index} and \keyword{\_\_newindex}.
+When the interpreter can not find a field, it calls the \keyword{\_\_index} meta-method. 
+It has \keyword{self} and a key as arguments, and can be used to define getters in our case. 
 You have to verify if the key exists already and return the member, otherwise your methods will not be known by the interpreter. 
-\textbf{\_\_newindex} meta-method is used for table update and can be used as a setter. 
+\keyword{\_\_newindex} meta-method is used for table update and can be used as a setter. 
 
 \lstinputlisting[language={[5.2]Lua}, linerange={1-15,22-24,33-38}, style=codeStyle]{../codes/lua/property.lua}
 
 \subsection{Perl}
 
-Object fields are defined in the hash which will be returned by the \textbf{new} subroutine as the new object. 
+Object fields are defined in the hash which will be returned by the \keyword{new} subroutine as the new object. 
 
 \lstinputlisting[language=Perl, linerange={10-13}, style=codeStyle]{../codes/perl/person.pl}
 
-Class (static) fields are defined outside the new subroutine as variable scoped at the file level using \textbf{my} keyword.
-Or you can define a package level variable using the keyword \textbf{our}.
+Class (static) fields are defined outside the new subroutine as variable scoped at the file level using \keyword{my} keyword.
+Or you can define a package level variable using the keyword \keyword{our}.
 
 \lstinputlisting[language=Perl, linerange={6-6}, style=codeStyle]{../codes/perl/person.pl}
 
@@ -381,12 +381,12 @@ If there is just one, then it is a getter.
 
 The fields are defined by access, type and name.
 In PHP, there are called properties; But, we rather call them fields to differentiate them from the properties we defined earlier.
-A static field is defined by the keyword \textbf{static}.
+A static field is defined by the keyword \keyword{static}.
 
 \lstinputlisting[language=PHP, linerange={2-7,27-27}, style=codeStyle]{../codes/php/person.php}
 
 There are no difference between static and dynamic functions in header syntax. 
-The difference is in implementation: the static one can access just static fields by using the keyword \textbf{self} instead of \textbf{this}.
+The difference is in implementation: the static one can access just static fields by using the keyword \keyword{self} instead of \keyword{this}.
 
 \lstinputlisting[language=PHP, linerange={2-2,19-25,27-27}, style=codeStyle]{../codes/php/person.php}
 
@@ -394,23 +394,23 @@ The call is different between dynamic and static functions.
 
 \lstinputlisting[language=PHP, linerange={32-34}, style=codeStyle]{../codes/php/person.php}
 
-Properties getters/setters can be defined using php magic methods \textbf{\_\_get} and \textbf{\_\_set}.
+Properties getters/setters can be defined using php magic methods \keyword{\_\_get} and \keyword{\_\_set}.
 It is considered bad practice though, and the alternative is to define getters and setters specified for each property.
 
 \lstinputlisting[language=PHP, linerange={2-2,11-12,21-37}, style=codeStyle]{../codes/php/property.php}
 
 \subsection{Python}
 
-Static fields are defined inside the class block, while dynamic fields are defined inside the constructor using the keyword \textbf{self}. 
-In pure Python, the dynamic fields of an object (instance) are stored in a dictionary \textbf{self.\_\_dict\_\_}.
-The static field is accessed by the class name, not by \textbf{self}.
+Static fields are defined inside the class block, while dynamic fields are defined inside the constructor using the keyword \keyword{self}. 
+In pure Python, the dynamic fields of an object (instance) are stored in a dictionary \keyword{self.\_\_dict\_\_}.
+The static field is accessed by the class name, not by \keyword{self}.
 Also, static fields are stored in other dictionary bounded to the class, not the instance.
 
 \lstinputlisting[language=Python, linerange={4-11}, style=codeStyle]{../codes/python/person.py}
 
-Methods are defined using the keyword \textbf{def} inside the class block. 
+Methods are defined using the keyword \keyword{def} inside the class block. 
 There is no difference between static and dynamic methods in term of header syntax. 
-But in Python 2.6+, you can use the decorator \textbf{\@staticmethod} to mark a static method. 
+But in Python 2.6+, you can use the decorator \keyword{\@staticmethod} to mark a static method. 
 
 \lstinputlisting[language=Python, linerange={4-4,17-22}, style=codeStyle]{../codes/python/person.py}
 
@@ -426,13 +426,13 @@ In the example, the implementation is omitted.
 
 \subsection{Ruby}
 
-Static fields are defined inside the class block using \textbf{\@\@}, while dynamic fields are defined inside the constructor or the class block using the keyword \textbf{\@}. 
+Static fields are defined inside the class block using \keyword{\@\@}, while dynamic fields are defined inside the constructor or the class block using the keyword \keyword{\@}. 
 
 \lstinputlisting[language=Ruby, linerange={3-11,25-25}, style=codeStyle]{../codes/ruby/person.rb}
 
-Methods are defined using the keyword \textbf{def} and delimited by the keyword \textbf{end}. 
-Static methods always begin with the keyword \textbf{self}.
-Also, methods without arguments do not need round brackets \textbf{()}.
+Methods are defined using the keyword \keyword{def} and delimited by the keyword \textbf{end}. 
+Static methods always begin with the keyword \keyword{self}.
+Also, methods without arguments do not need round brackets \keyword{()}.
 
 \lstinputlisting[language=Ruby, linerange={3-3,18-25}, style=codeStyle]{../codes/ruby/person.rb}
 
@@ -480,7 +480,7 @@ In our example, we will implement our \textbf{Person} class, and the previously 
 \subsection{C++}
 
 There is no toString in C++, where an object can be transformed to a string when it is concatenated with one. 
-But, operators such as \textbf{<<} can be redefined to handle an object of a class as a string. 
+But, operators such as \keyword{<<} can be redefined to handle an object of a class as a string. 
 A condition to use such methods is to define them as friend, so they can access the class's internal elements.  
 
 \lstinputlisting[language=C++, style=codeStyle]{../codes/cpp/obj_meth.cpp}
