@@ -135,6 +135,13 @@ Each class derived from Animal must redefine this method because each type of an
 
 \subsection{Associations}
 
+An association is a "using" ("has-a") relationship between two objects which causes an object to perform an action on behalf of another. 
+%TODO talk about association role
+For example, a class "Book" has some elements of the class "Chapter"; in this case, the first class uses the last one.
+Aggregation is a type of association where the child can exist independently from the parent.
+For example, a \textbf{Car} has many parts such as "Wheel"; if we delete the car, the wheels still exist and may be related to another class. 
+Composition, on the other hand, implies a relation of ownership; a child class cannot exist without the parent one.
+For instance, chapters can not exist without being in a book.
 
 \section{benefits}
 
