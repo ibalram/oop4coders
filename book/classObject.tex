@@ -575,11 +575,48 @@ You can override \keyword{hashCode()} method to define specialized hash code cal
 
 \subsection{Javascript}
 
-\lstinputlisting[style=codeStyle]{../codes/javascript/person.js}
+All objects in JavaScript are descended from \keyword{Object}; all objects inherit methods and properties from \keyword{Object.prototype}.
+
+\subsubsection{String representation}
+
+Every object has a \keyword{toString} method inherited from the universal class, and it can be overridden. 
+
+\lstinputlisting[style=codeStyle]{../codes/javascript/obj_meth.js}
+
+\subsubsection{Object copy}
+
+There is no method permitting an object to deep clone itself. 
+You can use ES6 \keyword{Object.assign} to fuse an object's members to an empty one, but it will afford shallow copying. 
+\begin{lstlisting}[style=codeStyle]
+let obj2 = Object.assign({}, obj1);
+\end{lstlisting} 
+To deep copy an object, you can use libraries such as \nameword{lodash} via its method \keyword{clonedeep}
+
+\subsubsection{Value equality}
+
+There is no value equality method; you can define your own.
+
+\subsubsection{Object comparison}
+
+There is no comparison method; you can define your own.
+
+\subsubsection{Hash code}
+
+There is no hash code method; you can define your own.
 
 \subsection{Lua}
 
 \lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../codes/lua/objmeth.lua}
+
+\subsubsection{String representation}
+
+\subsubsection{Object copy}
+
+\subsubsection{Value equality}
+
+\subsubsection{Object comparison}
+
+\subsubsection{Hash code}
 
 \subsection{Perl}
 
@@ -587,9 +624,29 @@ ToString can be customized by overriding the object's conversion operator.
 
 \lstinputlisting[language=Perl, style=codeStyle]{../codes/perl/objmeth.pl}
 
+\subsubsection{String representation}
+
+\subsubsection{Object copy}
+
+\subsubsection{Value equality}
+
+\subsubsection{Object comparison}
+
+\subsubsection{Hash code}
+
 \subsection{PHP}
 
 \lstinputlisting[language=PHP, style=codeStyle]{../codes/php/objmeth.php}
+
+\subsubsection{String representation}
+
+\subsubsection{Object copy}
+
+\subsubsection{Value equality}
+
+\subsubsection{Object comparison}
+
+\subsubsection{Hash code}
 
 \subsection{Python}
 
@@ -597,6 +654,16 @@ ToString can be customized by overriding the object's conversion operator.
 
 Comparing method \textbf{\_\_cmp\_\_} is no longer available for Python3. 
 But, other comparison methods are: \textbf{\_\_lt\_\_}, \textbf{\_\_gt\_\_}, etc.
+
+\subsubsection{String representation}
+
+\subsubsection{Object copy}
+
+\subsubsection{Value equality}
+
+\subsubsection{Object comparison}
+
+\subsubsection{Hash code}
 
 \subsection{Ruby}
 
@@ -611,6 +678,16 @@ The two methods (\textbf{initialize\_dup} and \textbf{initialize\_clone}) call \
 
 The hashCode in Ruby changes between sessions.
 It means, if you execute the program and then re-execute it again, you will not have the same hashcode of an object.
+
+\subsubsection{String representation}
+
+\subsubsection{Object copy}
+
+\subsubsection{Value equality}
+
+\subsubsection{Object comparison}
+
+\subsubsection{Hash code}
 
 %=====================================================================
 \ifx\wholebook\relax\else
