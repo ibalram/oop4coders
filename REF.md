@@ -43,6 +43,7 @@
 * http://www.tutorialspoint.com/python/python_classes_objects.htm
 * https://docs.python.org/3/tutorial/errors.html
 * https://rszalski.github.io/magicmethods/
+* https://www.python-course.eu/python3_magic_methods.php
 
 ## Ruby
 
@@ -50,6 +51,7 @@
 * https://www.tutorialspoint.com/ruby/ruby_object_oriented.htm
 * http://www.poodr.com
 * https://www.tutorialspoint.com/ruby/ruby_exceptions.htm
+* https://ruby-doc.org/core-2.1.1/Object.html
 
 ## Comparison
 

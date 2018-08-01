@@ -1,7 +1,7 @@
 #!/usr/bin/ruby -w
 
 class Person
-
+	include Comparable
 	attr_accessor :byear
 	attr_reader :name
 
@@ -49,3 +49,4 @@ puts "Copy: #{p3}"
 puts "p.eql? p3? #{p.eql? p3}"
 puts "p <=> p3? #{p <=> p3}"
 puts "p <=> p2? #{p <=> p2}"
+puts "p < p2? #{p < p2}"

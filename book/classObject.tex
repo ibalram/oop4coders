@@ -782,27 +782,62 @@ It is called when we use the object as argument of the method \keyword{hash}.
 
 \subsection{Ruby}
 
-To create a copy, there are two methods: \textbf{clone} and \textbf{dup}. 
-\textbf{dup} creates a new copy of the object, but its original members are shared. 
-Which means, if I copy an object then modify the attributes in the copy, this will affect the original.
-
-\lstinputlisting[language=Ruby, style=codeStyle]{../codes/ruby/objmeth.rb}
-
-The two methods (\textbf{initialize\_dup} and \textbf{initialize\_clone}) call \textbf{initialize\_copy} when they are done.
-
-
-The hashCode in Ruby changes between sessions.
-It means, if you execute the program and then re-execute it again, you will not have the same hashcode of an object.
+\keyword{Object} is the default root of all Ruby objects.
+Besides our methods, this class defines other ones.
 
 \subsubsection{String representation}
 
+By overriding the method \keyword{to\_s}, you can use the object as a string.
+
+\lstinputlisting[language=Ruby, linerange={3-3,18-20,39-41,44-44}, style=codeStyle]{../codes/ruby/objmeth.rb}
+
 \subsubsection{Object copy}
+
+To create an object copy, there are two methods: \keyword{clone} and \keyword{dup}. 
+\keyword{dup} creates a new copy of the object, but its original members are shared. 
+Which means, if you copy an object then modify the attributes in the copy, this will affect the original.
+Also, it does not copy methods from the original object.
+In addition, it does not preserve the frozen state.
+
+The two methods: \keyword{initialize\_dup} and \keyword{initialize\_clone} must be overridden to ensure a specialized copy.
+A shared method between them is \keyword{initialize\_copy} which is called when they are done.
+
+\lstinputlisting[language=Ruby, linerange={3-3,12-16,39-41,47-47}, style=codeStyle]{../codes/ruby/objmeth.rb}
 
 \subsubsection{Value equality}
 
+There are three methods for equality:
+\begin{itemize}
+	\item \keyword{==} It is used to test reference equality. 
+	Typically, this method is overridden in descendant classes to provide class-specific meaning.
+	
+	\item \keyword{equal?} Same as \keyword{==}, but it is used to determine object identity and should never be overridden.
+	
+	\item \keyword{eql?} It is used by \keyword{Hash} collection to test members equality. 
+	It tests if the two objects refer to the same hash key. 
+\end{itemize}
+
+\lstinputlisting[language=Ruby, linerange={3-3,31-33,39-41,47-47,49-49}, style=codeStyle]{../codes/ruby/objmeth.rb}
+
 \subsubsection{Object comparison}
 
+To compare two objects, the method \keyword{<=>} is used. 
+When redefined, it should return: -1 when self is smaller than other, 0 when self is equal to other and 1 when self is bigger than other. Nil means the two values could not be compared.
+
+When you define <=>, you can include Comparable to gain the methods <=, <, >=, > and between?.
+
+\lstinputlisting[language=Ruby, linerange={3-4,22-29,39-42,47-47,50-52}, style=codeStyle]{../codes/ruby/objmeth.rb}
+
 \subsubsection{Hash code}
+
+To generate a hash value for an object, the method \keyword{hash} is used. 
+It must follow the condition: a.eql?(b) implies a.hash == b.hash, because this function is used with \keyword{eql?} by the class \keyword{Hash} to determine if two objects reference the same hash key.
+
+
+The hash value for an object may not be identical across invocations or implementations of ruby. 
+If you need a stable identifier across ruby invocations and implementations you will need to generate one with a custom method.
+
+\lstinputlisting[language=Ruby, linerange={3-3,35-41,45-45}, style=codeStyle]{../codes/ruby/objmeth.rb}
 
 %=====================================================================
 \ifx\wholebook\relax\else
