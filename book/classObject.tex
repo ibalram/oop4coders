@@ -699,34 +699,86 @@ There is no hash code method in Perl.
 
 \subsection{PHP}
 
-\lstinputlisting[language=PHP, style=codeStyle]{../codes/php/objmeth.php}
+There is no universal base class in PHP.
+But there exists some reserved keywords for methods names known as magic methods.
+String representation and object cloning fall in this category of methods.
 
 \subsubsection{String representation}
 
+The \keyword{\_\_toString()} method allows a class to decide how it will react when it is treated like a string.
+
+\lstinputlisting[language=PHP, linerange={2-2,12-14,20-20}, style=codeStyle]{../codes/php/objmeth.php}
+
 \subsubsection{Object copy}
+
+An object copy is created by using the \keyword{clone} keyword (which calls the object's \keyword{\_\_clone()} method if possible). An object's \keyword{\_\_clone()} method cannot be called directly.
+
+\lstinputlisting[language=PHP, linerange={2-2,16-20}, style=codeStyle]{../codes/php/objmeth.php}
 
 \subsubsection{Value equality}
 
+There is no magic method for equality, and no operation overload. 
+Using \keyword{==}, two objects are equal if they have the same attributes and values, and they are instances of the same class.
+Using \keyword{===}, two object variables are equal if they point to the same object (reference equality).
+
+\lstinputlisting[language=PHP, linerange={22-22,26-26,29-30}, style=codeStyle]{../codes/php/objmeth.php}
+
 \subsubsection{Object comparison}
 
+No comparison, you have to define your own. 
+
 \subsubsection{Hash code}
+
+There is no internal hash code method for classes.
 
 \subsection{Python}
 
-\lstinputlisting[language=Python, style=codeStyle]{../codes/python/objmeth.py}
-
-Comparing method \textbf{\_\_cmp\_\_} is no longer available for Python3. 
-But, other comparison methods are: \textbf{\_\_lt\_\_}, \textbf{\_\_gt\_\_}, etc.
+In new Python syntax, all classes inherit from the class \keyword{object}. 
+There exists many magic methods in Python, which are called upon using an object as argument to a built-in method. 
+For example, the magic method \keyword{\_\_str\_\_} of a class is used when an instance of that class is passed as argument to the built-in method \keyword{str}.
+Besides the methods we are presenting here, there exists many magic methods such those for arithmetic operations, for built-in unary methods, etc.
 
 \subsubsection{String representation}
 
+To use an object as a string, you have to define the magic method \keyword{\_\_str\_\_}.
+
+\lstinputlisting[language=Python, linerange={4-4,10-11}, style=codeStyle]{../codes/python/objmeth.py}
+
+Then, you can use it by calling the method \keyword{str}
+
+\lstinputlisting[language=Python, linerange={27-27,29-29}, style=codeStyle]{../codes/python/objmeth.py}
+
 \subsubsection{Object copy}
+
+To clone an object, you need to use the module \nameword{copy} which defines two methods: \keyword{copy} for shallow copy and \keyword{deepcopy} for deep copy.
+
+\lstinputlisting[language=Python, linerange={27-27,32-32}, style=codeStyle]{../codes/python/objmeth.py}
+
+To tell those methods how to copy an object, you have to define the magic methods: \keyword{\_\_copy\_\_} and \keyword{\_\_deepcopy\_\_}.
+
+\lstinputlisting[language=Python, linerange={4-4,13-14}, style=codeStyle]{../codes/python/objmeth.py}
 
 \subsubsection{Value equality}
 
+The equality can be defined using the magic method \keyword{\_\_eq\_\_}. 
+It is called when you use the equality test \keyword{==}.
+
+\lstinputlisting[language=Python, linerange={4-4, 16-17, 27-27, 32-32, 34-34}, style=codeStyle]{../codes/python/objmeth.py}
+
 \subsubsection{Object comparison}
 
+Comparing objects can be done using magic method \textbf{\_\_cmp\_\_} which returns 0 if they are equal, a negative number if the caller is less than the other object, a positive number otherwise.
+It is no longer available for Python3 due to redundancy with other magic methods. 
+The comparison methods replacing it are: equal \keyword{\_\_eq\_\_}, not equal \keyword{\_\_ne\_\_}, less than \textbf{\_\_lt\_\_}, greater than \textbf{\_\_gt\_\_}, less than or equals to \textbf{\_\_le\_\_} and greater than or equals to \textbf{\_\_ge\_\_}.
+
+\lstinputlisting[language=Python, linerange={4-4, 19-20, 27-27, 32-32, 36-36}, style=codeStyle]{../codes/python/objmeth.py}
+
 \subsubsection{Hash code}
+
+Magic method \keyword{\_\_hash\_\_} is used to define how an object generates its hash code.
+It is called when we use the object as argument of the method \keyword{hash}.
+
+\lstinputlisting[language=Python, linerange={4-4, 22-23, 27-27, 30-30}, style=codeStyle]{../codes/python/objmeth.py}
 
 \subsection{Ruby}
 
