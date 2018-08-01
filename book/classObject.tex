@@ -520,10 +520,58 @@ You can define a hashcode function for your current class.
 
 \subsection{Java}
 
+In Java, every class inherit from the universal class \keyword{Object}. 
+This class defines some methods by default: string representation, object copy, value equality and hashcode.
+To personalize them, you can override these functions in your class.
 
-\lstinputlisting[language=Java, linerange={23-23,33-62}, style=codeStyle]{../codes/java/src/ObjMeth.java}
+\subsubsection{String representation}
 
-\lstinputlisting[language=Java, linerange={4-17}, style=codeStyle]{../codes/java/src/ObjMeth.java}
+You can override \keyword{toString} which comes from the class \keyword{Object}.   
+
+\lstinputlisting[language=Java, linerange={24-24,34-37,63-63}, style=codeStyle]{../codes/java/src/ObjMeth.java}
+
+When the object is concatenated with strings, this function will be called automatically to represent this object as a string.
+
+\lstinputlisting[language=Java, linerange={7-7}, style=codeStyle]{../codes/java/src/ObjMeth.java}
+
+\subsubsection{Object copy}
+
+The universal class \keyword{Object} implements a function \keyword{clone()} which performs a shallow copy.
+That is, if a field is an object (not primary type), it will copy the reference and not create a new instance of it. 
+To perform deep copy, you have to override this function. 
+But before that, you have to implement the class \keyword{Clonable} otherwise your function will throw an exception \keyword{CloneNotSupportedException}.
+
+\lstinputlisting[language=Java, linerange={24-24,50-54,63-63}, style=codeStyle]{../codes/java/src/ObjMeth.java}
+
+\subsubsection{Value equality}
+
+You can override the method \keyword{equals} which takes a variable of type \keyword{Object} as argument.
+This is the other object to which we want to test our current object, and it can be of any other effective type. 
+So, basically, you can test your current object against any other type if you wish to.
+In our example, if the other object is not of the same type as the current's, the function returns false.
+
+\lstinputlisting[language=Java, linerange={24-24,44-48,63-63}, style=codeStyle]{../codes/java/src/ObjMeth.java}
+
+When testing equality with non primitive variables, you have to call this function. 
+If you use \keyword{==} instead, you will have a reference equality test; that is, the variables will be tested if they have the same reference or not.
+
+\lstinputlisting[language=Java, linerange={14-15}, style=codeStyle]{../codes/java/src/ObjMeth.java}
+
+\subsubsection{Object comparison}
+
+Objects, by default, do not implement a comparing method. 
+If you want to compare an object with another, you can implement the interface \keyword{Comparable}. 
+It is very useful since a lot of other methods are based on it such as \keyword{sort} of collections.
+Then, you have to implement one method which is \keyword{compareTo}. 
+It takes one argument of type \keyword{Object} which is the other object to compare to, unless you use generics to specify that object's type. 
+This function returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
+
+\lstinputlisting[language=Java, linerange={24-24,56-63}, style=codeStyle]{../codes/java/src/ObjMeth.java}
+
+\subsubsection{Hash code}
+
+You can override \keyword{hashCode()} method to define specialized hash code calculation to a class.
+\lstinputlisting[language=Java, linerange={39-42}, style=codeStyle]{../codes/java/src/ObjMeth.java}
 
 \subsection{Javascript}
 
