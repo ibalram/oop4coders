@@ -647,19 +647,55 @@ You have to implement your own hash code method.
 
 \subsection{Perl}
 
-ToString can be customized by overriding the object's conversion operator. 
-
-\lstinputlisting[language=Perl, style=codeStyle]{../codes/perl/objmeth.pl}
+In Perl, all classes inherit from a base class named \keyword{UNIVERSAL}.
+This class affords some methods other than the ones we are discussing here, the most important ones:
+\begin{itemize}
+	\item \textbf{\$obj->isa( TYPE )} which verifies if this object is an instance of a certain type.
+	\item \textbf{\$obj->can( METHOD )} which verifies if this object affords a certain method.
+\end{itemize}
+By overloading some operations, our special methods can be emulated.
 
 \subsubsection{String representation}
 
+The string representation of an object can be done by overloading the stringification operator. 
+
+\lstinputlisting[language=Perl, linerange={16-20}, style=codeStyle]{../codes/perl/objmeth.pl}
+
+Stringification is not the only object transformation, there are other operations that can be overloaded to treat the object in different contexts:
+
+\begin{itemize}
+	\item Boolification by overloading \keyword{bool}, the object can be used as a boolean \textbf{if (\$obj) \{...\}}
+	\item Numification by overloading \keyword{0+}, the object can be used as a number \textbf{say \$obj + 1;}
+	\item Regexification by overloading \keyword{qr}, the object can be used as a regex \textbf{if (\$str =~ /\$obj/)}
+	\item Scalarification by overloading \keyword{\$\{\}}, the object can be used as a scalar ref \textbf{say \$\$obj;}
+	\item Arrayification by overloading \keyword{@\{\}}, the object can be used as an array ref \textbf{say for @\$obj;}
+	\item Hashification by overloading \keyword{\%\{\}}, the object can be used as a hash ref \textbf{say for keys \%\$obj;}
+	\item Codeification by overloading \keyword{\&\{\}}, the object can be used as a code ref \textbf{say \$obj->(1, 2, 3);}
+	\item Globification by overloading \keyword{*\{\}}, the object can be used as a glob ref \textbf{say *\$obj;}
+\end{itemize}
+
 \subsubsection{Object copy}
+
+You can write your own cloning function since there is no default one.
 
 \subsubsection{Value equality}
 
+Perl uses operations such as \keyword{==} for numeric equality and \keyword{eq} for strings equality. 
+Like other operations, they can be overloaded.
+We can overload numeric equality for that matter, or we can define a numification of the object that gives us numeric values compatible to what we want to achieve.
+
+\lstinputlisting[language=Perl, linerange={16-16,21-24}, style=codeStyle]{../codes/perl/objmeth.pl}
+
 \subsubsection{Object comparison}
 
+Likewise, comparing operations: \keyword{<=>} for numerals and \keyword{cmp} can be overloaded. 
+They return -1, 0 or 1 if the first element is less, equal or greater than the second.
+Do not use the same operation inside its overloaded implementation, otherwise you will have an error: Use of uninitialized value in numeric comparison.
+Other logic operations can be overloaded such as \keyword{>}, \keyword{<}, etc.
+
 \subsubsection{Hash code}
+
+There is no hash code method in Perl.
 
 \subsection{PHP}
 
