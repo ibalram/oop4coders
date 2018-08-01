@@ -509,7 +509,7 @@ You can overload the operator \keyword{==} to test the equality between two obje
 
 \subsubsection{Object comparison}
 
-You can overload the operators \keyword{>}, \keyword{<}, \keyword{>=} and \keyword{<=} to compare two objects of the same class.  
+You can overload the operators \keyword{>}, \keyword{<}, \keyword{>=}, \keyword{<=} and \keyword{!=} to compare two objects of the same class.  
 \keyword{std::string} class has its own \keyword{compare} method.
 
 \lstinputlisting[language=C++, linerange={34-37}, style=codeStyle]{../codes/cpp/obj_meth.cpp}
@@ -606,17 +606,44 @@ There is no hash code method; you can define your own.
 
 \subsection{Lua}
 
-\lstinputlisting[language={[5.2]Lua}, style=codeStyle]{../codes/lua/objmeth.lua}
-
+Lua is prototype-based OOP language where an object is a meta-table. 
+There exists some meta-methods defined for these meta-tables and can be overridden.
+ 
 \subsubsection{String representation}
+
+By defining the meta-method \keyword{\_\_tostring}, the object can be used as a string.
+
+\lstinputlisting[language={[5.2]Lua}, linerange={8-10}, style=codeStyle]{../codes/lua/objmeth.lua}
+
+Then, the object can be used as as string
+
+\lstinputlisting[language={[5.2]Lua}, linerange={8-10}, style=codeStyle]{../codes/lua/objmeth.lua}
 
 \subsubsection{Object copy}
 
+To deep copy an object, you have to implement it yourself since there is no meta-method for this.
+
 \subsubsection{Value equality}
+
+The equality of two objects of a class can be defined using the meta-method \keyword{\_\_eq} which has two objects as arguments. 
+
+\lstinputlisting[language={[5.2]Lua}, linerange={12-14}, style=codeStyle]{../codes/lua/objmeth.lua}
 
 \subsubsection{Object comparison}
 
+Besides equality, there are two more meta-methods: less than \keyword{\_\_lt} and less than or equals \keyword{\_\_le}. 
+The other relations can be inferred by negating these three.
+Strings can be compared by default.
+
+\lstinputlisting[language={[5.2]Lua}, linerange={16-22}, style=codeStyle]{../codes/lua/objmeth.lua}
+
+To call them:
+
+\lstinputlisting[language={[5.2]Lua}, linerange={28-32}, style=codeStyle]{../codes/lua/objmeth.lua}
+
 \subsubsection{Hash code}
+
+You have to implement your own hash code method.
 
 \subsection{Perl}
 
