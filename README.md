@@ -1,10 +1,10 @@
 # oop4coders
 
 [![Project](https://img.shields.io/badge/Project-OOP4Coders_book-0014A8.svg?style=plastic)](https://github.com/kariminf/oop4coders)
+[![License](https://img.shields.io/badge/License-Apache_2-0014A8.svg?style=plastic)](http://www.apache.org/licenses/LICENSE-2.0)
 [![GitHub release](https://img.shields.io/github/release/kariminf/oop4coders.svg)](https://github.com/kariminf/oop4coders/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/kariminf/oop4coders/total.svg)](https://github.com/kariminf/oop4coders/releases)
 [![Github Release](https://img.shields.io/github/downloads/kariminf/oop4coders/latest/total.svg)](https://github.com/kariminf/oop4coders/releases/latest)
-[![License](https://img.shields.io/badge/License-Apache_2-0014A8.svg?style=plastic)](http://www.apache.org/licenses/LICENSE-2.0)
 
 There are a lot of books which talk about OOP philosophy.
 So, if you want to go deeper into OOP paradigm, this isn't your place.
