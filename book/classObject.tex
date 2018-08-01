@@ -79,7 +79,7 @@ It can be used to free external resources used by the object before it is termin
 
 The constructor in C++ takes the same name as the class without a return type;
 It can have arguments or not.
-As for the destructor, it has the same name as the class prefixed by a tilde \keyword{\~}.
+As for the destructor, it has the same name as the class prefixed by a tilde \keyword{\char`\~}.
 
 \lstinputlisting[language=C++, linerange={4-19,34-34}, style=codeStyle]{../codes/cpp/person0.cpp}
 
@@ -479,13 +479,47 @@ In our example, we will implement our \textbf{Person} class, and the previously 
 
 \subsection{C++}
 
-There is no toString in C++, where an object can be transformed to a string when it is concatenated with one. 
-But, operators such as \keyword{<<} can be redefined to handle an object of a class as a string. 
-A condition to use such methods is to define them as friend, so they can access the class's internal elements.  
+In C++, there are no methods inherited from the object class because there is no universal base-class object. 
+But, C++ support operations overloading which can replace base-class methods.
+To overload an operation for a class based on its fields, you have to define these operations as friend operations to the class. 
+this will allow them to access private members. 
 
-\lstinputlisting[language=C++, style=codeStyle]{../codes/cpp/obj_meth.cpp}
+\lstinputlisting[language=C++, linerange={4-5, 18-21,24-24}, style=codeStyle]{../codes/cpp/obj_meth.cpp}
+
+\subsubsection{String representation}
+
+There is no \keyword{toString} in C++, where an object can be transformed to a string when it is concatenated with one. 
+But, operators such as \keyword{<{}<} can be overloaded to handle an object of a class as a string.   
+
+\lstinputlisting[language=C++, linerange={26-28}, style=codeStyle]{../codes/cpp/obj_meth.cpp}
+
+Then, you can call it as
+
+\lstinputlisting[language=C++, linerange={41-41,44-44}, style=codeStyle]{../codes/cpp/obj_meth.cpp}
+
+\subsubsection{Object copy}
+
+You can just define a cloning function for the class and use it.
+
+\subsubsection{Value equality}
+ 
+You can overload the operator \keyword{==} to test the equality between two objects of the same class.  
+
+\lstinputlisting[language=C++, linerange={30-32}, style=codeStyle]{../codes/cpp/obj_meth.cpp}
+
+\subsubsection{Object comparison}
+
+You can overload the operators \keyword{>}, \keyword{<}, \keyword{>=} and \keyword{<=} to compare two objects of the same class.  
+\keyword{std::string} class has its own \keyword{compare} method.
+
+\lstinputlisting[language=C++, linerange={34-37}, style=codeStyle]{../codes/cpp/obj_meth.cpp}
+
+\subsubsection{Hash code}
+
+You can define a hashcode function for your current class.
 
 \subsection{Java}
+
 
 \lstinputlisting[language=Java, linerange={23-23,33-62}, style=codeStyle]{../codes/java/src/ObjMeth.java}
 

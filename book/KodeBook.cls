@@ -206,7 +206,7 @@ title={#1}
 
 
 \RequirePackage{listings}
-%\RequirePackage{textcomp}
+\RequirePackage{textcomp} %for textasciitilde
 
 \lstdefinestyle{codeStyle}{
 	belowcaptionskip=1\baselineskip,
