@@ -1,9 +1,9 @@
 class Person {
 	constructor(name, byear) {
-    this.name = name;
-    this["byear"] = byear;
+		this.name = name;
+		this["byear"] = byear;
 		Person.nbr++;
-  }
+	}
 
 	info(){
 		console.log("My name: " + this.name + ", My birth year: " + this.byear);

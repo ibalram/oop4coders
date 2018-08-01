@@ -713,7 +713,7 @@ There are some built-in exceptions you can use, such as this example.
 In Ruby, you can throw an exception affording just a message which will create a new instance of \keyword{RuntimeError}. 
 To throw an exception, you need to use the keyword \keyword{raise}
 
-\lstinputlisting[language=Python, linerange={1-6}, style=codeStyle]{../codes/ruby/except.rb}
+\lstinputlisting[language=Ruby, linerange={1-6}, style=codeStyle]{../codes/ruby/except.rb}
 
 To handle the exception, you can use the keywords: 
 \begin{itemize}
@@ -724,20 +724,20 @@ To handle the exception, you can use the keywords:
 	\item end: to close the block
 \end{itemize}
 
-\lstinputlisting[language=Python, linerange={21-28}, style=codeStyle]{../codes/ruby/except.rb}
+\lstinputlisting[language=Ruby, linerange={21-30}, style=codeStyle]{../codes/ruby/except.rb}
 
 You can specify custom classes to handle exceptions which can inherit from \keyword{StandardError}. 
 It is a good practice to regroup these errors all together.
 
-\lstinputlisting[language=Python, linerange={1-12}, style=codeStyle]{../codes/ruby/except2.rb}
+\lstinputlisting[language=Ruby, linerange={1-12}, style=codeStyle]{../codes/ruby/except2.rb}
 
 To throw them, all you have to do is creating an instance after calling \keyword{raise}.
 
-\lstinputlisting[language=Python, linerange={16-19}, style=codeStyle]{../codes/ruby/except2.rb}
+\lstinputlisting[language=Ruby, linerange={16-19}, style=codeStyle]{../codes/ruby/except2.rb}
 
 You can capture them by their parent exception class \keyword{Exception}, or each by its class.
 
-\lstinputlisting[language=Python, linerange={37-40}, style=codeStyle]{../codes/ruby/except2.rb}
+\lstinputlisting[language=Ruby, linerange={37-40}, style=codeStyle]{../codes/ruby/except2.rb}
 
 
 %=====================================================================
