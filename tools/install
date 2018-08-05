@@ -1,0 +1,2 @@
+sudo apt-get install pdf2djvu
+sudo apt-get install ebook2epub

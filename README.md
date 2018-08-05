@@ -18,6 +18,12 @@ If you don't like programming so much, you can use Umbrello UML Modeller which c
 So, "**Less talking, more coding**"
 
 
+## Download
+
+Download the latest version from [HERE](https://github.com/kariminf/oop4coders/releases/latest).
+There are two files:
+* oop4coders_book_version.pdf : The book in pdf format
+* oop4coders_codes_version.zip : The codes 
 
 ## License
 
