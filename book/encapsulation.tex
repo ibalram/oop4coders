@@ -3,11 +3,19 @@
 	\documentclass{KodeBook}
 	\input{calls}
 	\begin{document}
-	\chapter{Encapsulation}
 \fi
 %=====================================================================
 
-%, firstline=6, lastline=9
+\chapter{Encapsulation}
+
+\begin{introduction}
+	Encapsulation is one important concept of OOP. 
+	It is the mechanism of restricting direct access to some members of a class.
+	It helps managing complexity when debugging source code. 
+	If a field is accessed everywhere in your source code, this makes it difficult to find errors related to this field. 
+	Also, if a field of a class (A) is used by a class (B) then we changed it (either its name or how it gets assigned), we have to change all the code where it appears in (B).
+	In this chapter, we will show different access privileges and how they are implemented in each language.
+\end{introduction}
 
 \section{Public members}
 
