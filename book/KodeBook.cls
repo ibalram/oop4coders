@@ -18,6 +18,8 @@
 \ProvidesClass{KodeBook}[2017/08/17 Create a book with codes]
 \LoadClass[12pt, a4paper]{book}
 
+\raggedbottom
+
 %\RequirePackage[utf8]{inputenc}
 %\RequirePackage[arabic,french,english]{babel}
 %\RequirePackage{CJKutf8}

@@ -35,7 +35,7 @@ If you use \keyword{struct} instead of \keyword{class}, all members are public b
 
 \lstinputlisting[language=C++, linerange={6-11,21-21}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
 
-These members can be accessed anywhere
+These members can be accessed everywhere
 
 \lstinputlisting[language=C++, linerange={4-6, 8-8, 11-11,13-14}, style=codeStyle]{../codes/cpp/encapsulation/app.cpp}
 
@@ -49,11 +49,14 @@ To correct this, you have to use \nameword{\#include guard}.
 
 \lstinputlisting[language=C++, linerange={1-3,6-7,21-22}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
 
-
-
 \subsection{Java}
 
-%\lstinputlisting[language=Java, linerange={1-1,40-40}, style=codeStyle]{../codes/java/src/Person.java}
+Every public member in Java must preceded by the keyword \keyword{public}. 
+
+\lstinputlisting[language=Java, linerange={1-5,12-12,18-20,27-29}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
+
+These members can be accessed everywhere
+\lstinputlisting[language=Java, linerange={1-8,10-10,14-14,16-18}, style=codeStyle]{../codes/java/src/encapsulation/main/App.java}
 
 \subsection{Javascript} 
 
