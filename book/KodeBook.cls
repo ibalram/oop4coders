@@ -39,25 +39,25 @@
 %\RequirePackage{verbatim} 
 
 
-
-\if@compatibility\else
-
-\DeclareOption{a4paper}{%
-\setlength{\paperheight}{297mm}%
-\setlength{\paperwidth}{210mm}%
-}
-
-
-%when the user use a not existing option
-\DeclareOption*{%
-}
-
-\fi
-
-\ProcessOptions\relax
-
-\setlength{\textwidth}{6.5in}
-\setlength{\textheight}{8in}
+%
+%\if@compatibility\else
+%
+%\DeclareOption{a4paper}{%
+%\setlength{\paperheight}{297mm}%
+%\setlength{\paperwidth}{210mm}%
+%}
+%
+%
+%%when the user use a not existing option
+%\DeclareOption*{%
+%}
+%
+%\fi
+%
+%\ProcessOptions\relax
+%
+%\setlength{\textwidth}{6.5in}
+%\setlength{\textheight}{8in}
 \pagenumbering{arabic} % needed even though this class will not show page numbers
 
 

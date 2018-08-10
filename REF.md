@@ -16,6 +16,8 @@
 
 * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS
 * https://javascript.info/object-oriented-programming
+* https://www.sitepoint.com/object-oriented-javascript-deep-dive-es6-classes/
+* https://kamranahmed.info/blog/2015/01/03/private-and-public-scopes-in-javascript/
 
 ## Lua
 
