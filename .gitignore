@@ -44,7 +44,7 @@ codes/java/*.jar
 codes/java/bin
 
 #Python ignore
-codes/python/*.py[cod]
+codes/python/**/*.py[cod]
 codes/python/*.so
 codes/python/*.egg
 codes/python/*.egg-info
