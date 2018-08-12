@@ -6,6 +6,7 @@
 * https://www3.ntu.edu.sg/home/ehchua/programming/cpp/cp3_OOP.html
 * https://www.tutorialspoint.com/cplusplus/cpp_exceptions_handling.htm
 * https://en.cppreference.com/w/cpp/language/operators
+* https://en.cppreference.com/w/cpp/language/friend
 
 ## Java
 

@@ -1,5 +1,11 @@
 #include "person.h"
 #include "student.h"
+#include "frnd.h"
+
+void info_fct(Person p) {
+	std::cout << "Friend function- name: " << p.name << "\n";
+	std::cout << "Friend function- job: " << p.t << "\n";
+}
 
 int main()
 {
@@ -10,5 +16,13 @@ int main()
 	//p.t = "admin"; //error: protected
 	p.info();
 	s.info();
+
+	Frnd::info(p);
+	info_fct(p);
+
+	p.copy(s);
+
+	p.info();
+
 	return 0;
 }

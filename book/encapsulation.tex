@@ -29,25 +29,25 @@ As for fields, public visibility mode is not preferable since it breaks encapsul
 
 \subsection{C++}
 
-Public members are defined inside the class header using the modifier \keyword{public} just one time. 
+Public members are defined inside the class header using the modifier \keyword{public}. 
 Every member coming after that modifier is considered as public.
 If you use \keyword{struct} instead of \keyword{class}, all members are public by default.
 
-\lstinputlisting[language=C++, linerange={6-11,21-21}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
+\lstinputlisting[language=C++, linerange={6-7,12-15,25-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
 
 These members can be accessed anywhere
 
-\lstinputlisting[language=C++, linerange={4-6, 8-8, 11-11,13-14}, style=codeStyle]{../codes/cpp/encapsulation/app.cpp}
+\lstinputlisting[language=C++, linerange={10-12, 14-14, 17-18,27-28}, style=codeStyle]{../codes/cpp/encapsulation/app.cpp}
 
 An important remark: when you compile multiple files using g++, you have to include all cpp files
 \begin{lstlisting}[style=shellStyle]
-$ g++ app.cpp person.cpp student.cpp
+$ g++ app.cpp person.cpp student.cpp frnd.h
 \end{lstlisting}
 
 If you include a header twice or more, you may have an error telling you that you defined the class more than once. 
 To correct this, you have to use \nameword{\#include guard}.
 
-\lstinputlisting[language=C++, linerange={1-3,6-7,21-22}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
+\lstinputlisting[language=C++, linerange={1-3,6-7,25-26}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
 
 \subsection{Java}
 
@@ -117,7 +117,18 @@ Actually, the field is accessed via a getter and a setter which are public by de
 
 \subsection{C++}
 
-%\lstinputlisting[language=C++, linerange={4-5,34-34}, style=codeStyle]{../codes/cpp/person0.cpp}
+Protected members are defined inside the class header using the modifier \keyword{protected}. 
+Every member coming after that modifier is considered as protected.
+
+\lstinputlisting[language=C++, linerange={6-7,18-19,25-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
+
+These members can be accessed only from the class itself or its subclasses
+
+\lstinputlisting[language=C++, linerange={1-5,8-8}, style=codeStyle]{../codes/cpp/encapsulation/student.cpp}
+
+They cannot be accessed elsewhere
+
+\lstinputlisting[language=C++, linerange={10-12,16-16,27-28}, style=codeStyle]{../codes/cpp/encapsulation/app.cpp}
 
 \subsection{Java}
 
@@ -191,7 +202,18 @@ The fields and the protected methods cannot be accessed outside the class and it
 
 \subsection{C++}
 
-%\lstinputlisting[language=C++, linerange={4-5,34-34}, style=codeStyle]{../codes/cpp/person0.cpp}
+Private members are defined inside the class header using the modifier \keyword{private}. 
+Every member coming after that modifier is considered as private.
+
+\lstinputlisting[language=C++, linerange={6-7,21-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
+
+These members can be accessed only from the class itself and not its subclasses
+
+\lstinputlisting[language=C++, linerange={3-4,7-8}, style=codeStyle]{../codes/cpp/encapsulation/student.cpp}
+
+Also, an object can access another object's members if they are of the same class whatever their visibility is.
+
+\lstinputlisting[language=C++, linerange={23-27}, style=codeStyle]{../codes/cpp/encapsulation/person.cpp}
 
 \subsection{Java}
 
@@ -246,11 +268,30 @@ This is because the field itself is protected and \keyword{attr\_reader} creates
 \lstinputlisting[language=Ruby, linerange={3-3,5-6,9-9,19-19}, style=codeStyle]{../codes/ruby/encapsulation/student.rb}
 
 \section{Other visibility modes}
-%
-%\subsection{C++}
-%
-%\lstinputlisting[language=C++, linerange={4-5,34-34}, style=codeStyle]{../codes/cpp/person0.cpp}
-%
+
+\subsection{C++}
+
+public, protected and private are the only visibility modes applied to class members. 
+But, a class can specify an external function of another class to be able to access its members whatever their visibility mode is. 
+This is known as \nameword{friend function} and \nameword{friend class} respectively. 
+They can be specified using the keyword \keyword{friend} before each. 
+
+\lstinputlisting[language=C++, linerange={6-11,18-19,21-22,25-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
+
+The new class can access all fields 
+
+\lstinputlisting[language=C++, linerange={7-14}, style=codeStyle]{../codes/cpp/encapsulation/frnd.h}
+
+The same thing for the function
+
+\lstinputlisting[language=C++, linerange={5-8}, style=codeStyle]{../codes/cpp/encapsulation/app.cpp}
+
+There are some notes about friendship:
+\begin{itemize}
+	\item It is not transitive: a friend of a friend is not a friend.
+	\item It can not be inherited: subclasses of a friend class are not friends.
+\end{itemize}
+
 \subsection{Java}
 
 Another visibility mode is \nameword{package visibility} where the members of a class are only accessed from classes of the same package. 
