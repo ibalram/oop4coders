@@ -160,7 +160,6 @@ ItalicFont=*-Italic,
 BoldItalicFont=*-BoldItalic
 ]{CrimsonText} %
 
-%\newfontface\italianno{fonts/Italianno/Italianno-Regular.ttf}[Scale=MatchLowercase]
 \newfontface\merienda
 [Path = fonts/Merienda/,
 Extension = .ttf,
@@ -168,12 +167,15 @@ Ligatures=TeX,
 Scale=1
 ]{Merienda-Regular} %
 
-\newfontface\italianno
-[Path = fonts/Italianno/,
+
+\newfontface\quotefont
+[Path = fonts/Handlee/,
 Extension = .ttf,
 Ligatures=TeX,
-Scale=1.5
-]{Italianno-Regular} %
+Scale=1.
+]{Handlee-Regular} %
+
+
 
 \newfontface\codefont
 [Path = fonts/SourceCodePro/,
@@ -197,7 +199,7 @@ Ligatures=TeX
 \newtcolorbox{kodequote}[1]{%
 colback=blue!5!white,
 colframe=blue!75!black,
-fontupper=\italianno,
+fontupper=\quotefont,
 title={#1}
 }
 
