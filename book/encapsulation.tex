@@ -121,7 +121,28 @@ Actually, the field is accessed via a getter and a setter which are public by de
 
 \subsection{Java}
 
-%\lstinputlisting[language=Java, linerange={1-1,40-40}, style=codeStyle]{../codes/java/src/Person.java}
+Protected members are prefixed each by the keyword \keyword{protected}. 
+A protected member is visible inside the class and its subclass, and also to other classes in the same package. 
+There is no difference between visibility modes of fields and those of methods; they are the same.
+
+\lstinputlisting[language=Java, linerange={1-3,7-7,34-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
+
+The field can be accessed from a subclass (which is not necessarily in the same package)
+
+\lstinputlisting[language=Java, linerange={1-7,11-13}, style=codeStyle]{../codes/java/src/encapsulation/core/Student.java}
+
+It can be accessed from classes of the same package
+
+\lstinputlisting[language=Java, linerange={1-7,10-12}, style=codeStyle]{../codes/java/src/encapsulation/core/App2.java}
+
+And cannot be accessed from a class outside the package and not inheriting from their containing class.
+
+\lstinputlisting[language=Java, linerange={1-8,13-13,16-18}, style=codeStyle]{../codes/java/src/encapsulation/main/App.java}
+
+It is also important to point out that protected members can be accessed from another object of the same class 
+
+\lstinputlisting[language=Java, linerange={3-3,7-7,29-29,31-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
+
 
 \subsection{Javascript} 
 
@@ -174,7 +195,22 @@ The fields and the protected methods cannot be accessed outside the class and it
 
 \subsection{Java}
 
-%\lstinputlisting[language=Java, linerange={1-1,40-40}, style=codeStyle]{../codes/java/src/Person.java}
+Private members are prefixed each by the keyword \keyword{private}. 
+A private member (field or method) is visible only inside the class. 
+
+\lstinputlisting[language=Java, linerange={1-3,7-7,34-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
+
+It cannot be accessed from a subclass
+
+\lstinputlisting[language=Java, linerange={3-3,5-6,10-13}, style=codeStyle]{../codes/java/src/encapsulation/core/Student.java}
+
+And sure cannot be accessed from another class
+
+\lstinputlisting[language=Java, linerange={5-8,12-12,16-18}, style=codeStyle]{../codes/java/src/encapsulation/main/App.java}
+
+It is also important to point out that private members can be accessed from another object of the same class 
+
+\lstinputlisting[language=Java, linerange={3-3,7-7,29-30,32-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
 
 \subsection{Javascript} 
 
@@ -209,16 +245,27 @@ This is because the field itself is protected and \keyword{attr\_reader} creates
 
 \lstinputlisting[language=Ruby, linerange={3-3,5-6,9-9,19-19}, style=codeStyle]{../codes/ruby/encapsulation/student.rb}
 
-%\section{Other visibility modes}
+\section{Other visibility modes}
 %
 %\subsection{C++}
 %
 %\lstinputlisting[language=C++, linerange={4-5,34-34}, style=codeStyle]{../codes/cpp/person0.cpp}
 %
-%\subsection{Java}
-%
-%\lstinputlisting[language=Java, linerange={1-1,40-40}, style=codeStyle]{../codes/java/src/Person.java}
-%
+\subsection{Java}
+
+Another visibility mode is \nameword{package visibility} where the members of a class are only accessed from classes of the same package. 
+If you don't prefix the member by any of the three visibility modes, it means it is a package member.
+
+\lstinputlisting[language=Java, linerange={1-3,6-6,34-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
+
+It can be accessed from classes of the same package
+
+\lstinputlisting[language=Java, linerange={1-6,8-8,10-12}, style=codeStyle]{../codes/java/src/encapsulation/core/App2.java}
+
+But cannot be accessed outside the package
+
+\lstinputlisting[language=Java, linerange={1-8,11-11,16-18}, style=codeStyle]{../codes/java/src/encapsulation/main/App.java}
+
 %\subsection{Javascript} 
 %
 %\lstinputlisting[linerange={1-1,5-5}, style=codeStyle]{../codes/javascript/person2.js}

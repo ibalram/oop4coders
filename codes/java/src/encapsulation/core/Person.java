@@ -25,5 +25,10 @@ public class Person {
 		System.out.println("My lucky number 2 is: " + luckyNumber2);
 		System.out.println("--------------------------");
 	}
+	
+	public void copy(Person other) {
+		name = other.name;
+		t = other.t;
+	}
 
 }
