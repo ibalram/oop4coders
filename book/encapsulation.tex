@@ -15,6 +15,8 @@
 	If a field is accessed everywhere in your source code, this makes it difficult to find errors related to this field. 
 	Also, if a field of a class (A) is used by a class (B) then we changed it (either its name or how it gets assigned), we have to change all the code where it appears in (B).
 	In this chapter, we will show different visibility modes and how they are implemented in each language.
+	You will see that there are two views: "Many programmers are irresponsible, dim-witted, or both." and "Programmers are responsible adults and capable of good judgment".
+	So, a programming language may fall into one or another.
 \end{introduction}
 
 \section{Public members}
@@ -176,7 +178,24 @@ It is also important to point out that protected members can be accessed from an
 
 \subsection{Python}
 
-%\lstinputlisting[language=Python, linerange={4-4}, style=codeStyle]{../codes/python/person.py}
+In Python, all class members are publicly visible. 
+But, Python community use coding conversions to tell developers about a field's visibility. 
+Some developers use underscore \keyword{\_} before the class member to signal that it is protected. 
+However, looking to this convension's definition in Python's docs: "\textit{a name prefixed with an underscore should be treated as a non-public part of the API. It should be considered an implementation detail and subject to change without notice.}", this suggests that it is a private member convention.
+But, since there is another convention for private members (double underscore), we can view one underscore as protected.
+
+\lstinputlisting[language=Python, linerange={4-5,8-8,11-11}, style=codeStyle]{../codes/python/encapsulation/person.py}
+
+It can be accessed from subclasses
+
+\lstinputlisting[language=Python, linerange={4-10}, style=codeStyle]{../codes/python/encapsulation/student.py}
+
+Or, from any class, module or piece of code 
+
+\lstinputlisting[language=Python, linerange={4-7,17-17}, style=codeStyle]{../codes/python/encapsulation/app.py}
+
+The idea is to tell developers that this class member is protected and it can be changed in the future, not to enforce the visibility on them. 
+If they want to access it directly, its their choice.
 
 \subsection{Ruby}
 
@@ -255,7 +274,21 @@ It is also important to point out that private members can be accessed from anot
 
 \subsection{Python}
 
-%\lstinputlisting[language=Python, linerange={4-4}, style=codeStyle]{../codes/python/person.py}
+As said before: all members are public (A remainder so you don't think otherwise).
+But, there is a mechanism used to avoid name clashes of names with names defined by subclasses, called \nameword{name mangling}.
+When a field is prefixed by a double underscore \keyword(\_\_), its name will be changed to \textbf{\_classname\_\_membername}.
+
+\lstinputlisting[language=Python, linerange={4-8,10-10}, style=codeStyle]{../codes/python/encapsulation/person.py}
+
+It can be accessed from subclasses using the new mangled name
+
+\lstinputlisting[language=Python, linerange={4-9,11-12}, style=codeStyle]{../codes/python/encapsulation/student.py}
+
+Or, from any class, module or piece of code. 
+Trying to read the field as it is defined in the class will raise an error since it does not exist with that name anymore.
+While trying to assign a value to the field will work, because you are actually creating a new field of the object dynamically.
+
+\lstinputlisting[language=Python, linerange={4-7,14-16}, style=codeStyle]{../codes/python/encapsulation/app.py}
 
 \subsection{Ruby}
 
