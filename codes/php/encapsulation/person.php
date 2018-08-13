@@ -22,6 +22,12 @@ class Person {
 		echo "My lucky number 2 is: $this->luckyNumber2\n";
 		echo "--------------------------\n";
 	}
+
+	public function copy($other) {
+		$this->name =$other->name;
+		$this->t = $other->t;
+	}
+
 }
 
 ?>
