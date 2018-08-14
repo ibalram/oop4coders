@@ -86,7 +86,13 @@ Which means: they are a type (\keyword{function}), they are instances of \keywor
 
 \subsection{Lua}
 
-%\lstinputlisting[language={[5.2]Lua}, linerange={1-2}, style=codeStyle]{../codes/lua/person.lua}
+Using tables to create objects, all members are accessible outside the class, hence public.
+
+\lstinputlisting[language={[5.2]Lua}, linerange={1-5,7-7,11-12,14-14,17-19}, style=codeStyle]{../codes/lua/encapsulation/person.lua}
+
+You can access them anywhere
+
+\lstinputlisting[language={[5.2]Lua}, linerange={1-6}, style=codeStyle]{../codes/lua/encapsulation/app.lua}
 
 \subsection{Perl}
 
@@ -182,7 +188,7 @@ If you insist on having protected and private members, some libraries can be hel
 
 \subsection{Lua}
 
-%\lstinputlisting[language={[5.2]Lua}, linerange={1-2}, style=codeStyle]{../codes/lua/person.lua}
+There is no protected members in Lua, but you can use a naming convention to specify them.
 
 \subsection{Perl}
 
@@ -300,7 +306,15 @@ In contrary, the member defined with closures cannot be accessed.
 
 \subsection{Lua}
 
-%\lstinputlisting[language={[5.2]Lua}, linerange={1-2}, style=codeStyle]{../codes/lua/person.lua}
+Using closures, you can create internal fields inside the constructor of an object.
+The functions which access this field must be defined inside the constructor.
+
+\lstinputlisting[language={[5.2]Lua}, linerange={1-6,8-12,19-19}, style=codeStyle]{../codes/lua/encapsulation/person.lua}
+
+You cannot access it outside the class. 
+But, you can create a new public field dynamically, but it will not replace the internal one.
+
+\lstinputlisting[language={[5.2]Lua}, linerange={1-3,7-8}, style=codeStyle]{../codes/lua/encapsulation/app.lua}
 
 \subsection{Perl}
 
