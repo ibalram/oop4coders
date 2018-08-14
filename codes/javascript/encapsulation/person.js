@@ -7,16 +7,15 @@ function Person(name) {
   Person.nbr++;
 
   this.info1 = function(){
-    console.log("My number is: ${num}");
+    console.log("My number is: ", num);
   }
 }
 
 Person.nbr = 0;
 
 Person.prototype.info = function(){
-  console.log("My name: ${this._name}");
+  console.log("My name: ", this._name);
   this.info1();
-  console.log("I am a: " + t);
-  console.log("My lucky number is: " + luckyNumber);
+  console.log("My lucky number is: ", luckyNumber);
   console.log("--------------------------");
 }
