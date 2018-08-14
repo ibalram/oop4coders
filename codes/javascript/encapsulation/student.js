@@ -1,27 +1,14 @@
-function Person(name, byear) {
-  this.name = name;
-  this.byear = byear;
-  Person.nbr++;
+var Person = require("person.js");
+
+module.exports = Student;
+
+function Student(name) {
+  Person.call(this, name);
+  this._name = name + "2";//can be accessed
+  console.log("Student => num = ", num, ", this.num = ", this.num);
+  this.t = "student";
+  luckyNumber = 1;
 }
 
-Person.nbr = 0;
-
-Person.prototype.info = function(){
-	console.log("My name: " + this.name + ", My birth year: " + this.byear);
-}
-
-Person.population = function(){
-	return Person.nbr;
-}
-
-var p = new Person("Karim", 1986);
-var p2 = new Person("Karim+1", 1987);
-
-p.info();
-p2.info();
-var nbr = Person.population();
-
-console.log("The number of persons: " + nbr);
-p2 = null;
-nbr = Person.population();
-console.log("The number of persons: " + nbr);
+Student.prototype = Object.create(Person.prototype);
+Student.constructor = Student;

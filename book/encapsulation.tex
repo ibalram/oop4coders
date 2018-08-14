@@ -63,12 +63,26 @@ These members can be accessed anywhere
 \subsection{Javascript} 
 
 All fields with the keyword \keyword{this} are public. 
-All  methods defined using the same keyword inside the constructor or using the prototype are public.
+All methods defined using the same keyword inside the constructor or using the prototype are public.
 
-%\lstinputlisting[linerange={1-1,5-5}, style=codeStyle]{../codes/javascript/person2.js}
-%
-%\lstinputlisting[linerange={1-1,15-15}, style=codeStyle]{../codes/javascript/person.js}
+\lstinputlisting[linerange={3-4,12-12,16-16,22-22}, style=codeStyle]{../codes/javascript/encapsulation/person.js}
 
+Which can be accessed anywhere
+
+\lstinputlisting[linerange={1-1,4-4,7-7,12-12}, style=codeStyle]{../codes/javascript/encapsulation/app.js}
+
+Actually, objects in Javascript can be updated by assigning them new fields and methods dynamically. 
+This gives you the power to upgrade existing prototypes (classes) and decorate objects without the need to create more classes.
+Also, as \nameword{uncle Ben} of \nameword{Spider-man} once said: ``\textit{With great power comes great responsibility}".
+
+\lstinputlisting[linerange={1-17}, style=codeStyle]{../codes/javascript/encapsulation/decorate.js}
+
+Here, we created two objects, but with different fields. 
+Then, we can create a function which print different fields of a Person. 
+Just a note: you have to verify that the member is not a function, since functions in Javascript are first class objects. 
+Which means: they are a type (\keyword{function}), they are instances of \keyword{Object} and they can be treated as any variable.
+
+\lstinputlisting[linerange={19-29}, style=codeStyle]{../codes/javascript/encapsulation/decorate.js}
 
 \subsection{Lua}
 
@@ -156,13 +170,15 @@ It is also important to point out that protected members can be accessed from an
 
 \lstinputlisting[language=Java, linerange={3-3,7-7,29-29,31-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
 
-
 \subsection{Javascript} 
 
-%\lstinputlisting[linerange={1-1,5-5}, style=codeStyle]{../codes/javascript/person2.js}
+There is no protected members in Javascript. 
+You can find some hacks on the web, but they can be expensive in term of memory and processing power.
+To emulate such mechanism, you have to know the caller object 
+If you insist on having protected and private members, some libraries can be helpful such as \nameword{mozart}\footnote{mozart: \url{https://github.com/philipwalton/mozart}}.
 
-%\lstinputlisting[linerange={1-1,15-15}, style=codeStyle]{../codes/javascript/person.js}
-
+% https://philipwalton.com/articles/implementing-private-and-protected-members-in-javascript/
+% https://philipwalton.com/articles/implementing-private-and-protected-members-in-javascript/
 
 \subsection{Lua}
 
@@ -269,9 +285,13 @@ It is also important to point out that private members can be accessed from anot
 
 \subsection{Javascript} 
 
-%\lstinputlisting[linerange={1-1,5-5}, style=codeStyle]{../codes/javascript/person2.js}
-%
-%\lstinputlisting[linerange={1-1,15-15}, style=codeStyle]{../codes/javascript/person.js}
+There is a convention to use underscore \keyword{\_} as a mean to signal a class member as private. 
+But the member still accessible as public. 
+Another way is to use closures (the combination of a function and the lexical environment within which that function was declared), by defining a field inside the constructor using the keyword \keyword{var} or \keyword{let}.
+But, any method using this variable must be defined inside the constructor.
+This means each time you create a new instance (object), a new function will be created for this object. 
+
+
 
 
 \subsection{Lua}

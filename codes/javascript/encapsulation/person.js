@@ -1,3 +1,5 @@
+module.exports = Person;
+
 function Person(name) {
   this.luckyNumber = 0;
   this._name = name;
@@ -5,7 +7,6 @@ function Person(name) {
   Person.nbr++;
 
   this.info1 = function(){
-    console.log("My name: ${this._name}");
     console.log("My number is: ${num}");
   }
 }
@@ -13,21 +14,9 @@ function Person(name) {
 Person.nbr = 0;
 
 Person.prototype.info = function(){
-	console.log("My name: " + this.name + ", My birth year: " + this.byear);
+  console.log("My name: ${this._name}");
+  this.info1();
+  console.log("I am a: " + t);
+  console.log("My lucky number is: " + luckyNumber);
+  console.log("--------------------------");
 }
-
-Person.population = function(){
-	return Person.nbr;
-}
-
-var p = new Person("Karim", 1986);
-var p2 = new Person("Karim+1", 1987);
-
-p.info();
-p2.info();
-var nbr = Person.population();
-
-console.log("The number of persons: " + nbr);
-p2 = null;
-nbr = Person.population();
-console.log("The number of persons: " + nbr);
