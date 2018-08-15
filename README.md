@@ -12,9 +12,6 @@ In this book, I want to focus on OOP from developers (programmer's) point of vie
 The different implementations of OOP concepts in most object-oriented programming languages.
 To this end, I will choose some programming languages, the free ones, to express that.
 
-Though, this book is intended for programmers to learn how to link the OOP concepts with their chosen language, it gives a solution for lazy ones.
-If you don't like programming so much, you can use Umbrello UML Modeller which can generate code for various languages.
-
 So, "**Less talking, more coding**"
 
 
@@ -23,7 +20,7 @@ So, "**Less talking, more coding**"
 Download the latest version from [HERE](https://github.com/kariminf/oop4coders/releases/latest).
 There are two files:
 * oop4coders_book_version.pdf : The book in pdf format
-* oop4coders_codes_version.zip : The codes 
+* oop4coders_codes_version.zip : The codes
 
 ## License
 
