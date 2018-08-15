@@ -34,6 +34,8 @@
 * https://perldoc.perl.org/perlootut.html
 * http://ods.com.ua/win/eng/program/Perl5Unleashed/ch5.phtml
 * https://www.perl.com/pub/2002/11/14/exception.html/
+* https://www.perlmonks.org/?node_id=571509
+* https://www.perlmonks.org/?node_id=8251
 
 ## Php
 

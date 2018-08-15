@@ -7,7 +7,7 @@ public class Student extends Person {
 		t = "student";
 		luckyNumber = 1;
 		luckyNumber2 = 2;
-		//this.name = "other name";//cannot be accessed: private
+		//this.num = 80;//cannot be accessed: private
 	}
 
 }

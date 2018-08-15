@@ -1,4 +1,3 @@
-
 class Person
 
 	@@nbr = 0
