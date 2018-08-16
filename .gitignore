@@ -162,3 +162,5 @@ codes/lua/**/*.hex
 #other formats
 *.djvu
 *.epub
+
+design/_*

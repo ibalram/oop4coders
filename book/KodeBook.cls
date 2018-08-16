@@ -35,6 +35,11 @@
 
 \RequirePackage{fancyhdr} 
 \RequirePackage[T1]{fontenc}
+\RequirePackage{xcolor}
+
+\definecolor{indigo}{RGB}{75,0,130}%indigo
+%\definecolor{purpleX11}{RGB}{160,32,240}
+\definecolor{Crimson}{rgb}{0.6471, 0.1098, 0.1882}
 
 %\RequirePackage{verbatim} 
 
@@ -63,74 +68,97 @@
 
 \RequirePackage[left=2.5cm,right=1.5 cm,top=2.2 cm,bottom=2 cm,headheight=2cm]{geometry}
 
+\RequirePackage[Glenn]{fncychap}
+\ChTitleVar{\bfseries\Large\scshape\color{indigo}}
+\ChNumVar{\bfseries\Huge\color{indigo}}
+\ChNameVar{\bfseries\Large\color{indigo}}
+
+\RequirePackage{etoolbox}
+
+%\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
+\patchcmd{\DOTI}{\vskip 80\p@}{\vskip 20\p@}{}{}
+\patchcmd{\DOTIS}{\vskip 40\p@}{\vskip 0\p@}{}{}
+%Color
+\patchcmd{\DOCH}{\mghrulefill}{\color{black}\mghrulefill}{}{}
+\patchcmd{\DOTIS}{\mghrulefill}{\color{black}\mghrulefill}{}{}
+\patchcmd{\DOTI}{\mghrulefill}{\color{black}\mghrulefill}{}{}
+%\makeatother
+
+%Quotes, introduction
+\RequirePackage[many]{tcolorbox}
+
 
 % Chapter counter
 %\newcounter {chapcount}
 %\setcounter{chapcount}{0}
 %
 %
-\def\@chapter[#1]#2{
-
-\cleardoublepage
-\thispagestyle{plain}
-
-\refstepcounter{chapter}
-
-\addcontentsline{toc}{chapter}%
-{\protect\numberline{\thechapter}#1}
-
-\noindent
-\begin{tikzpicture}
-
-\node[anchor=north west,minimum width=\textwidth,minimum height=2cm,fill=blue] (RB) at (current page.north west){
-\begin{minipage}[t!]{14cm}
-\begin{center}
-\huge\bfseries\textcolor{yellow}{#1}
-\end{center}
-\end{minipage}	
-};
-
-\node[anchor=north west,minimum width=3cm,minimum height=1.5cm,fill=yellow] at ([shift={(0.5cm,1.75cm)}] RB.south west){
-	\begin{minipage}[t!]{3cm}
-	\begin{center}
-	\huge\bfseries\textcolor{blue}{\Roman{chapter}}
-	\end{center}
-	\end{minipage}
-};
-
-\end{tikzpicture}
-
-}
-
-
-\def\@schapter#1 {
-	\cleardoublepage
-	\thispagestyle{plain}
-	\noindent
-	\begin{tikzpicture}
-	
-	\node[anchor=north west,minimum width=\textwidth,minimum height=2cm,fill=blue] (RB) at (current page.north west){
-		\begin{minipage}[t!]{14cm}
-		\begin{center}
-		\huge\bfseries #1
-		\end{center}
-		\end{minipage}	
-	};
-	
-	\end{tikzpicture}
-}
+%\def\@chapter[#1]#2{
+%
+%\cleardoublepage
+%\thispagestyle{plain}
+%
+%\refstepcounter{chapter}
+%
+%\addcontentsline{toc}{chapter}%
+%{\protect\numberline{\thechapter}#1}
+%
+%\noindent
+%\begin{tikzpicture}
+%
+%\node[anchor=north west,minimum width=\textwidth,minimum height=2cm,fill=blue] (RB) at (current page.north west){
+%\begin{minipage}[t!]{14cm}
+%\begin{center}
+%\huge\bfseries\textcolor{yellow}{#1}
+%\end{center}
+%\end{minipage}	
+%};
+%
+%\node[anchor=north west,minimum width=3cm,minimum height=1.5cm,fill=yellow] at ([shift={(0.5cm,1.75cm)}] RB.south west){
+%	\begin{minipage}[t!]{3cm}
+%	\begin{center}
+%	\huge\bfseries\textcolor{blue}{\Roman{chapter}}
+%	\end{center}
+%	\end{minipage}
+%};
+%
+%\end{tikzpicture}
+%
+%}
+%
+%
+%\def\@schapter#1 {
+%	\cleardoublepage
+%	\thispagestyle{plain}
+%	\noindent
+%	\begin{tikzpicture}
+%	
+%	\node[anchor=north west,minimum width=\textwidth,minimum height=2cm,fill=blue] (RB) at (current page.north west){
+%		\begin{minipage}[t!]{14cm}
+%		\begin{center}
+%		\huge\bfseries #1
+%		\end{center}
+%		\end{minipage}	
+%	};
+%	
+%	\end{tikzpicture}
+%}
 
 \def\thesection{\arabic{section}}
 
-\newenvironment{introduction}
-{
-	\begin{center}
-	\itshape \small
-	\bfseries \color{blue}
-}
-{
-	\end{center}
-}
+%\newenvironment{introduction}
+%{
+%	\begin{center}
+%	\itshape \small
+%	\bfseries \color{blue}
+% 
+%}
+%{
+%};
+%	\end{center}
+%}
 
 
 \renewcommand{\@listI}{%
@@ -194,14 +222,38 @@ Ligatures=TeX
 % ============================================
 
 
-\RequirePackage[many]{tcolorbox}
 
 \newtcolorbox{kodequote}[1]{%
-colback=blue!5!white,
-colframe=blue!75!black,
+colback=indigo!10!white,
+colframe=indigo,
 fontupper=\quotefont,
 title={#1}
 }
+
+\newtcolorbox{introduction}{
+	enhanced jigsaw,
+	oversize,
+	rightrule=0pt,
+	toprule=0pt,
+	bottomrule=0pt,
+	leftrule=8pt,
+	colback=white,
+	colframe=indigo,
+	arc=0pt,
+	outer arc=0pt,
+%	title={Remarque :},
+%	title style={white},
+%	fonttitle=\color{black}\bfseries,
+	titlerule=0pt,
+	bottomtitle=0pt,
+	top=0pt,
+	bottom=0pt,
+	left=0pt,
+	enlarge left by=.25\textwidth,
+	width=0.75\textwidth,
+	fontupper=\itshape
+}
+
 
 \renewcommand{\baselinestretch}{1}
 
@@ -247,3 +299,81 @@ title={#1}
 
 \def\nameword#1{{\itshape\bfseries\color{red} #1}}
 
+%=======================================================
+%===================== COVER ===========================
+%=======================================================
+
+\newtoks\@coverimage
+\@coverimage={}
+
+\def\cover#1
+{
+	\IfFileExists{#1}{
+		\@coverimage={\noindent\includegraphics[width=\paperwidth, height=\paperheight]{#1} } %
+	}{
+	\@coverimage={}
+}
+}
+
+\def\maketitle {
+	\addcontentsline{toc}{part}{\@title}
+	\begin{tikzpicture}[remember picture,overlay]
+	
+	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
+	
+	\node[anchor=north west,minimum width=\textwidth + 2.5cm,minimum height=8cm,text=black] (RB) 
+	at (current page.north west)
+	{\@title};
+	
+	\node[anchor=north west,minimum width=\textwidth,minimum height=10cm,fill=blue] (RC) at ([shift={(2.5cm,-9cm)}] RB.south west){}; 
+	
+	
+	\node[text=white,text width=8cm,anchor=north west, align=right] at ([shift={(4.5cm,1.2cm)}] RC.south west){
+		\@date
+		\copyright \@author
+	};
+	
+%	\node[text=white,text width=8cm,anchor=north west] at ([shift={(13cm,2cm)}] RC.south west){
+%		\the\@licenceimg
+%	};
+	\end{tikzpicture}
+}
+
+
+\def\frontmatter{
+	\pagenumbering{roman}
+	\pagestyle{empty}
+	%\fancyfoot{} 
+	%\fancyhead{} 
+}
+
+\renewcommand{\mainmatter}{
+	
+	\cleardoublepage
+	
+	\pagenumbering{arabic}
+	
+	\pagestyle{fancy}                       % Sets fancy header and footer
+	\fancyfoot{}                            % Delete current footer settings
+	\renewcommand{\headrulewidth}{0pt}
+	
+	\fancyfoot{}
+	
+	\fancyhead[E]{
+		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
+		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,fill=black] at (0,0){};
+		\node[anchor=east,xshift=.1\textwidth+1.5cm, yshift=-1cm,rectangle, rounded corners=10pt,minimum width=2cm, inner sep=6pt, fill=indigo]
+		{\large \color{black}\textbf{\thepage}};
+		\end{tikzpicture}
+	} 
+	
+	\fancyhead[O]{
+		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
+		\begin{scope}[xshift= 2.5cm]
+		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,fill=black] at (0,0){};
+		\node[anchor=west,xshift=.9\textwidth, yshift=-1cm,rectangle, rounded corners=10pt,minimum width=2cm, inner sep=6pt, fill=indigo]
+		{\large \color{black}\textbf{\thepage}};
+		\end{scope}
+		\end{tikzpicture}
+	}
+} 
