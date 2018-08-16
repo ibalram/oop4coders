@@ -224,8 +224,10 @@ Ligatures=TeX
 
 
 \newtcolorbox{kodequote}[1]{%
-colback=indigo!10!white,
+colback=white,
 colframe=indigo,
+colbacktitle=indigo!10!white,
+coltitle=indigo,
 fontupper=\quotefont,
 title={#1}
 }
@@ -316,21 +318,28 @@ title={#1}
 }
 
 \def\maketitle {
-	\addcontentsline{toc}{part}{\@title}
+	\addcontentsline{toc}{part}{Book}
 	\begin{tikzpicture}[remember picture,overlay]
 	
 	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
 	
-	\node[anchor=north west,minimum width=\textwidth + 2.5cm,minimum height=8cm,text=black] (RB) 
-	at (current page.north west)
-	{\@title};
+	\node[anchor=north west,minimum width=1cm,minimum height=6cm,fill=indigo] (vline1)
+	at ([shift={(2cm,-2cm)}] current page.north west)
+	{}; 
 	
-	\node[anchor=north west,minimum width=\textwidth,minimum height=10cm,fill=blue] (RC) at ([shift={(2.5cm,-9cm)}] RB.south west){}; 
+	\node[anchor=north west, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.2] (title1) 
+	at ([shift={(0.5cm,0cm)}] vline1.north east)
+	{
+		\bfseries
+		\Huge
+		\@title
+	};
+
 	
-	
-	\node[text=white,text width=8cm,anchor=north west, align=right] at ([shift={(4.5cm,1.2cm)}] RC.south west){
-		\@date
-		\copyright \@author
+	\node[text=white,text width=8cm,anchor=north west, align=left] at (vline1.south west){
+		\bfseries
+		\Huge
+		\@author
 	};
 	
 %	\node[text=white,text width=8cm,anchor=north west] at ([shift={(13cm,2cm)}] RC.south west){
@@ -354,26 +363,31 @@ title={#1}
 	\pagenumbering{arabic}
 	
 	\pagestyle{fancy}                       % Sets fancy header and footer
-	\fancyfoot{}                            % Delete current footer settings
+%	\fancyfoot{}                            % Delete current footer settings
 	\renewcommand{\headrulewidth}{0pt}
 	
-	\fancyfoot{}
+	\fancyhf{}
 	
 	\fancyhead[E]{
 		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
-		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,fill=black] at (0,0){};
-		\node[anchor=east,xshift=.1\textwidth+1.5cm, yshift=-1cm,rectangle, rounded corners=10pt,minimum width=2cm, inner sep=6pt, fill=indigo]
-		{\large \color{black}\textbf{\thepage}};
+		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,rectangle,very thick,draw=black] at (-2pt,2pt){};
+		\node[anchor=east,xshift=.1\textwidth+1.5cm, yshift=-1cm,minimum width=1.5cm, inner sep=6pt, fill=white]
+		{\large \color{indigo}\textbf{\thepage}};
 		\end{tikzpicture}
 	} 
 	
 	\fancyhead[O]{
 		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
 		\begin{scope}[xshift= 2.5cm]
-		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,fill=black] at (0,0){};
-		\node[anchor=west,xshift=.9\textwidth, yshift=-1cm,rectangle, rounded corners=10pt,minimum width=2cm, inner sep=6pt, fill=indigo]
-		{\large \color{black}\textbf{\thepage}};
+		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,rectangle,very thick,draw=black] at (2pt,2pt){};
+		\node[anchor=west,xshift=.9\textwidth, yshift=-1cm,minimum width=1.5cm, inner sep=6pt, fill=white]
+		{\large \color{indigo}\textbf{\thepage}};
 		\end{scope}
 		\end{tikzpicture}
+	}
+	
+	\fancypagestyle{plain}{% % <-- this is new
+		\fancyhf{} 
+		\fancyfoot[LE,RO]{} % same placement as with page style "fancy"
 	}
 } 
