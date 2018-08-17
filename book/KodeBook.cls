@@ -317,6 +317,18 @@ title={#1}
 }
 }
 
+\newtoks\@licenseimage
+\@licenseimage={}
+
+\def\license#1
+{
+	\IfFileExists{#1}{
+		\@licenseimage={\noindent\includegraphics[width=4cm]{#1} } %
+	}{
+	\@licenseimage={}
+}
+}
+
 \def\maketitle {
 	\addcontentsline{toc}{part}{Book}
 	\begin{tikzpicture}[remember picture,overlay]
@@ -342,9 +354,9 @@ title={#1}
 		\@author
 	};
 	
-%	\node[text=white,text width=8cm,anchor=north west] at ([shift={(13cm,2cm)}] RC.south west){
-%		\the\@licenceimg
-%	};
+	\node[text=white,text width=8cm,anchor=north west] at ([shift={(-5cm,2cm)}] current page.south east){
+		\the\@licenseimage
+	};
 	\end{tikzpicture}
 }
 
