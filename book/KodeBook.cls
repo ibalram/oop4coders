@@ -63,10 +63,16 @@
 %
 %\setlength{\textwidth}{6.5in}
 %\setlength{\textheight}{8in}
+
+\def\ptop{2.2cm}
+\def\pleft{2.5cm}
+\def\pright{1.5cm}
+\def\pbottom{2cm}
+
 \pagenumbering{arabic} % needed even though this class will not show page numbers
 
 
-\RequirePackage[left=2.5cm,right=1.5 cm,top=2.2 cm,bottom=2 cm,headheight=2cm]{geometry}
+\RequirePackage[left=\pleft,right=\pright,top=\ptop,bottom=\pbottom]{geometry}
 
 \RequirePackage[Glenn]{fncychap}
 \ChTitleVar{\bfseries\Large\scshape\color{indigo}}
@@ -225,7 +231,7 @@ Ligatures=TeX
 
 \newtcolorbox{kodequote}[1]{%
 colback=white,
-colframe=indigo,
+colframe=black,
 colbacktitle=indigo!10!white,
 coltitle=indigo,
 fontupper=\quotefont,
@@ -380,23 +386,53 @@ title={#1}
 	
 	\fancyhf{}
 	
+%	\fancyhead[E]{
+%		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
+%		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,rectangle,very thick,draw=black] at (-2pt,2pt){};
+%		\node[anchor=east,xshift=.1\textwidth+1.5cm, yshift=-1cm,minimum width=1.5cm, inner sep=6pt, fill=white]
+%		{\large \color{indigo}\textbf{\thepage}};
+%		\end{tikzpicture}
+%	} 
+	
 	\fancyhead[E]{
-		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
-		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,rectangle,very thick,draw=black] at (-2pt,2pt){};
-		\node[anchor=east,xshift=.1\textwidth+1.5cm, yshift=-1cm,minimum width=1.5cm, inner sep=6pt, fill=white]
+		\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
+		at ([shift={(0cm,-1cm)}] current page.north west){};
+%		
+		\node[anchor=east, fill=white,minimum width=1cm]
+		at ([shift={(\pleft,0cm)}] bx1.north west)
 		{\large \color{indigo}\textbf{\thepage}};
+%		
+		\node[anchor=east,fill=white,align=left]
+		at ([shift={(2pt,0cm)}] bx1.south east)
+		{\color{indigo}\textbf{\rightmark}};
 		\end{tikzpicture}
 	} 
 	
 	\fancyhead[O]{
-		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
-		\begin{scope}[xshift= 2.5cm]
-		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,rectangle,very thick,draw=black] at (2pt,2pt){};
-		\node[anchor=west,xshift=.9\textwidth, yshift=-1cm,minimum width=1.5cm, inner sep=6pt, fill=white]
+		\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
+		at ([shift={(\pleft,-1cm)}] current page.north west){};
+		%		
+		\node[anchor=east, fill=white,minimum width=1cm,align=left]
+		at ([shift={(-\pright,0cm)}] bx1.north east)
 		{\large \color{indigo}\textbf{\thepage}};
-		\end{scope}
+%		%		
+		\node[anchor=west,fill=white]
+		at ([shift={(0cm,0cm)}] bx1.south west)
+		{\color{indigo}\textbf{\leftmark}};
 		\end{tikzpicture}
 	}
+	
+%	\fancyhead[O]{
+%		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
+%		\begin{scope}[xshift= 2.5cm]
+%		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,rectangle,very thick,draw=black] at (2pt,2pt){};
+%		\node[anchor=west,xshift=.9\textwidth, yshift=-1cm,minimum width=1.5cm, inner sep=6pt, fill=white]
+%		{\large \color{indigo}\textbf{\thepage}};
+%		\end{scope}
+%		\end{tikzpicture}
+%	}
 	
 	\fancypagestyle{plain}{% % <-- this is new
 		\fancyhf{} 
