@@ -96,76 +96,7 @@
 \RequirePackage[many]{tcolorbox}
 
 
-% Chapter counter
-%\newcounter {chapcount}
-%\setcounter{chapcount}{0}
-%
-%
-%\def\@chapter[#1]#2{
-%
-%\cleardoublepage
-%\thispagestyle{plain}
-%
-%\refstepcounter{chapter}
-%
-%\addcontentsline{toc}{chapter}%
-%{\protect\numberline{\thechapter}#1}
-%
-%\noindent
-%\begin{tikzpicture}
-%
-%\node[anchor=north west,minimum width=\textwidth,minimum height=2cm,fill=blue] (RB) at (current page.north west){
-%\begin{minipage}[t!]{14cm}
-%\begin{center}
-%\huge\bfseries\textcolor{yellow}{#1}
-%\end{center}
-%\end{minipage}	
-%};
-%
-%\node[anchor=north west,minimum width=3cm,minimum height=1.5cm,fill=yellow] at ([shift={(0.5cm,1.75cm)}] RB.south west){
-%	\begin{minipage}[t!]{3cm}
-%	\begin{center}
-%	\huge\bfseries\textcolor{blue}{\Roman{chapter}}
-%	\end{center}
-%	\end{minipage}
-%};
-%
-%\end{tikzpicture}
-%
-%}
-%
-%
-%\def\@schapter#1 {
-%	\cleardoublepage
-%	\thispagestyle{plain}
-%	\noindent
-%	\begin{tikzpicture}
-%	
-%	\node[anchor=north west,minimum width=\textwidth,minimum height=2cm,fill=blue] (RB) at (current page.north west){
-%		\begin{minipage}[t!]{14cm}
-%		\begin{center}
-%		\huge\bfseries #1
-%		\end{center}
-%		\end{minipage}	
-%	};
-%	
-%	\end{tikzpicture}
-%}
-
 \def\thesection{\arabic{section}}
-
-%\newenvironment{introduction}
-%{
-%	\begin{center}
-%	\itshape \small
-%	\bfseries \color{blue}
-% 
-%}
-%{
-%};
-%	\end{center}
-%}
-
 
 \renewcommand{\@listI}{%
 	\leftmargin=25pt
@@ -194,12 +125,14 @@ ItalicFont=*-Italic,
 BoldItalicFont=*-BoldItalic
 ]{CrimsonText} %
 
-\newfontface\merienda
+\newfontfamily\merienda
 [Path = fonts/Merienda/,
 Extension = .ttf,
 Ligatures=TeX,
+UprightFont=*-Regular,
+BoldFont=*-Bold,
 Scale=1
-]{Merienda-Regular} %
+]{Merienda} %
 
 
 \newfontface\quotefont
@@ -314,6 +247,7 @@ title={#1}
 %===================== COVER ===========================
 %=======================================================
 
+
 \newtoks\@coverimage
 \@coverimage={}
 
@@ -338,13 +272,38 @@ title={#1}
 }
 }
 
+\newcounter{coverind}
+
+\def\replace#1{%
+	\setcounter{coverind}{0}
+	\begingroup
+	\edef\@tempa{#1 }%
+	\expandafter\endgroup
+	\expandafter\replaceit\@tempa\relax
+}
+
+\def\replaceit#1 #2\relax{%replace blanks in a string
+	#1
+	\begingroup
+	\ifx\relax#2\relax  % is #2 empty?
+	\def\next{\endgroup\endit}% your own end-macro if required
+	\else
+	\def\next{\endgroup\\[0.25cm]\hspace{\arabic{coverind}cm}\replaceit#2\relax}%
+	\stepcounter{coverind}%
+%	\addtocounter{coverind}{5}
+	\fi
+	\next
+}
+\def\endit{}
+
+
 \def\maketitle {
 	\addcontentsline{toc}{part}{Book}
 	\begin{tikzpicture}[remember picture,overlay]
 	
 	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
 	
-	\node[anchor=north west,minimum width=1cm,minimum height=6cm,fill=indigo] (vline1)
+	\node[anchor=north west,minimum width=1cm,minimum height=12cm,fill=indigo] (vline1)
 	at ([shift={(2cm,-2cm)}] current page.north west)
 	{}; 
 	
@@ -353,11 +312,13 @@ title={#1}
 	{
 		\bfseries
 		\Huge
-		\@title
+		\merienda
+%		\@title
+		\replace\@title
 	};
 
 	
-	\node[text=white,text width=8cm,anchor=north west, align=left] at (vline1.south west){
+	\node[text=white,text width=8cm,anchor=north west, align=left] at ([shift={(0cm, -.5cm)}] vline1.south west){
 		\bfseries
 		\Huge
 		\@author
