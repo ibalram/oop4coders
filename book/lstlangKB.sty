@@ -1,0 +1,192 @@
+%=========================================================================
+% Language definition:
+% ---------------------
+% The default ones sometimes misses some keywords, so define my own
+%=========================================================================
+
+\ProvidesFile{lstlangKB.sty}
+[2018/08/19 1.0 KodeBook listings language file]
+
+\RequirePackage{listings}
+
+
+\lstdefinelanguage[KB]{C++}
+{
+	keywords={
+		class, private, public, protected, friend, new, struct, static,
+		\#include, namespace, using, delete, 
+		if, else, try, catch, const, return, throw,
+		\#ifndef,\#define, \#endif,
+	},
+	morekeywords=[2]{
+		string, int, void, char, bool, ostream, operator, 
+		this, super, std, 
+	},
+	morekeywords=[3]{
+		atoi,
+	},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+\lstdefinelanguage[KB]{Java}
+{
+	keywords={
+		class, private, public, protected, new, static, extends, implements,
+		import, @Override,
+		if, else, try, catch, final, return, throw, throws, 
+	},
+	morekeywords=[2]{
+		String,int, void, boolean, Object, false, true,
+		this, super, null, System, 
+		Cloneable, Comparable,
+		CloneNotSupportedException,
+	},
+	morekeywords=[3]{
+		equals, getClass, compareTo, clone, hashCode, toString,
+	},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+} 
+
+\lstdefinelanguage[KB]{Javascript}
+{
+	keywords={
+		break, case, catch, continue, debugger, default, delete, do, 
+		else, finally, for, function, if, in, instanceof, new,  
+		return, switch, throw, try, typeof, var, while, with,
+		class, export, throw, implements, import, 
+	},
+	morekeywords=[2]{
+		null, this, false, true, boolean, Object,
+		prototype,
+	},
+	morekeywords=[3]{
+		console, module, constructor, toString,
+	},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+
+\lstdefinelanguage[KB]{Lua}
+{
+	keywords={
+		function, return, end, or, and, local, 
+		require,
+		if, then, else, elseif,
+	},
+	morekeywords=[2]{
+		nil,
+	},
+	morekeywords=[3]{
+		__eq,__lt, __le, tostring,
+		error, pcall,
+		setmetatable, __index, __newindex, 
+		print, os, exit,
+	},
+	sensitive=false,
+	morecomment=[l]{--},
+%	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+} 
+
+\lstdefinelanguage[KB]{Perl}
+{
+	keywords={
+		package, sub, my, use,
+		if, else, unless,
+		die, return, eval, 
+		bless, 
+	},
+	morekeywords=[2]{
+		shift, @_,
+		__PACKAGE__,
+		caller,
+		Scalar, Util,
+	},
+	morekeywords=[3]{
+		eq, exists, print, isa,
+		refaddr,
+	},
+	sensitive=true,
+	morecomment=[l]{\#},
+	%	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+\lstdefinelanguage[KB]{PHP}
+{
+	keywords={
+		class, private, public, protected, new, extends, implements,
+		var, function, require_once, return, if, else, throw,  
+		catch, switch, case, 
+	},
+	morekeywords=[2]{
+		\$this, parent, clone, 
+	},
+	morekeywords=[3]{
+		__construct, __toString, __clone, print, echo,
+		__get, __set, 
+	},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+\lstdefinelanguage[KB]{Python}
+{
+	keywords={
+		class, def, return, try, except, as, 
+		@staticmethod,@property,
+	},
+	morekeywords=[2]{
+		super,
+		object,
+	},
+	morekeywords=[3]{
+		__init__, 
+		__str__,
+		__copy__,
+		__eq__,
+		__lt__,
+		__hash__,
+		__del__,
+		print, str, copy, hash, del,
+	},
+	sensitive=false,
+	morecomment=[l]{\#},
+	morestring=[b]",
+	morestring=[b]',
+} 
+
+\lstdefinelanguage[KB]{Ruby}
+{
+	keywords={
+		class, def, end, if, else,
+		include, case, when, raise, rescue, begin, ensure, module,
+	},
+	morekeywords=[2]{
+		super, Comparable, ObjectSpace, 
+		StandardError, nil, 
+	},
+	morekeywords=[3]{
+		puts, initialize, finalize, 
+		to_s, initialize_clone, new, clone, 
+	},
+	sensitive=false,
+	morecomment=[l]{\#},
+	morestring=[b]",
+	morestring=[b]',
+} 

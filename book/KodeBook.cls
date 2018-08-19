@@ -270,6 +270,7 @@ title={#1}
 
 
 \RequirePackage{listings}
+\RequirePackage{lstlangKB}
 \RequirePackage{textcomp} %for textasciitilde
 
 \lstdefinestyle{codeStyle}{
@@ -279,11 +280,13 @@ title={#1}
 	xleftmargin=1.5cm,%\parindent,
 	showstringspaces=false,
 	basicstyle=\scriptsize\ttfamily\bfseries, %\codefont, 
-	keywordstyle=\bfseries\color{green!40!black},
-	commentstyle=\itshape\color{purple!40!black},
-	identifierstyle=\color{blue},
-	stringstyle=\color{orange},
-	backgroundcolor=\color{blue!10!white},
+	keywordstyle=\bfseries\color{blue!70!black}, %green!40!black
+	keywordstyle = [2]{\bfseries\color{orange!70!black}},
+	keywordstyle = [3]{\bfseries\color{red!70!black}},
+	commentstyle=\itshape\color{black!70!white}, %purple!40!black
+	identifierstyle=\color{black},%blue
+	stringstyle=\color{green!50!black},
+	backgroundcolor=\color{blue!5!white},
 	lineskip=.2em,
 	numbers=left
 	%  frameround=tttt
@@ -405,7 +408,7 @@ title={#1}
 %		
 		\node[anchor=east,fill=white,align=left]
 		at ([shift={(2pt,0cm)}] bx1.south east)
-		{\color{indigo}\textbf{\rightmark}};
+		{\color{indigo}\textbf{\nouppercase{\rightmark}}};
 		\end{tikzpicture}
 	} 
 	
@@ -420,7 +423,7 @@ title={#1}
 %		%		
 		\node[anchor=west,fill=white]
 		at ([shift={(0cm,0cm)}] bx1.south west)
-		{\color{indigo}\textbf{\leftmark}};
+		{\color{indigo}\textbf{\nouppercase{\leftmark}}};
 		\end{tikzpicture}
 	}
 	
@@ -439,3 +442,5 @@ title={#1}
 		\fancyfoot[LE,RO]{} % same placement as with page style "fancy"
 	}
 } 
+
+
