@@ -307,7 +307,7 @@ title={#1}
 	at ([shift={(2cm,-2cm)}] current page.north west)
 	{}; 
 	
-	\node[anchor=north west, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.2] (title1) 
+	\node[anchor=north west, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.5] (title1) 
 	at ([shift={(0.5cm,0cm)}] vline1.north east)
 	{
 		\bfseries

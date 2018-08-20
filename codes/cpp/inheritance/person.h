@@ -1,3 +1,6 @@
+#ifndef PERSON_H
+#define PERSON_H
+
 #include <iostream>
 #include <string>
 
@@ -12,3 +15,4 @@ class Person
         std::string name;
         int byear;
 };
+#endif /* PERSON_H */
