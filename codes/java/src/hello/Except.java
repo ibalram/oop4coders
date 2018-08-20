@@ -1,3 +1,5 @@
+package hello;
+
 public class Except {
 	public static void main(String[] args) {
 

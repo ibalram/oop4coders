@@ -1,3 +1,5 @@
+package clsobj;
+
 public class ObjMeth {
 
 	public static void main(String[] args) {

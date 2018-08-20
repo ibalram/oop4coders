@@ -1,4 +1,7 @@
+package hello;
+
 import java.util.Scanner;
+
 public class Func {
 	public static void main(String[] args) {
 		System.out.print("Please enter an integer value: ");
