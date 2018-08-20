@@ -1,17 +1,17 @@
 class Person {
-	constructor(name, byear) {
-		this.name = name;
-		this["byear"] = byear;
-		Person.nbr++;
-	}
+    constructor(name, byear) {
+        this.name = name;
+        this["byear"] = byear;
+        Person.nbr++;
+    }
 
-	info(){
-		console.log("My name: " + this.name + ", My birth year: " + this.byear);
-	}
+    info(){
+        console.log("My name: " + this.name + ", My birth year: " + this.byear);
+    }
 
-	static population() {
-		return Person.nbr;
-	}
+    static population() {
+        return Person.nbr;
+    }
 }
 
 Person.nbr = 0;

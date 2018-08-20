@@ -1,32 +1,32 @@
 <?php
 class Rectangle {
 
-	private $width = 0;
-	private $height = 0;
+    private $width = 0;
+    private $height = 0;
 
-	public function info() {
-		echo "Width: $this->width, Height: $this->height \n";
-	}
+    public function info() {
+        echo "Width: $this->width, Height: $this->height \n";
+    }
 
-	function __set($property, $value) {
-		if ($property == 'w') {
-			if ($value < $this->width) {
-				$this->height = $value;
-				echo "yay";
-			}
-			else {
-				$this->height = $this->width;
-				$this->width = $value;
-			}
-		}
-	}
+    function __set($property, $value) {
+        if ($property == 'w') {
+            if ($value < $this->width) {
+                $this->height = $value;
+                echo "yay";
+            }
+            else {
+                $this->height = $this->width;
+                $this->width = $value;
+            }
+        }
+    }
 
-	function __get($property) {
-		switch ($property) {
-			case 'w': return $this->width + 2;
-			case 'h': return $this->height + 1;
-		}
-	}
+    function __get($property) {
+        switch ($property) {
+            case 'w': return $this->width + 2;
+            case 'h': return $this->height + 1;
+        }
+    }
 
 }
 

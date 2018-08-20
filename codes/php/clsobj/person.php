@@ -1,28 +1,28 @@
 <?php
 class Person {
 
-	private $name;
-	private $byear;
-	private static $nbr = 0;
+    private $name;
+    private $byear;
+    private static $nbr = 0;
 
-	public function __construct( $name, $byear ) {
-		$this->name = $name;
-		$this->byear = $byear;
-		self::$nbr++;
-	}
+    public function __construct( $name, $byear ) {
+        $this->name = $name;
+        $this->byear = $byear;
+        self::$nbr++;
+    }
 
-	function __destruct() {
-		self::$nbr--;
-		print "$this->name is out\n";
-	}
+    function __destruct() {
+        self::$nbr--;
+        print "$this->name is out\n";
+    }
 
-	public function info() {
-		echo "My name: $this->name, My birth year: $this->byear \n";
-	}
+    public function info() {
+        echo "My name: $this->name, My birth year: $this->byear \n";
+    }
 
-	public function population() {
-		return self::$nbr;
-	}
+    public function population() {
+        return self::$nbr;
+    }
 
 }
 

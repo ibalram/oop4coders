@@ -1,8 +1,8 @@
 function fact(i)
-	if i <= 1 then
-		return 1
-	end
-	return i * fact(i-1)
+    if i <= 1 then
+        return 1
+    end
+    return i * fact(i-1)
 end
 
 io.write("Please enter an integer value: ")

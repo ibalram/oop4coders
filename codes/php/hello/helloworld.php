@@ -1,3 +1,3 @@
 <?php
-	echo "<B>Hello world!</B>\n";
+echo "<B>Hello world!</B>\n";
 ?>

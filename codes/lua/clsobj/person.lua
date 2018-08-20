@@ -2,18 +2,18 @@ local Person = {}
 Person.__index = Person
 
 function Person.new(name, byear)    -- The constructor
-  Person.nbr = Person.nbr + 1
-  return setmetatable({name = name, byear = byear}, Person)
+    Person.nbr = Person.nbr + 1
+    return setmetatable({name = name, byear = byear}, Person)
 end
 
 Person.nbr = 0
 
 function Person:info()
-  print("My name: " .. self.name .. ", My birth year: " .. self.byear)
+    print("My name: " .. self.name .. ", My birth year: " .. self.byear)
 end
 
 function Person.population()
-  return Person.nbr
+    return Person.nbr
 end
 
 local p = Person.new("Karim", 1986)

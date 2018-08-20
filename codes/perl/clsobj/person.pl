@@ -1,35 +1,35 @@
 #! /usr/bin/perl -w
 
 {
-	package Person;
+    package Person;
 
-	my $nbr = 0;
+    my $nbr = 0;
 
-	sub new {
-		my $class = shift;
-		my $self = {
-			_name => shift,
-			_byear => shift,
-		};
-		$nbr++;
-		bless $self, $class;
-		return $self;
-	}
+    sub new {
+        my $class = shift;
+        my $self = {
+            _name => shift,
+            _byear => shift,
+        };
+        $nbr++;
+        bless $self, $class;
+        return $self;
+    }
 
-	sub DESTROY {
-		my ($self) = @_;
-		$nbr--;
-		print "$self->{_name} is out\n";
-	}
+    sub DESTROY {
+        my ($self) = @_;
+        $nbr--;
+        print "$self->{_name} is out\n";
+    }
 
-	sub info {
-		my( $self ) = @_;
-		print "My name: $self->{_name}, My birth year: $self->{_byear}\n";
-	}
+    sub info {
+        my( $self ) = @_;
+        print "My name: $self->{_name}, My birth year: $self->{_byear}\n";
+    }
 
-	sub population {
-		return $nbr;
-	}
+    sub population {
+        return $nbr;
+    }
 
 }
 

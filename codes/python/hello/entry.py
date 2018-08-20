@@ -4,7 +4,7 @@
 import sys
 
 def main():
-	if len(sys.argv) < 2:
+    if len(sys.argv) < 2:
 		print("Please enter an integer value")
 		sys.exit()
 

@@ -1,21 +1,21 @@
 <?php
 class Person {
 
-	private $name;
-	private $byear;
+    private $name;
+    private $byear;
 
-	public function __construct( $name, $byear ) {
-		$this->name = $name;
-		$this->byear = $byear;
-	}
+    public function __construct( $name, $byear ) {
+        $this->name = $name;
+        $this->byear = $byear;
+    }
 
-	public function __toString() {
-		return "($this->name: $this->byear)";
-	}
+    public function __toString() {
+        return "($this->name: $this->byear)";
+    }
 
-	public function __clone() {
-		$this->byear ++;
-	}
+    public function __clone() {
+        $this->byear ++;
+    }
 
 }
 

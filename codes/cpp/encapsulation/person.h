@@ -6,19 +6,19 @@
 class Person
 {
 
-  friend class Frnd;
-  friend void info_fct(Person p);
+    friend class Frnd;
+    friend void info_fct(Person p);
 
-  public:
+public:
     int luckyNumber;
     Person(std::string name);
     void info();
     void copy(Person other);
 
-  protected:
+protected:
     std::string t;
 
-  private:
+private:
     std::string name;
     int num;
     static int nbr;

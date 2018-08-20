@@ -2,30 +2,30 @@
 
 class Rectangle
 
-	def initialize
-		@width, @height = 0, 0
-	end
+    def initialize
+        @width, @height = 0, 0
+    end
 
-	def w
-		@width + 2
-	end
+    def w
+        @width + 2
+    end
 
-	def h
-		@height + 1
-	end
+    def h
+        @height + 1
+    end
 
-	def w=(value)
-		if value < @width
-			@height = value
-		else
-			@height = @width
-			@width = value
-		end
-	end
+    def w=(value)
+        if value < @width
+            @height = value
+        else
+            @height = @width
+            @width = value
+        end
+    end
 
-	def info
-		puts "Width: #@width, Height: #@height"
-	end
+    def info
+        puts "Width: #@width, Height: #@height"
+    end
 
 end
 

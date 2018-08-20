@@ -6,13 +6,13 @@
 
 class Person
 {
-    public:
+public:
 
-        Person(std::string name, int byear);
-        void info();
+    Person(std::string name, int byear);
+    void info();
 
-    private:
-        std::string name;
-        int byear;
+private:
+    std::string name;
+    int byear;
 };
 #endif /* PERSON_H */

@@ -6,10 +6,10 @@
 
 class Frnd
 {
-  public:
+public:
     static void info(Person p) {
-      std::cout << "Friend class- name: " << p.name << "\n";
-      std::cout << "Friend class- job: " << p.t << "\n";
+        std::cout << "Friend class- name: " << p.name << "\n";
+        std::cout << "Friend class- job: " << p.t << "\n";
     }
 };
 #endif /* FRND_H */

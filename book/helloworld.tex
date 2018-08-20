@@ -367,7 +367,7 @@ The language uses \keyword{\{\}} to define instructions blocks.
 To return a value, the language uses the keyword \keyword{return}.
 Statements end with a semicolon (\keyword{;}).
 
-\lstinputlisting[language={[KB]Java}, linerange={2-2,12-17}, style=codeStyle]{../codes/java/src/hello/Func.java}
+\lstinputlisting[language={[KB]Java}, linerange={5-5,15-22}, style=codeStyle]{../codes/java/src/hello/Func.java}
 
 \subsection{Javascript}
 
@@ -545,7 +545,7 @@ If you import the file using \keyword{require} keyword inside the main block, yo
 Another solution is to use the blocks: \keyword{BEGIN} or \keyword{END}. 
 The former tells the interpreter to begin with this code, and the latter tells it to finish with it.
 
-\begin{lstlisting}[language={[KB]Python}, style=codeStyle]
+\begin{lstlisting}[language={[KB]Ruby}, style=codeStyle]
 END {
 	if __FILE__ == $0
 		...
@@ -557,7 +557,7 @@ def fact(i)
 end
 \end{lstlisting}
 
-\begin{lstlisting}[language={[KB]Python}, style=codeStyle]
+\begin{lstlisting}[language={[KB]Ruby}, style=codeStyle]
 if __FILE__ == $0
 ...
 end
@@ -607,24 +607,24 @@ Or you can throw a new instance of the latter.
 The message in your new exception classes can be passed to the superclass, by the keyword \keyword{super} in their constructors. 
 Also, you can redefine the function \keyword{getMessage()} as shown in our example.
 
-\lstinputlisting[language={[KB]Java}, linerange={39-50}, style=codeStyle]{../codes/java/src/hello/Except.java}
+\lstinputlisting[language={[KB]Java}, linerange={42-53}, style=codeStyle]{../codes/java/src/hello/Except.java}
 
 The function which throw new instances of our exceptions, using the keyword \keyword{throw}, must declare that it have the potential to throw them in its header via the keyword \keyword{throws}. 
 
-\lstinputlisting[language={[KB]Java}, linerange={30-32}, style=codeStyle]{../codes/java/src/hello/Except.java}
+\lstinputlisting[language={[KB]Java}, linerange={33-35}, style=codeStyle]{../codes/java/src/hello/Except.java}
 
 To capture these exceptions, you must use \keyword{try} and \keyword{catch}, or you can send them to an upper caller using \textbf{throws}. 
 There is a keyword \keyword{finally} which is used to execute code in either cases: exception or not. 
 Its benefit is to clean up before exiting; for instance: closing a file.
 
-\lstinputlisting[language={[KB]Java}, linerange={17-26}, style=codeStyle]{../codes/java/src/hello/Except.java}
+\lstinputlisting[language={[KB]Java}, linerange={20-29}, style=codeStyle]{../codes/java/src/hello/Except.java}
 
 There are some other types of exceptions called \nameword{unchecked exceptions} which they don't force the programmer to capture them. 
 You can define your own unchecked exceptions by inheriting from \keyword{RuntimeException}. 
 In this case, you will not need to declare that your function is capable of throwing them. 
 There are some built-in unchecked exceptions relative to arrays and number conversion as shown in this example.
 
-\lstinputlisting[language={[KB]Java}, linerange={4-15}, style=codeStyle]{../codes/java/src/hello/Except.java}
+\lstinputlisting[language={[KB]Java}, linerange={7-18}, style=codeStyle]{../codes/java/src/hello/Except.java}
 
 \subsection{Javascript}
 

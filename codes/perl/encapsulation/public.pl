@@ -1,18 +1,18 @@
 package Person;
 
 sub new {
-	my $class = shift;
-	my $self = {
-		name => shift,
-	};
-	bless $self, $class;
-	return $self;
+    my $class = shift;
+    my $self = {
+        name => shift,
+    };
+    bless $self, $class;
+    return $self;
 }
 
 sub info {
-	my( $self ) = @_;
-	print "My name: ", $self->{name},"\n";
-	print "----------------------------\n";
+    my( $self ) = @_;
+    print "My name: ", $self->{name},"\n";
+    print "----------------------------\n";
 }
 
 1;

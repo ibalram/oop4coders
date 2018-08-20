@@ -2,20 +2,20 @@ local Person = {}
 Person.__index = Person
 
 setmetatable(Person, {
-  __call = function (cls, name, byear)
-    Person.nbr = Person.nbr + 1
-    return setmetatable({name = name, byear = byear}, Person)
-  end,
+    __call = function (cls, name, byear)
+        Person.nbr = Person.nbr + 1
+        return setmetatable({name = name, byear = byear}, Person)
+    end,
 })
 
 Person.nbr = 0
 
 function Person:info()
-  print("My name: " .. self.name .. ", My birth year: " .. self.byear)
+    print("My name: " .. self.name .. ", My birth year: " .. self.byear)
 end
 
 function Person.population()
-  return Person.nbr
+    return Person.nbr
 end
 
 local p = Person("Karim", 1986)

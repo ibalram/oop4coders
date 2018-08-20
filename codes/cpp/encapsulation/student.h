@@ -5,8 +5,8 @@
 
 class Student: public Person
 {
-  public:
-      Student(std::string name);
+public:
+    Student(std::string name);
 };
 
 #endif /* STUDENT_H */

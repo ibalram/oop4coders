@@ -1,21 +1,21 @@
 <html>
-  <head>
+<head>
     <title>Functions</title>
-      <script type="text/javascript" src="func.js">
-      </script>
-      <script type="text/javascript">
-          function exec(){
-              var n = document.getElementById("n").value;
-              var res = "Fact(" + n + ")= ";
-              res += fact(n);
-              document.getElementById("result").innerHTML = res;
-          }
-      </script>
-  </head>
-    <body>
-        Please enter an integer value: 
-        <input type="number" id="n" />
-        <button id="func" onclick="exec()">Factorial</button>
-        <div id="result"></div>
-    </body>
+    <script type="text/javascript" src="func.js">
+    </script>
+    <script type="text/javascript">
+    function exec(){
+        var n = document.getElementById("n").value;
+        var res = "Fact(" + n + ")= ";
+        res += fact(n);
+        document.getElementById("result").innerHTML = res;
+    }
+    </script>
+</head>
+<body>
+    Please enter an integer value:
+    <input type="number" id="n" />
+    <button id="func" onclick="exec()">Factorial</button>
+    <div id="result"></div>
+</body>
 </html>
