@@ -1,28 +1,19 @@
 #include "person.h"
 #include "student.h"
-#include "frnd.h"
-
-void info_fct(Person p) {
-    std::cout << "Friend function- name: " << p.name << "\n";
-    std::cout << "Friend function- job: " << p.t << "\n";
-}
+#include "professor.h"
 
 int main()
 {
-    Person p = Person("Karim_p");
-    Student s = Student("Karim_s");
-    p.luckyNumber = 5;
-    //p.num = 6;//error: private
-    //p.t = "admin"; //error: protected
-    p.info();
-    s.info();
+    Person pe = Person("person1");
+    Student st = Student("student1", 15);
+    Professor pr = Professor("professor1");
+    pe.luckyNumber = 1;
+    st.luckyNumber = 2;
+    //pr.luckyNumber = 3; //private
 
-    Frnd::info(p);
-    info_fct(p);
-
-    p.copy(s);
-
-    p.info();
+    pe.info();
+    st.info();
+    //pr.info(); //private
 
     return 0;
 }

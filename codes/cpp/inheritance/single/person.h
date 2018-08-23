@@ -7,12 +7,12 @@
 class Person
 {
 public:
-
-    Person(std::string name, int byear);
+    Person(std::string name);
     void info();
+    void notImplemented();
+    int luckyNumber;
 
 private:
     std::string name;
-    int byear;
 };
 #endif /* PERSON_H */

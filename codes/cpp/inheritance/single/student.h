@@ -5,10 +5,11 @@
 class Student: public Person
 {
 public:
-    Student(std::string name, int byear, int grade);
+    Student(std::string name, int grade);
     using Person::info;
     void info();
 
 private:
     int grade;
 };
+#endif /* STUDENT_H */

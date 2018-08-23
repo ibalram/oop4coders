@@ -340,7 +340,7 @@ title={#1}
 
 \renewcommand{\mainmatter}{
 	
-	\cleardoublepage
+%	\cleardoublepage
 	
 	\pagenumbering{arabic}
 	
