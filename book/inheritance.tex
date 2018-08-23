@@ -106,7 +106,23 @@ Hence, you cannot have an abstract class with only fields.
 
 \subsection{Java}
 
-%\lstinputlisting[language={[KB]Java}, linerange={1-5,12-12,18-20,27-27,34-34}, style=codeStyle]{../codes/java/src/inheritance/core/Person.java}
+An abstract class is defined by the keyword \keyword{abstract}. 
+It does not have to contain an abstract method, which means you can have an abstract class with just fields. 
+If the class has at least one abstract method, you have to design it as abstract explicitly.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-12}, style=codeStyle]{../codes/java/src/inheritance/abst/Person.java}
+
+The abstract methods must be overridden in the concrete subclasses
+
+\lstinputlisting[language={[KB]Java}, linerange={3-9}, style=codeStyle]{../codes/java/src/inheritance/abst/Professor.java}
+
+If a class does not override all abstract methods of its superclass, it has to be designed as abstract. 
+
+\lstinputlisting[language={[KB]Java}, linerange={3-4}, style=codeStyle]{../codes/java/src/inheritance/abst/Student.java}
+
+You can instantiate just the non-abstract classes
+
+\lstinputlisting[language={[KB]Java}, linerange={6-9}, style=codeStyle]{../codes/java/src/inheritance/abst/App.java}
 
 \subsection{Javascript} 
 
