@@ -5,6 +5,9 @@
 class Professor: private Person
 {
 public:
-    Professor(std::string name);
+    //Professor();
+    using Person::Person;
+//private:
+    //static int nbr;
 };
 #endif /* PROF_H */

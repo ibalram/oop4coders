@@ -22,19 +22,37 @@
 
 \section{Single inheritance}
 
+In this section, we will discuss simple inheritance along with its different implications for each programming language when extending a class:
+\begin{itemize}
+	\item Do you have to define a constructor for the new subclass? i.e. can the constructor be inherited?
+	\item Can we change members visibility?
+	\item How to access superclass's and grandparent class's members?
+\end{itemize}
+
 \subsection{C++}
 
+If the superclass has the default constructor (without parameters), you do not have to define a constructor explicitly unless you want to include some other initializations. 
+If the superclass defines just constructors with parameters, you have to define the constructor of your new subclass. 
+
+\lstinputlisting[language={[KB]C++}, linerange={7-11,13-17}, style=codeStyle]{../codes/cpp/inheritance/single/person.h}
+
+In C++11, you can inherit the constructor using the keyword \keyword{using}; 
+
+\lstinputlisting[language={[KB]C++}, linerange={5-7,9-9,12-12}, style=codeStyle]{../codes/cpp/inheritance/single/professor.h}
+
+
 In C++, to inherit from a class, you have to define an access mode. 
-This access mode can be; public, protected or private.
-
-\lstinputlisting[language={[KB]C++}, linerange={5-6,14-14}, style=codeStyle]{../codes/cpp/inheritance/single/student.h}
-
+This access mode can be: public, protected or private.
 Public access mode preserve members access as they are. 
 As for Protected access mode, public members of the superclass will be considered as protected. 
 While Private access mode considers every member of the superclass as private.
 
-\lstinputlisting[language={[KB]C++}, linerange={5-6,9-9}, style=codeStyle]{../codes/cpp/inheritance/single/professor.h}
+\lstinputlisting[language={[KB]C++}, linerange={5-14}, style=codeStyle]{../codes/cpp/inheritance/single/student.h}
 
+Since C++ accepts multiple inheritance, there is no keyword for superclass. 
+Instead, you can call a method of the parent or grandparent using their names followed by \keyword{::} then the methods name.
+
+\lstinputlisting[language={[KB]C++}, linerange={3-14}, style=codeStyle]{../codes/cpp/inheritance/single/student.cpp}
 
 
 \subsection{Java}

@@ -3,6 +3,7 @@
 Person::Person(std::string name)
 {
     this->name = name;
+    this->luckyNumber = 2;
 }
 
 void Person::info()

@@ -1,11 +1,13 @@
-# oop4coders
+# Object-oriented programming for coders
 
-[![Project](https://img.shields.io/badge/Project-OOP4Coders_book-0014A8.svg?style=plastic)](https://github.com/kariminf/oop4coders)
-[![License](https://img.shields.io/badge/License-Apache_2-0014A8.svg?style=plastic)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Project](https://img.shields.io/badge/Project-OOP4Coders_book-0014A8.svg?style=flat)](https://github.com/kariminf/oop4coders)
+[![Book License](https://img.shields.io/badge/Book_license-CC--BY--SA--4.0-0014A8.svg?style=flat)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Codes License](https://img.shields.io/badge/Codes_licence-MIT-0014A8.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/kariminf/oop4coders.svg)](https://github.com/kariminf/oop4coders/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/kariminf/oop4coders/total.svg)](https://github.com/kariminf/oop4coders/releases)
 [![Github Release](https://img.shields.io/github/downloads/kariminf/oop4coders/latest/total.svg)](https://github.com/kariminf/oop4coders/releases/latest)
 
+<img align="left" src="img/book.jpeg">
 There are a lot of books which talk about OOP philosophy.
 So, if you want to go deeper into OOP paradigm, this isn't your place.
 In this book, I want to focus on OOP from developers (programmer's) point of view.

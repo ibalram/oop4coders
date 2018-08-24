@@ -6,8 +6,8 @@ class Student: public Person
 {
 public:
     Student(std::string name, int grade);
-    using Person::info;
     void info();
+    int luckyNumber;
 
 private:
     int grade;

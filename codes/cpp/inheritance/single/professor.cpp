@@ -1,6 +1,11 @@
 #include "professor.h"
 
-Professor::Professor(std::string name):
-    Person(name)
+/*
+int Professor::nbr = 0;
+
+Professor::Professor():
+    Person("Professor" + nbr)
 {
+    nbr++;
 }
+*/
