@@ -86,7 +86,55 @@ You cannot access grandparent's members directly using \keyword{super.super}, yo
 
 \subsection{Javascript} 
 
-%\lstinputlisting[language={[KB]Javascript}, linerange={19-29}, style=codeStyle]{../codes/javascript/inheritance/decorate.js}
+In Javascript, all class members are public. 
+So, visibility stays as it is when extending a class.
+
+\subsubsection{ECMAScript 5 (ES5)}
+
+Let's define a superclass, where the constructor is a function.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-11}, style=codeStyle]{../codes/javascript/inheritance/single/es5/person.js}
+
+To call the superclass's constructor, we use the function \keyword{call} which takes the context of the current object \keyword{this} as its first parameter. 
+This will allow the current object to possess the same fields initialized as its superclass.
+To inherit the superclass's methods, we must define a subclass prototype similar to that of its superclass.
+We must create a new object based on the superclass's prototype and assign it to the new class's prototype. 
+Be aware not to assign the superclass's prototype directly (the two prototypes will refer the same object).
+If you do, any method you define specific to the subclass will be defined to the superclass too.
+After assigning the prototype, you have to set the constructor to the current class because the cloned prototype's constructor will be referring the superclass's constructor.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-11}, style=codeStyle]{../codes/javascript/inheritance/single/es5/student.js}
+
+To call a method from the superclass's prototype, you can use the function \keyword{call} by passing the context as first parameter then the rest of parameters. 
+In fact, you can call methods of any class even if it is not an ancestor and apply it to the current context, in condition that it uses compatible fields.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={13-16}, style=codeStyle]{../codes/javascript/inheritance/single/es5/student.js}
+
+The constructor of the superclass can be called anywhere inside the subclass's constructor. 
+You have to be cautious when doing that, because the fields can be overridden. 
+Also, not calling the superclass's constructor will not result in an error. 
+But, some fields and initializations may be found missing. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-10}, style=codeStyle]{../codes/javascript/inheritance/single/es5/professor.js}
+
+\subsubsection{ECMAScript 2015 (ES6)}
+
+Classes in new Javascript are primarily syntactical sugar over its existing prototype-based inheritance. 
+The class syntax does not introduce a new object-oriented inheritance model to JavaScript.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={1-11}, style=codeStyle]{../codes/javascript/inheritance/single/es6/person.js}
+
+To call the superclass's constructor, we use the keyword \keyword{super}. 
+This keyword allows us to access the superclass's methods as well. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-15}, style=codeStyle]{../codes/javascript/inheritance/single/es6/student.js}
+
+Like old Javascript, the constructor of the superclass can be omitted without errors. 
+But, some fields which must be defined in the superclass can be absent from the object resulting in malfunctioning of the methods using them.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-3}, style=codeStyle]{../codes/javascript/inheritance/single/es6/professor.js}
+
+
 
 \subsection{Lua}
 
@@ -124,11 +172,11 @@ Hence, you cannot have an abstract class with only fields.
 
 The pure methods must be overridden in the concrete subclasses' (do not forget to override them in the headers). 
 
-\lstinputlisting[language={[KB]Java}, linerange={3-9}, style=codeStyle]{../codes/cpp/inheritance/abst/Professor.java}
+\lstinputlisting[language={[KB]C++}, linerange={3-9}, style=codeStyle]{../codes/cpp/inheritance/abst/professor.h}
 
 If a class does not override all abstract methods of its superclass, it will be implicitly considered as abstract. 
 
-\lstinputlisting[language={[KB]Java}, linerange={3-4}, style=codeStyle]{../codes/cpp/inheritance/abst/Student.java}
+\lstinputlisting[language={[KB]C++}, linerange={5-7}, style=codeStyle]{../codes/cpp/inheritance/abst/student.h}
 
 
 \subsection{Java}
