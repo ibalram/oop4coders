@@ -208,7 +208,7 @@ Using this keyword, you can access just the superclass's methods and not those o
 \section{Abstract class}
 
 An abstract class is a class which cannot be instantiated, but can be extended.
-
+An abstract method is a method which has to be overridden before it can be used. 
 
 \subsection{C++}
 
@@ -288,7 +288,19 @@ The abstract method must be overridden; if not, there will be errors when callin
 
 \subsection{PHP}
 
-%\lstinputlisting[language={[KB]PHP}, linerange={3-3,6-6,8-9,17-17}, style=codeStyle]{../codes/php/inheritance/app.php}
+Classes defined as abstract may not be instantiated.
+To define an abstract method or class, you have to use the keyword \keyword{abstract}.
+
+\lstinputlisting[language={[KB]PHP}, linerange={2-11}, style=codeStyle]{../codes/php/inheritance/abst/person.php}
+
+Any class that contains at least one abstract method, or does not override one, must also be abstract. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-5}, style=codeStyle]{../codes/php/inheritance/abst/student.php}
+
+To override an abstract method, you just delete the keyword abstract and afford an implementation.
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-11}, style=codeStyle]{../codes/php/inheritance/abst/professor.php}
+
 
 \subsection{Python}
 
