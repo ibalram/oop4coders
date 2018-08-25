@@ -294,7 +294,7 @@ The same analogy goes with ECMAScript 2015 (codes are afforded).
 
 \subsection{Lua}
 
-There is no abstract classes or methods in Lua. 
+There are no abstract classes or methods in Lua. 
 You can define a method which always throws an error when called, and consider it as abstract.
 As for abstract classes, I could not find or think of a mechanism to prevent calling the constructor of a class and creating a new object (table) without preventing it to be called inside a subclass constructor.
 You can prevent the new object from calling the class's methods (all of them) by not setting the class as its meta-table. 
@@ -349,7 +349,21 @@ If not all abstract methods are overridden, the new class cannot be instantiated
 
 \subsection{Ruby}
 
-%\lstinputlisting[language={[KB]Ruby}, linerange={6-9,14-14,20-20}, style=codeStyle]{../codes/ruby/inheritance/app.rb}
+There are no abstract classes or methods in Ruby. 
+If you want to prohibit instantiating a class, you can raise an exception whenever its constructor is called. 
+But, the constructor will not be useful to other subclasses. 
+To handle this, you have to verify if the object's class is the current class. 
+As for methods, you raise an exception preventing them from being called.
+
+\lstinputlisting[language={[KB]Ruby}, style=codeStyle]{../codes/ruby/inheritance/abst/person.rb}
+
+Even if you don not override the constructor, the subclass will be accessible because the object's class no longer will be the superclass.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-9}, style=codeStyle]{../codes/ruby/inheritance/abst/professor.rb}
+
+If you do not override the abstract method, the subclass can be instantiated but the abstract method and the methods using it will raise an exception.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-9}, style=codeStyle]{../codes/ruby/inheritance/abst/student.rb}
 
 
 \section{Final class and method}
