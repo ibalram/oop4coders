@@ -175,7 +175,25 @@ The new class will be created similarly to its superclass.
 
 \subsection{PHP}
 
-%\lstinputlisting[language={[KB]PHP}, linerange={3-3,6-6,8-9,17-17}, style=codeStyle]{../codes/php/inheritance/app.php}
+Lets define a class with some private/public fields and functions. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={2-20}, style=codeStyle]{../codes/php/inheritance/single/person.php}
+
+To extend this class, you have to use the keyword \keyword{extends}. 
+To call the superclass's methods, you need to use the keyword \keyword{parent}.
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-19}, style=codeStyle]{../codes/php/inheritance/single/student.php}
+
+If you do not define a constructor for the subclass, it will inherit the constructor of its superclass. 
+As for methods visibility, you can pass from more restricted access to less restricted.
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-11}, style=codeStyle]{../codes/php/inheritance/single/professor.php}
+
+If you define a field with the same name as one of the superclass, you actually creating a new field and not overriding the existing one. 
+When you do, you can no longer access the superclass's field directly unless you use a getter method with the keyword \keyword{parent}.
+Using this keyword, you can access just the superclass's methods and not those of grandparent class.
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-17}, style=codeStyle]{../codes/php/inheritance/single/gradstudent.php}
 
 \subsection{Python}
 
