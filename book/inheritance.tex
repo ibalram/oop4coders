@@ -201,7 +201,22 @@ You can instantiate just the non-abstract classes
 
 \subsection{Javascript} 
 
-%\lstinputlisting[language={[KB]Javascript}, linerange={19-29}, style=codeStyle]{../codes/javascript/inheritance/decorate.js}
+There is no abstract classes or methods either in ECMAScript 5 or ECMAScript 2015. 
+But, you can prevent instantiating a class by verifying if the new object's constructor is the class's. 
+If so, you throw an exception.
+As for methods, you throw the exception anyways.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-16}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/person.js}
+
+If you want a subclass to be abstract too, you have to do the same thing with its constructor. 
+Otherwise, it can be instantiated even if you did not override the abstract method. 
+In this case, you cannot call the abstract method or any other method using it. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-8}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/student.js}
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-12}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/gradstudent.js}
+
+The same analogy goes with ECMAScript 2015 (codes are afforded).
 
 \subsection{Lua}
 
