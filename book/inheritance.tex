@@ -197,7 +197,19 @@ Using this keyword, you can access just the superclass's methods and not those o
 
 \subsection{Python}
 
-%\lstinputlisting[language={[KB]Python}, linerange={4-7, 9-9, 13-13}, style=codeStyle]{../codes/python/inheritance/app.py}
+You can call a superclass method (including the constructor) using two methods:
+\begin{itemize}
+	\item Using the name of the superclass to call the function and pass the context as first parameter
+	\item Using the function \keyword{super} which takes two arguments: the type and the context.
+	It returns a proxy object that delegates method calls to a parent or sibling class of type.
+\end{itemize}
+
+\lstinputlisting[language={[KB]Python}, linerange={6-17}, style=codeStyle]{../codes/python/inheritance/single/student.py}
+
+A constructor can be inherited; if you do not define one in the subclass, the superclass's will be used. 
+The \keyword{pass} statement does nothing; it is required when there is no code to afford.
+
+\lstinputlisting[language={[KB]Python}, linerange={6-7}, style=codeStyle]{../codes/python/inheritance/single/professor.py}
 
 \subsection{Ruby}
 
