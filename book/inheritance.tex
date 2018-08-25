@@ -316,16 +316,31 @@ To override an abstract method, you just delete the keyword abstract and afford 
 
 \subsection{Python}
 
-%\lstinputlisting[language={[KB]Python}, linerange={4-7, 9-9, 13-13}, style=codeStyle]{../codes/python/inheritance/app.py}
+To create abstract classes and methods, there exists a module called \nameword{abc} (abstract base classes). 
+A class's metaclass can be set to be \keyword{ABCMeta}, but the class can be instantiated unless there is at least one abstract method.
+This means, you cannot have an abstract class with just fields. 
+An abstract method is marked by the decorator \keyword{\@abstractmethod}.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-15}, style=codeStyle]{../codes/python/inheritance/abst/person.py}
+
+If all the abstract methods are overridden, the class can be instantiated 
+
+\lstinputlisting[language={[KB]Python}, linerange={6-9}, style=codeStyle]{../codes/python/inheritance/abst/professor.py}
+
+If not all abstract methods are overridden, the new class cannot be instantiated
+
+\lstinputlisting[language={[KB]Python}, linerange={6-7}, style=codeStyle]{../codes/python/inheritance/abst/professor.py}
 
 \subsection{Ruby}
 
 %\lstinputlisting[language={[KB]Ruby}, linerange={6-9,14-14,20-20}, style=codeStyle]{../codes/ruby/inheritance/app.rb}
 
 
-\section{Final class}
+\section{Final class and method}
 
 A final class is a class which cannot be extended. 
+Likewise, a final method is a method which cannot be overridden. 
+Having final methods does not imply the class has to be final. 
 
 \subsection{C++}
 

@@ -158,14 +158,17 @@
 {
 	keywords={
 		class, def, return, try, except, as, 
-		@staticmethod,@property, from, import,
-		if, else, raise, setter, pass, 
+		@staticmethod, @property, from, import,
+		if, else, raise, setter, pass, @abstractmethod,
 	},
 	morekeywords=[2]{
 		object,
 		sys,
 		__name__,
 		Exception,
+		__metaclass__,
+		abc, ABCMeta, 
+		abstractmethod, 
 	},
 	morekeywords=[3]{
 		__init__, __str__, __copy__, __eq__, __lt__, __hash__, __del__,
