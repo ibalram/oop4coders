@@ -252,6 +252,7 @@ The same analogy goes with ECMAScript 2015 (codes are afforded).
 There is no abstract classes or methods in Lua. 
 You can define a method which always throws an error when called, and consider it as abstract.
 As for abstract classes, I could not find or think of a mechanism to prevent calling the constructor of a class and creating a new object (table) without preventing it to be called inside a subclass constructor.
+You can prevent the new object from calling the class's methods (all of them) by not setting the class as its meta-table. 
 
 \lstinputlisting[language={[KB]Lua}, linerange={1-17}, style=codeStyle]{../codes/lua/inheritance/abst/person.lua}
 

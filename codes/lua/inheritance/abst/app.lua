@@ -6,6 +6,6 @@ local pe = Person.new();
 local st = Student.new();
 local pr = Professor.new();
 
--- pe:info(); -- cannot call abstract method
+--pe:info(); -- method doesn't exist
 st:info();
 -- pr:info(); -- cannot call abstract method

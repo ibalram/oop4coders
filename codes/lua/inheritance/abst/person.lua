@@ -3,7 +3,7 @@ Person.__index = Person
 
 function Person.new()    -- The constructor
     local instance = {}
-    setmetatable(instance, Person)
+    --setmetatable(instance, Person)
     return instance
 end
 
