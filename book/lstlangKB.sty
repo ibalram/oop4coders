@@ -187,11 +187,13 @@
 		include, case, when, raise, rescue, begin, ensure, module,
 		END, BEGIN,
 		attr_accessor, attr_reader, attr_writer, 
+		alias_method, 
 	},
 	morekeywords=[2]{
 		super, Comparable, ObjectSpace, 
 		StandardError, nil, 
 		__FILE__, \$0, ARGV, 
+		self, 
 	},
 	morekeywords=[3]{
 		puts, initialize, finalize, 
@@ -199,6 +201,7 @@
 		protected, private, public, 
 		print, exit, to_i, length, 
 		define_finalizer, proc, hash, 
+		instance_method, bind, call,
 	},
 	sensitive=true,
 	morecomment=[l]{\#},

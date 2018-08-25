@@ -213,8 +213,23 @@ The \keyword{pass} statement does nothing; it is required when there is no code 
 
 \subsection{Ruby}
 
-%\lstinputlisting[language={[KB]Ruby}, linerange={6-9,14-14,20-20}, style=codeStyle]{../codes/ruby/inheritance/app.rb}
+You can call a superclass's method (including the constructor) from a method of the same name using the keyword \keyword{super}. 
 
+\lstinputlisting[language={[KB]Ruby}, linerange={3-15}, style=codeStyle]{../codes/ruby/inheritance/single/student.rb}
+
+If the constructor is not defined, the class will inherit its superclass's.
+Also, when you override a method, you can change its visibility mode.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-9}, style=codeStyle]{../codes/ruby/inheritance/single/professor.rb}
+
+To access a superclass method which does not have the same name, there are two ways:
+\begin{itemize}
+	\item either by aliasing it before overriding, using \keyword{alias\_method}.
+	\item or by binding the current context to a class's method. 
+	Using this, you call call even grandparents methods.
+\end{itemize}
+
+\lstinputlisting[language={[KB]Ruby}, linerange={4-21}, style=codeStyle]{../codes/ruby/inheritance/single/gradstudent.rb}
 
 
 \section{Abstract class}
@@ -320,6 +335,7 @@ To create abstract classes and methods, there exists a module called \nameword{a
 A class's metaclass can be set to be \keyword{ABCMeta}, but the class can be instantiated unless there is at least one abstract method.
 This means, you cannot have an abstract class with just fields. 
 An abstract method is marked by the decorator \keyword{\@abstractmethod}.
+The abstract methods can have implementations which can be called from the subclasses methods.
 
 \lstinputlisting[language={[KB]Python}, linerange={4-15}, style=codeStyle]{../codes/python/inheritance/abst/person.py}
 
@@ -329,7 +345,7 @@ If all the abstract methods are overridden, the class can be instantiated
 
 If not all abstract methods are overridden, the new class cannot be instantiated
 
-\lstinputlisting[language={[KB]Python}, linerange={6-7}, style=codeStyle]{../codes/python/inheritance/abst/professor.py}
+\lstinputlisting[language={[KB]Python}, linerange={6-7}, style=codeStyle]{../codes/python/inheritance/abst/student.py}
 
 \subsection{Ruby}
 
