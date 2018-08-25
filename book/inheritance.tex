@@ -258,7 +258,15 @@ You can prevent the new object from calling the class's methods (all of them) by
 
 \subsection{Perl}
 
-%\lstinputlisting[language={[KB]Perl}, linerange={20-22}, style=codeStyle]{../codes/perl/inheritance/public.pl}
+You cannot prevent calling the constructor definitely because it has to be called from its subclasses. 
+But, you can define the constructor as protected: cannot be accessed unless the caller is a subclass. 
+As for methods, you can throw an exception if it is not overridden.
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/inheritance/abst/Person.pm}
+
+The abstract method must be overridden; if not, there will be errors when calling them.
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/inheritance/abst/Student.pm}
 
 \subsection{PHP}
 
