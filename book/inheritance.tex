@@ -134,11 +134,30 @@ But, some fields which must be defined in the superclass can be absent from the 
 
 \lstinputlisting[language={[KB]Javascript}, linerange={3-3}, style=codeStyle]{../codes/javascript/inheritance/single/es6/professor.js}
 
-
-
 \subsection{Lua}
 
-%\lstinputlisting[language={[KB]Lua}, linerange={1-6}, style=codeStyle]{../codes/lua/inheritance/app.lua}
+To create an instance, you create a new table with default fields representing the class which indexes itself.
+The constructor is a method which creates a new object and assign the class as its meta-table.
+In our case, the new object will have a field named \textbf{luckyNumber} which is the same as its meta-table (a reference to it).
+If you want this object to have its own, you have to set the field using the same name.
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-13}, style=codeStyle]{../codes/lua/inheritance/single/person.lua}
+
+To extend a class, all you have to do it creating the table representing it, then set the superclass as its meta-table. 
+In this case, if you call a member (field or method) on this new class and it is not found, it will lookup its meta-table.
+You have to create the object from the superclass, so it will contain the same fields, and add specific fields to it.
+Then, set the current class as its meta-table; otherwise, the new object will lookup its methods from the superclass and not from the current class.
+ 
+As for calling superclass's methods, you can use the dot call (\keyword{.}) instead of the colon (\keyword{:}) and pass the context (current object, \keyword{self}) as first parameter.
+
+\lstinputlisting[language={[KB]Lua}, linerange={3-17}, style=codeStyle]{../codes/lua/inheritance/single/student.lua}
+
+A fancy method to instantiate a class is to pass an object containing the fields we want it to have to its constructor.
+But, if we do not pass a field used by one of its methods, this will result in an error when calling that method.
+
+\lstinputlisting[language={[KB]Lua}, linerange={3-11}, style=codeStyle]{../codes/lua/inheritance/single/professor.lua}
+
+As for accessing other classes' methods, you can call their methods and pass the object as context.
 
 \subsection{Perl}
 
