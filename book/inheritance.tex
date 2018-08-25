@@ -161,7 +161,17 @@ As for accessing other classes' methods, you can call their methods and pass the
 
 \subsection{Perl}
 
-%\lstinputlisting[language={[KB]Perl}, linerange={20-22}, style=codeStyle]{../codes/perl/inheritance/public.pl}
+A class (package here) can extend another using the special variable \keyword{\@ISA}.
+In the subclass's constructor, you can create a new object using the superclass's constructor.
+This will allow you to have the same fields as the superclass and add specific fields to it.
+You can call superclass's methods, including the constructor, using the keyword \keyword{SUPER}. 
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/inheritance/single/Student.pm}
+
+Like any method, the constructor can be inherited if not overridden. 
+The new class will be created similarly to its superclass.
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/inheritance/single/Professor.pm}
 
 \subsection{PHP}
 

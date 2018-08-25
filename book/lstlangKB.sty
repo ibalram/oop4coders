@@ -108,21 +108,21 @@
 \lstdefinelanguage[KB]{Perl}
 {
 	keywords={
-		package, sub, my, use,
+		package, sub, my, use, our,
 		if, else, unless,
 		die, return, eval, 
 		bless, overload,
 	},
 	morekeywords=[2]{
-		shift, @_,
+		shift, @_, @ISA,
 		__PACKAGE__,
 		caller,
 		Scalar, Util,
-		\$ARGV,
+		\$ARGV, SUPER,
 	},
 	morekeywords=[3]{
 		eq, exists, print, isa,
-		refaddr, defined, undef, DESTROY, 
+		refaddr, defined, undef, DESTROY, qw,
 	},
 	sensitive=true,
 	morecomment=[l]{\#},
