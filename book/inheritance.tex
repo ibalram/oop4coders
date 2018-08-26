@@ -436,7 +436,19 @@ As far as I know, there is no way to emulate them either.
 
 \subsection{Perl}
 
-%\lstinputlisting[language={[KB]Perl}, linerange={20-22}, style=codeStyle]{../codes/perl/inheritance/public.pl}
+In Perl, you can prevent a class from being instantiated if it is not your final class. 
+This can be done using the class name in the constructor and the package name.
+If they are equal, then it is OK; otherwise, this will raise an exception.
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-11}, style=codeStyle]{../codes/perl/inheritance/fin/finalcls.pl}
+
+You can create a subclass out of our previous class. 
+But, when you try to instanciate it, this will raise an exception. 
+Unless you do not call the parent constructor inside its constructor.
+
+\lstinputlisting[language={[KB]Perl}, linerange={13-26}, style=codeStyle]{../codes/perl/inheritance/fin/finalcls.pl}
+
+There is no easy way to define a final method. 
 
 \subsection{PHP}
 
