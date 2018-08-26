@@ -462,7 +462,17 @@ likewise, the same keyword is used for final methods
 
 \subsection{Python}
 
-%\lstinputlisting[language={[KB]Python}, linerange={4-7, 9-9, 13-13}, style=codeStyle]{../codes/python/inheritance/app.py}
+Finals are not Pythonic; there is no standard way to do it. 
+But, you can define a meta-class which prevents extending a specific class.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-9}, style=codeStyle]{../codes/python/inheritance/fin/finalcls.py}
+
+When applying this meta to a class, the latter can no longer be extended
+
+\lstinputlisting[language={[KB]Python}, linerange={11-15}, style=codeStyle]{../codes/python/inheritance/fin/finalcls.py}
+
+As for final methods, there a hack using meta-class but too much. 
+The code is afforded here.
 
 \subsection{Ruby}
 
