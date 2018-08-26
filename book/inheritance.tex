@@ -406,7 +406,17 @@ To be final, a method has to be virtual.
 
 \subsection{Java}
 
-%\lstinputlisting[language={[KB]Java}, linerange={1-5,12-12,18-20,27-27,34-34}, style=codeStyle]{../codes/java/src/inheritance/core/Person.java}
+A final class is marked using the keyword \keyword{final}. 
+It cannot be extended, and if you try to extend it you will have a compile error.
+
+\lstinputlisting[language={[KB]Java}, linerange={11-13}, style=codeStyle]{../codes/java/src/inheritance/fin/FinalCls.java}
+
+A final method is also marked using the keyword \keyword{final}. 
+It cannot be overridden, otherwise you will have a compile error.
+
+\lstinputlisting[language={[KB]Java}, linerange={18-18,22-27,31-32}, style=codeStyle]{../codes/java/src/inheritance/fin/FinalMth.java}
+
+
 
 \subsection{Javascript} 
 
