@@ -69,7 +69,8 @@
 \def\pright{1.5cm}
 \def\pbottom{2cm}
 
-\pagenumbering{arabic} % needed even though this class will not show page numbers
+%\pagenumbering{arabic} % needed even though this class will not show page numbers
+\pagestyle{empty}
 
 
 \RequirePackage[left=\pleft,right=\pright,top=\ptop,bottom=\pbottom]{geometry}
@@ -298,7 +299,8 @@ title={#1}
 
 
 \def\maketitle {
-	\addcontentsline{toc}{part}{Book}
+	\phantomsection
+	\addcontentsline{toc}{part}{\@title}
 	\begin{tikzpicture}[remember picture,overlay]
 	
 	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
@@ -332,17 +334,33 @@ title={#1}
 
 
 \def\frontmatter{
+	\cleardoublepage
 	\pagenumbering{roman}
 	\pagestyle{empty}
+	\phantomsection
+	\addcontentsline{toc}{part}{Front Matter}
+	%\fancyfoot{} 
+	%\fancyhead{} 
+}
+
+
+\def\backmatter{
+	\cleardoublepage
+%	\pagenumbering{roman}
+	\pagestyle{empty}
+	\phantomsection
+	\addcontentsline{toc}{part}{Back Matter}
 	%\fancyfoot{} 
 	%\fancyhead{} 
 }
 
 \renewcommand{\mainmatter}{
 	
-%	\cleardoublepage
+	\cleardoublepage
 	
 	\pagenumbering{arabic}
+	\phantomsection
+	\addcontentsline{toc}{part}{Main Matter}
 	
 	\pagestyle{fancy}                       % Sets fancy header and footer
 %	\fancyfoot{}                            % Delete current footer settings
