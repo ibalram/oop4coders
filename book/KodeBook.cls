@@ -332,15 +332,18 @@ title={#1}
 	\end{tikzpicture}
 }
 
+%fancyhdr horizontal rule
+\renewcommand{\headrulewidth}{0pt}
 
 \def\frontmatter{
 	\cleardoublepage
 	\pagenumbering{roman}
-	\pagestyle{empty}
+	\pagestyle{fancy}
 	\phantomsection
 	\addcontentsline{toc}{part}{Front Matter}
-	%\fancyfoot{} 
-	%\fancyhead{} 
+	\fancyhf{} % sets both header and footer to nothing
+	\fancyfoot[CE, CO]{\thepage} 
+%	\fancyhead{} 
 }
 
 
@@ -364,7 +367,6 @@ title={#1}
 	
 	\pagestyle{fancy}                       % Sets fancy header and footer
 %	\fancyfoot{}                            % Delete current footer settings
-	\renewcommand{\headrulewidth}{0pt}
 	
 	\fancyhf{}
 	
