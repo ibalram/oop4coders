@@ -286,9 +286,9 @@ If you want a subclass to be abstract too, you have to do the same thing with it
 Otherwise, it can be instantiated even if you did not override the abstract method. 
 In this case, you cannot call the abstract method or any other method using it. 
 
-\lstinputlisting[language={[KB]Javascript}, linerange={5-8}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/student.js}
+\lstinputlisting[language={[KB]Javascript}, linerange={5-10}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/student.js}
 
-\lstinputlisting[language={[KB]Javascript}, linerange={5-12}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/gradstudent.js}
+\lstinputlisting[language={[KB]Javascript}, linerange={5-14}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/gradstudent.js}
 
 The same analogy goes with ECMAScript 2015 (codes are afforded).
 
@@ -417,10 +417,15 @@ It cannot be overridden, otherwise you will have a compile error.
 \lstinputlisting[language={[KB]Java}, linerange={18-18,22-27,31-32}, style=codeStyle]{../codes/java/src/inheritance/fin/FinalMth.java}
 
 
-
 \subsection{Javascript} 
 
-%\lstinputlisting[language={[KB]Javascript}, linerange={19-29}, style=codeStyle]{../codes/javascript/inheritance/decorate.js}
+There is no final classes (objects) in Javascript. 
+But, you can limit instantiating to only the current class by verifying if the new objects constructor is the class itself or not. 
+This is the inverse of what we did in abstract class.
+
+\lstinputlisting[language={[KB]Javascript}, style=codeStyle]{../codes/javascript/inheritance/fin/es6/finalcls.js}
+
+As for final functions, good luck finding a mechanism to do that!
 
 \subsection{Lua}
 
