@@ -64,9 +64,9 @@
 %\setlength{\textwidth}{6.5in}
 %\setlength{\textheight}{8in}
 
-\def\ptop{2.2cm}
-\def\pleft{2.5cm}
-\def\pright{1.5cm}
+\def\ptop{2cm}
+\def\pleft{3cm}
+\def\pright{1cm}
 \def\pbottom{2cm}
 
 %\pagenumbering{arabic} % needed even though this class will not show page numbers
@@ -383,8 +383,8 @@ title={#1}
 		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
 		at ([shift={(0cm,-1cm)}] current page.north west){};
 %		
-		\node[anchor=east, fill=white,minimum width=1cm]
-		at ([shift={(\pleft,0cm)}] bx1.north west)
+		\node[anchor=west, fill=white,minimum width=1cm]
+		at ([shift={(\pright,0cm)}] bx1.north west)
 		{\large \color{indigo}\textbf{\thepage}};
 %		
 		\node[anchor=east,fill=white,align=left]
@@ -403,7 +403,7 @@ title={#1}
 		{\large \color{indigo}\textbf{\thepage}};
 %		%		
 		\node[anchor=west,fill=white]
-		at ([shift={(0cm,0cm)}] bx1.south west)
+		at ([shift={(-2pt,0cm)}] bx1.south west)
 		{\color{indigo}\textbf{\nouppercase{\leftmark}}};
 		\end{tikzpicture}
 	}

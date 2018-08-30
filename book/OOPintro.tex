@@ -19,8 +19,8 @@
 \section{History}
 
 %Simula history
-Simula is considered the first object-oriented object programming language. \citep{2004-huang}
-Simula 67 introduced classes, objects, sub-classes, virtual procedures and dynamic binding.
+Simula is considered the first object-oriented object programming language \citep{2004-huang}.
+Simula 67 introduced classes, objects, sub-classes, virtual procedures and dynamic binding \cite{2013-black}.
 It was created when \nameword{Kristen Nygaard} saw the need for a better way to represent heterogeneous elements and operations of a system while working on computer simulation programs.
 He was joined by \nameword{Ole-Johan Dahl} to create SIMULA I from Norwegian Computing Center in 1962.
 %TODO You can add a little code for Simula 67
@@ -187,6 +187,11 @@ Learning OOP can be difficult for some people and it takes time to get used to i
 
 \section{Some opinions about OOP}
 
+In this section, some thoughts about OOP are presented. 
+Since this is a book about OOP, it is a good thing to present quotes opposing it \cite{2016-yegor} so you can have an idea what is going wrong with it. 
+There are some concerns about programming languages implementing the OO concepts. 
+And then, there are other quotes defending the 
+
 \subsection{Oppose OOP}
 
 \begin{kodequote}{Edsger W. Dijkstra (1989), TUG LINES Issue 32, August 1989}
@@ -281,6 +286,32 @@ Learning OOP can be difficult for some people and it takes time to get used to i
 \begin{kodequote}{Allen Wirfs-Brock, in response to the claims that OOP has failed}
 	Have you ever look at the programs we were building in the early 1980s? At how limited their functionality and UIs were? OOP has been an incredible success. It enabled us to manage complexity as we grew from 100KB applications to today’s 100MB applications.
 \end{kodequote}
+
+\section*{Discussion}
+
+There are many programming paradigms, each has its differences, benefits and use cases. 
+There are two computation models that you probably have encountered in your life: imperative and declarative programming. 
+Imperative model defines programs as statements (sequence of steps) that change the state of the computer. 
+Two main imperative paradigms are: procedural and object-oriented programming. 
+On the other hand, declarative model defines what a program needs to accomplish instead of instructing how to achieve it. 
+Two main declarative paradigms are: functional and logic programming.
+There is no such thing as a unique solution for every problem; this is why we have multiple paradigms. 
+We cannot conclude that a paradigm is worse or better than other just because it affords more or less features; ``\textit{More is not better (or worse), just different}"\cite{2004-vanroy-haridi}.
+
+OOP takes its roots from the theory of concepts, and models of human interaction with real world phenomena. 
+It seeks to enhance simplicity, reuse and maintainability of programs by defining some concepts: abstraction, encapsulation, inheritance and polymorphism.
+Abstraction can enhance simplicity by hiding the complex structure of an entity and afford just interfaces to communicate with it. 
+Then, you can use someone's code without knowing HOW it is implemented; all you have to know is what it does and how to use it. 
+Hence, abstraction supports code reuse by not implementing the same thing implemented by others. 
+Along with encapsulation, they can improve maintainability by putting together same functionalities and preventing direct access to data. 
+Inheritance and polymorphism promote code reuse by defining new classes out of the existing ones, and applying methods to the same kind of objects. 
+Inheritance is the most ill-used concept of all of them, and the one having most critics (bad ones). 
+It is most often stated that using composition over inheritance is more appropriate for code reuse, this is a pattern design known as \nameword{Composite reuse principle} \cite{2002-knoernschild}.
+One drawback of this is that the methods have to be redefined in the derived class to forward those afforded by its components.
+
+
+
+
 
 
 
