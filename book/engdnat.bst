@@ -126,7 +126,7 @@ FUNCTION {push.veranst}   { "Veranst." }
 FUNCTION {push.from}       { "from" }
 FUNCTION {push.access}   { "Access date" }
 
-FUNCTION {push.cite}      { "\citep" }
+FUNCTION {push.cite}      { "\citet" }
 
 
 %%------------------------------------------------------------------------------

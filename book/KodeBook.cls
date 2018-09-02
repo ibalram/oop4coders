@@ -196,6 +196,13 @@ title={#1}
 	fontupper=\itshape
 }
 
+\newenvironment{discussion}{%
+	\section*{Discussion}
+	\addcontentsline{toc}{section}{Discussion}
+	\markright{Discussion}
+}{%
+}
+
 
 \renewcommand{\baselinestretch}{1}
 
@@ -424,4 +431,13 @@ title={#1}
 	}
 } 
 
+
+%\RequirePackage[explicit]{titlesec}%
+%\RequirePackage{titletoc} %
+%
+%\titleformat{name = \section, numberless}
+%{\ttfamily\Large\bfseries}
+%{}
+%{0em}
+%{\addcontentsline{toc}{section}{#1}#1}%
 

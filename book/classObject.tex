@@ -842,6 +842,64 @@ If you need a stable identifier across ruby invocations and implementations you 
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-3,35-41,45-45}, style=codeStyle]{../codes/ruby/clsobj/objmeth.rb}
 
+
+
+\begin{discussion}
+
+\begin{landscape}
+	\begin{longtabu}{llllllll}  %to \textheight {XXXXXXXX} %{llllllll} 
+		\caption{Abstraction comparison}%
+		\label{tab-abstraction}\\
+		\hline
+		\multicolumn{1}{c}{\textbf{Language}} &
+		\multicolumn{1}{c}{\textbf{Style}} &
+		\multicolumn{1}{c}{\textbf{Class type}} &
+		\multicolumn{1}{|c|}{\textbf{Definition}} &
+		\multicolumn{1}{|c|}{\textbf{Universal superclass}} &
+		\multicolumn{1}{|c|}{\textbf{Dynamic members}} &
+		\multicolumn{1}{|c|}{\textbf{Static members}} &
+		\multicolumn{1}{|c|}{\textbf{Property}} \\
+		\hline
+		\endfirsthead
+		
+		C++ & 
+		class-based &
+		 &
+		 & 
+		 & 
+		 & 
+		 &
+		 \\
+		\hline
+		
+		Java & 
+		class & 
+		java.lang.Class 
+		& 
+		& 
+		& 
+		& 
+		&
+		\\
+		\hline
+		
+		Javascript & prototype & & & & & &\\
+		\hline
+		Lua & prototype & metatable & cla = \{\} & & & &\\
+		\hline
+		Perl & &  & & & & &\\
+		\hline
+		PHP & &  & & & & &\\
+		\hline
+		Python &  &  & & & & &\\
+		\hline
+		Ruby &  &  & & & & &\\
+		\hline
+	\end{longtabu}
+\end{landscape}
+
+\end{discussion}
+
 %=====================================================================
 \ifx\wholebook\relax\else
 % \cleardoublepage

@@ -517,6 +517,36 @@ But cannot be accessed outside the package
 %
 %\lstinputlisting[language={[KB]Ruby}, linerange={3-3,19-19}, style=codeStyle]{../codes/ruby/person.rb}
 
+\begin{discussion}
+
+\begin{table}[!ht]
+	\label{tab-encaps}
+	\caption{Encapsulation comparison}
+	\centering
+	\begin{tabular}{llll}
+		\hline
+		Language & Private & Protected & Public \\
+		\hline
+		C++ & private & protected & public \\
+		\hline
+		Java & private & protected (but access from package too) & public \\
+		\hline
+		Javascript & No (can use closures) & No & this.member \\
+		\hline
+		Lua & No & No & Yes \\
+		\hline
+		Perl & &  &  \\
+		\hline
+		PHP & &  &  \\
+		\hline
+		Python &  &  &  \\
+		\hline
+		Ruby &  &  &  \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\end{discussion}
 
 %=====================================================================
 \ifx\wholebook\relax\else

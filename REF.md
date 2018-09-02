@@ -1,5 +1,7 @@
 # References
 
+References in here are just guidance, they can be not used in the future.
+
 ## C++
 
 * https://www.tutorialspoint.com/cplusplus/cpp_object_oriented.htm
