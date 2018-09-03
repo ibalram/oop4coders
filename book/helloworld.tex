@@ -185,46 +185,6 @@ $ sudo apt-get install ruby
 \end{lstlisting}
 You have to verify if it is already installed (Linux Mint has it by default).
 
-
-\section{Languages features}
-
-Before introducing oriented-object concepts of each language, how about a little comparison between our programming languages.
-
-\begin{itemize}
-	\item \textbf{Type safety}: is the extent to which a programming language prevents type errors. 
-	\item \textbf{Type expression}: represents the type declaration. If it is explicit, the programmer have to specify the type of a variable or a method. If it is implicit, the type is inferred based on how the variables are being used.
-	\item \textbf{Type checking}: When the code is verified for type constrains, this can be happen in compile-time (static check) or run-time (dynamic check).
-\end{itemize}
-
-
-\begin{table}[!ht]
-	\label{tab-comp}
-	\caption{Some languages features}
-	\centering
-	\begin{tabular}{llll}
-		\hline
-		Language & Type safety & Type expression & Type checking \\
-		\hline
-		C++ & Weak & Explicit & Static \\
-		\hline
-		Java & Strong & Explicit & Static \\
-		\hline
-		Javascript & Weak & Implicit & Dynamic \\
-		\hline
-		Lua & Strong & Implicit & Dynamic \\
-		\hline
-		Perl & & Implicit & Dynamic \\
-		\hline
-		PHP & & implicit/optional explicit & Dynamic \\
-		\hline
-		Python & Strong & implicit/(v3.5+ optional explicit) & Dynamic \\
-		\hline
-		Ruby & Strong & implicit & Dynamic \\
-		\hline
-	\end{tabular}
-\end{table}
-
-
 \section{Hello world}
 
 Let's start with a Hello World introductory set of codes. 
@@ -740,6 +700,105 @@ You can capture them by their parent exception class \keyword{Exception}, or eac
 \lstinputlisting[language={[KB]Ruby}, linerange={37-40}, style=codeStyle]{../codes/ruby/hello/except2.rb}
 
 \begin{discussion}
+
+Before introducing oriented-object concepts of each language, how about a little comparison between our programming languages.
+Table~\ref{tab-hello} represents a general comparison between OO languages based on these criteria:
+\begin{itemize}
+	\item \textbf{Type safety}: is the extent to which a programming language prevents type errors. 
+	\item \textbf{Type expression}: represents the type declaration. If it is explicit, the programmer have to specify the type of a variable or a method. If it is implicit, the type is inferred based on how the variables are being used.
+	\item \textbf{Type checking}: When the code is verified for type constrains, this can be happen in compile-time (static check) or run-time (dynamic check).
+\end{itemize}
+
+
+\extrarowsep = 0pt 
+
+%	\doublerawsep = 1.5pt
+\begin{longtabu} to \linewidth %
+	{
+		X[p]|[5pt white]
+		X[2,p]|[5pt white]
+		X[2,p]|[5pt white]
+		X[2,p]|[5pt white]
+	} %{llllllll} 
+	%	\begin{longtabu} {p{1cm}p{1cm}p{5cm}p{1cm}p{1cm}p{2cm}p{2cm}p{1cm}}
+	\caption{General comparison}%
+	\label{tab-hello}\\
+	
+	%		\hline\hline
+	\rowcolor{indigo}
+	\rowfont{\bfseries\color{white}}
+	{Language} &
+	{Type safety} &
+	{Type expression} &
+	{Type checking} \\
+	%		\hline\hline
+	&&&\\
+	\endfirsthead
+	
+	%		\hline\hline
+	\rowcolor{indigo}
+	\rowfont{\bfseries\color{white}}
+	{Language} &
+	{Type safety} &
+	{Type expression} &
+	{Type checking} \\
+	%		\hline\hline
+	&&&\\
+	\endhead
+	
+	\taburowcolors{indigo!20!white .. black!10!white}
+	
+	{\bfseries\color{indigo}C++} & %Language
+	Weak & 
+	Explicit & 
+	Static \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Java} & %Language
+	Strong & 
+	Explicit & 
+	Static \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Javascript} & %Language
+	Weak & 
+	Implicit & 
+	Dynamic \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Lua} & %Language
+	Strong & 
+	Implicit & 
+	Dynamic \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Perl} & %Language
+	& 
+	Implicit & 
+	Dynamic \\
+	%		\hline
+	
+	{\bfseries\color{indigo}PHP} & %Language
+	& 
+	implicit/optional explicit & 
+	Dynamic \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Python} & %Language
+	Strong & 
+	implicit/(v3.5+ optional explicit) & 
+	Dynamic \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Ruby} & %Language
+	Strong & 
+	implicit & 
+	Dynamic \\
+	%		\hline
+	
+	%		\hline\hline
+	
+\end{longtabu}
 	
 \end{discussion}
 

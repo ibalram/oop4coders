@@ -517,36 +517,115 @@ But cannot be accessed outside the package
 %
 %\lstinputlisting[language={[KB]Ruby}, linerange={3-3,19-19}, style=codeStyle]{../codes/ruby/person.rb}
 
+
 \begin{discussion}
 
-\begin{table}[!ht]
-	\label{tab-encaps}
-	\caption{Encapsulation comparison}
-	\centering
-	\begin{tabular}{llll}
-		\hline
-		Language & Private & Protected & Public \\
-		\hline
-		C++ & private & protected & public \\
-		\hline
-		Java & private & protected (but access from package too) & public \\
-		\hline
-		Javascript & No (can use closures) & No & this.member \\
-		\hline
-		Lua & No & No & Yes \\
-		\hline
-		Perl & &  &  \\
-		\hline
-		PHP & &  &  \\
-		\hline
-		Python &  &  &  \\
-		\hline
-		Ruby &  &  &  \\
-		\hline
-	\end{tabular}
-\end{table}
+Members visibility knows three main modes: public, protected and private. 
+Some languages give full access to class members; in this case, it is the visibility can be indicated via the API's documentation. 
+Also, you can define some code conventions to indicate the visibility. 
+Javascript, Lua, Perl and Python are ones of those languages. 
+There are languages which gives the ability to choose between these three visibility modes. 
+This type of languages knows: C++, Java and PHP. 
+Ruby fixes its attributes visibility to protected, and limits its methods visibility to public and protected. 
+
+Table~\ref{tab-encapsulation} represents a comparison between OO languages based on their visibility modes:
+public, protected and private. 
+When you find the word \textbf{member}, it means a field's or a method's definition. 
+In Perl and Lua, the object is created inside the constructor which is referred to here as \textbf{myobject}.
+
+	\extrarowsep = 0pt 
+	
+	%	\doublerawsep = 1.5pt
+	\begin{longtabu} to \linewidth %
+		{
+			X[p]|[5pt white]
+			X[2,p]|[5pt white]
+			X[2,p]|[5pt white]
+			X[2,p]|[5pt white]
+		} %{llllllll} 
+		%	\begin{longtabu} {p{1cm}p{1cm}p{5cm}p{1cm}p{1cm}p{2cm}p{2cm}p{1cm}}
+		\caption{Encapsulation comparison}%
+		\label{tab-encapsulation}\\
+		
+		%		\hline\hline
+		\rowcolor{indigo}
+		\rowfont{\bfseries\color{white}}
+		{Language} &
+		{Private} &
+		{Protected} &
+		{Public} \\
+		%		\hline\hline
+		&&&\\
+		\endfirsthead
+		
+		%		\hline\hline
+		\rowcolor{indigo}
+		\rowfont{\bfseries\color{white}}
+		{Language} &
+		{Private} &
+		{Protected} &
+		{Public} \\
+		%		\hline\hline
+		&&&\\
+		\endhead
+		
+		\taburowcolors{indigo!20!white .. black!10!white}
+		
+		{\bfseries\color{indigo}C++} & %Language
+		private: \newline members & 
+		protected: \newline members& 
+		public: \newline members\\
+		%		\hline
+		
+		{\bfseries\color{indigo}Java} & %Language
+		private member & 
+		protected member& 
+		public member\\
+		%		\hline
+	
+		{\bfseries\color{indigo}Javascript} & %Language
+		 None (can use closures scope)& %Private
+		 None& %Protected
+		 this.member \newline MyClass.prototype. member\\ %Public
+		%		\hline
+		
+		{\bfseries\color{indigo}Lua} & %Language
+		 None (can use closures scope)& %Private
+		 None& %Protected
+		 myobject.attribute \newline MyClass:method\\ %Public
+		%		\hline
+		
+		{\bfseries\color{indigo}Perl} & %Language
+		 None& %Private
+		 None& %Protected
+		 \$myobject->\{attribute\} \newline 
+		 \$myobject = \{attribute => value\} \newline sub method() \\ %Public
+		%		\hline
+		
+		{\bfseries\color{indigo}PHP} & %Language
+		 private member& %Private
+		 protect member& %Protected
+		 public member\\ %Public
+		%		\hline
+		
+		{\bfseries\color{indigo}Python} & %Language
+		 None & %Private
+		 None& %Protected
+		 self.attribute \newline def method()\\ %Public
+		%		\hline
+		
+		{\bfseries\color{indigo}Ruby} & %Language
+		 None& %Private
+		 Attributes are always protected \newline private :method \newline protected :method& %Protected
+		 Methods are public by default \newline public :method \\ %Public
+		%		\hline
+		
+		%		\hline\hline
+		
+	\end{longtabu}
 
 \end{discussion}
+
 
 %=====================================================================
 \ifx\wholebook\relax\else
