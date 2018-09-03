@@ -845,56 +845,181 @@ If you need a stable identifier across ruby invocations and implementations you 
 
 
 \begin{discussion}
+	
+OO languages can be considered as class-based or prototype-based, based on their class style. 
+Prototype-based languages use a data structure or a closure (which is a special data structure) to act like a class. 
+For instance, Javascript uses closures (even ES6 with its new syntax) and Lua uses meta-tables or closures. 
+All of these are scripting languages; but not every scripting language is prototype-based. 
+Perl considers packages as classes; as for PHP, Python and Ruby, they have standalone mechanisms for creating classes. 
+%Some of these languages afford prototype-based OOP as well: Perl (via Class::Prototyped) and Python (via prototype.py).
+
+A class can be considered as an object in many OO languages. 
+In prototype-based languages, it is clear that a prototype is, in fact, an object. 
+Javascript defines a class using closures which are functions; as for Lua, a class can be defined using a metatable.
+Perl is a class-based OO language which does not have a specific notation for classes; instead it uses packages.
+Unlike C++, a class in Java, Python and Ruby has its own type: java.lang.Class, type and Class respectively.
+
+Some OO languages have a universal superclass (base class) for their created objects.
+In prototype-based languages, you can consider the type used to create the prototype(class) as a superclass. 
+C++ and PHP do not have a universal superclass for their objects. 
+Other languages define a universal superclass: Java (java.lang.Object), Perl (UNIVERSAL), Python (object) and Perl (Object).
+
+A class or a prototype is meant to be a template used to create new objects providing their attributes and methods. 
+To access these members from inside the object, a keyword is used to refer to the current object: usually \keyword{this} or \keyword{self}. 
+In C++ and Java, this keyword is optional, unless there is a confusion with a method's parameter. 
+In other languages, it is mandatory 
+As for shared members between objects of the same class, they are called class members (static members). 
+Languages such as C++ and Java afford keywords to define static members. 
+Some define static attributes outside the constructor: Python and Ruby. 
+Others can emulate static attributes by defining global variables such as the case of Perl.
+
+Properties are something between attributes and methods: when you read or write it, the syntax is like fields; but when read/write operations are translated to methods called getters/setters.
+C++ and Java do not afford such members; as for python, it uses annotations. 
+Perl's setters act like normal methods rather than triggered upon variable assigning.
+
+Table~\ref{tab-abstraction} represents a comparison between our OO languages based on their abstraction properties. 
+An OOP language can be one of the two types: class-based or prototype-based. 
+A class or prototype can have a type or not, which can be the type of its objects as well. 
+This is the case of prototype-based languages, others have a different type as base class for objects. 
+Current object can access its dynamic members differently from language to another. 
+As for static members, some languages afford standalone mechanisms to define them, while others are not designed primarily to have them.
+Some languages afford a third member type: properties, which are something between fields and methods.
 
 \begin{landscape}
-	\begin{longtabu}{llllllll}  %to \textheight {XXXXXXXX} %{llllllll} 
+%	\tabulinesep = 10pt
+	\extrarowsep = 0pt 
+	\setlength{\tabcolsep}{10pt}
+	
+%	\doublerawsep = 1.5pt
+	\begin{longtabu} to \linewidth %
+		{
+		 X[p]|[5pt white]
+		 X[p]|[5pt white]
+		 X[p]|[5pt white]
+		 X[2,p]|[5pt white]
+		 X[p]|[5pt white]
+		 X[2,p]|[5pt white]
+		 X[p]|[5pt white]
+		 X[p]|[5pt white]
+		 } %{llllllll} 
+%	\begin{longtabu} {p{1cm}p{1cm}p{5cm}p{1cm}p{1cm}p{2cm}p{2cm}p{1cm}}
 		\caption{Abstraction comparison}%
 		\label{tab-abstraction}\\
-		\hline
-		\multicolumn{1}{c}{\textbf{Language}} &
-		\multicolumn{1}{c}{\textbf{Style}} &
-		\multicolumn{1}{c}{\textbf{Class type}} &
-		\multicolumn{1}{|c|}{\textbf{Definition}} &
-		\multicolumn{1}{|c|}{\textbf{Universal superclass}} &
-		\multicolumn{1}{|c|}{\textbf{Dynamic members}} &
-		\multicolumn{1}{|c|}{\textbf{Static members}} &
-		\multicolumn{1}{|c|}{\textbf{Property}} \\
-		\hline
+		
+%		\hline\hline
+		\rowcolor{indigo}
+		\rowfont{\bfseries\color{white}}
+		{Language} &
+		{Style} &
+		{Class type} &
+		{Definition} &
+		{Universal superclass} &
+		{Current object} &
+		{Static members} &
+		{Property} \\
+%		\hline\hline
+		&&&&&&&\\
 		\endfirsthead
 		
-		C++ & 
-		class-based &
-		 &
-		 & 
-		 & 
-		 & 
-		 &
-		 \\
-		\hline
+%		\hline\hline
+		\rowcolor{indigo}
+		\rowfont{\bfseries\color{white}}
+		{Language} &
+		{Style} &
+		{Class type} &
+		{Definition} &
+		{Universal superclass} &
+		{Current object} &
+		{Static members} &
+		{Property} \\
+%		\hline\hline
+		&&&&&&&\\
+		\endhead
 		
-		Java & 
-		class & 
-		java.lang.Class 
-		& 
-		& 
-		& 
-		& 
-		&
-		\\
-		\hline
+		\taburowcolors{indigo!20!white .. black!10!white}
 		
-		Javascript & prototype & & & & & &\\
-		\hline
-		Lua & prototype & metatable & cla = \{\} & & & &\\
-		\hline
-		Perl & &  & & & & &\\
-		\hline
-		PHP & &  & & & & &\\
-		\hline
-		Python &  &  & & & & &\\
-		\hline
-		Ruby &  &  & & & & &\\
-		\hline
+		{\bfseries\color{indigo}C++} & %Language
+		class based & %Style
+		 /& %Class type
+		 \keyword{class} MyClass \{\}& %Definition
+		 /& %Universal superclass
+		 \keyword{this} (\textbf{optional})& %Current object
+		 \keyword{static}& %Static members
+		 /\\%Property
+%		\hline
+		
+		{\bfseries\color{indigo}Java} & %Language
+		class based & %Style
+		Class & %Class type
+		\keyword{class} MyClass \{\newline\}& %Definition
+		Object& %Universal superclass
+		\keyword{this} (\textbf{optional})& %Current object
+		\keyword{static}& %Static members
+		/\\%Property
+%		\hline
+		
+		{\bfseries\color{indigo}Javascript} & %Language
+		prototype based & %Style
+		function which is an object & %Class type
+		\keyword{function} MyClass()\{\}; \newline or \newline \keyword{class} MyClass \{\}& %Definition
+		Object & %Universal superclass
+		\keyword{this} (\textbf{mandatory})& %Current object
+		Not really; \keyword{static}: for functions in ES6 & %Static members
+		Object. defineProperties\\%Property
+%		\hline
+		
+		{\bfseries\color{indigo}Lua} & %Language
+		prototype based & %Style
+		metatable & %Class type
+		\keyword{local} MyClass = \{\} \newline MyClass.\_\_index = MyClass & %Definition
+		Not really& %Universal superclass
+		\keyword{self}, with the colon syntax; any variable with dot syntax (\textbf{mandatory})& %Current object
+		Not really& %Static members
+		Using \keyword{\_\_index} and \keyword{\_\_newindex}\\%Property
+%		\hline
+		
+		{\bfseries\color{indigo}Perl} & %Language
+		class based& %Style
+		package& %Class type
+		\keyword{package} MyClass;\newline1;& %Definition
+		UNIVERSAL& %Universal superclass
+		The first variable shifted from the context array (\textbf{mandatory})& %Current object
+		Not really& %Static members
+		Not really\\%Property
+%		\hline
+		
+		{\bfseries\color{indigo}PHP} & %Language
+		class based& %Style
+		?& %Class type
+		\keyword{class} MyClass \{\}& %Definition
+		/& %Universal superclass
+		\keyword{\$this} (\textbf{mandatory})& %Current object
+		\keyword{static}: for fields& %Static members
+		Magic methods: \keyword{\_\_get} and \keyword{\_\_set}\\%Property
+%		\hline
+		
+		{\bfseries\color{indigo}Python} & %Language
+		class based& %Style
+		classobj: old style; type: new style& %Class type
+		\keyword{class} MyClass: \keyword{pass} \newline in new style \newline \keyword{class} MyClass(\keyword{object}): \keyword{pass}& %Definition
+		object (new style classes)& %Universal superclass
+		Any first parameter, \keyword{self} is convention (\textbf{mandatory}) & %Current object
+		Annotation& %Static members
+		Annotation\\%Property
+%		\hline
+		
+		{\bfseries\color{indigo}Ruby} & %Language
+		class based&  %Style
+		Class& %Class type
+		class MyClass \newline end& %Definition
+		Object (inherits from BasicObject)& %Universal superclass
+		@field& %Current object
+		@@field; self.method& %Static members
+		def getter; def setter=(value)\\%Property
+%		\hline
+
+%		\hline\hline
+		
 	\end{longtabu}
 \end{landscape}
 

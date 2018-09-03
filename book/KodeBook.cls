@@ -24,6 +24,8 @@
 %\RequirePackage[arabic,french,english]{babel}
 %\RequirePackage{CJKutf8}
 
+\RequirePackage[table]{xcolor}
+
 \RequirePackage{multirow}
 \RequirePackage{array}
 
@@ -35,7 +37,6 @@
 
 \RequirePackage{fancyhdr} 
 \RequirePackage[T1]{fontenc}
-\RequirePackage{xcolor}
 
 \definecolor{indigo}{RGB}{75,0,130}%indigo
 %\definecolor{purpleX11}{RGB}{160,32,240}
