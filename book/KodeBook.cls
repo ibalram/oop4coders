@@ -442,3 +442,76 @@ title={#1}
 %{0em}
 %{\addcontentsline{toc}{section}{#1}#1}%
 
+\RequirePackage{tocloft}
+
+
+\def\kodetoc{%
+	
+	\chapter*{Contents}
+	
+	\renewcommand{\cftpartfont}{\normalfont\sffamily\bfseries}% \part font in ToC
+	\renewcommand{\cftchapfont}{\normalfont\large\itshape}    % \chapter font in ToC
+	\renewcommand{\cftsecfont}{\normalfont\slshape}           % \section font in ToC
+	
+	{
+		\hypersetup{linkcolor=black}
+		\tableofcontents
+	}
+}
+
+%\RequirePackage{mdframed}
+%\RequirePackage{titletoc}
+%\RequirePackage{etoolbox}
+%
+%
+%\definecolor{secnum}{RGB}{13,151,225}
+%\definecolor{ptcbackground}{RGB}{212,237,252}
+%\definecolor{ptctitle}{RGB}{0,177,235}
+%
+%\pretocmd{\tableofcontents}{\begin{mdframed}[backgroundcolor=ptcbackground,hidealllines=true]}{}{}
+%	\apptocmd{\tableofcontents}{\end{mdframed}}{}{}
+%\patchcmd{\tableofcontents}{\contentsname}{\color{ptctitle}\contentsname}{}{}
+%
+%\titlecontents{section}
+%[4em]{\sffamily}
+%{\color{secnum}\contentslabel{2.3em}\normalcolor}{}
+%{\titlerule*[1000pc]{.}\contentspage\\\hspace*{-3em}\vspace*{2pt}%
+%	\color{white}\rule{\dimexpr\textwidth-20pt\relax}{1pt}}
+%
+%\titlecontents{lsection}
+%[5.8em]{\sffamily}
+%{\color{secnum}\contentslabel{2.3em}\normalcolor}{}
+%{\titlerule*[1000pc]{.}\contentspage\\\hspace*{-5.8em}\vspace*{2pt}%
+%	\color{white}\rule{\dimexpr\textwidth-15.5pt\relax}{1pt}}
+%
+%\makeatletter
+%\renewcommand*\l@chapter[2]{%
+%	\ifnum \c@tocdepth >\m@ne
+%	\addpenalty{-\@highpenalty}%
+%	\vskip 1.0em \@plus\p@
+%	\setlength\@tempdima{1.5em}%
+%	\begingroup
+%	\parindent \z@ \rightskip \@pnumwidth
+%	\parfillskip -\@pnumwidth
+%	\leavevmode
+%	\advance\leftskip\@tempdima
+%	\hskip -\leftskip
+%	\colorbox{ptctitle}{\strut%
+%		\makebox[\dimexpr\textwidth-2\fboxsep-7pt\relax][l]{%
+%			\color{white}\bfseries\sffamily#1%
+%			\nobreak\hfill\nobreak\hb@xt@\@pnumwidth{\hss #2}}}\par\smallskip
+%	\penalty\@highpenalty
+%	\endgroup
+%	\fi}
+%\makeatother
+%\newcommand\PartialToC{%
+%	\startcontents[chapters]%
+%	\begin{mdframed}[backgroundcolor=ptcbackground,hidealllines=true]
+%		\printcontents[chapters]{l}{1}{\colorbox{ptctitle}{%
+%				\parbox[t]{\dimexpr\textwidth-2\fboxsep\relax}{%
+%					\strut\color{white}\bfseries\sffamily\makebox[5em]{%
+%						Chapter~\thechapter\hfill}Contents}}\vskip5pt}
+%	\end{mdframed}%
+%}
+
+\setcounter{tocdepth}{1}
