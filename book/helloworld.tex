@@ -707,16 +707,20 @@ Table~\ref{tab-hello} represents a general comparison between OO languages based
 	\item \textbf{Type safety}: is the extent to which a programming language prevents type errors. 
 	\item \textbf{Type expression}: represents the type declaration. If it is explicit, the programmer have to specify the type of a variable or a method. If it is implicit, the type is inferred based on how the variables are being used.
 	\item \textbf{Type checking}: When the code is verified for type constrains, this can be happen in compile-time (static check) or run-time (dynamic check).
-	\item \textbf{implementation}: compiled vs. interpreted 
+	\item \textbf{Implementation}: An implementation can be compiled or interpreted. A language cannot be considered compiled or interpreted, but its implementation can. Since a language can have many implementations, here we present the most used and known implementation for it.
+%	\item \textbf{Memory management}: Garbage collected, manual or deterministic.
+	
 \end{itemize}
 
 
+\begin{landscape}
 \extrarowsep = 0pt 
 
 %	\doublerawsep = 1.5pt
 \begin{longtabu} to \linewidth %
 	{
 		X[p]|[5pt white]
+		X[2,p]|[5pt white]
 		X[2,p]|[5pt white]
 		X[2,p]|[5pt white]
 		X[2,p]|[5pt white]
@@ -731,9 +735,10 @@ Table~\ref{tab-hello} represents a general comparison between OO languages based
 	{Language} &
 	{Type safety} &
 	{Type expression} &
-	{Type checking} \\
+	{Type checking} &
+	{Implementation} \\
 	%		\hline\hline
-	&&&\\
+	&&&&\\
 	\endfirsthead
 	
 	%		\hline\hline
@@ -742,9 +747,10 @@ Table~\ref{tab-hello} represents a general comparison between OO languages based
 	{Language} &
 	{Type safety} &
 	{Type expression} &
-	{Type checking} \\
+	{Type checking} &
+	{Implementation} \\
 	%		\hline\hline
-	&&&\\
+	&&&&\\
 	\endhead
 	
 	\taburowcolors{indigo!20!white .. black!10!white}
@@ -752,54 +758,65 @@ Table~\ref{tab-hello} represents a general comparison between OO languages based
 	{\bfseries\color{indigo}C++} & %Language
 	Weak & 
 	Explicit & 
-	Static \\
+	Static &
+	Compiled \\
 	%		\hline
 	
 	{\bfseries\color{indigo}Java} & %Language
 	Strong & 
 	Explicit & 
-	Static \\
+	Static &
+	Compiled (bytecode) \\
 	%		\hline
 	
 	{\bfseries\color{indigo}Javascript} & %Language
 	Weak & 
 	Implicit & 
-	Dynamic \\
+	Dynamic & 
+	Interpreted\\
 	%		\hline
 	
 	{\bfseries\color{indigo}Lua} & %Language
 	Strong & 
 	Implicit & 
-	Dynamic \\
+	Dynamic & 
+	Compiled (bytecode)\\
 	%		\hline
 	
 	{\bfseries\color{indigo}Perl} & %Language
 	& 
 	Implicit & 
-	Dynamic \\
+	Dynamic &
+	Interpreted\\
+	%https://stackoverflow.com/questions/5376559/is-perl-a-compiled-or-an-interpreted-programming-language
 	%		\hline
 	
 	{\bfseries\color{indigo}PHP} & %Language
 	& 
 	implicit/optional explicit & 
-	Dynamic \\
+	Dynamic &
+	Interpreted \\
+	
 	%		\hline
 	
 	{\bfseries\color{indigo}Python} & %Language
 	Strong & 
 	implicit/(v3.5+ optional explicit) & 
-	Dynamic \\
+	Dynamic & 
+	Interpreted \\
 	%		\hline
 	
 	{\bfseries\color{indigo}Ruby} & %Language
 	Strong & 
 	implicit & 
-	Dynamic \\
+	Dynamic & 
+	Interpreted \\
 	%		\hline
 	
 	%		\hline\hline
 	
 \end{longtabu}
+\end{landscape}
 	
 \end{discussion}
 
