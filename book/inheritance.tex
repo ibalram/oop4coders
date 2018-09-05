@@ -485,7 +485,7 @@ However, there is a hack to prevent a method from being overridden by a subclass
 
 \subsection{C++}
 
-C++ supports multiple inheritance: the constructors of inherited classes are called in the same order in which they are inherited. 
+C++ supports multiple inheritance: the constructors of inherited classes are called in the same order in which they are inherited \citep{2012-g4g1}. 
 
 \lstinputlisting[language={[KB]C++}, linerange={4-23}, style=codeStyle]{../codes/cpp/inheritance/multiple/multiple1.cpp}
 
@@ -494,14 +494,14 @@ A solution is to define a method with the same signature in the third class.
 
 \lstinputlisting[language={[KB]C++}, linerange={4-5,10-10,13-13,17-20,24-24,26-26,29-31,35-36,67-72}, style=codeStyle]{../codes/cpp/inheritance/multiple/multiple2.cpp}
 
-Also, if your parent classes each has an attribute with the same name, the subclass cannot access it directly by its name since there is a conflict. 
-Instead, it must define the attribute of which parent. 
+Also, if your parent classes each has a field with the same name, the subclass cannot access it directly by its name since there is a conflict. 
+Instead, it must define the field of which parent. 
 
 \lstinputlisting[language={[KB]C++}, linerange={4-4,14-14,16-19,27-30,37-38,42-42,44-49}, style=codeStyle]{../codes/cpp/inheritance/multiple/multiple2.cpp}
 
 One of multiple inheritance's problems is the diamond problem. 
-Suppose we have a class called \textbf{Person} with an attribute \textbf{name} and the constructor to initialize it. 
-This class has two subclasses: \textbf{Student} and \textbf{Professor} which will inherit its attributes and methods. 
+Suppose we have a class called \textbf{Person} with a field \textbf{name} and the constructor to initialize it. 
+This class has two subclasses: \textbf{Student} and \textbf{Professor} which will inherit its fields and methods. 
 Then, a class \textbf{PhdStudent} which inherits from \textbf{Student} and \textbf{Professor}. 
 When this class's constructor is called, it will call the constructors of its superclasses, which in their turn each will call the constructor of \textbf{Person}. 
 This will create two copies of all the members of \textbf{Person} which will cause ambiguities. 
@@ -512,7 +512,24 @@ In this case, when the constructor of \textbf{PhdStudent} calls its parent's, it
 
 \subsection{Java}
 
-%\lstinputlisting[language={[KB]Java}, linerange={1-5,12-12,18-20,27-27,34-34}, style=codeStyle]{../codes/java/src/inheritance/core/Person.java}
+Prior to version 8, Java did not support multiple inheritance as we know it. 
+But, it supports multiple inheritance of type using interfaces; a class implementing many interfaces is considered as having all these types at once. 
+Version 8 introduces \keyword{default} methods to the interfaces, which means a class implementing an interface can inherit some behavior. 
+It is called: multiple inheritance of implementation; as for multiple inheritance of state, it is not supported and thus you can extend one class \citep{nd-oracle1}.
+
+If a class inherits the same method signature more than twice, then it has to define this same function in order to avoid ambiguity.  
+In case of ambiguity of a method between its parent types (class and/or interfaces), it can access the method of its superclass by simply using \keyword{super}, and the defaults of its parent interfaces by using the name of the interface followed by \keyword{.super.} followed by the name of the method.
+
+\lstinputlisting[language={[KB]Java}, linerange={22-52}, style=codeStyle]{../codes/java/src/inheritance/multiple/Multiple1.java}
+
+As for diamond problem: if we have an interface \textbf{HumanBehavior} with a default method \textbf{void info()} and two interfaces (\textbf{StudentBehaviour} and \textbf{ProfessorBehavior}) extending it, then a class \textbf{PhdStudent} implementing these two, we will have these cases \citep{2012-naftalin}: 
+\begin{itemize}
+	\item The two interfaces do not override their parent's method: in this case, the class will inherit its grandparent's implementation.
+	\item One of the two interfaces overrides its parent's method: in this case, the class will inherit the more specific implementation which is that of its parent.
+	\item The two interfaces override their parent's method: in this case, the class must override it as well.
+\end{itemize}
+
+\lstinputlisting[language={[KB]Java}, linerange={12-26}, style=codeStyle]{../codes/java/src/inheritance/multiple/Diamond1.java}
 
 \subsection{Javascript} 
 
