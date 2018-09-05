@@ -554,7 +554,21 @@ So, you have to work around this as in \citep{2016-dorin}.
 
 \subsection{Lua}
 
-%\lstinputlisting[language={[KB]Lua}, linerange={1-6}, style=codeStyle]{../codes/lua/inheritance/app.lua}
+One way to implement multiple inheritance is to use the meta-method \keyword{\_\_index}, which is called whenever Lua cannot find a key in the current table \citep{2003-ierusalimschy}.
+But, an object has to own its fields; this is why we should create an object with all its parents fields.
+To create a new object in the constructor, we have to create new objects from parents then merge them into a single one. 
+If a key is available for many classes, it will get the last value assigned to it. 
+
+Suppose we have two classes (\textbf{Person} and \textbf{Machine}), each has its own fields and methods.
+You can create a function which returns an index function based on a list of given parents. 
+In our example, the index will favor the first parents if a key is not available in the current table (object).
+Also, when it finds a key in a parent class, it will link it to the current object so next time it will not loop again.
+Do not forget to pass the current class first; otherwise, the object will start searching in its parents and not its class first.
+
+\lstinputlisting[language={[KB]Lua}, linerange={31-58}, style=codeStyle]{../codes/lua/inheritance/multiple/multiple1.lua}
+
+Using this code, you will have unique fields even if there is a diamond inheritance. 
+As for methods inheritance, the subclass will inherit the first appropriate method encountered in its parents.
 
 \subsection{Perl}
 
