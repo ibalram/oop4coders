@@ -572,7 +572,14 @@ As for methods inheritance, the subclass will inherit the first appropriate meth
 
 \subsection{Perl}
 
-%\lstinputlisting[language={[KB]Perl}, linerange={20-22}, style=codeStyle]{../codes/perl/inheritance/public.pl}
+Perl supports multiple inheritance via its keyword \keyword{@ISA} by searching for all methods of the first class and its ancestors, then it passes to the next \citep{2003-schwartz-phoenix}.
+So, ambiguity between methods is solved. 
+As for the fields, you can create an object (hash) from each parent and merge them into one object. 
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-38}, style=codeStyle]{../codes/perl/inheritance/multiple/multiple1.pl}
+
+Using this code, you will have unique fields even if there is a diamond inheritance. 
+As for methods inheritance, the subclass will inherit the first appropriate method encountered in its parents.
 
 \subsection{PHP}
 
