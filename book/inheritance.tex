@@ -508,7 +508,7 @@ This will create two copies of all the members of \textbf{Person} which will cau
 To fix this problem, the two classes \textbf{Student} and \textbf{Professor} has to be virtual using the keyword \keyword{virtual}.
 In this case, when the constructor of \textbf{PhdStudent} calls its parent's, it has to call its grandparent's as well.
 
-\lstinputlisting[language={[KB]C++}, linerange={5-8,10-17,20-27,30-38,41-49}, style=codeStyle]{../codes/cpp/inheritance/multiple/diamond2.cpp}
+\lstinputlisting[language={[KB]C++}, linerange={5-8,10-17,20-27,30-38,41-46}, style=codeStyle]{../codes/cpp/inheritance/multiple/diamond2.cpp}
 
 \subsection{Java}
 
@@ -533,7 +533,24 @@ As for diamond problem: if we have an interface \textbf{HumanBehavior} with a de
 
 \subsection{Javascript} 
 
-%\lstinputlisting[language={[KB]Javascript}, linerange={19-29}, style=codeStyle]{../codes/javascript/inheritance/decorate.js}
+In EcmaScript5, a constructor of a class can call any other constructor by passing itself (the context) to that constructor. 
+If there are any fields creation, they will be assigned to the context. 
+If you call more than one constructor and they assign the same field, there will be one unique field with the last assigned value. 
+To inherit methods, a class assigns to its prototype a new instance of its parent's using \keyword{Object.create}. 
+To inherit more than one prototype, you can use the method \keyword{Object.assign} \citep{2018-mdn-create}.
+If there is a conflict between parents methods, the subclass will inherit the last assigned one since its definition will overwrite the first ones.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={1-26}, style=codeStyle]{../codes/javascript/inheritance/multiple/es5/multiple1.js}
+
+As for diamond problem, a certain context has only one copy of a field, which will take the last value assigned to it.
+Suppose we have a class \textbf{Person} which creates a field \textbf{name} and two other classes (\textbf{Student} and \textbf{Professor}) which inherits from it. 
+If a class \textbf{PhdStudent} inherits from these two classes, the field \textbf{name} is created once and updated each time it is assigned.
+In our example, it will take the value assigned to \textbf{Student}'s constructor.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={28-41}, style=codeStyle]{../codes/javascript/inheritance/multiple/es5/diamond1.js}
+
+In EcmaScript 2015, \keyword{extends} does not accept more than one superclass. 
+So, you have to work around this as in \citep{2016-dorin}.
 
 \subsection{Lua}
 

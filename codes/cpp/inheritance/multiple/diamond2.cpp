@@ -43,9 +43,6 @@ public:
     void info() {
         std::cout << "name: " << name << std::endl;
     }
-
-protected:
-    int hours;
 };
 
 

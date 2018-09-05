@@ -46,8 +46,6 @@ public:
         std::cout << "student name: " << Student::name << std::endl;
         std::cout << "professor name: " << Professor::name << std::endl;
     }
-protected:
-    int hours;
 };
 
 
