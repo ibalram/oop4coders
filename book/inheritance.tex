@@ -583,7 +583,40 @@ As for methods inheritance, the subclass will inherit the first appropriate meth
 
 \subsection{PHP}
 
-%\lstinputlisting[language={[KB]PHP}, linerange={3-3,6-6,8-9,17-17}, style=codeStyle]{../codes/php/inheritance/app.php}
+In PHP, there is no multiple inheritance, but using interfaces we can achieve multiple inheritance of type.
+Innterfaces can define behavior without implementing it; it can even declare the constructor.
+Prior to PHP 5.3.9, a class could not implement two interfaces that specified a method with the same name, since it would cause ambiguity. 
+More recent versions of PHP allow this as long as the duplicate methods have the same signature \citep{2018-cowburn}.
+
+Another mechanism is traits: they are used as mean to reuse code, but they do not support polymorphism. 
+If two traits are used and they have conflicting methods, an error is produced. 
+To solve the problem, you can choose which one to use using the operator \keyword{insteadof}; or you can add an alias to one of them using the operator \keyword{as}  \citep{2018-cowburn}.
+
+We can use both of them to achieve something close to multiple inheritance: interfaces for type and traits for code reuse.
+In our example, we define two interfaces \textbf{iPerson} and \textbf{iMachine} to represent the types. 
+Then, two traits \textbf{tPerson} and \textbf{tMachine} implementing the behavior \textbf{info()}. 
+A trait \textbf{iConstruct} which implements a constructor calling \textbf{info()} of the parent class if it exists, then calling \textbf{info()} of the current class.
+Two concrete classes \textbf{Person} and \textbf{Machine} implementing the last interfaces respectively using the defined traits.
+An \textbf{Android} is a \textbf{Machine} which has behavior similar to a \textbf{Person}. 
+A \textbf{Cyborg} is a \textbf{Person} which has behavior similar to a \textbf{Machine}.
+
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-36}, style=codeStyle]{../codes/php/inheritance/multiple/multiple1.php}
+
+As for diamond problem, PHP supports the extension of one class. 
+You can create an interface \textbf{iPerson} to represent persons type, and two others extending it: \textbf{iStudent} and \textbf{iProfessor}.
+Then, a class \textbf{Person} implementing the interface \textbf{iPerson} which will serve as a base to other classes.
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-15}, style=codeStyle]{../codes/php/inheritance/multiple/diamond.php}
+
+Then, we can create two traits (\textbf{tStudent} and \textbf{tProfessor}) to contain members unique to classes \textbf{Student} and \textbf{Professor} respectively.
+These two classes extend the class \textbf{Person} and add their unique characteristics using their respective traits.
+
+\lstinputlisting[language={[KB]PHP}, linerange={17-49}, style=codeStyle]{../codes/php/inheritance/multiple/diamond.php}
+
+Finally, \textbf{PhdStudent} extends \textbf{Person} and adds its characteristics using the two previously defined traits.
+
+\lstinputlisting[language={[KB]PHP}, linerange={51-69}, style=codeStyle]{../codes/php/inheritance/multiple/diamond.php}
 
 \subsection{Python}
 
