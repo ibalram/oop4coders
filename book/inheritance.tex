@@ -618,6 +618,8 @@ Finally, \textbf{PhdStudent} extends \textbf{Person} and adds its characteristic
 
 \lstinputlisting[language={[KB]PHP}, linerange={51-69}, style=codeStyle]{../codes/php/inheritance/multiple/diamond.php}
 
+\textbf{P.S.} I used interfaces just to maintain inheritance of type in case someone uses \keyword{instanceof}, otherwise you can drop them.
+
 \subsection{Python}
 
 Python supports a limited form of multiple inheritance. 
@@ -638,9 +640,19 @@ Also, \textbf{PhdStudent} will inherit the method \textbf{info()} of \textbf{Stu
 
 \subsection{Ruby}
 
-%\lstinputlisting[language={[KB]Ruby}, linerange={6-9,14-14,20-20}, style=codeStyle]{../codes/ruby/inheritance/app.rb}
+Ruby does not support multiple inheritance; a class can inherit from one class. 
+There is an alternative called \nameword{mixins} which are some modules included inside a class's definition to enhance code reuse \citep{2001-thomas-hunt}.
+
+Lets define behavior using mixins: \textbf{PersonMixin} to define methods applied to persons, and \textbf{MachineMixin} to define mmethods apllied to machines. 
+Another mixin which defines the initializer: its function is to search for \textbf{info()} in the superclass, if found it will be called; then call the current info; finally, call \textbf{moreInfo} which is useful in case the specific class wants to add more information.
+\textbf{Person} and \textbf{Machine} are classes with \textbf{PersonMixin} and \textbf{MachineMixin} behaviors respectively; they have both an initializer afforded via \textbf{InitMixin}.
+Then \textbf{Android} and \textbf{Cyborg} which are \textbf{Machine} with \textbf{PersonMixin} behavior and \textbf{Person} with \textbf{MachineMixin} behavior respectively.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-33}, style=codeStyle]{../codes/ruby/inheritance/multiple/multiple1.rb}
 
 \begin{discussion}
+
+
 \end{discussion}
 
 %=====================================================================
