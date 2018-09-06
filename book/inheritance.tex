@@ -620,7 +620,21 @@ Finally, \textbf{PhdStudent} extends \textbf{Person} and adds its characteristic
 
 \subsection{Python}
 
-%\lstinputlisting[language={[KB]Python}, linerange={4-7, 9-9, 13-13}, style=codeStyle]{../codes/python/inheritance/app.py}
+Python supports a limited form of multiple inheritance. 
+For old-style classes, the only rule is depth-first, left-to-right. 
+Thus, if an attribute is not found in the subclass, it is searched in the left superclass, then (recursively) in its ancestors, and so on.
+For new-style classes, the method resolution order changes dynamically to support cooperative calls to \keyword{super()} \citep{2018-python2.7}.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-16}, style=codeStyle]{../codes/python/inheritance/multiple/multiple1.py}
+
+Since fields are initialized by pushing them into the context object (\keyword{self} by convention), the attribute will not be defined twice: one in the subclass and one in the superclass of a given object. 
+In this case, when we have multiple inheritance, the last constructor to be called among superclasses' is the one which will set the value of a shared field.
+
+Lets try to create a beautiful scary diamond by defining a class \textbf{Person}, two classes (\textbf{Student} and \textbf{Professor}) extending it, and a fourth class \textbf{PhdStudent}. 
+The name attribute of an instance of \textbf{PhdStudent} will have the last value assigned to it via \textbf{Student}'s constructor. 
+Also, \textbf{PhdStudent} will inherit the method \textbf{info()} of \textbf{Student}, not because it is the most specific but because it is the left one (when defining inheritance).
+
+\lstinputlisting[language={[KB]Python}, linerange={4-32}, style=codeStyle]{../codes/python/inheritance/multiple/diamond.py}
 
 \subsection{Ruby}
 
