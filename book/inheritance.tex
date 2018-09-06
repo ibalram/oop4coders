@@ -652,6 +652,208 @@ Then \textbf{Android} and \textbf{Cyborg} which are \textbf{Machine} with \textb
 
 \begin{discussion}
 
+Inheritance is a mean to reuse code from parent classes.
+Constructors can be considered as behaviors too, so they must be inherited too. 
+Not every language allows constructor inheritance, thus we can categorize languages into three groupes:
+\begin{itemize}
+	\item \textbf{Out of box}: These are the languages designed to support constructor inheritance. 
+	Most of our languages are among this category: C++11, Perl, PHP, Python and Ruby.
+	\item \textbf{Can be done}: These are the languages which have many ways of doing inheritance. 
+	Lua belongs to this category. 
+	\item \textbf{Cannot be done}: These are the languages which forces constructor override. 
+	Java and Javascript are examples of this category along with C++ prior to version 11.
+\end{itemize}
+
+When inheriting members from a superclass, a class can change their visibility mode in some OOP languages. 
+Based on this ability, we can divide OOP languages into three categories:
+\begin{itemize}
+	\item \textbf{Allowed}: A language allows visibility mode change either for methods or fields. 
+	C++ can restrict original visibility of all members upon inheritance without selecting each one apart. 
+	PHP can exceed original visibility of methods upon overriding, and fields by defining them again (real overriding).
+	\item \textbf{Just methods}: A language allows visibility mode change just for methods. 
+	Java and Ruby do so upon overriding methods. 
+	Java can only exceed original visibility; as for fields it does not change its visibility, but it creates a new field with the same name as its parent's and preserve the latter.
+	\item \textbf{Not allowed}: These are languages which do not allow visibility change either for methods or fields. 
+	In our case, they are the languages with just public members: Javascript, Lua, Perl and Python.
+\end{itemize}
+
+When you try to override a field in C++ and Java, you actually defining a new field while the parent's still exists. 
+Other languages just override the value of the field if it exists, or create it otherwise. 
+
+An abstract class is a class which cannot be instantiated and has to be extended. 
+It can be abstract because it cannot exist in the current context or because it has some unfinished methods implementations. 
+Based on this criterion, a programming language can be one of these three categories:
+\begin{itemize}
+	\item \textbf{Class-level abstraction}: In this category, we can define a class as abstract even if all its methods have implementations.
+	Java and PHP belong to this category.
+	\item \textbf{Method-level abstraction}: In this category, a class is considered as abstract if it has at least one abstract method.
+	This category contains: C++ and Python (via \nameword{abc} module).
+	\item \textbf{No abstraction}: All the languages which do not afford a built-in mechanism to support abstract classes. 
+	Javascript, Lua, Perl and Ruby are examples of this category.
+\end{itemize}
+
+Final classes are those which cannot be extended, and final methods are those which cannot be overridden. 
+Languages such as Java and PHP affords this capacity; C++11 does too. 
+
+Multiple inheritance is the capacity to extend many classes at once. 
+We can define three types of multiple inheritance; a given language can afford all of these types.
+\begin{itemize}
+	\item \textbf{Type multiple inheritance}: A class can inherit many types at once.  
+	When an instance of this class is tested against these types, it belongs to all of them. 
+	Languages affording this capacity are: C++ (class inheritance), Java (interfaces), Perl (\keyword{@ISA}), PHP (interfaces) and Python (class inheritance).
+	
+	\item \textbf{Behavior multiple inheritance}: A class can inherit behavior from many sources. 
+	In this case, we can consider code reuse via composition mechanisms such as traits and mixins as a form of inheritance. 
+	Languages affording this capacity are: C++ (class inheritance), Java (defaults via interfaces), javascript (merging prototypes), Lua (using \keyword{\_\_index}), Perl (\keyword{@ISA}), PHP (traits), Python (class inheritance) and Ruby (mixins). 
+	It is important to point out that Java and Ruby's behavior multiple inheritance is limited. 
+	Java's default methods are limited when it comes to operate on class's state: they can be totally independent from class's fields, or they can be dependent on final fields which have to be initialized in the interface. 
+	Ruby's mixins can have calls to superclass's methods; but when including consecutive mixins, their super will refer to the previous included mixin.
+	
+	\item \textbf{State multiple inheritance}: A class can inherit fields from multiple classes or sources. 
+	These languages afford this capacity: C++ and PPython(class inheritance); Javascript, Lua and Perl (by combining parents objects); and PHP (traits).
+	
+\end{itemize}
+
+Table~\ref{tab-inheritance} represents a comparison between some OOP languages based on their inheritance capacities: 
+\begin{itemize}
+	\item \textbf{Constructor inheritance}: Can a subclass inherit its parent's constructor? (no need to define it again).
+	\item \textbf{Visibility change}: Can a subclass change the visibility modes of its parent's members?
+	\item \textbf{Field hiding}: If a subclass defines the same field, will be two fields of the same name: one of the subclass and one of its parent?
+	\item \textbf{Abstract}: Can the language afford abstract classes and methods?
+	\item \textbf{Final}: Can the language afford final classes and methods?
+	\item \textbf{Multiple inheritance}: How far a language can afford multiple inheritance (including code reuse from sources other than classes)?
+\end{itemize}
+
+\begin{landscape}
+	\extrarowsep = 0pt 
+	
+	%	\doublerawsep = 1.5pt
+	\begin{longtabu} to \linewidth %
+		{
+			X[p]|[5pt white]
+			X[2,p]|[5pt white]
+			X[p]|[5pt white]
+			X[p]|[5pt white]
+			X[2,p]|[5pt white]
+			X[2,p]|[5pt white]
+			X[2,p]|[5pt white]
+		} %{llllllll} 
+		%	\begin{longtabu} {p{1cm}p{1cm}p{5cm}p{1cm}p{1cm}p{2cm}p{2cm}p{1cm}}
+		\caption{Inheritance comparison}%
+		\label{tab-inheritance}\\
+		
+		%		\hline\hline
+		\rowcolor{indigo}
+		\rowfont{\bfseries\color{white}}
+		{Language} &
+		{Constructor inheritance} &
+		{Visibility change} &
+		{Field hide} &
+		{Abstract} & 
+		{Final} &
+		{Multiple inheritance}\\
+		%		\hline\hline
+		&&&&&&\\
+		\endfirsthead
+		
+		%		\hline\hline
+		\rowcolor{indigo}
+		\rowfont{\bfseries\color{white}}
+		{Language} &
+		{Constructor inheritance} &
+		{Visibility change} &
+		{Field hide} &
+		{Abstract} & 
+		{Final} &
+		{Multiple inheritance}\\
+		%		\hline\hline
+		&&&&&&\\
+		\endhead
+		
+		\taburowcolors{indigo!20!white .. black!10!white}
+		
+		{\bfseries\color{indigo}C++} & %Language
+		C++11: via keyword \keyword{using}& %Constructor
+		Yes& %Visibility
+		Yes& %field hide
+		method: virtual myMethod = 0; \newline 
+		class: at least one abstract method & %Abstract
+		method: (C++11) virtual myMethod final \newline 
+		class: (C++11) class MyClass final \{\}& %final
+		All\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Java} & %Language
+		No& %Constructor
+		Methods: after overriding them& %Visibility
+		Yes& %field hide
+		method: abstract myMethod \newline 
+		class: abstract class MyClass & %Abstract
+		method: final myMMethod \newline 
+		class: final class MyClass & %final
+		Type (interfaces), Behavior(defaults in interfaces)\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Javascript} & %Language
+		No way (since the class is its own constructor)& %Constructor
+		No& %Visibility
+		No& %Fields hide
+		No& %Abstract
+		No& %final
+		State (combine parents new objects) and Behavior: (combine parents prototypes)\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Lua} & %Language
+		Can be done: using colon notation for new& %Constructor
+		No& %Visibility
+		No& %Fields hide
+		No& %Abstract
+		No& %final
+		State (combine parents new objects) and Behavior: (using \keyword{\_\_index})\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Perl} & %Language
+		Yes& %Constructor
+		No& %Visibility
+		No& % Fields hide
+		No& %Abstract
+		No& %final
+		Type and Behavior (\keyword{@ISA}), State (combine parents new objects)\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}PHP} & %Language
+		Yes& %Constructor
+		Methods: after overriding them; Fields& %Visibility
+		No& % Fields hide
+		method: abstract myMethod \newline
+		class: abstract class MyClass& %Abstract
+		method: final myMethod \newline 
+		class: final MyClass & %final
+		Type (interfaces), State and Behavior (traits)\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Python} & %Language
+		Yes& %Constructor
+		No& %Visibility
+		No& % Field hiding
+		using abc module& %Abstract
+		No& %final
+		All\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Ruby} & %Language
+		Yes& %Constructor
+		Methods: after overriding& %Visibility
+		No& %Double member
+		No& %Abstract
+		No& %final
+		Behavior (via mixins)\\%Multiple
+		%		\hline
+		
+		%		\hline\hline
+		
+	\end{longtabu}
+\end{landscape}
 
 \end{discussion}
 
