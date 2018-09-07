@@ -256,6 +256,7 @@ title={#1}
 %===================== COVER ===========================
 %=======================================================
 
+\setcounter{page}{0}
 
 \newtoks\@coverimage
 \@coverimage={}
@@ -444,10 +445,12 @@ title={#1}
 
 \RequirePackage{tocloft}
 
+\renewcommand{\contentsname}{}
 
 \def\kodetoc{%
 	
 	\chapter*{Contents}
+	\addcontentsline{toc}{chapter}{Contents}
 	
 	\renewcommand{\cftpartfont}{\normalfont\sffamily\bfseries}% \part font in ToC
 	\renewcommand{\cftchapfont}{\normalfont\large\itshape}    % \chapter font in ToC
