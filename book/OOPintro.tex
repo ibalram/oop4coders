@@ -8,24 +8,25 @@
 
 \chapter{Introduction to OOP}
 
-\begin{introduction}
-	In this chapter, we will present a little history followed by the concepts of OOP.
-	Then, we present the benefits of OOP which are arguable whether OOP nowadays has achieve them or not. 
-	You can argue that OOP has not afford some benefits it meant to do. 
-	The purpose of this book is to be a guide to programmers wanting to compare different implementations of this paradigm. 
-	To see how OOP is perceived, we present some point of views from both sides: with and against.
+\begin{introduction} %\lettrine[lines=3,findent=8pt]{\normalfont\textcolor{indigo}T}{his}
+	\lettrine{T}{his} chapter begins by a little history showing OOP's origins and meaning.
+	And, of course, the four concepts will be presented using concise definitions so no one gets bored.
+	Then, some benefits of OOP can be listed to show why this paradigm gets its fame.
+	Some may argue that these benefits are just thin air and this paradigm has failed what it promised.  
+	It is not the purpose of this book to show if this paradigm has failed or succeed. 
+	But, some opinions either opposing or promoting OOP may be helpful to the reader before diving into this book.
 \end{introduction}
 
 \section{History}
 
 %Simula history
-Simula is considered the first object-oriented object programming language \citep{2004-huang}.
+Simula is considered as the first object-oriented object programming language \citep{2004-huang}.
 Simula 67 introduced classes, objects, sub-classes, virtual procedures and dynamic binding \citep{2013-black}.
 It was created when \nameword{Kristen Nygaard} saw the need for a better way to represent heterogeneous elements and operations of a system while working on computer simulation programs.
 He was joined by \nameword{Ole-Johan Dahl} to create SIMULA I from Norwegian Computing Center in 1962.
 %TODO You can add a little code for Simula 67
 
-By the time, while being at the University of Utah, \nameword{Alan Kay} liked the idea behind Simula language. 
+By the time, while being at the University of Utah, \nameword{Alan Kay} liked the idea behind Simula language \citep{2004-huang}. 
 He has a vision of a personal computer which provides graphics-oriented applications. 
 He sold his vision to \nameword{Xerox Parc} and headed a team to create a personal computer called \nameword{Dynabook} which is programmed using \nameword{Smalltalk}.
 The term "object-oriented programming" was coined by Alan Kay referring to objects as the foundation for computation.
@@ -64,14 +65,16 @@ When asked by \nameword{Stefan Ram} in 2003 on definition of OOP, \nameword{Alan
 
 \subsection{Abstraction}
 
-Abstraction is the mechanism of perceiving an entity in the system and some context, then taking out unnecessary details and keep those useful to that context.
+Abstraction is not a concept specific to OOP; it is more wide. 
+In computer science, abstraction is a fundamental process which thought to be a requirement for computer scientists and students to develop good software \citep{2013-saitta-zucker}.
+In OOP, abstraction is the mechanism of perceiving an entity in the system and some context, then taking out unnecessary details and keep those useful to that context \citep{2014-rahman}.
 You can consider it as a generalization of objects.
 For example, a person can be represented as an object with some characteristics: first name, last name, birthday, gender, color of eyes, etc. with some behavior: walk, talk, eat, die, etc. 
 If we use this person as a student in the context of university, we will no more be needing some aspects: color of eyes, walk, talk, etc. 
 Also, we need some other aspects such as: inscription year, grades, etc. 
 
 It is, also, the process to hide internal complex implementation and show only necessary details to the user. 
-This will help the user to implement more complex logic using the afforded abstraction without the need to understand how it was implemented.
+This will help the user to implement more complex logic using the afforded abstraction without the need to understand how it was implemented \citep{2017-janssen}.
 For example, suppose we have an object called \textbf{car} with some behavior: start, stop, etc. 
 Users does not need to know how in detail how the car start moving when they ask it to start; they just need to know what parameters they have to afford.
 
@@ -89,8 +92,9 @@ The object will have: a state (data), a behavior (methods) and identity (unique 
 \subsubsection{Prototype-based}
 
 In a prototype-based language, there is no distinction between class and object; there are just objects. 
-An object which has its state, behavior and identity can be used as a template to create new objects by cloning and mutation. 
-The first prototype-based language is \nameword{self} programming language.
+An object which has its state, behavior and identity can be used as a template to create new objects by cloning and mutation rather than instantiating.
+This style was proposed to solve Smalltalk's class-based model's problems \citep{1986-borning}.
+The first prototype-based language is \nameword{self} programming language \citep{1991-ungar}.
 %TODO explain methos lookup: deligation vs embed
 
 \subsection{Encapsulation}

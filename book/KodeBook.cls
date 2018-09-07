@@ -153,6 +153,27 @@ Ligatures=TeX
 %Scale=1.5
 ]{SourceCodePro-Bold} %
 
+%https://www.dafont.com/goudy-initialen.font?l[]=1
+%Goudy Initialen by Dieter Steffmann 
+%First seen on DaFont: July 12, 2006
+%\newfontface\lettrinefont
+%[Path = fonts/goudyInitialen/,
+%Extension = .ttf,
+%Ligatures=TeX
+%%Scale=1.5
+%]{GoudyIni} %
+
+%https://www.dafont.com/decorated-roman-ini.font?l[]=1
+%Decorated Roman Initials by Dieter Steffmann 
+%First seen on DaFont: before 2005
+\newfontface\lettrinefont
+[Path = fonts/decoratedRomanIni/,
+Extension = .ttf,
+Ligatures=TeX
+%Scale=1.5
+]{DecoratedRomanInitials} %
+
+
 %\newfontface\codefont
 %[Path = fonts/Inconsolata/,
 %Extension = .ttf,
@@ -446,21 +467,57 @@ title={#1}
 \RequirePackage{tocloft}
 
 \renewcommand{\contentsname}{}
+\renewcommand{\listfigurename}{}
+\renewcommand{\listtablename}{}
+
+\renewcommand{\cftpartfont}{\normalfont\sffamily\bfseries}% \part font in ToC
+\renewcommand{\cftchapfont}{\normalfont\large\itshape}    % \chapter font in ToC
+\renewcommand{\cftsecfont}{\normalfont\slshape}           % \section font in ToC
 
 \def\kodetoc{%
 	
 	\chapter*{Contents}
 	\addcontentsline{toc}{section}{Contents}
 	
-	\renewcommand{\cftpartfont}{\normalfont\sffamily\bfseries}% \part font in ToC
-	\renewcommand{\cftchapfont}{\normalfont\large\itshape}    % \chapter font in ToC
-	\renewcommand{\cftsecfont}{\normalfont\slshape}           % \section font in ToC
-	
 	{
 		\hypersetup{linkcolor=black}
 		\tableofcontents
 	}
 }
+
+\def\kodelof{%
+	
+	\chapter*{List of figures}
+	\addcontentsline{toc}{section}{List of figures}
+	{
+		\hypersetup{linkcolor=black}
+		\listoffigures
+	}
+	
+}
+
+\def\kodelot{%
+	
+	\chapter*{List of tables}
+	\addcontentsline{toc}{section}{List of tables}
+		{
+			\hypersetup{linkcolor=black}
+			\listoftables
+		}
+		
+}
+
+\RequirePackage{acro}
+
+\def\kodeabbrev{%
+	
+	\chapter*{List of abbreviations}
+	\addcontentsline{toc}{section}{List of abbreviations}
+	
+	\printacronyms[include-classes=abbrev,name=]
+	
+}
+
 
 %\RequirePackage{mdframed}
 %\RequirePackage{titletoc}
@@ -517,4 +574,13 @@ title={#1}
 %	\end{mdframed}%
 %}
 
+
 \setcounter{tocdepth}{1}
+
+\RequirePackage{lettrine}
+
+\renewcommand*{\LettrineFontHook}{\color{indigo}\lettrinefont}
+\setlength{\DefaultNindent}{2pt}
+\setlength{\DefaultFindent}{2pt}
+\setlength{\DefaultSlope}{0pt}
+\setcounter{DefaultLines}{3}
