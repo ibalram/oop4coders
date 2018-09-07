@@ -450,7 +450,7 @@ title={#1}
 \def\kodetoc{%
 	
 	\chapter*{Contents}
-	\addcontentsline{toc}{chapter}{Contents}
+	\addcontentsline{toc}{section}{Contents}
 	
 	\renewcommand{\cftpartfont}{\normalfont\sffamily\bfseries}% \part font in ToC
 	\renewcommand{\cftchapfont}{\normalfont\large\itshape}    % \chapter font in ToC
