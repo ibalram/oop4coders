@@ -10,21 +10,30 @@
 \chapter{Hello World}
 
 \begin{introduction}
-	\lettrine{A}{nother} introduction has to be made before starting our journey; but this time it will be for different \ac{oop} languages used in this book. 
-	First of all, installing instructions must be presented to help anyone with zero knowledge about these languages. 
-	Then, we will present different implementations of these languages from ``Hello world" to functions and exceptions. 
-	We have to point out that this chapter introduces the basic syntax without diving in different OOP concepts.
-	But, in case of languages with strong OOP, we have to present some concepts such as ``override" in ``exceptions".
+	\lettrine{A}{nother} introduction has to be made before starting our journey; but this time it will be about different \ac{oop} languages used in this book. 
+	First of all, installing instructions must be presented to help anyone with zero knowledge about these languages get staring. 
+	Then, some coding features will be presented from a simple ``Hello world" passing through functions and entry point to exception handling. 
+	It is important to point out that this chapter introduces the basic syntax without diving in different \ac{oop} concepts.
+	Unless, of course, in case of ``exceptions" which are based on classes in some languages such as Java.
 \end{introduction}
 
 
 \section{Getting started}
 
+To be able to execute the examples afforded in this book, it is strongly recommended to install the languages compilers or interpreters.
+Here some instructions on how to get them (``\textbf{Gotta Catch 'Em All}").
+
 \subsection{C++}
 
-C++ is a general-purpose compiled programming language which affords object-oriented paradigm among others. 
-It was developed by \nameword{Bjarne Stroustrup} at Bell Labs since 1979.
+\begin{wrapfigure}{l}{2.25cm}
+	\centering
+	\vspace{-20pt}
+	\includegraphics[width=2cm]{../img/C++.pdf}
+	\vspace{-30pt}
+\end{wrapfigure}
 
+C++ is a general-purpose compiled programming language which affords object-oriented paradigm among others. 
+It was developed by \nameword{Bjarne Stroustrup} at Bell Labs since 1979 \citep{1993-stroustrup}.
 To use C++ you have to install its compiler. 
 The most used one is GNU g++\footnote{GNU g++: \url{gcc.gnu.org/}} which is distributed freely and available for most systems.
 
@@ -44,22 +53,28 @@ If you want to use g++ on Windows, you can install:
 \end{itemize}
 
 You can use Microsoft Visual studio: \url{https://www.visualstudio.com/vs/visual-studio-express/}
-
 Also, you can install Turbo C++ on \url{https://turboc.codeplex.com}
 
 \subsection{Java}
 
+\begin{wrapfigure}{l}{2.25cm}
+	\centering
+	\vspace{-20pt}
+	\includegraphics[width=2cm]{../img/Java.pdf}
+	\vspace{-30pt}
+\end{wrapfigure}
+
 Java is a general-purpose compiled programming language which is concurrent, class-based, object-oriented. 
 It is intended to generate platform-independent programs. 
 That is, the same compiled program called bytecodes will be able to execute in different machines and operating systems using a virtual machine. 
-Developed by \nameword{James Gosling} at Sun Microsystems (acquired by Oracle Corporation) in 1995.
+Developed by \nameword{James Gosling} at Sun Microsystems (acquired by Oracle Corporation) in 1991 under the name of ``Oak", in 1995 its name was changed to Java, then its initial release was in 1996 \citep{2014-panigraphy}.
 
 This is a detailed description on how to install Java \url{https://www.java.com/en/download/help/download_options.xml}.
 Simply, to install Oracle JDK, download it from this link: \url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}. 
 
 As for OpenJDK, you can install it on Linux distributions following these instructions: \url{http://openjdk.java.net/install/}. 
 On some distributions such as \textbf{Linux Mint}, it is installed by default.
-For example, in Ubuntu you type:
+It can be found on repositories, for example in Ubuntu you type:
 \begin{lstlisting}[style=shellStyle]
 $ sudo apt-get update
 $ sudo apt-get install openjdk-8-jdk
@@ -72,11 +87,27 @@ It is recommended to use an IDE:
 	\item NetBeans: \url{https://netbeans.org}
 \end{itemize}
 
+In the examples afforded with this book, you have to compile and execute from \textbf{src} folder, if you use a command line. 
+This is because the examples use packages to organize different codes of every chapter. 
+So, if you want to compile \textbf{ObjMeth.java} in \textbf{codes/java/src/clsobj/}, you will have  to do it as:
+\begin{lstlisting}[style=shellStyle]
+cd codes/java/src/
+javac clsobj/ObjMath.java 
+\end{lstlisting}
+
 \subsection{Javascript}
+
+\begin{wrapfigure}{l}{2.25cm}
+	\centering
+	\vspace{-20pt}
+	\includegraphics[width=2cm]{../img/Javascript.pdf}
+%	\vspace{-30pt}
+\end{wrapfigure}
 
 JavaScript is an interpreted programming language for the web, which supports object-oriented paradigm. 
 It is meant to be used as client-side programming language executed on different browser, but it can also execute on server side using NodeJs for example.
-It was developed by Netscape Communications Corporation, and designed by \nameword{Brendan Eich} in 1995. 
+It was developed by Netscape Communications Corporation, and designed by \nameword{Brendan Eich} in 1995, the it was standardized by \ac{ecma} \citep{2018-rubens}. 
+
 
 Javascript can be used directly on any browser. 
 Suppose we have a file called "func.js" containing a function "fact(n)" which calculates the factorial of a number. 
@@ -116,10 +147,17 @@ $ sudo apt-get install nodejs
 
 \subsection{Lua}
 
-Lua is an interpreted programming language, which supports object-oriented paradigm. 
+\begin{wrapfigure}{l}{2.25cm}
+	\centering
+	\vspace{-20pt}
+	\includegraphics[width=2cm]{../img/Lua.pdf}
+	\vspace{-20pt}
+\end{wrapfigure}
+
+Lua is an interpreted programming language, which supports object-oriented paradigm.
 It was designed primarily for embedded systems.
 Designed by \nameword{Roberto Ierusalimschy}, \nameword{Luiz Henrique de Figueiredo} and \nameword{Waldemar Celes} in 1993.
-It is mostly used as a scripting language for games development.
+It is mostly used as a scripting language for games development \citep{2018-lua}.
 
 Download it from here: \url{http://lua-users.org/wiki/LuaBinaries}. 
 In Ubuntu, you can install it by using its version number as:
@@ -131,9 +169,16 @@ $ sudo apt-get install lua5.2
 
 \subsection{Perl}
 
+%\begin{wrapfigure}{l}{2.25cm}
+%	\centering
+%	\vspace{-20pt}
+%	\includegraphics[width=2cm]{../img/Perl.pdf}
+%	\vspace{-10pt}
+%\end{wrapfigure}
+
 Lua is a general-purpose interpreted programming language, which supports oriented-object paradigm. 
-It was developed by \nameword{Larry Wall} in 1987 to simplify report processing on Unix.
-It is used as a CGI scripting language for web servers.
+It was developed by \nameword{Larry Wall} in 1987 to simplify report processing on Unix \citep{2001-ashton}.
+It is used as a \ac{cgi} scripting language for web servers.
 
 To install Perl, please refer to this page: \url{https://www.perl.org/get.html}. 
 It is high probable that you have Perl installed on your Linux. 
@@ -145,8 +190,15 @@ As for Windows users, there are two projects:
 
 \subsection{PHP}
 
-PHP is a general-purpose server-side scripting language which supports oriented-object programming since version 3.0  and improved in version 5.0.
-It was originally created by \nameword{Rasmus Lerdorf} in 1994. 
+\begin{wrapfigure}{l}{2.25cm}
+	\centering
+	\vspace{-20pt}
+	\includegraphics[width=2cm]{../img/PHP.pdf}
+	\vspace{-10pt}
+\end{wrapfigure}
+
+PHP ``PHP: Hypertext Preprocessor" is a general-purpose server-side scripting language which supports oriented-object programming since version 3.0  and improved in version 5.0.
+It was originally created by \nameword{Rasmus Lerdorf} in 1994 as a simple \ac{cgi} \citep{2018-cowburn}. 
 
 For a detailed description on how to install the server, please refer to this page: \url{http://php.net/manual/en/install.php}.
 On Ubuntu, we just need the language:
@@ -154,12 +206,19 @@ On Ubuntu, we just need the language:
 $ sudo apt-get update
 $ sudo apt-get install php
 \end{lstlisting}
-It will install a command-line interface (CLI) called "php"; used to execute a php file directly from the shell.
+It will install a \ac{cli} called ``php"; used to execute a php file directly from the shell.
 
 \subsection{Python}
 
+\begin{wrapfigure}{l}{2.25cm}
+	\centering
+	\vspace{-20pt}
+	\includegraphics[width=2cm]{../img/Python.pdf}
+	\vspace{-20pt}
+\end{wrapfigure}
+
 Python is an interpreted general-purpose programming language, support multiple paradigms including OOP. 
-It was created by \nameword{Guido van Rossum} and released in 1991.
+It was created by \nameword{Guido van Rossum} and released in the early 1990s \cite{2018-python2.7}.
 It supports code readability as a design philosophy by using indentations as a mean of defining code blocks.
 
 Refer to this page: \url{https://www.python.org/downloads/}. 
@@ -168,13 +227,20 @@ For Ubuntu, you can type:
 $ sudo apt-get update
 $ sudo apt-get install python
 \end{lstlisting}
-Or you can refer to this page for further information: \url{http://docs.python-guide.org/en/latest/starting/install3/linux/}.
+Or, you can refer to this page for further information: \url{http://docs.python-guide.org/en/latest/starting/install3/linux/}.
 You have to verify if it is already installed (Linux Mint has it by default).
 
 \subsection{Ruby}
 
+\begin{wrapfigure}{l}{2.25cm}
+	\centering
+	\vspace{-20pt}
+	\includegraphics[width=2cm]{../img/Ruby.pdf}
+	\vspace{-20pt}
+\end{wrapfigure}
+
 Ruby is an interpreted, object-oriented, general-purpose programming language. 
-It was designed and developed by \nameword{Yukihiro Matsumoto} in 1990.
+It was designed and developed by \nameword{Yukihiro Matsumoto} and released to the public in 1995 \citep{2001-thomas-hunt}.
 
 To install it, please refer to this page: \url{http://www.ruby-lang.org/en/documentation/installation/}. 
 On Windows, you can use RubyInstaller: \url{https://rubyinstaller.org}.
