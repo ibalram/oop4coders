@@ -508,6 +508,33 @@ title={#1}
 }
 
 \RequirePackage{acro}
+%\RequirePackage[acronyms]{glossaries}
+%\glsenablehyper
+%\acsetup{tooltip=true}
+%\acsetup{
+%	page-ref    = none,% Seitennummer in Klammern
+%	extra-style = comma,% extra-Informationen mit Komma anhÃ€ngen
+%	only-used   = false,% fÃŒr das Beispiel auch die nicht verwendeten in die Liste aufnehmen
+%	sort        = true,  % Liste sortieren
+%	hyperref  = {true}
+%}
+
+%\ExplSyntaxOn
+%\cs_set_protected:Npn \acro_activate_hyperref_support:
+%{
+%	\bool_if:nT { \l__acro_hyperref_loaded_bool && \l__acro_use_hyperref_bool }
+%	{
+%		\sys_if_engine_xetex:TF
+%		{
+%			\cs_set:Npn \acro_hyper_link:nn ##1##2
+%			{ \hyperlink { \XeTeXLinkBox {##1} } {##2} }
+%		}
+%		{ \cs_set_eq:NN \acro_hyper_link:nn \hyperlink }
+%		\cs_set:Npn \acro_hyper_target:nn ##1##2
+%		{ \raisebox { 3ex } [ 0pt ] { \hypertarget {##1} { } } ##2 }
+%	}
+%}
+%\ExplSyntaxOff
 
 \def\kodeabbrev{%
 	
@@ -515,6 +542,9 @@ title={#1}
 	\addcontentsline{toc}{section}{List of abbreviations}
 	
 	\printacronyms[include-classes=abbrev,name=]
+%	\printglossaries
+%	\printglossary[type=\acronymtype]
+%	\printglossary
 	
 }
 
@@ -579,8 +609,13 @@ title={#1}
 
 \RequirePackage{lettrine}
 
-\renewcommand*{\LettrineFontHook}{\color{indigo}\lettrinefont}
+\renewcommand{\LettrineFontHook}{\color{indigo}\lettrinefont}
+\renewcommand{\LettrineTextFont}{\color{indigo}\bfseries}
 \setlength{\DefaultNindent}{2pt}
 \setlength{\DefaultFindent}{2pt}
 \setlength{\DefaultSlope}{0pt}
 \setcounter{DefaultLines}{3}
+%\renewcommand{\DefaultLraise}{0.05}
+\renewcommand{\DefaultLoversize}{0.1}
+
+\RequirePackage[bookmarksdepth=3]{hyperref}

@@ -9,12 +9,12 @@
 \chapter{Introduction to OOP}
 
 \begin{introduction} %\lettrine[lines=3,findent=8pt]{\normalfont\textcolor{indigo}T}{his}
-	\lettrine{T}{his} chapter begins by a little history showing OOP's origins and meaning.
+	\lettrine{T}{his} chapter begins by a little history showing \ac{oop}'s origins and meaning.
 	And, of course, the four concepts will be presented using concise definitions so no one gets bored.
-	Then, some benefits of OOP can be listed to show why this paradigm gets its fame.
+	Then, some benefits of \ac{oop} can be listed to show why this paradigm gets its fame.
 	Some may argue that these benefits are just thin air and this paradigm has failed what it promised.  
 	It is not the purpose of this book to show if this paradigm has failed or succeed. 
-	But, some opinions either opposing or promoting OOP may be helpful to the reader before diving into this book.
+	But some opinions, either opposing or promoting it, may be helpful to the reader before diving into this book.
 \end{introduction}
 
 \section{History}
@@ -31,7 +31,7 @@ He has a vision of a personal computer which provides graphics-oriented applicat
 He sold his vision to \nameword{Xerox Parc} and headed a team to create a personal computer called \nameword{Dynabook} which is programmed using \nameword{Smalltalk}.
 The term "object-oriented programming" was coined by Alan Kay referring to objects as the foundation for computation.
 %In the contrary to simula, classes in smalltalk are objects because everything is an object collaborating with others by exchanging messages.
-Alan Kay defines OOP in term of smalltalk as follows \citep{1993-kay,2014-cunningham}:
+Alan Kay defines \ac{oop} in term of smalltalk as follows \citep{1993-kay,2014-cunningham}:
 \begin{itemize}
 	\item Everything is an object
 	\item Objects communicate by sending and receiving messages
@@ -40,7 +40,7 @@ Alan Kay defines OOP in term of smalltalk as follows \citep{1993-kay,2014-cunnin
 	\item The class holds the shared behavior for its instances (in the form of objects in a program list)
 	\item To eval a program list, control is passed to the first object and the remainder is treated as its message
 \end{itemize}
-When asked by \nameword{Stefan Ram} in 2003 on definition of OOP, \nameword{Alan Kay} responded\footnote{\url{http://userpage.fu-berlin.de/~ram/pub/pub_jf47ht81Ht/doc_kay_oop_en}}:
+When asked by \nameword{Stefan Ram} in 2003 on definition of \ac{oop}, \nameword{Alan Kay} responded\footnote{\url{http://userpage.fu-berlin.de/~ram/pub/pub_jf47ht81Ht/doc_kay_oop_en}}:
 \begin{itemize}
 	\item I thought of objects being like biological cells and/or individual computers on a network, only able to communicate with messages.
 	\item I wanted to get rid of data.
@@ -65,9 +65,9 @@ When asked by \nameword{Stefan Ram} in 2003 on definition of OOP, \nameword{Alan
 
 \subsection{Abstraction}
 
-Abstraction is not a concept specific to OOP; it is more wide. 
+Abstraction is not a concept specific to \ac{oop}; it is more wide. 
 In computer science, abstraction is a fundamental process which thought to be a requirement for computer scientists and students to develop good software \citep{2013-saitta-zucker}.
-In OOP, abstraction is the mechanism of perceiving an entity in the system and some context, then taking out unnecessary details and keep those useful to that context \citep{2014-rahman}.
+In \ac{oop}, abstraction is the mechanism of perceiving an entity in the system and some context, then taking out unnecessary details and keep those useful to that context \citep{2014-rahman}.
 You can consider it as a generalization of objects.
 For example, a person can be represented as an object with some characteristics: first name, last name, birthday, gender, color of eyes, etc. with some behavior: walk, talk, eat, die, etc. 
 If we use this person as a student in the context of university, we will no more be needing some aspects: color of eyes, walk, talk, etc. 
@@ -80,7 +80,7 @@ Users does not need to know how in detail how the car start moving when they ask
 
 In term of programming, the different objects sharing same aspects can be represented by a class or a prototype as their abstraction. 
 This abstraction will be used to create new objects with the same behavior but with different characteristics. 
-Two major styles has raised in OOP world: class-based programming and prototype-based programming.
+Two major styles has raised in \ac{oop} world: class-based programming and prototype-based programming.
 
 \subsubsection{Class-based}
 
@@ -99,7 +99,7 @@ The first prototype-based language is \nameword{self} programming language \cite
 
 \subsection{Encapsulation}
 
-Encapsulation is the mechanism of binding data and methods operating on these data into a single object while restricting access to them. 
+Encapsulation is the mechanism of binding data and methods operating on these data into a single object while restricting access to them \citep{2017-janssen-enc}. 
 By hiding variables from the outside of this object, you can prevent misuse of these variables.
 So, encapsulation ensures basic integrity to the data by protecting it from the outside world.
 For example, a person has a first name and a last name besides other attributes. 
@@ -109,7 +109,7 @@ Once created, the instance of person must not let the user modify these two attr
 
 \subsection{Inheritance}
 
-Inheritance is the mechanism of basing a derived class from a parent class to reuse its existing attributes and methods. 
+Inheritance is the mechanism of basing a derived class from a parent class to reuse its existing attributes and methods \citep{2016-techdifferences}. 
 It is used to create specialized classes from more generic ones by retaining the original class members and defining new ones. 
 For example, lets say we have a class \textbf{Person} and want to create two new classes: \textbf{Student} and \textbf{Professor}. 
 The idea is to not rewrite the same code for both these new classes. 
@@ -124,7 +124,7 @@ Not all programming languages support multiple inheritance due to increasing com
 	\item The order of initialization when creating a new object of the subclass 
 \end{itemize}
 
-It is important to point out that inheritance is different from sub-typing. 
+It is important to point out that inheritance is different from sub-typing\citep{1989-cook-al}. 
 Sub-typing will create a relation \textbf{is-a} between the type and subtype, while inheritance only reuses implementation.
 Some languages, such as: C++, Java and C\#, fuse these two concepts which leads to confusion.
 Go programming language, on the other hand, separates the two concepts.  
@@ -132,10 +132,10 @@ Go programming language, on the other hand, separates the two concepts.
 \subsection{Polymorphism}
 
 In general, polymorphism is the ability to assign a different meaning or usage to something in many contexts. 
-In OOP, it is the ability to process objects differently based on their class or type. 
-Polymorphism can be applied to objects, when the language affords sub-typing along with inheritance, to consider an object of a derived class as an object of the superclass. 
-Also, in term of functions, some languages allow the definition of multiple functions with the same name and different arguments; this is called overloading.
-When a class inherit from another, it can redefine some of its methods which allows it to assign a different behavior from its parent.
+In \ac{oop}, it is the ability to process objects differently based on their class or type \citep{2016-techdifferences}. 
+Polymorphism can be applied to objects, when the language affords sub-typing along with inheritance considering an object of a derived class as an object of the superclass. 
+Also, some languages allow the definition of multiple methods with the same name and different signature; this is called overloading.
+When a class inherit from another, it can override some of its methods which allows it to assign a different behavior than its parent's.
 An example of this, is the class Animal with a function talk(). 
 Each class derived from Animal must redefine this method because each type of animals has its own way to talk.
 
@@ -154,45 +154,47 @@ For instance, chapters can not exist without being in a book.
 
 %TODO write about these
 
+\ac{oop} is designed to simplify design, reuse code and enhance maintainability \citep{2017-half,2015-popyack-boady}.
 %Simplicity & Readability (through modularity)
-Simplicity is one of the benefits of OOP by modeling a problem using real world objects which makes the program more clear.
-It is important to mention, not every problem can be solved by OOP. 
-Solving a simple problem using OOP can result in defining many components which leads to more confusion and complexity. 
-For a big complex problem (especially enterprise problems), OOP can improve software development productivity by forcing designers to go through an extensive planning phase. 
+Simplicity is one of the benefits of \ac{oop} by modeling a problem using real world objects which makes the program more clear.
+It is important to mention, not every problem can be solved by \ac{oop}. 
+Solving a simple problem using \ac{oop} can result in defining many components which leads to more confusion and complexity. 
+For a big complex problem (especially enterprise problems), \ac{oop} can improve software development productivity by forcing designers to go through an extensive planning phase. 
 Also, by defining different classes, it provides separation of duties; that is, the program can be divided on many developers where each can work independently from others.
 
 
 %Re-use
-Reuse is the biggest gain you can have from using OOP. 
+Reuse is the biggest gain you can have from using \ac{oop}. 
 Reusing code can decrease your software's size. 
 It enables faster development by reusing libraries and codes developed in previous projects. 
 This will lead to more focus into project analysis and design lowering the overall cost of development. 
 
 %Maintainability: 
-Maintainability can be enhanced using OOP. 
+Maintainability can be enhanced using \ac{oop}. 
 Since each class has its components (data and behavior), you can identify errors easily (if your program is well designed).
 Also, modifications inside a class do not affect other parts of the program. 
 Moreover, adding new features is easier by extending the current project with new classes.
 
 \section{Limits}
 
-OOP can solve many complex problems and it excels at graphical user interfaces, but it cannot solve every problem. 
-Personally, I think seeing OOP as a unique solution is one of its downfalls. 
-Not every program developed using OOP is good and superior. 
+\ac{oop} can solve many complex problems and it excels at graphical user interfaces, but it cannot solve every problem. 
+Personally, I think seeing \ac{oop} as a unique solution is one of its downfalls. 
+Not every program developed using \ac{oop} is good and superior. 
 So, one limit is that its users may seen it as the only paradigm out there, and other paradigms are just inferior.
+Some other limits are: size, speed and effort \citep{2015-popyack-boady}.
 
-The size of OOP programs tend to be larger since it involves more code lines. 
+The size of \ac{oop} programs tend to be larger since it involves more code lines. 
 This may cause a slower execution speed. 
 These two limits are not problems nowadays since memory spaces are bigger and programming languages are more optimized.
 
-In term of effort, OOP requires a lot of planning to move to coding phase.
+In term of effort, \ac{oop} requires a lot of planning to move to coding phase.
 It meant to reduce complexity, but instead it deals with the application architecture rather than just the logic and algorithms.
-Learning OOP can be difficult for some people and it takes time to get used to it.
+Learning \ac{oop} can be difficult for some people and it takes time to get used to it.
 
 \section{Some opinions about OOP}
 
-In this section, some thoughts about OOP are presented. 
-Since this is a book about OOP, it is a good thing to present quotes opposing it \citep{2016-yegor} so you can have an idea what is going wrong with it. 
+In this section, some thoughts about \ac{oop} are presented. 
+Since this is a book about \ac{oop}, it is a good thing to present quotes opposing it \citep{2016-yegor} so you can have an idea what is going wrong with it. 
 There are some concerns about programming languages implementing the OO concepts. 
 And then, there are other quotes defending and promoting it.
 
@@ -302,7 +304,7 @@ Two main declarative paradigms are: functional and logic programming.
 There is no such thing as a unique solution for every problem; this is why we have multiple paradigms. 
 We cannot conclude that a paradigm is worse or better than other just because it affords more or less features; ``\textit{More is not better (or worse), just different}"\citep{2004-vanroy-haridi}.
 
-OOP takes its roots from the theory of concepts, and models of human interaction with real world phenomena. 
+\ac{oop} takes its roots from the theory of concepts, and models of human interaction with real world phenomena. 
 It seeks to enhance simplicity, reuse and maintainability of programs by defining some concepts: abstraction, encapsulation, inheritance and polymorphism.
 Abstraction can enhance simplicity by hiding the complex structure of an entity and afford just interfaces to communicate with it. 
 Then, you can use someone's code without knowing HOW it is implemented; all you have to know is what it does and how to use it. 
