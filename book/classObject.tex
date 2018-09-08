@@ -9,16 +9,19 @@
 \chapter{Class and Object}
 
 \begin{introduction}
-	Abstraction is the first pillar of OOP. 
-	From a perception of an entity in a system or a context, we focus on certain aspects and ignore unnecessary ones.
-	This entity is represented by a class or a prototype, with some attributes and methods.
-	In this chapter, we will show how a class  or prototype  is implemented in each language.
+	\lettrine{A}{bstraction} is the first pillar of \ac{oop}. 
+	From a perception of an entity in a system or a context, certain aspects must be retained while others must be ignored.
+	This entity is represented by a class or a prototype, with a state (attributes) and behavior (methods).
+	This chapter will present how a class or prototype is implemented in each language. 
+	It will show how each language defines a constructor which is a special method served as a mean to instantiate (copy) a class (prototype). 
+	Then, it will take you in a little trip through different class members: fields, properties and methods. 
+	Finally, there are special methods which can be implemented for an object, mostly, inherited from a universal base class.
 \end{introduction}
 
 \section{Class declaration}
 
-Class definition in the following examples is self explanatory. 
-We will explain prototype-based implementations though.
+Class declaration in the following examples is self explanatory. 
+As for prototype-based implementations, a concise explanation must be afforded.
 
 \subsection{C++}
 
@@ -34,23 +37,23 @@ There are no classes in javascript, a function can be used to simulate a class.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={1-1,5-5}, style=codeStyle]{../codes/javascript/clsobj/person2.js}
 
-Since ES6, the \keyword{class} keyword has been introduced, but it still a syntactical sugar over the existing prototype-based classes.
+In \ac{es6}, the \keyword{class} keyword has been introduced, but it still is a syntactical sugar over the existing prototype-based classes.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={1-1,15-15}, style=codeStyle]{../codes/javascript/clsobj/person.js}
 
 
 \subsection{Lua}
 
-There is class concept in Lua, but using its meta-programming we can create objects. 
-There are many ways to do this, one famous is to  use meta-tables.
+There is class concept in Lua; but using its meta-programming, objects can be created. 
+There are many ways to do this \citep{2003-ierusalimschy}, one famous way is to use meta-tables.
 The \keyword{\_\_index} is used as fail-safe mechanism when it fails to lookup something in the table.
 
 \lstinputlisting[language={[KB]Lua}, linerange={1-2}, style=codeStyle]{../codes/lua/clsobj/person.lua}
 
 \subsection{Perl}
 
-A perl class is simply a package which ends with \keyword{1;} 
-If you want to create many package inside one file, you can put their definitions inside curly braces \keyword{\{\}}.
+A Perl class is simply a package which ends with \keyword{1;} 
+If you want to create many packages inside one file, you can put their definitions inside curly braces \keyword{\{\}}.
 
 \lstinputlisting[language={[KB]Perl}, linerange={4-4}, style=codeStyle]{../codes/perl/clsobj/person.pl}
 
@@ -74,18 +77,18 @@ The preparation, mostly, is concerned by initializing variables or calling some 
 
 Once an object is deleted or out of scope, it is no longer needed. 
 The destructor is a function which is called before deleting an object.
-It can be used to free external resources used by the object before it is terminated.
+It can be called to free external resources used by the object before it will be terminated.
 
 \subsection{C++}
 
 The constructor in C++ takes the same name as the class without a return type;
-It can have arguments or not.
-If you do not define a constructor, the default one will be used which has no parameters.
+It can have parameters or not.
+If you do not define a constructor, the default one with no parameters will be used.
 As for the destructor, it has the same name as the class prefixed by a tilde \keyword{\char`\~}.
 
 \lstinputlisting[language={[KB]C++}, linerange={4-19,34-34}, style=codeStyle]{../codes/cpp/clsobj/person0.cpp}
 
-To create an object in C++, you can create:
+An object in C++ can be created as:
 \begin{itemize}
 	\item an automatically destroyed object when it goes out of scope, or
 	\item a dynamically created object of which the address is binded to a pointer
@@ -93,16 +96,16 @@ To create an object in C++, you can create:
 
 \lstinputlisting[language={[KB]C++}, linerange={40-41}, style=codeStyle]{../codes/cpp/clsobj/person0.cpp}
 
-To free the allocated object memory, in the second case, you can call \keyword{delete}. 
+To free an allocated object's memory, in the second case, you can call \keyword{delete}. 
 If the pointer you are deleting is zero, nothing will happen. 
-Deleting a pointer twice will cause problems; This is why it is recommended to set is to zero right after you delete it.
+Deleting a pointer twice will cause problems; This is why it is recommended to set is to zero right after you delete it \citep{2015-stranden}.
 
 \lstinputlisting[language={[KB]C++}, linerange={48-48}, style=codeStyle]{../codes/cpp/clsobj/person0.cpp}
 
 \subsection{Java}
 
-The constructor, in Java, is a function with the class name without a return type.
-There is no destructor in Java, because the objects are heap allocated and heap allocated. 
+The constructor, in Java, is a method having the class name without a return type.
+There is no destructor in Java, because the objects are heap allocated and garbage collected \citep{2008-ddimitrov}. 
 Finalizers are like destructors in purpose: close files, sockets, etc. 
 But, they are not called immediately after the object is freed. 
 When the garbage collector collects an object with a finalizer, it enqueue it to be finalized. 
@@ -115,18 +118,19 @@ To create a new object, use the keyword \keyword{new}.
 \lstinputlisting[language={[KB]Java}, linerange={32-32}, style=codeStyle]{../codes/java/src/clsobj/Person.java}
 
 To fasten the destruction of an object, you can assign \keyword{null} to all variables referencing it.
+But, even doing that, the program can shut down before the finalyzer is called.
 
 \lstinputlisting[language={[KB]Java}, linerange={39-39}, style=codeStyle]{../codes/java/src/clsobj/Person.java}
 
 \subsection{Javascript}
 
-
-In ES6, the constructor is a function defined using the keyword \keyword{constructor}.
-There is no destructor function.
+In \ac{es6}, the constructor is a function defined by the keyword \keyword{constructor}.
+There is no destructor or finalyzer function.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={1-6,15-15}, style=codeStyle]{../codes/javascript/clsobj/person.js}
 
 Actually, a function can be used to define a prototype (class) and it is in the same time a constructor.
+This is what actually happens when you use \ac{es6} class definition.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={1-5}, style=codeStyle]{../codes/javascript/clsobj/person2.js}
 
@@ -136,29 +140,29 @@ To create a new object, you use the keyword \keyword{new}
 
 \subsection{Lua}
 
-In class declaration, we declared a class as a meta-table. 
-The constructor is a function which has a name chosen by the programmer, usually \keyword{new} or \keyword{create}. 
-This function must return an object to which you have to set a meta-table (our class) using the method \keyword{setmetatable}
+A class can be represented by a meta-table used as a fall-back when an object cannot find a key (method or attribute).
+The constructor is a method which the name can be anything you want, usually \keyword{new} or \keyword{create}. 
+This function must return an object (table) to which you have to set a meta-table (our class) using a function called \keyword{setmetatable}. 
 
 \lstinputlisting[language={[KB]Lua}, linerange={4-7}, style=codeStyle]{../codes/lua/clsobj/person.lua}
 
-Then to create a new object, we simply call that function.
+Then to create a new object, you simply call your constructor as a normal method.
 
 \lstinputlisting[language={[KB]Lua}, linerange={19-19}, style=codeStyle]{../codes/lua/clsobj/person.lua}
 
-Another fancy way to create a constructor is by using the meta-method \keyword{\_\_call} which allows us to call our meta-table as a function. 
+Another fancy way to create a constructor is by using the meta-method \keyword{\_\_call} which allows you to call a meta-table as a method. 
 
 \lstinputlisting[language={[KB]Lua}, linerange={4-9}, style=codeStyle]{../codes/lua/clsobj/person2.lua}
 
-Then, we create a new object as follows
+Then, the object can be created as follows
 
 \lstinputlisting[language={[KB]Lua}, linerange={21-21}, style=codeStyle]{../codes/lua/clsobj/person2.lua}
 
 \subsection{Perl}
 
-In Perl, the constructor is a subroutine called \keyword{new}. 
-The arguments are shifted from the global variable \keyword{@\_} where the first one is the class itself.
-You have to create a hash and marking it with a package (class = package) name using \keyword{bless}.
+In Perl, the constructor is a subroutine called \keyword{new}, or any name you want. 
+The parameters are shifted from the global variable \keyword{@\_} where the first one is the class itself.
+You have to create a hash and marking it with a package (class) name using \keyword{bless}.
 
 When the last reference to an object goes away, the object is destroyed.
 In this case, Perl will call the method \keyword{DESTROY} if it is defined.
@@ -176,11 +180,11 @@ To delete a reference, you use \keyword{undef} which will trigger the destructor
 
 \subsection{PHP}
 
-The constructor is a function called \keyword{\_\_construct} and the destructor is a function called \keyword{\_\_destruct}.
+The constructor is a method called \keyword{\_\_construct} and the destructor is a method called \keyword{\_\_destruct}.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-2,8-17,27-27}, style=codeStyle]{../codes/php/clsobj/person.php}
 
-To create an instance of the class, the keyword \keyword{new} is used.
+To create an instance of a class, the keyword \keyword{new} is used.
 
 \lstinputlisting[language={[KB]PHP}, linerange={29-29}, style=codeStyle]{../codes/php/clsobj/person.php}
 
@@ -190,11 +194,11 @@ To delete a reference, the keyword \keyword{unset} is used.
 
 \subsection{Python}
 
-The constructor is a function called \keyword{\_\_init\_\_} and the destructor is a function called \keyword{\_\_del\_\_}.
+The constructor is a method called \keyword{\_\_init\_\_} and the destructor is a method called \keyword{\_\_del\_\_}.
 
 \lstinputlisting[language={[KB]Python}, linerange={4-4,8-15}, style=codeStyle]{../codes/python/clsobj/person.py}
 
-To create an object, we call the class as a function
+To create an object, the class is called as if it was a method.
 
 \lstinputlisting[language={[KB]Python}, linerange={24-24}, style=codeStyle]{../codes/python/clsobj/person.py}
 
@@ -205,14 +209,14 @@ To delete a reference, the keyword \keyword{del} is used.
 
 \subsection{Ruby}
 
-The constructor is a function called \keyword{initialize}.
+The constructor is a method called \keyword{initialize}.
 Ruby does not have a destructor, but it has a finalizer.
 To bind the object with a finalizing function, you have to call \keyword{ObjectSpace.define\_finalizer} in the constructor.
 The finalizer, like Java, can never be called.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-17,25-25}, style=codeStyle]{../codes/ruby/clsobj/person.rb}
 
-To create a new object from our class, we call its function \keyword{new}.
+To create a new object from a class,  \keyword{new} is called.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={27-27}, style=codeStyle]{../codes/ruby/clsobj/person.rb}
 
@@ -224,25 +228,29 @@ To free a reference from an object, you can assign it the \keyword{nil} value.
 
 There are three types of members: 
 \begin{itemize}
-	\item Field: They are state variables. For example: a person has a name, birth year, etc.
-	\item Methods: Procedures which define the behavior of the object. For example: a person can talk, walk, etc.
-	\item Properties: They are something between a field and a method. The read/write syntax is similar to fields' but it is translated into getters/setters methods.
+	\item Field: They are state variables or attributes.
+	For example: a person has a name, birth year, etc.
+	\item Methods: Procedures which define the behavior of the object. 
+	For example: a person can talk, walk, etc.
+	\item Properties: They are something between a field and a method. 
+	The read/write syntax is similar to fields' but it is translated into getters/setters methods.
 \end{itemize}
 
 A member can be accessed as: 
 \begin{itemize}
 	\item Class member: It is shared between all the instances of this class.
-	\item Object member: The member is specific to the instance (object)
+	Also, it can be called from the class itself without instantiating.
+	\item Object member: The member is specific to the instance (object). 
 \end{itemize}
 
-For properties, lets say: we have a class Rectangle which is composed of height and width. 
+For properties, lets say: we have a class \textbf{Rectangle} which is composed of \textbf{height} and \textbf{width}. 
 We want to keep the width, always, bigger or equal to the height.
-For the sake of the example, suppose when we want to get the height we add 1 and when we want to get the width we add 2.
+For the sake of the example, suppose when we want to get the height we add 1, and when we want to get the width we add 2.
 Also, suppose only the width has a setter and the height will receive its value based on the previous width and its setter's value.
 We assign the width twice: 50 and 20. 
-Then, we use an internal function \textbf{info} which shows the state of the two fields. 
+Then, we use an internal method \textbf{info} which shows the state of the two fields. 
 Finally, we use getters over the two fields and print the recovered values. 
-The result in the languages which support properties, or has a way to emulate them, should be as follows
+The result in the languages which support properties, or has a way to emulate them, should be as follows:
 \begin{lstlisting}[style=shellStyle]
 Width: 50, Height: 20
 w: 52, h: 21
@@ -259,13 +267,13 @@ Non constant class (static) fields must be initialized outside the header and no
 
 \lstinputlisting[language={[KB]C++}, linerange={36-36}, style=codeStyle]{../codes/cpp/clsobj/person0.cpp} 
 
-Methods can be defined inside the class header as in this example.
+Methods can be defined inside the class header as shown in this example.
 Static methods must be defined using the keyword \keyword{static}. 
 
 \lstinputlisting[language={[KB]C++}, linerange={20-27}, style=codeStyle]{../codes/cpp/clsobj/person0.cpp}
 
-To call a static method, you should use class name. 
-As for the object method, if the reference is a pointer use arrow annotation.
+To call static methods, you should use class name. 
+As for the object methods, if the reference is a pointer use arrow annotation.
 
 \lstinputlisting[language={[KB]C++}, linerange={43-45}, style=codeStyle]{../codes/cpp/clsobj/person0.cpp}
 
@@ -276,7 +284,7 @@ There are no properties in C++, but they can be emulated by overriding assigning
 Fields are defined by access modifier (See Encapsulation chapter), type and name. 
 Class (static) fields are defined using the keyword \keyword{static}.
 All fields must be defined inside the class block; They can be initialized without needing a constructor. 
-In fact, they are automatically initialized: integers to 0, objects no Null, etc. 
+In fact, they are automatically initialized: integers to 0, objects to Null, etc. 
 
 \lstinputlisting[language={[KB]Java}, linerange={5-7}, style=codeStyle]{../codes/java/src/clsobj/Person.java}
 
@@ -284,7 +292,7 @@ Methods are defined inside the class block where static ones are distinguished b
 
 \lstinputlisting[language={[KB]Java}, linerange={21-28}, style=codeStyle]{../codes/java/src/clsobj/Person.java}
 
-Static methods are called using the class name; But, also, they can be called from the instance. 
+Static methods are called using the class name; But, also, they can be called from its instances. 
 
 \lstinputlisting[language={[KB]Java}, linerange={34-36}, style=codeStyle]{../codes/java/src/clsobj/Person.java}
 
@@ -294,22 +302,22 @@ As far as we know, there is no mechanism to emulate their functionality either.
 
 \subsection{Javascript}
 
-The fields are defined inside the class body (either ES6 class or function) using the keyword \keyword{this}. 
-You can define them using two methods (they are the same), as shown in the example.
+The fields are defined inside the class body (either \ac{es6} class or function) using the keyword \keyword{this}. 
+You can define them using two ways (they are the same), as shown in the example.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={3-4}, style=codeStyle]{../codes/javascript/clsobj/person.js}
 
-As for static fields, you can use the pattern <class name>.<field> to access it. 
+As for static fields, you can use the pattern \textbf{<class name>.<field>} to access it. 
 The field must be initialized outside the class definition.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={17-17}, style=codeStyle]{../codes/javascript/clsobj/person.js}
 
-Methods are defined inside the class definition in ES6. 
+Methods are defined inside the class definition in \ac{es6}. 
 Also, static methods are preceded by the keyword \keyword{static}. 
 
 \lstinputlisting[language={[KB]Javascript}, linerange={1-1,8-15}, style=codeStyle]{../codes/javascript/clsobj/person.js}
 
-If the class is defined using a function (which is the real definition in javascript), you can define functions inside the constructor using the keyword \keyword{this}. 
+If the class is defined using a function (which is the real definition in Javascript), you can define functions inside the constructor using the keyword \keyword{this}. 
 Also, you can define them outside the constructor by assigning a function to the class's prototype.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={9-15}, style=codeStyle]{../codes/javascript/clsobj/person2.js}
@@ -326,7 +334,8 @@ To define a static field, it can be assigned to the meta-table (our class).
 
 \lstinputlisting[language={[KB]Lua}, linerange={4-9}, style=codeStyle]{../codes/lua/clsobj/person.lua}
 
-To define dynamic methods, there are two ways where the colon (\keyword{:}) will add \keyword{self} implicitly.
+To define dynamic methods, there are two ways: the dot notation where you have to specify your current object, and the colon notation (\keyword{:}) which will add \keyword{self} implicitly.
+
 \begin{lstlisting}[style=codeStyle, language={[KB]Lua}]
 function ClassName.method1(self)
 end
@@ -334,18 +343,18 @@ function ClassName:method2()
 end
 \end{lstlisting} 
 
-As for static methods, they are defined as \textit{method1} without \keyword{self} keyword.
+As for static methods, they are defined using the dot notation as \textit{method1} without \keyword{self} keyword.
 
 \lstinputlisting[language={[KB]Lua}, linerange={11-17}, style=codeStyle]{../codes/lua/clsobj/person.lua}
 
-To call the methods, there are two ways for dynamic methods.
+To call dynamic methods, there are two ways, again: dot notation or colon notation.
 
 \lstinputlisting[language={[KB]Lua}, linerange={22-24}, style=codeStyle]{../codes/lua/clsobj/person.lua}
 
-Properties can be defined by using the meta-methods \keyword{\_\_index} and \keyword{\_\_newindex}.
-When the interpreter can not find a field, it calls the \keyword{\_\_index} meta-method. 
-It has \keyword{self} and a key as arguments, and can be used to define getters in our case. 
-You have to verify if the key exists already and return the member, otherwise your methods will not be known by the interpreter. 
+Properties can be defined using the meta-methods \keyword{\_\_index} and \keyword{\_\_newindex}.
+When the interpreter can not find a field in the current table, it calls the \keyword{\_\_index} meta-method. 
+This meta-method has \keyword{self} and a key as parameters, and can be used to define getters in our case. 
+You have to verify if the key already exists and return the member, otherwise your methods will not be known by the interpreter. 
 \keyword{\_\_newindex} meta-method is used for table update and can be used as a setter. 
 
 \lstinputlisting[language={[KB]Lua}, linerange={1-2,7-7,9-9,11-15,22-24,33-38}, style=codeStyle]{../codes/lua/clsobj/property.lua}
@@ -356,14 +365,14 @@ Object fields are defined in the hash which will be returned by the \keyword{new
 
 \lstinputlisting[language={[KB]Perl}, linerange={10-13}, style=codeStyle]{../codes/perl/clsobj/person.pl}
 
-Class (static) fields are defined outside the new subroutine as variable scoped at the file level using \keyword{my} keyword.
-Or you can define a package level variable using the keyword \keyword{our}.
+Class (static) fields are defined outside the new subroutine as global variables scoped at the file level using \keyword{my} keyword.
+Or, they can be defined as package level variables using the keyword \keyword{our}.
 
 \lstinputlisting[language={[KB]Perl}, linerange={6-6}, style=codeStyle]{../codes/perl/clsobj/person.pl}
 
 There is no difference between dynamic and static methods. 
-If the method is called as an object one, the object will be passed as the first argument. 
-If it is called as a class one, the class name will be passed as the first argument. 
+If the method is called from an object, the object will be passed as the first argument. 
+If it is called from a class, the class name will be passed as the first argument. 
 The implementation of the method will decide its access type.
 
 \lstinputlisting[language={[KB]Perl}, linerange={25-32}, style=codeStyle]{../codes/perl/clsobj/person.pl}
@@ -372,7 +381,7 @@ As said, the difference between dynamic and static methods is in how they are ca
 
 \lstinputlisting[language={[KB]Perl}, linerange={39-41}, style=codeStyle]{../codes/perl/clsobj/person.pl}
 
-Properties in Perl do not follow the definition we gave in this section; 
+Properties in Perl do not follow the definition given in this section; 
 Sure we can define setters/getters, but they do not behave as attributes. 
 A subroutine which has two arguments (the object and the value) is a setter.
 If there is just one, then it is a getter. 
@@ -381,9 +390,9 @@ If there is just one, then it is a getter.
 
 \subsection{PHP}
 
-The fields are defined by access, type and name.
-In PHP, there are called properties; But, we rather call them fields to differentiate them from the properties we defined earlier.
-A static field is defined by the keyword \keyword{static}.
+The fields are declared by defining access mode and name.
+In PHP's terminology, fields are called properties; But, we rather call them fields to differentiate them from the properties we defined earlier.
+A static field is defined using the keyword \keyword{static}.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-7,27-27}, style=codeStyle]{../codes/php/clsobj/person.php}
 
@@ -392,31 +401,31 @@ The difference is in implementation: the static one can access just static field
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-2,19-25,27-27}, style=codeStyle]{../codes/php/clsobj/person.php}
 
-The call is different between dynamic and static functions.
+There is a difference between calling a dynamic method and a static one: dynamic methods use arrow function and static methods use a double colon.
 
 \lstinputlisting[language={[KB]PHP}, linerange={32-34}, style=codeStyle]{../codes/php/clsobj/person.php}
 
-Properties getters/setters can be defined using php magic methods \keyword{\_\_get} and \keyword{\_\_set}.
-It is considered bad practice though, and the alternative is to define getters and setters specified for each property.
+Properties getters/setters can be defined using PHP's magic methods \keyword{\_\_get} and \keyword{\_\_set}.
+It is not a good idea though \citep{2013-sauer}, and the alternative is to define getters and setters as methods.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-2,11-12,21-37}, style=codeStyle]{../codes/php/clsobj/property.php}
 
 \subsection{Python}
 
-Static fields are defined inside the class block, while dynamic fields are defined inside the constructor using the keyword \keyword{self}. 
-In pure Python, the dynamic fields of an object (instance) are stored in a dictionary \keyword{self.\_\_dict\_\_}.
-The static field is accessed by the class name, not by \keyword{self}.
+Static fields are defined inside the class block, while dynamic ones are defined inside the constructor using the keyword \keyword{self} (or any reference to the current object). 
+In pure Python, the dynamic fields of an object (instance) are stored in a dictionary \keyword{self.\_\_dict\_\_} \citep{2018-python2.7}.
+A static field is accessed by the class name, not by \keyword{self}.
 Also, static fields are stored in other dictionary bounded to the class, not the instance.
 
 \lstinputlisting[language={[KB]Python}, linerange={4-11}, style=codeStyle]{../codes/python/clsobj/person.py}
 
 Methods are defined using the keyword \keyword{def} inside the class block. 
-There is no difference between static and dynamic methods in term of header syntax. 
-But in Python 2.6+, you can use the decorator \keyword{\@staticmethod} to mark a static method. 
+There is no difference between static and dynamic methods in term of method's signature. 
+But in Python 2.6+, you can use a decorator \keyword{\@staticmethod} to mark a static method. 
 
 \lstinputlisting[language={[KB]Python}, linerange={4-4,17-22}, style=codeStyle]{../codes/python/clsobj/person.py}
 
-The dynamic methods are accessed via the instance while the static ones are accessed using the class name.
+Dynamic methods are accessed via the instance while static ones are accessed using the class name.
 
 \lstinputlisting[language={[KB]Python}, linerange={27-29}, style=codeStyle]{../codes/python/clsobj/person.py}
 
@@ -434,7 +443,7 @@ Static fields are defined inside the class block using \keyword{\@\@}, while dyn
 
 Methods are defined using the keyword \keyword{def} and delimited by the keyword \textbf{end}. 
 Static methods always begin with the keyword \keyword{self}.
-Also, methods without arguments do not need round brackets \keyword{()}.
+Also, methods without parameters do not need round brackets \keyword{()}.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-3,18-25}, style=codeStyle]{../codes/ruby/clsobj/person.rb}
 
@@ -443,11 +452,11 @@ Round brackets can be omitted if no argument is expected.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={30-32}, style=codeStyle]{../codes/ruby/clsobj/person.rb}
 
-Properties can be defined by a field using a no-arguments method as a getter and another with the template \textbf{<prperty name> = (value)} as a setter.
+Properties can be defined by a field using a no-parameter method as a getter and another with the template \textbf{<prperty name> = (value)} as a setter.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-3,9-17,24-24,30-36}, style=codeStyle]{../codes/ruby/clsobj/property.rb}
 
-Also, there are automatically implemented getters/setters in Ruby
+Also, there are automatically implemented getters/setters in Ruby using read*write access.
 
 \begin{lstlisting}[style=codeStyle, language={[KB]Ruby}]
 class Rectangle
@@ -460,20 +469,20 @@ end
 \section{Object methods}
 
 These are methods inherited from the Object class, or as called by some languages: magic methods.
-In here, we present the methods which most programming languages agree on:
+Most programming languages agree on the following methods:
 \begin{itemize}
-	\item String representation: When an object is concatenated with a string, it can act as string by calling this function.
-	\item Object copy: A function which enables an object to create a clone of itself.
-	\item Value equality: A function which helps to decide if an object equals another based on some criteria (their fields).
-	\item Object comparison: A function which is used to decide if an object is greater, equal or lesser than another.
-	\item Hash code: A function which returns a hash code for the object. 
+	\item String representation: When an object is concatenated with a string, it can act like one by calling a method.
+	\item Object copy: A method which enables an object to create a clone of itself.
+	\item Value equality: A method which helps to decide if an object equals another based on some criteria (their fields).
+	\item Object comparison: A method which is used to decide if an object is greater, equal or lesser than another.
+	\item Hash code: A method which returns a hash code for the object. 
 \end{itemize}
 
 In our example, we will implement our \textbf{Person} class, and the previously presented methods as follows:
 \begin{itemize}
-	\item String representation: The function must return a string containing the name and the year of birth.
-	\item Object copy: The function must return a new object with the same name but with plus one year to the current birth year.
-	\item Value equality: The function returns true if the objects have the same value for the field called \textbf{name}.
+	\item String representation: The method must return a string containing the name and the year of birth.
+	\item Object copy: The method must return a new object with the same name but with plus one year to the current birth year.
+	\item Value equality: The method returns true if the objects have the same value for the field called \textbf{name}.
 	\item Object comparison: The comparison is made on birth years; If they are equal, then on the name.
 	\item Hash code: The hash code will be based on the name (we can add the year as well, but it will be a long code). 
 \end{itemize}
@@ -481,21 +490,20 @@ In our example, we will implement our \textbf{Person} class, and the previously 
 
 \subsection{C++}
 
-In C++, there are no methods inherited from the object class because there is no universal base-class object. 
-But, C++ support operations overloading which can replace base-class methods.
-To overload an operation for a class based on its fields, you have to define these operations as friend operations to the class. 
-This will allow them to access private members. 
+In C++, there are no methods inherited from the object class because there is no universal base class. 
+But, C++ supports operation overloading which can replace base-class methods.
+To overload an operation for a class based on its fields, you have to mark these operations as friends to the class. 
+This will allow them to access class's  private members. 
 
 \lstinputlisting[language={[KB]C++}, linerange={4-5, 18-21,24-24}, style=codeStyle]{../codes/cpp/clsobj/obj_meth.cpp}
 
 \subsubsection{String representation}
 
-There is no \keyword{toString} in C++, where an object can be transformed to a string when it is concatenated with one. 
-But, operators such as \keyword{<{}<} can be overloaded to handle an object of a class as a string.   
+There is no \keyword{toString} in C++, but operators such as \keyword{<{}<} can be overloaded to handle an object of a class as a string.   
 
 \lstinputlisting[language={[KB]C++}, linerange={26-28}, style=codeStyle]{../codes/cpp/clsobj/obj_meth.cpp}
 
-Then, you can call it as
+Then, you can call it as follows:
 
 \lstinputlisting[language={[KB]C++}, linerange={41-41,44-44}, style=codeStyle]{../codes/cpp/clsobj/obj_meth.cpp}
 
@@ -522,9 +530,9 @@ You can define a hashcode function for your current class.
 
 \subsection{Java}
 
-In Java, every class inherit from the universal class \keyword{Object}. 
+In Java, every class inherits from the universal class \keyword{Object}. 
 This class defines some methods by default: string representation, object copy, value equality and hashcode.
-To personalize them, you can override these functions in your class.
+To personalize them, you can override these methods in your class.
 
 \subsubsection{String representation}
 
@@ -532,13 +540,13 @@ You can override \keyword{toString} which comes from the class \keyword{Object}.
 
 \lstinputlisting[language={[KB]Java}, linerange={26-26,36-39,65-65}, style=codeStyle]{../codes/java/src/clsobj/ObjMeth.java}
 
-When the object is concatenated with strings, this function will be called automatically to represent this object as a string.
+When the object is concatenated with strings, this method will be called automatically to represent this object as a string.
 
 \lstinputlisting[language={[KB]Java}, linerange={9-9}, style=codeStyle]{../codes/java/src/clsobj/ObjMeth.java}
 
 \subsubsection{Object copy}
 
-The universal class \keyword{Object} implements a function \keyword{clone()} which performs a shallow copy.
+The universal class \keyword{Object} implements a method \keyword{clone()} which performs a shallow copy.
 That is, if a field is an object (not primary type), it will copy the reference and not create a new instance of it. 
 To perform deep copy, you have to override this function. 
 But before that, you have to implement the class \keyword{Clonable} otherwise your function will throw an exception \keyword{CloneNotSupportedException}.
@@ -550,11 +558,11 @@ But before that, you have to implement the class \keyword{Clonable} otherwise yo
 You can override the method \keyword{equals} which takes a variable of type \keyword{Object} as argument.
 This is the other object to which we want to test our current object, and it can be of any other effective type. 
 So, basically, you can test your current object against any other type if you wish to.
-In our example, if the other object is not of the same type as the current's, the function returns false.
+In our example, if the other object has not the same type as the current's, the method returns false.
 
 \lstinputlisting[language={[KB]Java}, linerange={26-26,46-50,65-65}, style=codeStyle]{../codes/java/src/clsobj/ObjMeth.java}
 
-When testing equality with non primitive variables, you have to call this function. 
+When testing equality with non primitive variables, you have to call this method. 
 If you use \keyword{==} instead, you will have a reference equality test; that is, the variables will be tested if they have the same reference or not.
 
 \lstinputlisting[language={[KB]Java}, linerange={16-17}, style=codeStyle]{../codes/java/src/clsobj/ObjMeth.java}
@@ -566,7 +574,7 @@ If you want to compare an object with another, you can implement the interface \
 It is very useful since a lot of other methods are based on it such as \keyword{sort} of collections.
 Then, you have to implement one method which is \keyword{compareTo}. 
 It takes one argument of type \keyword{Object} which is the other object to compare to, unless you use generics to specify that object's type. 
-This function returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
+This function returns a negative integer, zero, or a positive integer if the current object (specified by: this) is less than, equal to, or greater than the other object.
 
 \lstinputlisting[language={[KB]Java}, linerange={26-26,58-65}, style=codeStyle]{../codes/java/src/clsobj/ObjMeth.java}
 
@@ -578,7 +586,7 @@ You can override \keyword{hashCode()} method to define specialized hash code cal
 
 \subsection{Javascript}
 
-All objects in JavaScript are descended from \keyword{Object}; all objects inherit methods and properties from \keyword{Object.prototype}.
+All objects in JavaScript are descendants of \keyword{Object}; all objects inherit methods and properties from \keyword{Object.prototype}.
 
 \subsubsection{String representation}
 
@@ -589,7 +597,7 @@ Every object has a \keyword{toString} method inherited from the universal class,
 \subsubsection{Object copy}
 
 There is no method permitting an object to deep clone itself. 
-You can use ES6 \keyword{Object.assign} to fuse an object's members to an empty one, but it will afford shallow copying. 
+You can use \ac{es6} \keyword{Object.assign} to fuse object's members to an empty one, but it will afford shallow copying. 
 \begin{lstlisting}[language={[KB]Javascript}, style=codeStyle]
 let obj2 = Object.assign({}, obj1);
 \end{lstlisting} 
@@ -609,8 +617,8 @@ There is no hash code method; you can define your own.
 
 \subsection{Lua}
 
-Lua is prototype-based OOP language where an object is a meta-table. 
-There exists some meta-methods defined for these meta-tables and can be overridden.
+Lua is prototype-based \ac{oop} language where an object is a table. 
+There exists some meta-methods defined for these tables and can be overridden.
  
 \subsubsection{String representation}
 
@@ -628,7 +636,7 @@ To deep copy an object, you have to implement it yourself since there is no meta
 
 \subsubsection{Value equality}
 
-The equality of two objects of a class can be defined using the meta-method \keyword{\_\_eq} which has two objects as arguments. 
+The equality of two objects of a class can be defined using the meta-method \keyword{\_\_eq} which has two objects as parameters. 
 
 \lstinputlisting[language={[KB]Lua}, linerange={12-14}, style=codeStyle]{../codes/lua/clsobj/objmeth.lua}
 
@@ -679,7 +687,7 @@ Stringification is not the only object transformation, there are other operation
 
 \subsubsection{Object copy}
 
-You can write your own cloning function since there is no default one.
+You can write your own cloning method since there is no default one.
 
 \subsubsection{Value equality}
 
@@ -704,7 +712,7 @@ There is no hash code method in Perl.
 
 There is no universal base class in PHP.
 But there exists some reserved keywords for methods names known as magic methods.
-String representation and object cloning fall in this category of methods.
+String representation and object cloning fall into this category of methods.
 
 \subsubsection{String representation}
 
@@ -714,7 +722,8 @@ The \keyword{\_\_toString()} method allows a class to decide how it will react w
 
 \subsubsection{Object copy}
 
-An object copy is created by using the \keyword{clone} keyword (which calls the object's \keyword{\_\_clone()} method if possible). An object's \keyword{\_\_clone()} method cannot be called directly.
+An object copy is created using the \keyword{clone} keyword (which calls the object's \keyword{\_\_clone()} method if possible). 
+An object's \keyword{\_\_clone()} method cannot be called directly.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-2,16-20}, style=codeStyle]{../codes/php/clsobj/objmeth.php}
 
@@ -737,8 +746,8 @@ There is no internal hash code method for classes.
 \subsection{Python}
 
 In new Python syntax, all classes inherit from the class \keyword{object}. 
-There exists many magic methods in Python, which are called upon using an object as argument to a built-in method. 
-For example, the magic method \keyword{\_\_str\_\_} of a class is used when an instance of that class is passed as argument to the built-in method \keyword{str}.
+There exists many magic methods in Python, which are called upon using an object as argument to a built-in function. 
+For example, the magic method \keyword{\_\_str\_\_} of a class is called when an instance of that class is passed as argument to the built-in function \keyword{str}.
 Besides the methods we are presenting here, there exists many magic methods such those for arithmetic operations, for built-in unary methods, etc.
 
 \subsubsection{String representation}
@@ -825,7 +834,8 @@ There are three methods for equality:
 \subsubsection{Object comparison}
 
 To compare two objects, the method \keyword{<=>} is used. 
-When redefined, it should return: -1 when self is smaller than other, 0 when self is equal to other and 1 when self is bigger than other. Nil means the two values could not be compared.
+When overridden, it should return: -1 when self is smaller than other, 0 when self is equal to other and 1 when self is bigger than other. 
+Nil means the two values could not be compared.
 
 When you define <=>, you can include Comparable to gain the methods <=, <, >=, > and between?.
 
@@ -836,8 +846,7 @@ When you define <=>, you can include Comparable to gain the methods <=, <, >=, >
 To generate a hash value for an object, the method \keyword{hash} is used. 
 It must follow the condition: a.eql?(b) implies a.hash == b.hash, because this function is used with \keyword{eql?} by the class \keyword{Hash} to determine if two objects reference the same hash key.
 
-
-The hash value for an object may not be identical across invocations or implementations of ruby. 
+The hash value for an object may not be identical across invocations or implementations of Ruby (strings case). 
 If you need a stable identifier across ruby invocations and implementations you will need to generate one with a custom method.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-3,35-41,45-45}, style=codeStyle]{../codes/ruby/clsobj/objmeth.rb}
@@ -851,21 +860,21 @@ If you need a stable identifier across ruby invocations and implementations you 
 
 \begin{discussion}
 	
-OO languages can be considered as class-based or prototype-based, based on their class style. 
+\ac{oo} languages can be considered as class-based or prototype-based, based on their class style. 
 Prototype-based languages use a data structure or a closure (which is a special data structure) to act like a class. 
 For instance, Javascript uses closures (even ES6 with its new syntax) and Lua uses meta-tables or closures. 
 All of these are scripting languages; but not every scripting language is prototype-based. 
 Perl considers packages as classes; as for PHP, Python and Ruby, they have standalone mechanisms for creating classes. 
 %Some of these languages afford prototype-based OOP as well: Perl (via Class::Prototyped) and Python (via prototype.py).
 
-A class can be considered as an object in many OO languages. 
+A class can be considered as an object in many \ac{oo} languages. 
 In prototype-based languages, it is clear that a prototype is, in fact, an object. 
 Javascript defines a class using closures which are functions; as for Lua, a class can be defined using a metatable.
-Perl is a class-based OO language which does not have a specific notation for classes; instead it uses packages.
+Perl is a class-based \ac{oo} language which does not have a specific notation for classes; instead it uses packages.
 Unlike C++, a class in Java, Python and Ruby has its own type: java.lang.Class, type and Class respectively.
 
-Some OO languages have a universal superclass (base class) for their created objects.
-In prototype-based languages, you can consider the type used to create the prototype(class) as a superclass. 
+Some \ac{oo} languages have a universal superclass (base class) for their instantiated objects.
+In prototype-based languages, you can consider the type of the prototype(class) as a superclass. 
 C++ and PHP do not have a universal superclass for their objects. 
 Other languages define a universal superclass: Java (java.lang.Object), Perl (UNIVERSAL), Python (object) and Perl (Object).
 
@@ -878,12 +887,12 @@ Languages such as C++ and Java afford keywords to define static members.
 Some define static attributes outside the constructor: Python and Ruby. 
 Others can emulate static attributes by defining global variables such as the case of Perl.
 
-Properties are something between attributes and methods: when you read or write it, the syntax is like fields; but when read/write operations are translated to methods called getters/setters.
+Properties are something between fields and methods: when you read or write it, the syntax is like fields; but these read/write operations are translated to methods called getters/setters.
 C++ and Java do not afford such members; as for python, it uses annotations. 
 Perl's setters act like normal methods rather than triggered upon variable assigning.
 
-Table~\ref{tab-abstraction} represents a comparison between our OO languages based on their abstraction properties. 
-An OOP language can be one of the two types: class-based or prototype-based. 
+Table~\ref{tab-abstraction} represents a comparison between our \ac{oo} languages based on their abstraction properties. 
+An \ac{oop} language can be one of the two types: class-based or prototype-based. 
 A class or prototype can have a type or not, which can be the type of its objects as well. 
 This is the case of prototype-based languages, others have a different type as base class for objects. 
 Current object can access its dynamic members differently from language to another. 
