@@ -9,19 +9,19 @@
 \chapter{Encapsulation}
 
 \begin{introduction}
-	Encapsulation is an important concept of OOP. 
+	\lettrine{E}{ncapsulation} is an important concept of \ac{oop}. 
 	It is the mechanism of restricting direct access to some members of a class.
-	It helps managing complexity when debugging source code. 
-	If a field is accessed everywhere in your source code, this makes it difficult to find errors related to this field. 
-	Also, if a field of a class (A) is used by a class (B) then we changed it (either its name or how it gets assigned), we have to change all the code where it appears in (B).
-	In this chapter, we will show different visibility modes and how they are implemented in each language.
-	You will see that there are two views: ``Many programmers are irresponsible, dim-witted, or both." and ``Programmers are responsible adults and capable of good judgment".
+	It helps managing complexity when the source code is debugged. 
+	If a field is set to be accessed everywhere in a source code, it will be difficult to find errors related to it. 
+	Also, if a field of a class (A) is used by a class (B) then it is changed (either its name or how it gets assigned), all the code where it is appears in (B) have to be changed as well. 
+	This chapter has one purpose which is showing different visibility modes and how they are implemented in each language.
+	In term of restricting access to some members, there are two views: ``Many programmers are irresponsible, dim-witted, or both." and ``Programmers are responsible adults and capable of good judgment".
 	So, a programming language may fall into one or another.
 \end{introduction} 
 
 \section{Public members}
 
-Public visibility mode is used to access a member of a class from everywhere. 
+Public visibility mode is used to access a member of a class everywhere. 
 Public methods of a class provide an interface that allows them to be called so the object can afford some behavior. 
 As for fields, public visibility mode is not preferable since it breaks encapsulation, and it has limited uses:
 \begin{itemize}
@@ -33,7 +33,7 @@ As for fields, public visibility mode is not preferable since it breaks encapsul
 
 Public members are defined inside the class header using the modifier \keyword{public}. 
 Every member coming after that modifier is considered as public.
-If you use \keyword{struct} instead of \keyword{class}, all members are public by default.
+Using \keyword{struct} instead of \keyword{class}, all members will be public by default.
 
 \lstinputlisting[language={[KB]C++}, linerange={6-7,12-15,25-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
 
@@ -53,7 +53,7 @@ To correct this, you have to use \nameword{\#include guard}.
 
 \subsection{Java}
 
-Every public member in Java must preceded by the keyword \keyword{public}. 
+Every public member in Java must be preceded by the keyword \keyword{public}. 
 
 \lstinputlisting[language={[KB]Java}, linerange={1-5,12-12,18-20,27-27,34-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
 
@@ -77,8 +77,8 @@ Also, as \nameword{uncle Ben} of \nameword{Spider-man} once said: ``\textit{With
 
 \lstinputlisting[language={[KB]Javascript}, linerange={1-17}, style=codeStyle]{../codes/javascript/encapsulation/decorate.js}
 
-Here, we created two objects, but with different fields. 
-Then, we can create a function which print different fields of a Person. 
+In the following code, two objects with different fields are created. 
+Then, a function which prints the different fields of a Person is defined by looping over an object's members.
 Just a note: you have to verify that the member is not a function, since functions in Javascript are first class objects. 
 Which means: they are a type (\keyword{function}), they are instances of \keyword{Object} and they can be treated as any variable.
 
@@ -101,9 +101,8 @@ You can access them anywhere
 	It would prefer that you stayed out of its living room because you weren't invited, not because it has a shotgun.
 \end{kodequote}
 
-I guess you get the idea: all members are public.
-But, in Perl, there is always a hack to limit visibility. 
-Let's see the normal case where every field and method are public. 
+You get the idea: all members are public; but, there is always a hack to limit visibility. 
+Lets see the normal case where every field and method are public. 
 
 \lstinputlisting[language={[KB]Perl}, linerange={1-18}, style=codeStyle]{../codes/perl/encapsulation/public.pl}
 
@@ -114,8 +113,8 @@ They can be accessed outside the class
 \subsection{PHP}
 
 The default visibility mode in PHP is public.
-A function defined without a visibility modifier or a variable defined using \keyword{var} are public by default. 
-It is a good practice to prefix class members with a visibility modifier, since the inverse is just used to keep compatibility with versions before 5.1.3.
+A method defined without a visibility modifier or a field defined using \keyword{var} are public by default. 
+It is good practice to prefix class members with a visibility modifier, since not doing that is just a mean to keep compatibility with versions before 5.1.3.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-5,11-11,15-15,17-17,24-24,31-31}, style=codeStyle]{../codes/php/encapsulation/person.php}
 
@@ -130,13 +129,14 @@ All class members are public by default; it is the only visibility mode in Pytho
 \lstinputlisting[language={[KB]Python}, linerange={4-4, 8-8, 12-12,15-15,19-19}, style=codeStyle]{../codes/python/encapsulation/person.py}
 
 The members can be accessed anywhere
+
 \lstinputlisting[language={[KB]Python}, linerange={4-7, 9-9, 13-13}, style=codeStyle]{../codes/python/encapsulation/app.py}
 
 \subsection{Ruby}
 
-By default methods are public except for \keyword{initialize} method and the global methods defined under the object class which are private always. 
-If desired, you can use the keyword \keyword{public} in a line and all methods defined after it are public. 
-Fields are not public unless they are constants. 
+By default methods are public except for \keyword{initialize} method and the global methods defined under the object class which are always private. 
+If desired, you can use the keyword \keyword{public} in a line and all methods defined after it will be public. 
+Fields are not public unless they are defined as constants. 
 To access them like public in other languages, you have to define accessor methods (the fields have to be properties).
 In Ruby, public getters and setters are called \nameword{attribute readers} and \nameword{attribute writers}.
 
@@ -151,8 +151,8 @@ Actually, the field is accessed via a getter and a setter which are public by de
 \section{Protected members}
 
 Protected visibility mode is used to access a member of a class from the class itself and its subclasses. 
-For fields as for methods, it is used to allow subclasses accessing them directly. 
-If you define a member as protected, keep in mind that changing it later may break subclasses.
+It is used to allow a class accessing its superclass's members directly. 
+If a member is defined as protected, keep in mind that changing it later may break subclasses.
 
 \subsection{C++}
 
@@ -172,8 +172,8 @@ They cannot be accessed elsewhere
 \subsection{Java}
 
 Protected members are prefixed each by the keyword \keyword{protected}. 
-A protected member is visible inside the class and its subclass, and also to other classes in the same package. 
-The protected methods can be defined the same.
+A protected member is visible inside the class and its subclasses, and also to other classes in the same package. 
+The protected methods can be defined the same as protected fields.
 
 \lstinputlisting[language={[KB]Java}, linerange={1-3,7-7,34-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
 
@@ -185,11 +185,11 @@ It can be accessed from classes of the same package
 
 \lstinputlisting[language={[KB]Java}, linerange={1-7,10-12}, style=codeStyle]{../codes/java/src/encapsulation/core/App2.java}
 
-And cannot be accessed from a class outside the package and not inheriting from their containing class.
+And cannot be accessed from a class outside the package and not inheriting from their class.
 
 \lstinputlisting[language={[KB]Java}, linerange={1-8,13-13,16-18}, style=codeStyle]{../codes/java/src/encapsulation/main/App.java}
 
-It is also important to point out that protected members can be accessed from another object of the same class 
+It is also important to point out that protected members can be accessed from another object of the same class.
 
 \lstinputlisting[language={[KB]Java}, linerange={3-3,7-7,29-29,31-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
 
@@ -209,10 +209,10 @@ There is no protected members in Lua, but you can use a naming convention to spe
 
 \subsection{Perl}
 
-Perl can capture the caller (the location or package where a function was called) using the keyword \keyword{caller}. 
+Perl can capture the caller (the location or package where a method was called) using the keyword \keyword{caller}. 
 Also, the base class \keyword{UNIVERSAL} provides a method \keyword{isa} which returns true if the object is blessed to the given type or inherits from it.
 Adding to it the keyword \keyword{\_\_PACKAGE\_\_} which captures the current package and exception management \keyword{die}, Bingo! we can limit access. 
-We cannot limit visibility: the method is still visible, but we raise an exception if the access does not serve our purpose.
+We cannot limit visibility: the method is still visible, but we raise an exception if the access does not serve our purpose \citep{2006-rir}.
 
 \begin{lstlisting}[language={[KB]Perl}, style=codeStyle]
 package Person;
@@ -231,7 +231,7 @@ Since these getters/setters are methods, you can limit their access.
 
 \subsection{PHP}
 
-Protected members are prefixed, each, with the keyword \keyword{protected}.
+Protected members are prefixed, each, by the keyword \keyword{protected}.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-2,6-6,31-31}, style=codeStyle]{../codes/php/encapsulation/person.php}
 
@@ -252,8 +252,8 @@ An object can access a protected member of another of the same class
 In Python, all class members are publicly visible. 
 But, Python community use coding conversions to tell developers about a field's visibility. 
 Some developers use underscore \keyword{\_} before the class member to signal that it is protected. 
-However, looking to this convension's definition in Python's docs: "\textit{a name prefixed with an underscore should be treated as a non-public part of the API. It should be considered an implementation detail and subject to change without notice.}", this suggests that it is a private member convention.
-But, since there is another convention for private members (double underscore), we can view one underscore as protected.
+However, looking to this convention's definition in Python's docs: ``\textit{a name prefixed with an underscore should be treated as a non-public part of the API. It should be considered an implementation detail and subject to change without notice.}", this suggests that it is a private member convention.
+But, since there is another convention for private members (double underscore), you can consider one underscore as protected.
 
 \lstinputlisting[language={[KB]Python}, linerange={4-5,8-8,11-11}, style=codeStyle]{../codes/python/encapsulation/person.py}
 
@@ -266,21 +266,21 @@ Or, from any class, module or piece of code
 \lstinputlisting[language={[KB]Python}, linerange={4-7,17-17}, style=codeStyle]{../codes/python/encapsulation/app.py}
 
 The idea is to tell developers that this class member is protected and it can be changed in the future, not to enforce the visibility on them. 
-If they want to access it directly, its their choice.
+If they want to access it directly, it is their choice.
 
 \subsection{Ruby}
 
-All fields are protected by default and there is no other visibility mode. 
-Methods are public by default, but can be defined as protected using either \keyword{private} or \keyword{protected}. 
+All fields are protected by default and there is no other visibility mode for them. 
+Methods are public by default, but can be defined as protected using either \keyword{private} or \keyword{protected} keywords. 
 
 \lstinputlisting[language={[KB]Ruby}, linerange={1-1,6-7,9-12,15-15,24-32,46-46}, style=codeStyle]{../codes/ruby/encapsulation/person.rb}
 
-The methods defined using \keyword{private} or \keyword{protected} can both be accessed from sub-classes.
+Methods defined using \keyword{private} or \keyword{protected} can both be accessed from sub-classes.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-4,13-19}, style=codeStyle]{../codes/ruby/encapsulation/student.rb}
 
 The difference is that those with \keyword{private} cannot be accessed from another object even if it is of the same class. 
-Those with \keyword{protected} can be accessed from the an object of the same class.
+In the contrary, those with \keyword{protected} can be accessed from the an object of the same class.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={1-1,41-46}, style=codeStyle]{../codes/ruby/encapsulation/person.rb}
 
@@ -290,9 +290,10 @@ The fields and the protected methods cannot be accessed outside the class and it
 
 \section{Private members}
 
-Fields are set to be private so they can not be changed directly, instead setters and getters are more appropriate for that. 
+Fields are set to be private so they can not be changed directly.
+Instead, setters and getters can be used to access them because they are more appropriate for that. 
 Private methods are a good way to break tasks into smaller pieces of code. 
-Also, they can prevent duplication in case many other public functions needs to do the same thing in some point.
+Also, they can prevent duplication in case many public functions of the same class have a shared behavior.
 
 \subsection{C++}
 
@@ -331,8 +332,8 @@ It is also important to point out that private members can be accessed from anot
 \subsection{Javascript} 
 
 There is a convention to use underscore \keyword{\_} as a mean to signal a class member as private. 
-But the member still accessible as public. 
-Another way is to use closures (\textit{the combination of a function and the lexical environment within which that function was declared}), by defining a field inside the constructor using the keyword \keyword{var} or \keyword{let}.
+But the member stays accessible as public. 
+Another way is to use closures (\textit{the combination of a function and the lexical environment within which that function was declared}), by defining a field inside the constructor using the keyword \keyword{var} or \keyword{let} \citep{2001-crockford}.
 But, any method using this variable must be defined inside the constructor.
 This means each time you create a new instance (object), a new method will be created for this object. 
 
@@ -345,7 +346,7 @@ In contrary, the member defined with closures cannot be accessed.
 
 \subsection{Lua}
 
-Using closures, you can create internal fields inside the constructor of an object.
+Using closures, you can create internal fields inside the constructor of an object \citep{2011-lua-users}.
 The functions which access this field must be defined inside the constructor.
 
 \lstinputlisting[language={[KB]Lua}, linerange={1-6,8-12,19-19}, style=codeStyle]{../codes/lua/encapsulation/person.lua}
@@ -358,7 +359,7 @@ But, you can create a new public field dynamically which will not replace the in
 \subsection{Perl}
 
 There is a convention to start private members with underscore \keyword{\_}, but they still are accessible. 
-For methods, you can use \keyword{caller}, \keyword{eq}, \keyword{\_\_PACKAGE\_\_} and \keyword{die} to limit access though they still are visible. 
+For methods, you can use \keyword{caller}, \keyword{eq}, \keyword{\_\_PACKAGE\_\_} and \keyword{die} to limit access though they still are visible \citep{2006-radiantmatrix}. 
 If the method is not called from inside the package (which is the class in our case), it will raise an exception and stop executing.
 
 \begin{lstlisting}[language={[KB]Perl}, style=codeStyle]
@@ -375,7 +376,7 @@ As for fields, you can hide them entirely (private) using many ways.
 
 \subsubsection{Using scope and object reference} 
 
-This is a method I thought of in order to hide internal fields of an object. 
+This is a way I thought of in order to hide internal fields of an object. 
 Using a container hash, each object's reference is considered as a key and the value is another hash containing private fields names and their values. 
 The hash must be defined using \keyword{my} and not \keyword{our} so it will not be accessible outside the package. 
 You can put your package inside a code block so the container hash will not be accessible to the rest of code in the same file.
@@ -394,7 +395,7 @@ In addition, if you want to prevent modifying the content of a protected field f
 
 \subsubsection{Using closures} 
 
-This solution is what you will find on the web. %ref to https://www.perlmonks.org/?node_id=8251
+This solution is what you will find on the web \citep{2000-btrott}.
 Instead of using hashes as objects, you may implement them as closures. 
 A closure is a subroutine reference that has access to the lexical variables that were in scope when it was created.
 The idea is to define a subroutine that will act as an setter/getter method and bless it into the class instead of the hash. 
@@ -434,9 +435,9 @@ It can be accessed from subclasses using the new mangled name
 
 \lstinputlisting[language={[KB]Python}, linerange={4-9,11-12}, style=codeStyle]{../codes/python/encapsulation/student.py}
 
-Or, from any class, module or piece of code. 
+Also, it can be accessed using the new name from any class, module or piece of code. 
 Trying to read the field as it is defined in the class will raise an error since it does not exist with that name anymore.
-While trying to assign a value to the field will work, because you are actually creating a new field of the object dynamically.
+But trying to assign a value to the field will work, because you are actually creating a new field of the object dynamically.
 
 \lstinputlisting[language={[KB]Python}, linerange={4-7,14-16}, style=codeStyle]{../codes/python/encapsulation/app.py}
 
@@ -455,17 +456,17 @@ This is because the field itself is protected and \keyword{attr\_reader} creates
 \subsection{C++}
 
 public, protected and private are the only visibility modes applied to class members. 
-But, a class can specify an external function of another class to be able to access its members whatever their visibility mode is. 
+But, a class can allow an external function of another class to access its members whatever their visibility mode is. 
 This is known as \nameword{friend function} and \nameword{friend class} respectively. 
-They can be specified using the keyword \keyword{friend} before each. 
+They can be declared inside the class header using the keyword \keyword{friend}. 
 
 \lstinputlisting[language={[KB]C++}, linerange={6-11,18-19,21-22,25-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
 
-The new class can access all fields 
+The new class can access all fields even the private ones.
 
 \lstinputlisting[language={[KB]C++}, linerange={7-14}, style=codeStyle]{../codes/cpp/encapsulation/frnd.h}
 
-The same thing for the function
+The same thing for friend functions.
 
 \lstinputlisting[language={[KB]C++}, linerange={5-8}, style=codeStyle]{../codes/cpp/encapsulation/app.cpp}
 
@@ -520,18 +521,16 @@ But cannot be accessed outside the package
 
 \begin{discussion}
 
-Members visibility knows three main modes: public, protected and private. 
-Some languages give full access to class members; in this case, it is the visibility can be indicated via the API's documentation. 
-Also, you can define some code conventions to indicate the visibility. 
-Javascript, Lua, Perl and Python are ones of those languages. 
-There are languages which gives the ability to choose between these three visibility modes. 
-This type of languages knows: C++, Java and PHP. 
-Ruby fixes its attributes visibility to protected, and limits its methods visibility to public and protected. 
+Members visibility can have three main modes: public, protected and private. 
+Some languages give full access to class members; in this case, the visibility mode can be indicated via the API's documentation. 
+In this type of languages (such as Javascript, Lua, Perl and Python), it is common to use coding conventions such are the underscore to indicate different visibility modes.
+There are languages (such as C++, Java and PHP) which afford the ability to choose between these three visibility modes. 
+There are others (such as Ruby) which limit access to some members (mostly fields as protected).
 
-Table~\ref{tab-encapsulation} represents a comparison between OO languages based on their visibility modes:
+Table~\ref{tab-encapsulation} represents a comparison between \ac{oo} languages based on their visibility modes:
 public, protected and private. 
-When you find the word \textbf{member}, it means a field's or a method's definition. 
-In Perl and Lua, the object is created inside the constructor which is referred to here as \textbf{myobject}.
+In this table, the word \textbf{member} stands for the entire definition of a method or a field.
+In Perl and Lua, the object is created inside the constructor which is referred to as \textbf{myobject}.
 
 	\extrarowsep = 0pt 
 	

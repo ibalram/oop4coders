@@ -385,6 +385,41 @@ title={#1}
 	\addcontentsline{toc}{part}{Back Matter}
 	%\fancyfoot{} 
 	%\fancyhead{} 
+	
+	\fancyhf{}
+	\fancypagestyle{plain}{}
+	\fancyhead[LE]{\slshape BIBLIOGRAPHY}
+	
+	\fancyhead[E]{
+		\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
+		at ([shift={(0cm,-1cm)}] current page.north west){};
+		%		
+		\node[anchor=west, fill=white,minimum width=1cm]
+		at ([shift={(\pright,0cm)}] bx1.north west)
+		{\large \color{indigo}\textbf{\leftmark}};
+		%		
+		\node[anchor=east,fill=white,align=left]
+		at ([shift={(2pt,0cm)}] bx1.south east)
+		{\color{indigo}\textbf{\nouppercase{\rightmark}}};
+		\end{tikzpicture}
+	} 
+	
+	\fancyhead[O]{
+		\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
+		at ([shift={(\pleft,-1cm)}] current page.north west){};
+		%		
+		\node[anchor=east, fill=white,minimum width=1cm,align=left]
+		at ([shift={(-\pright,0cm)}] bx1.north east)
+		{\large \color{indigo}\textbf{\leftmark}};
+		%		%		
+		\node[anchor=west,fill=white]
+		at ([shift={(-2pt,0cm)}] bx1.south west)
+		{\color{indigo}\textbf{\nouppercase{\rightmark}}};
+		\end{tikzpicture}
+	}
+	
 }
 
 \renewcommand{\mainmatter}{
