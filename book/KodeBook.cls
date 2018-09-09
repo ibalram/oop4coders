@@ -395,8 +395,7 @@ title={#1}
 	%\fancyhead{} 
 	
 	\fancyhf{}
-	\fancyfoot[CE, CO]{\thepage}
-%	\fancyhead[LE]{\slshape BIBLIOGRAPHY}
+%	\fancyfoot[CE, CO]{\thepage}
 	
 	\fancyhead[E]{
 		\begin{tikzpicture}[remember picture,overlay]
@@ -405,7 +404,7 @@ title={#1}
 		%		
 		\node[anchor=west, fill=white,minimum width=1cm]
 		at ([shift={(\pright,0cm)}] bx1.north west)
-		{\large \color{indigo}\textbf{\leftmark}};
+		{\large \color{indigo}\textbf{\thepage}};
 		%		
 		\node[anchor=east,fill=white,align=left]
 		at ([shift={(2pt,0cm)}] bx1.south east)
@@ -420,7 +419,7 @@ title={#1}
 		%		
 		\node[anchor=east, fill=white,minimum width=1cm,align=left]
 		at ([shift={(-\pright,0cm)}] bx1.north east)
-		{\large \color{indigo}\textbf{\leftmark}};
+		{\large \color{indigo}\textbf{\thepage}};
 		%		%		
 		\node[anchor=west,fill=white]
 		at ([shift={(-2pt,0cm)}] bx1.south west)
@@ -430,7 +429,7 @@ title={#1}
 	
 	\fancypagestyle{plain}{% % <-- this is new
 		\fancyhf{} 
-		\fancyfoot[CE, CO]{\thepage}
+		\fancyfoot[CE, CO]{}
 	}
 	
 }

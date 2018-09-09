@@ -19,7 +19,7 @@ But, still, you can grasp some ideas about these concepts by observing how progr
 
 In this book, the focus will be OOP from programmers' point of view.
 That is, the concepts will be presented as concrete programs with different OOP languages.
-Some programming languages are pure object-oriented such as Ruby, others allow primitive types such as Java, then there are those which skip some concepts such as Python with encapsulation, and those which were not designed originally to be OOP but add some support such as Javascript.
+Some programming languages are pure object-oriented such as Ruby, others allow primitive types such as Java, then there are those which skip some concepts such as Python with encapsulation, and those which have other ways to support OOP such as Javascript.
 This book serves as a comparison between different implementations of OOP concepts afforded by some programming languages.
 If a language lake support of a given concept, some solutions and hacks can be afforded.
 The explanations will be as short and informative as possible allowing more space to show all the beauty of codes.
