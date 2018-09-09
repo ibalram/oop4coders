@@ -381,7 +381,7 @@ Please check the code to see how to read the keyboard.
 
 A function, mainly, contains a return type, its name and parameters. 
 The language uses \keyword{\{\}} to define instructions blocks.
-To return a value, the language uses the keyword \keyword{return}.
+To return a value, the language uses the keyword \keyword[C++]{return}.
 Statements end with a semicolon (\keyword{;}).
 
 \lstinputlisting[language={[KB]C++}, linerange={12-16}, style=codeStyle]{../codes/cpp/hello/func.cpp}
@@ -391,62 +391,62 @@ Statements end with a semicolon (\keyword{;}).
 A function contains a modifier, a return type, its name and parameters.
 It is always included in a class.
 The language uses \keyword{\{\}} to define instructions blocks.
-To return a value, the language uses the keyword \keyword{return}.
+To return a value, the language uses the keyword \keyword[Java]{return}.
 Statements end with a semicolon (\keyword{;}).
 
 \lstinputlisting[language={[KB]Java}, linerange={5-5,15-22}, style=codeStyle]{../codes/java/src/hello/Func.java}
 
 \subsection{Javascript}
 
-A function starts with the keyword \keyword{function}, its name and parameters.
+A function starts with the keyword \keyword[Javascript]{function}, its name and parameters.
 The language uses \keyword{\{\}} to define instructions blocks.
-To return a value, the language uses the keyword \keyword{return}.
+To return a value, the language uses the keyword \keyword[Javascript]{return}.
 Statements end with a semicolon (\keyword{;}).
 
 \lstinputlisting[language={[KB]Javascript}, style=codeStyle]{../codes/javascript/hello/func.js}
 
 \subsection{Lua}
 
-A function starts with the keyword \keyword{function}, its name and parameters.
-All blocks are ended with the keyword \keyword{end}.
-To return a value, the language uses the keyword \keyword{return}.
+A function starts with the keyword \keyword[Lua]{function}, its name and parameters.
+All blocks are ended with the keyword \keyword[Lua]{end}.
+To return a value, the language uses the keyword \keyword[Lua]{return}.
 Each line contains at most one statement, but it can contains many separated by a semicolon.
 
 \lstinputlisting[language={[KB]Lua}, linerange={1-6}, style=codeStyle]{../codes/lua/hello/func.lua}
 
 \subsection{Perl}
 
-A function starts with the keyword \keyword{sub} and its name.
-The parameters can be recovered by shifting them from an array \keyword{@\_}.
+A function starts with the keyword \keyword[Perl]{sub} and its name.
+The parameters can be recovered by shifting them from an array \keyword[Perl]{@\_}.
 The language uses \keyword{\{\}} to define instructions blocks.
-To return a value, the language uses the keyword \keyword{return}.
+To return a value, the language uses the keyword \keyword[Perl]{return}.
 Statements end with a semicolon (\keyword{;}).
 
 \lstinputlisting[language={[KB]Perl}, linerange={7-13}, style=codeStyle]{../codes/perl/hello/func.pl}
 
 \subsection{PHP}
 
-A function starts with the keyword \keyword{function},its name and parameters.
+A function starts with the keyword \keyword[PHP]{function},its name and parameters.
 The language uses \keyword{\{\}} to define statements blocks.
-To return a value, the language uses the keyword \keyword{return}.
+To return a value, the language uses the keyword \keyword[PHP]{return}.
 Statements end with a semicolon (\keyword{;}).
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-6}, style=codeStyle]{../codes/php/hello/func.php}
 
 \subsection{Python}
 
-A function starts with the keyword \keyword{def},its name and parameters.
+A function starts with the keyword \keyword[Python]{def},its name and parameters.
 The language uses indentation to define statements blocks.
-To return a value, the language uses the keyword \keyword{return}.
+To return a value, the language uses the keyword \keyword[Python]{return}.
 Each line contains at most one statement, but simple statements can be separated by a semicolon.
 
 \lstinputlisting[language={[KB]Python}, linerange={12-15}, style=codeStyle]{../codes/python/hello/func.py}
 
 \subsection{Ruby}
 
-A function starts with the keyword \keyword{def},its name and parameters.
-All blocks are ended with the keyword \keyword{end}.
-To return a value, you can either use the keyword \keyword{return} or put the value directly in a line.
+A function starts with the keyword \keyword[Ruby]{def},its name and parameters.
+All blocks are ended with the keyword \keyword[Ruby]{end}.
+To return a value, you can either use the keyword \keyword[Ruby]{return} or put the value directly in a line.
 Each line contains at most one statement, but simple statements can be separated by a semicolon.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={9-15}, style=codeStyle]{../codes/ruby/hello/func.rb}
@@ -488,8 +488,8 @@ In our case, the implementation is after the main function.
 
 The main function is mandatory if we want an executable out of our class. 
 It returns nothing (void) and have a list of string arguments. 
-The main function must be always defined in the \keyword{public} class (which have the same name as the file). 
-Also, it has to be \keyword{static}, so it can be executed without the need to create an instance of its containing class.
+The main function must be always defined in the \keyword[Java]{public} class (which have the same name as the file). 
+Also, it has to be \keyword[Java]{static}, so it can be executed without the need to create an instance of its containing class.
 
 \lstinputlisting[language={[KB]Java}, style=codeStyle]{../codes/java/src/hello/Entry.java}
 
@@ -499,7 +499,7 @@ In Javascript, the entire file is a big main, which can contain declarations (va
 The declarations are processed first, then the statements. 
 This is why a function can be called before it is defined without the need to declare its header first. 
 Being executed inside HTML, Javascript does not need arguments; But in case of Node.js, arguments are needed sometimes. 
-The arguments passed by Node.js are stored in an array of strings \keyword{process.argv} which has \keyword{node} as its first elements, the name of the script as the second, and the rest are the command-line arguments.
+The arguments passed by Node.js are stored in an array of strings \keyword[Javascript]{process.argv} which has \keyword{node} as its first elements, the name of the script as the second, and the rest are the command-line arguments.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={1-9}, style=codeStyle]{../codes/javascript/hello/entry.js}
 
@@ -507,14 +507,14 @@ The arguments passed by Node.js are stored in an array of strings \keyword{proce
 
 Lua does not have a main function, since all the code can be considered as one. 
 Also, functions must be defined before being called, because functions in lua are just values stored in a variable.
-To recover command-line arguments, \keyword{arg} array is used. 
+To recover command-line arguments, \keyword[Lua]{arg} array is used. 
 
 \lstinputlisting[language={[KB]Lua}, style=codeStyle]{../codes/lua/hello/entry.lua}
 
 \subsection{Perl}
 
 The whole file is a main in Perl, and functions can be called before being defined.
-The command-line arguments are stored in a vector \keyword{\$ARGV}. 
+The command-line arguments are stored in a vector \keyword[Perl]{\$ARGV}. 
 In this code, we showed two methods to print the results.
 The first one is the more interesting: it interpolates the function's call and the variable inside a string. 
 The second one is a simple concatenation-based one. 
@@ -525,7 +525,7 @@ The second one is a simple concatenation-based one.
 
 PHP does not have a main function; the first line of code encountered in the file will be executed an on.
 A function can be called before it was defined. 
-To get command-line arguments, \keyword{\$argv} vector is used; Where the first element is the name of the script.
+To get command-line arguments, \keyword[PHP]{\$argv} vector is used; Where the first element is the name of the script.
 
 \lstinputlisting[language={[KB]PHP}, linerange={4-10}, style=codeStyle]{../codes/php/hello/entry.php}
 
@@ -533,14 +533,14 @@ To get command-line arguments, \keyword{\$argv} vector is used; Where the first 
 
 Python does not need a main function; The statements are executed one by one. 
 But to prevent instructions from executing when the file is exported as a library, there is a main mechanism. 
-A test if a built-in variable \keyword{\_\_name\_\_} contains the string \keyword{\_\_main\_\_} which means the module is being run directly from command-line.
+A test if a built-in variable \keyword[Python]{\_\_name\_\_} contains the string \keyword[Python]{\_\_main\_\_} which means the module is being run directly from command-line.
 Otherwise, this variable will contain the current module's name.
 
 A function $ f1 $ can not be called before it was defined unless it is called inside another function $ f2 $. 
 Even so, the second function $ f2 $ must be called after the definition of $ f1 $ and not before. 
 In our example, if we define the factorial function after the \textbf{main} mechanism, we will get an error. 
 
-To get the command-line arguments, we must import \keyword{sys} module and recover the vector \keyword{sys.argv}. 
+To get the command-line arguments, we must import \keyword[Python]{sys} module and recover the vector \keyword[Python]{sys.argv}. 
 The first element contains the name of the script and the rest contains the arguments.
 
 \lstinputlisting[language={[KB]Python}, style=codeStyle]{../codes/python/hello/entry.py}
@@ -561,15 +561,15 @@ def fact(i):
 \subsection{Ruby}
 
 In Ruby, there is no main function, but there is a mechanism to prevent execution when the file is called as a module. 
-There is a variable called \keyword{\_\_FILE\_\_} which contains the file name which is stored in \keyword{\$0} and \keyword{\$PROGRAM\_NAME}. 
-The command-line arguments are stored in a variable \keyword{ARGV}.
+There is a variable called \keyword[Ruby]{\_\_FILE\_\_} which contains the file name which is stored in \keyword[Ruby]{\$0} and \keyword[Ruby]{\$PROGRAM\_NAME}. 
+The command-line arguments are stored in a variable \keyword[Ruby]{ARGV}.
 Functions must be defined before being used, otherwise you will get an error.
 
 \lstinputlisting[language={[KB]Ruby}, style=codeStyle]{../codes/ruby/hello/entry.rb}
 
 For those who want it so badly to define a function after it is being called.
-If you import the file using \keyword{require} keyword inside the main block, you will get a warning about the method being redefined. 
-Another solution is to use the blocks: \keyword{BEGIN} or \keyword{END}. 
+If you import the file using \keyword[Ruby]{require} keyword inside the main block, you will get a warning about the method being redefined. 
+Another solution is to use the blocks: \keyword[Ruby]{BEGIN} or \keyword[Ruby]{END}. 
 The former tells the interpreter to begin with this code, and the latter tells it to finish with it.
 
 \begin{lstlisting}[language={[KB]Ruby}, style=codeStyle]
@@ -602,7 +602,7 @@ BEGIN {
 \subsection{C++}
 
 In C++, exceptions can be of any type. 
-They are thrown using the keyword \keyword{throw}, and handled using \keyword{try} and \keyword{catch}.
+They are thrown using the keyword \keyword[C++]{throw}, and handled using \keyword[C++]{try} and \keyword[C++]{catch}.
 You can throw a string as an exception.
 
 \lstinputlisting[language={[KB]C++}, linerange={4-6}, style=codeStyle]{../codes/cpp/hello/except.cpp}
@@ -613,7 +613,7 @@ Then, capture it
 
 
 If you want to specify the type of the exception, here comes the OOP solution. 
-You have to define new types by inheritance from \keyword{std::exception}. 
+You have to define new types by inheritance from \keyword[C++]{std::exception}. 
 Then, redefine the function \keyword{what()} which affords the error message.
 
 \lstinputlisting[language={[KB]C++}, linerange={6-16}, style=codeStyle]{../codes/cpp/hello/except2.cpp}
@@ -629,25 +629,25 @@ We catch them either by they parent's type \textbf{std::exception}, or by catchi
 
 \subsection{Java}
 
-In Java, you can define exceptions by defining some classes which inherit from the class \keyword{Exception}. 
+In Java, you can define exceptions by defining some classes which inherit from the class \keyword[Java]{Exception}. 
 Or you can throw a new instance of the latter. 
-The message in your new exception classes can be passed to the superclass, by the keyword \keyword{super} in their constructors. 
+The message in your new exception classes can be passed to the superclass, by the keyword \keyword[Java]{super} in their constructors. 
 Also, you can redefine the function \keyword{getMessage()} as shown in our example.
 
 \lstinputlisting[language={[KB]Java}, linerange={42-53}, style=codeStyle]{../codes/java/src/hello/Except.java}
 
-The function which throw new instances of our exceptions, using the keyword \keyword{throw}, must declare that it have the potential to throw them in its header via the keyword \keyword{throws}. 
+The function which throw new instances of our exceptions, using the keyword \keyword[Java]{throw}, must declare that it have the potential to throw them in its header via the keyword \keyword[Java]{throws}. 
 
 \lstinputlisting[language={[KB]Java}, linerange={33-35}, style=codeStyle]{../codes/java/src/hello/Except.java}
 
-To capture these exceptions, you must use \keyword{try} and \keyword{catch}, or you can send them to an upper caller using \textbf{throws}. 
-There is a keyword \keyword{finally} which is used to execute code in either cases: exception or not. 
+To capture these exceptions, you must use \keyword[Java]{try} and \keyword[Java]{catch}, or you can send them to an upper caller using \textbf{throws}. 
+There is a keyword \keyword[Java]{finally} which is used to execute code in either cases: exception or not. 
 Its benefit is to clean up before exiting; for instance: closing a file.
 
 \lstinputlisting[language={[KB]Java}, linerange={20-29}, style=codeStyle]{../codes/java/src/hello/Except.java}
 
 There are some other types of exceptions called \nameword{unchecked exceptions} which they don't force the programmer to capture them. 
-You can define your own unchecked exceptions by inheriting from \keyword{RuntimeException}. 
+You can define your own unchecked exceptions by inheriting from \keyword[Java]{RuntimeException}. 
 In this case, you will not need to declare that your function is capable of throwing them. 
 There are some built-in unchecked exceptions relative to arrays and number conversion as shown in this example.
 
@@ -655,18 +655,18 @@ There are some built-in unchecked exceptions relative to arrays and number conve
 
 \subsection{Javascript}
 
-Using \keyword{throw} statement, you can throw an exception of any type: integer, string, object, etc. 
+Using \keyword[Javascript]{throw} statement, you can throw an exception of any type: integer, string, object, etc. 
 
 \lstinputlisting[language={[KB]Javascript}, linerange={21-23}, style=codeStyle]{../codes/javascript/hello/except.js}
 
 The function's execution will stop and the control will be passed to the first catch block where it is being called.
 If the error is not captured, the program will terminate.
-To capture an exception, you need to call the function inside \keyword{try} and \keyword{catch}. 
-You can add \keyword{finally} which will execute in both cases: failure or success.
+To capture an exception, you need to call the function inside \keyword[Javascript]{try} and \keyword[Javascript]{catch}. 
+You can add \keyword[Javascript]{finally} which will execute in both cases: failure or success.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={10-19}, style=codeStyle]{../codes/javascript/hello/except.js}
 
-You can throw an error  using the class \keyword{error}
+You can throw an error  using the class \keyword[Javascript]{error}
 
 \begin{lstlisting}[language={[KB]Javascript}, style=codeStyle]
 new Error([message[, fileName[, lineNumber]]])
@@ -675,11 +675,11 @@ new Error([message[, fileName[, lineNumber]]])
 \subsection{Lua}
 
 As mentioned in Lua manual: you do not need error handling for most applications. 
-But in case you want to throw an error, you can use the function \keyword{error}
+But in case you want to throw an error, you can use the function \keyword[Lua]{error}
 
 \lstinputlisting[language={[KB]Lua}, linerange={1-3}, style=codeStyle]{../codes/lua/hello/except.lua}
 
-Then, if you want to handle this error, you can use the function \keyword{pcall} to encapsulate your previous code. 
+Then, if you want to handle this error, you can use the function \keyword[Lua]{pcall} to encapsulate your previous code. 
 It will return a success indicator and the returned value from your function.
 The value, here, is either the result from te function or the raised error. 
 
@@ -689,45 +689,45 @@ The value, here, is either the result from te function or the raised error.
 
 Perl does not have a good built-in mechanism for exceptions. 
 This is why there are some perl modules designed specially for exception handling.
-If you want to throw errors, you can use the keyword \keyword{die}. 
+If you want to throw errors, you can use the keyword \keyword[Perl]{die}. 
 
 \lstinputlisting[language={[KB]Perl}, linerange={14-17}, style=codeStyle]{../codes/perl/hello/except.pl}
 
-Using \keyword{eval}, you can capture the error into \keyword{\$@}.
+Using \keyword[Perl]{eval}, you can capture the error into \keyword[Perl]{\$@}.
 
 \lstinputlisting[language={[KB]Perl}, linerange={6-12}, style=codeStyle]{../codes/perl/hello/except.pl}
 
 \subsection{PHP}
 
 In PHP, Exception handling is available in version 5 and greater.
-To raise an exception, either you create an instance of the class \keyword{Exception} with a message as parameter, 
+To raise an exception, either you create an instance of the class \keyword[PHP]{Exception} with a message as parameter, 
 or you create custom exceptions by inheriting from that class.
 
 \lstinputlisting[language={[KB]PHP}, linerange={4-14}, style=codeStyle]{../codes/php/hello/except.php}
 
-To raise the exception, all you have to do is calling the keyword \keyword{throw} followed by an instance of the custom exception.
+To raise the exception, all you have to do is calling the keyword \keyword[PHP]{throw} followed by an instance of the custom exception.
 
 \lstinputlisting[language={[KB]PHP}, linerange={16-18}, style=codeStyle]{../codes/php/hello/except.php}
 
-Then, to capture the exception, you can use \keyword{try} and \keyword{catch}.
+Then, to capture the exception, you can use \keyword[PHP]{try} and \keyword[PHP]{catch}.
 
 \lstinputlisting[language={[KB]PHP}, linerange={30-39}, style=codeStyle]{../codes/php/hello/except.php}
 
-From PHP5.5, a block of \keyword{finally} can be specified to execute code after normal execution or exception handling.
+From PHP5.5, a block of \keyword[PHP]{finally} can be specified to execute code after normal execution or exception handling.
 
 \subsection{Python}
 
-The exceptions inherit from the class \keyword{Exception}.
+The exceptions inherit from the class \keyword[Python]{Exception}.
 
 \lstinputlisting[language={[KB]Python}, linerange={6-12}, style=codeStyle]{../codes/python/hello/except.py}
 
-To throw an exception, use the keyword \keyword{raise}
+To throw an exception, use the keyword \keyword[Python]{raise}
 
 \lstinputlisting[language={[KB]Python}, linerange={14-18}, style=codeStyle]{../codes/python/hello/except.py}
 
-To capture these exceptions, use \keyword{try} and \keyword{except}. 
+To capture these exceptions, use \keyword[Python]{try} and \keyword[Python]{except}. 
 You have to capture the most specific exception first, then the generic ones. 
-After \keyword{except} blocks, you can use a clean-up block: \keyword{finally}.
+After \keyword[Python]{except} blocks, you can use a clean-up block: \keyword[Python]{finally}.
 
 \lstinputlisting[language={[KB]Python}, linerange={28-32}, style=codeStyle]{../codes/python/hello/except.py}
 
@@ -737,8 +737,8 @@ There are some built-in exceptions you can use, such as this example.
 
 \subsection{Ruby}
 
-In Ruby, you can throw an exception affording just a message which will create a new instance of \keyword{RuntimeError}. 
-To throw an exception, you need to use the keyword \keyword{raise}
+In Ruby, you can throw an exception affording just a message which will create a new instance of \keyword[Ruby]{RuntimeError}. 
+To throw an exception, you need to use the keyword \keyword[Ruby]{raise}
 
 \lstinputlisting[language={[KB]Ruby}, linerange={1-6}, style=codeStyle]{../codes/ruby/hello/except.rb}
 
@@ -753,23 +753,23 @@ To handle the exception, you can use the keywords:
 
 \lstinputlisting[language={[KB]Ruby}, linerange={21-30}, style=codeStyle]{../codes/ruby/hello/except.rb}
 
-You can specify custom classes to handle exceptions which can inherit from \keyword{StandardError}. 
+You can specify custom classes to handle exceptions which can inherit from \keyword[Ruby]{StandardError}. 
 It is a good practice to regroup these errors all together.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={1-12}, style=codeStyle]{../codes/ruby/hello/except2.rb}
 
-To throw them, all you have to do is creating an instance after calling \keyword{raise}.
+To throw them, all you have to do is creating an instance after calling \keyword[Ruby]{raise}.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={16-19}, style=codeStyle]{../codes/ruby/hello/except2.rb}
 
-You can capture them by their parent exception class \keyword{Exception}, or each by its class.
+You can capture them by their parent exception class \keyword[Ruby]{Exception}, or each by its class.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={37-40}, style=codeStyle]{../codes/ruby/hello/except2.rb}
 
 \begin{discussion}
 
 Before introducing oriented-object concepts of each language, how about a little comparison between our programming languages.
-Table~\ref{tab-hello} represents a general comparison between OO languages based on these criteria:
+Table~\ref{tab-hello} represents a general comparison between \ac{oo} languages based on these criteria:
 \begin{itemize}
 	\item \textbf{Type safety}: is the extent to which a programming language prevents type errors. 
 	\item \textbf{Type expression}: represents the type declaration. If it is explicit, the programmer have to specify the type of a variable or a method. If it is implicit, the type is inferred based on how the variables are being used.

@@ -268,8 +268,16 @@ title={#1}
 	%  frameround=tttt
 }
 
+%\DeclareRobustCommand\keyword{\@ifnextchar[{\@@keyword}{\@keyword}}
+\def\@keyword#1{{\itshape\bfseries\color{blue} #1}}
+%\def\@@keyword[#1]#2{\@keyword#2\index{#1!#2}}
 
-\def\keyword#1{{\itshape\bfseries\color{blue} #1}}
+\usepackage{ifthen} 
+
+\newcommand{\keyword}[2][]{%
+	\@keyword{#2}%
+	\ifthenelse {\equal{#1}{}}{}{\index{#1!#2}}%
+}
 
 \def\nameword#1{{\itshape\bfseries\color{red} #1}}
 
@@ -380,15 +388,15 @@ title={#1}
 \def\backmatter{
 	\cleardoublepage
 %	\pagenumbering{roman}
-	\pagestyle{empty}
+%	\pagestyle{empty}
 	\phantomsection
 	\addcontentsline{toc}{part}{Back Matter}
 	%\fancyfoot{} 
 	%\fancyhead{} 
 	
 	\fancyhf{}
-	\fancypagestyle{plain}{}
-	\fancyhead[LE]{\slshape BIBLIOGRAPHY}
+	\fancyfoot[CE, CO]{\thepage}
+%	\fancyhead[LE]{\slshape BIBLIOGRAPHY}
 	
 	\fancyhead[E]{
 		\begin{tikzpicture}[remember picture,overlay]
@@ -418,6 +426,11 @@ title={#1}
 		at ([shift={(-2pt,0cm)}] bx1.south west)
 		{\color{indigo}\textbf{\nouppercase{\rightmark}}};
 		\end{tikzpicture}
+	}
+	
+	\fancypagestyle{plain}{% % <-- this is new
+		\fancyhf{} 
+		\fancyfoot[CE, CO]{\thepage}
 	}
 	
 }
@@ -485,7 +498,7 @@ title={#1}
 	
 	\fancypagestyle{plain}{% % <-- this is new
 		\fancyhf{} 
-		\fancyfoot[LE,RO]{} % same placement as with page style "fancy"
+		\fancyfoot[LE,RO]{jjjjjjj} % same placement as with page style "fancy"
 	}
 } 
 
@@ -583,6 +596,11 @@ title={#1}
 	
 }
 
+\RequirePackage[nonewpage]{imakeidx}
+
+\makeindex
+
+\indexsetup{level=\chapter*,toclevel=chapter}
 
 %\RequirePackage{mdframed}
 %\RequirePackage{titletoc}
