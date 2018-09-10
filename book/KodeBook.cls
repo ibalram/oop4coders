@@ -395,42 +395,44 @@ title={#1}
 	%\fancyhead{} 
 	
 	\fancyhf{}
-%	\fancyfoot[CE, CO]{\thepage}
+%	\fancyfoot[CE, CO]{}
+
+	\fancyhead{\color{indigo}\thepage\hrulefill} 
 	
-	\fancyhead[E]{
-		\begin{tikzpicture}[remember picture,overlay]
-		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
-		at ([shift={(0cm,-1cm)}] current page.north west){};
-		%		
-		\node[anchor=west, fill=white,minimum width=1cm]
-		at ([shift={(\pright,0cm)}] bx1.north west)
-		{\large \color{indigo}\textbf{\thepage}};
-		%		
-		\node[anchor=east,fill=white,align=left]
-		at ([shift={(2pt,0cm)}] bx1.south east)
-		{\color{indigo}\textbf{\nouppercase{\rightmark}}};
-		\end{tikzpicture}
-	} 
-	
-	\fancyhead[O]{
-		\begin{tikzpicture}[remember picture,overlay]
-		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
-		at ([shift={(\pleft,-1cm)}] current page.north west){};
-		%		
-		\node[anchor=east, fill=white,minimum width=1cm,align=left]
-		at ([shift={(-\pright,0cm)}] bx1.north east)
-		{\large \color{indigo}\textbf{\thepage}};
-		%		%		
-		\node[anchor=west,fill=white]
-		at ([shift={(-2pt,0cm)}] bx1.south west)
-		{\color{indigo}\textbf{\nouppercase{\rightmark}}};
-		\end{tikzpicture}
-	}
-	
-	\fancypagestyle{plain}{% % <-- this is new
-		\fancyhf{} 
-		\fancyfoot[CE, CO]{}
-	}
+%	\fancyhead[E]{
+%		\begin{tikzpicture}[remember picture,overlay]
+%		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
+%		at ([shift={(0cm,-1cm)}] current page.north west){};
+%		%		
+%		\node[anchor=west, fill=white,minimum width=1cm]
+%		at ([shift={(\pright,0cm)}] bx1.north west)
+%		{\large \color{indigo}\textbf{\thepage}};
+%		%		
+%		\node[anchor=east,fill=white,align=left]
+%		at ([shift={(2pt,0cm)}] bx1.south east)
+%		{\color{indigo}\textbf{\@chap@name}};
+%		\end{tikzpicture}
+%	} 
+%	
+%	\fancyhead[O]{
+%		\begin{tikzpicture}[remember picture,overlay]
+%		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
+%		at ([shift={(\pleft,-1cm)}] current page.north west){};
+%		%		
+%		\node[anchor=east, fill=white,minimum width=1cm,align=left]
+%		at ([shift={(-\pright,0cm)}] bx1.north east)
+%		{\large \color{indigo}\textbf{\thepage}};
+%		%		%		
+%		\node[anchor=west,fill=white]
+%		at ([shift={(-2pt,0cm)}] bx1.south west)
+%		{\color{indigo}\textbf{\@chap@name}};
+%		\end{tikzpicture}
+%	}
+%	
+%	\fancypagestyle{plain}{% % <-- this is new
+%		\fancyhf{} 
+%		\fancyfoot[CE, CO]{}
+%	}
 	
 }
 
@@ -497,7 +499,7 @@ title={#1}
 	
 	\fancypagestyle{plain}{% % <-- this is new
 		\fancyhf{} 
-		\fancyfoot[LE,RO]{jjjjjjj} % same placement as with page style "fancy"
+		\fancyfoot[LE,RO]{} % same placement as with page style "fancy"
 	}
 } 
 
@@ -595,11 +597,11 @@ title={#1}
 	
 }
 
-\RequirePackage[nonewpage]{imakeidx}
-
-\makeindex
+\RequirePackage{imakeidx}
 
 \indexsetup{level=\chapter*,toclevel=chapter}
+
+\makeindex[program=makeindex,columns=2, options={-s KodeBook.ist}]
 
 %\RequirePackage{mdframed}
 %\RequirePackage{titletoc}

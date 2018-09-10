@@ -13,7 +13,7 @@ allmake: $(FILE)
 	
 	
 clean: 
-	rm -f *.synctex.gz *.log *.aux *.blg *.out *.qry *.nav *.snm *.toc *.lof *.lot *.glo *.acn *.ist *.up* *.i*
+	rm -f *.synctex.gz *.log *.aux *.blg *.out *.qry *.nav *.snm *.toc *.lof *.lot *.glo *.acn *.up* *.idx *.ilg *.ind
 
 clear: clean
 	rm -f *.pdf *.bbl

@@ -31,9 +31,9 @@ As for fields, public visibility mode is not preferable since it breaks encapsul
 
 \subsection{C++}
 
-Public members are defined inside the class header using the modifier \keyword{public}. 
+Public members are defined inside the class header using the modifier \keyword[C++]{public}. 
 Every member coming after that modifier is considered as public.
-Using \keyword{struct} instead of \keyword{class}, all members will be public by default.
+Using \keyword[C++]{struct} instead of \keyword[C++]{class}, all members will be public by default.
 
 \lstinputlisting[language={[KB]C++}, linerange={6-7,12-15,25-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
 
@@ -53,7 +53,7 @@ To correct this, you have to use \nameword{\#include guard}.
 
 \subsection{Java}
 
-Every public member in Java must be preceded by the keyword \keyword{public}. 
+Every public member in Java must be preceded by the keyword \keyword[Java]{public}. 
 
 \lstinputlisting[language={[KB]Java}, linerange={1-5,12-12,18-20,27-27,34-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
 
@@ -62,7 +62,7 @@ These members can be accessed anywhere
 
 \subsection{Javascript} 
 
-All fields with the keyword \keyword{this} are public. 
+All fields with the keyword \keyword[Javascript]{this} are public. 
 All methods defined using the same keyword inside the constructor or using the prototype are public.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={3-4,12-12,16-16,21-21}, style=codeStyle]{../codes/javascript/encapsulation/person.js}
@@ -80,7 +80,7 @@ Also, as \nameword{uncle Ben} of \nameword{Spider-man} once said: ``\textit{With
 In the following code, two objects with different fields are created. 
 Then, a function which prints the different fields of a Person is defined by looping over an object's members.
 Just a note: you have to verify that the member is not a function, since functions in Javascript are first class objects. 
-Which means: they are a type (\keyword{function}), they are instances of \keyword{Object} and they can be treated as any variable.
+Which means: they are a type (\keyword[Javascript]{function}), they are instances of \keyword[Javascript]{Object} and they can be treated as any variable.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={19-29}, style=codeStyle]{../codes/javascript/encapsulation/decorate.js}
 
@@ -113,7 +113,7 @@ They can be accessed outside the class
 \subsection{PHP}
 
 The default visibility mode in PHP is public.
-A method defined without a visibility modifier or a field defined using \keyword{var} are public by default. 
+A method defined without a visibility modifier or a field defined using \keyword[PHP]{var} are public by default. 
 It is good practice to prefix class members with a visibility modifier, since not doing that is just a mean to keep compatibility with versions before 5.1.3.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-5,11-11,15-15,17-17,24-24,31-31}, style=codeStyle]{../codes/php/encapsulation/person.php}
@@ -134,8 +134,8 @@ The members can be accessed anywhere
 
 \subsection{Ruby}
 
-By default methods are public except for \keyword{initialize} method and the global methods defined under the object class which are always private. 
-If desired, you can use the keyword \keyword{public} in a line and all methods defined after it will be public. 
+By default methods are public except for \keyword[Ruby]{initialize} method and the global methods defined under the object class which are always private. 
+If desired, you can use the keyword \keyword[Ruby]{public} in a line and all methods defined after it will be public. 
 Fields are not public unless they are defined as constants. 
 To access them like public in other languages, you have to define accessor methods (the fields have to be properties).
 In Ruby, public getters and setters are called \nameword{attribute readers} and \nameword{attribute writers}.
@@ -156,7 +156,7 @@ If a member is defined as protected, keep in mind that changing it later may bre
 
 \subsection{C++}
 
-Protected members are defined inside the class header using the modifier \keyword{protected}. 
+Protected members are defined inside the class header using the modifier \keyword[C++]{protected}. 
 Every member coming after that modifier is considered as protected.
 
 \lstinputlisting[language={[KB]C++}, linerange={6-7,18-19,25-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
@@ -171,7 +171,7 @@ They cannot be accessed elsewhere
 
 \subsection{Java}
 
-Protected members are prefixed each by the keyword \keyword{protected}. 
+Protected members are prefixed each by the keyword \keyword[Java]{protected}. 
 A protected member is visible inside the class and its subclasses, and also to other classes in the same package. 
 The protected methods can be defined the same as protected fields.
 
@@ -209,9 +209,9 @@ There is no protected members in Lua, but you can use a naming convention to spe
 
 \subsection{Perl}
 
-Perl can capture the caller (the location or package where a method was called) using the keyword \keyword{caller}. 
-Also, the base class \keyword{UNIVERSAL} provides a method \keyword{isa} which returns true if the object is blessed to the given type or inherits from it.
-Adding to it the keyword \keyword{\_\_PACKAGE\_\_} which captures the current package and exception management \keyword{die}, Bingo! we can limit access. 
+Perl can capture the caller (the location or package where a method was called) using the keyword \keyword[Perl]{caller}. 
+Also, the base class \keyword[Perl]{UNIVERSAL} provides a method \keyword[Perl]{isa} which returns true if the object is blessed to the given type or inherits from it.
+Adding to it the keyword \keyword[Perl]{\_\_PACKAGE\_\_} which captures the current package and exception management \keyword{die}, Bingo! we can limit access. 
 We cannot limit visibility: the method is still visible, but we raise an exception if the access does not serve our purpose \citep{2006-rir}.
 
 \begin{lstlisting}[language={[KB]Perl}, style=codeStyle]
@@ -231,7 +231,7 @@ Since these getters/setters are methods, you can limit their access.
 
 \subsection{PHP}
 
-Protected members are prefixed, each, by the keyword \keyword{protected}.
+Protected members are prefixed, each, by the keyword \keyword[PHP]{protected}.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-2,6-6,31-31}, style=codeStyle]{../codes/php/encapsulation/person.php}
 
@@ -271,16 +271,16 @@ If they want to access it directly, it is their choice.
 \subsection{Ruby}
 
 All fields are protected by default and there is no other visibility mode for them. 
-Methods are public by default, but can be defined as protected using either \keyword{private} or \keyword{protected} keywords. 
+Methods are public by default, but can be defined as protected using either \keyword[Ruby]{private} or \keyword[Ruby]{protected} keywords. 
 
 \lstinputlisting[language={[KB]Ruby}, linerange={1-1,6-7,9-12,15-15,24-32,46-46}, style=codeStyle]{../codes/ruby/encapsulation/person.rb}
 
-Methods defined using \keyword{private} or \keyword{protected} can both be accessed from sub-classes.
+Methods defined using \keyword[Ruby]{private} or \keyword[Ruby]{protected} can both be accessed from sub-classes.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-4,13-19}, style=codeStyle]{../codes/ruby/encapsulation/student.rb}
 
-The difference is that those with \keyword{private} cannot be accessed from another object even if it is of the same class. 
-In the contrary, those with \keyword{protected} can be accessed from the an object of the same class.
+The difference is that those with \keyword[Ruby]{private} cannot be accessed from another object even if it is of the same class. 
+In the contrary, those with \keyword[Ruby]{protected} can be accessed from the an object of the same class.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={1-1,41-46}, style=codeStyle]{../codes/ruby/encapsulation/person.rb}
 
@@ -297,7 +297,7 @@ Also, they can prevent duplication in case many public functions of the same cla
 
 \subsection{C++}
 
-Private members are defined inside the class header using the modifier \keyword{private}. 
+Private members are defined inside the class header using the modifier \keyword[C++]{private}. 
 Every member coming after that modifier is considered as private.
 
 \lstinputlisting[language={[KB]C++}, linerange={6-7,21-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
@@ -312,7 +312,7 @@ Also, an object can access another object's members if they are of the same clas
 
 \subsection{Java}
 
-Private members are prefixed each by the keyword \keyword{private}. 
+Private members are prefixed each by the keyword \keyword[Java]{private}. 
 A private member (field or method) is visible only inside the class. 
 
 \lstinputlisting[language={[KB]Java}, linerange={1-3,9-9,34-34}, style=codeStyle]{../codes/java/src/encapsulation/core/Person.java}
@@ -333,7 +333,7 @@ It is also important to point out that private members can be accessed from anot
 
 There is a convention to use underscore \keyword{\_} as a mean to signal a class member as private. 
 But the member stays accessible as public. 
-Another way is to use closures (\textit{the combination of a function and the lexical environment within which that function was declared}), by defining a field inside the constructor using the keyword \keyword{var} or \keyword{let} \citep{2001-crockford}.
+Another way is to use closures (\textit{the combination of a function and the lexical environment within which that function was declared}), by defining a field inside the constructor using the keyword \keyword[Javascript]{var} or \keyword[Javascript]{let} \citep{2001-crockford}.
 But, any method using this variable must be defined inside the constructor.
 This means each time you create a new instance (object), a new method will be created for this object. 
 
@@ -359,7 +359,7 @@ But, you can create a new public field dynamically which will not replace the in
 \subsection{Perl}
 
 There is a convention to start private members with underscore \keyword{\_}, but they still are accessible. 
-For methods, you can use \keyword{caller}, \keyword{eq}, \keyword{\_\_PACKAGE\_\_} and \keyword{die} to limit access though they still are visible \citep{2006-radiantmatrix}. 
+For methods, you can use \keyword[Perl]{caller}, \keyword[Perl]{eq}, \keyword[Perl]{\_\_PACKAGE\_\_} and \keyword[Perl]{die} to limit access though they still are visible \citep{2006-radiantmatrix}. 
 If the method is not called from inside the package (which is the class in our case), it will raise an exception and stop executing.
 
 \begin{lstlisting}[language={[KB]Perl}, style=codeStyle]
@@ -378,10 +378,10 @@ As for fields, you can hide them entirely (private) using many ways.
 
 This is a way I thought of in order to hide internal fields of an object. 
 Using a container hash, each object's reference is considered as a key and the value is another hash containing private fields names and their values. 
-The hash must be defined using \keyword{my} and not \keyword{our} so it will not be accessible outside the package. 
+The hash must be defined using \keyword[Perl]{my} and not \keyword[Perl]{our} so it will not be accessible outside the package. 
 You can put your package inside a code block so the container hash will not be accessible to the rest of code in the same file.
 You can consider this hash as a private static member. 
-To get an object's reference in memory, you can use \keyword{refaddr} function. 
+To get an object's reference in memory, you can use \keyword[Perl]{refaddr} function. 
 
 \lstinputlisting[language={[KB]Perl}, linerange={2-4,6-6,8-16,22-23,56-57}, style=codeStyle]{../codes/perl/encapsulation/private.pl}
 
@@ -407,7 +407,7 @@ Here I forbid access outside the class to make all fields private, then you can 
 
 \subsection{PHP}
 
-Private members are prefixed, each, with the keyword \keyword{private}.
+Private members are prefixed, each, with the keyword \keyword[PHP]{private}.
 
 \lstinputlisting[language={[KB]PHP}, linerange={2-2,7-7,31-31}, style=codeStyle]{../codes/php/encapsulation/person.php}
 
@@ -445,7 +445,7 @@ But trying to assign a value to the field will work, because you are actually cr
 
 There are no private members in Ruby, which are visible just inside their class. 
 Even if you try to limit access of a field to read-only, it can be accessed from sub-classes. 
-This is because the field itself is protected and \keyword{attr\_reader} creates a getter for this field. 
+This is because the field itself is protected and \keyword[Ruby]{attr\_reader} creates a getter for this field. 
 
 \lstinputlisting[language={[KB]Ruby}, linerange={1-1,6-7,9-10,15-15,46-46}, style=codeStyle]{../codes/ruby/encapsulation/person.rb}
 
@@ -458,7 +458,7 @@ This is because the field itself is protected and \keyword{attr\_reader} creates
 public, protected and private are the only visibility modes applied to class members. 
 But, a class can allow an external function of another class to access its members whatever their visibility mode is. 
 This is known as \nameword{friend function} and \nameword{friend class} respectively. 
-They can be declared inside the class header using the keyword \keyword{friend}. 
+They can be declared inside the class header using the keyword \keyword[C++]{friend}. 
 
 \lstinputlisting[language={[KB]C++}, linerange={6-11,18-19,21-22,25-25}, style=codeStyle]{../codes/cpp/encapsulation/person.h}
 
