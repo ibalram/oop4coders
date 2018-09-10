@@ -274,9 +274,15 @@ title={#1}
 
 \usepackage{ifthen} 
 
+\let\atat=@
+
+\def\@escapeall@idx#1#2\relax{"#1\ifx\relax#2\relax\else\@escapeall@idx#2\relax\fi}
+
 \newcommand{\keyword}[2][]{%
 	\@keyword{#2}%
-	\ifthenelse {\equal{#1}{}}{}{\index{#1!#2}}%
+	\ifthenelse { \equal{#1}{} }%
+	{}%
+	{\index{#1!\@escapeall@idx#2\relax}}%
 }
 
 \def\nameword#1{{\itshape\bfseries\color{red} #1}}
@@ -671,5 +677,7 @@ title={#1}
 \setcounter{DefaultLines}{3}
 %\renewcommand{\DefaultLraise}{0.05}
 \renewcommand{\DefaultLoversize}{0.1}
+
+\newcommand{\at}{\makeatletter @\makeatother}
 
 \RequirePackage[bookmarksdepth=3]{hyperref}

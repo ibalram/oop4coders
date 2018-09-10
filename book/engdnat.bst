@@ -170,29 +170,29 @@ ENTRY
 %%------------------------------------------------------------------------------
 %% required macros for abbr. names of month
 %%------------------------------------------------------------------------------
-MACRO {jan} {"Januar"}
+MACRO {jan} {"January"}
 
-MACRO {feb} {"Februar"}
+MACRO {feb} {"February"}
 
-MACRO {mar} {"M\^^b{a}rz"}
+MACRO {mar} {"March"}
 
 MACRO {apr} {"April"}
 
-MACRO {may} {"Mai"}
+MACRO {may} {"May"}
 
-MACRO {jun} {"Juni"}
+MACRO {jun} {"June"}
 
-MACRO {jul} {"Juli"}
+MACRO {jul} {"July"}
 
 MACRO {aug} {"August"}
 
 MACRO {sep} {"September"}
 
-MACRO {oct} {"Oktober"}
+MACRO {oct} {"October"}
 
 MACRO {nov} {"November"}
 
-MACRO {dec} {"Dezember"}
+MACRO {dec} {December}
 
 
 %%------------------------------------------------------------------------------
@@ -1903,7 +1903,7 @@ FUNCTION {begin.bib}
   "\newcommand{\dinatlabel}[1]%" 
   write$ 
   newline$
-  "{\ifNAT@numbers\else\NAT@biblabelnum{#1}\hspace{2\labelsep}\fi}"
+  "{\ifNAT@numbers\else{ \color{indigo}\bfseries\NAT@biblabelnum{#1} }\hspace{2\labelsep}\fi}"
   write$ 
   newline$
   "\makeatother"
