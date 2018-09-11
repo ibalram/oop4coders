@@ -69,12 +69,13 @@
 	},
 	morekeywords=[2]{
 		null, this, false, true, boolean, Object,
-		prototype, super,
+		prototype, super, argv, length, 
 		console, process, module, Error,
 	},
 	morekeywords=[3]{
 		constructor, toString, log, call, create,
 		defineProperties, get, set, assign, 
+		exit,
 	},
 	sensitive=false,
 	morecomment=[l]{//},
@@ -88,15 +89,15 @@
 {
 	keywords={
 		function, return, end, or, and, local, 
-		require,
+		require, for, do, in, 
 		if, then, else, elseif,
 	},
 	morekeywords=[2]{
-		nil, os,
+		nil, os, arg,
 	},
 	morekeywords=[3]{
 		__eq,__lt, __le, tostring,
-		error, pcall,
+		error, pcall, exit,
 		setmetatable, __index, __newindex, 
 		print, tonumber, __tostring, rawset,
 	},
@@ -138,7 +139,7 @@
 		class, private, public, protected, new, extends, implements,
 		var, function, require_once, return, if, else, throw,  
 		try, catch, switch, case, abstract, final, 
-		interface, trait, use,
+		interface, trait, use, as, 
 	},
 	morekeywords=[2]{
 		\$this, parent, \$argv,
@@ -165,7 +166,7 @@
 	},
 	morekeywords=[2]{
 		object, TypeError, 
-		sys, type, 
+		sys, type, argv,
 		__name__,
 		Exception,
 		__metaclass__,
@@ -175,7 +176,7 @@
 	morekeywords=[3]{
 		__init__, __str__, __copy__, __eq__, __lt__, __hash__, __del__,
 		print, str, copy, hash, del, len, int, exit, super,
-		isinstance, format, 
+		isinstance, format, __new__, 
 	},
 	sensitive=true,
 	morecomment=[l]{\#},
@@ -205,10 +206,11 @@
 		print, exit, to_i, length, 
 		define_finalizer, proc, hash, 
 		instance_method, bind, call,
-		method, super_method,
+		method, super_method, eql?,
 	},
 	sensitive=true,
-	morecomment=[l]{\#},
+	morecomment=[l]{\#},	
 	morestring=[b]",
 	morestring=[b]',
+	alsoletter={?},
 } 

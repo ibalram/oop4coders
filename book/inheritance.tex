@@ -83,7 +83,7 @@ If the field of the superclass is public and you define a private field with the
 
 You cannot access grandparent's members directly using \keyword{super.super}, you can just access the parent's using \keyword[Java]{super}. 
 
-\lstinputlisting[language={[KB]Java}, linerange={5-11,19-19}, style=codeStyle]{../codes/java/src/inheritance/single/GradStudent.java}
+\lstinputlisting[language={[KB]Java}, linerange={3-11,19-19}, style=codeStyle]{../codes/java/src/inheritance/single/GradStudent.java}
 
 
 \subsection{Javascript} 
@@ -334,7 +334,7 @@ To override an abstract method, you just delete the keyword abstract and afford 
 To create abstract classes and methods, there exists a module called \nameword{abc} (abstract base classes). 
 A class's meta-class can be set to be \keyword[Python]{ABCMeta}, but the class can be instantiated unless there is at least one abstract method.
 This means, you cannot have an abstract class with just fields. 
-An abstract method is marked by the decorator \keyword[Python]{\@abstractmethod}.
+An abstract method is marked by the decorator \keyword[Python]{@abstractmethod}.
 The abstract methods, contrarily to the usual definition of the word, can have implementations which can be called from the subclasses methods.
 
 \lstinputlisting[language={[KB]Python}, linerange={4-15}, style=codeStyle]{../codes/python/inheritance/abst/person.py}

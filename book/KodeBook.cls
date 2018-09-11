@@ -274,8 +274,6 @@ title={#1}
 
 \usepackage{ifthen} 
 
-\let\atat=@
-
 \def\@escapeall@idx#1#2\relax{"#1\ifx\relax#2\relax\else\@escapeall@idx#2\relax\fi}
 
 \newcommand{\keyword}[2][]{%

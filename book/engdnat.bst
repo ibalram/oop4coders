@@ -524,6 +524,10 @@ FUNCTION {out.bibitem.end}
 % end of entry
 { write$
   newline$
+  write$
+  "\vspace{0.5cm}"
+  write$
+  newline$
 }
 
 
