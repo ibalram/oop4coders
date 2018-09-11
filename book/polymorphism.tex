@@ -8,22 +8,106 @@
 
 \chapter{Polymorphism}
 
-\section{Object polymorphism}
+\begin{introduction}
+	\lettrine{P}{olymorphism} is another key concept of \ac{oop}. 
+	In general, the term refers to the ability to assign a different meaning or usage to something in many contexts.
+	Hence, it is not a concept specific to \ac{oop} since you can find other forms such as parametric polymorphism (generic programming). 
+	In languages with type inheritance, an object of a class can be considered as an object of its superclass; and therefore, the same applications can be executed on it.
+	Some languages afford functionalities to verify if a certain object is instantiated from a class, to get its class or to cast the variable using it to another subclass.
+	Methods can express polymorphism in two ways: overloading (same name with multiple signatures) and overriding (same signature, different implementation). 
+	Not every language affords overloading, but methods overriding is a core task of \ac{oop}.
+	Beside \ac{oop} polymorphism, some languages afford some other forms of polymorphism.
+\end{introduction} 
 
-% Talk about subtyping
+\section{Subtype polymorphism}
+
+According to the \nameword{Liskov substitution principle}\citep{1987-liskov}, a function written to take an object of a certain type \textbf{T} must work correctly if passed an object of a type \textbf{S} which is a subtype of \textbf{T}.
+C++ and Java are examples of \ac{oop} languages with static type checking affording this principle. 
+Some languages do not need an object to be created from a class/prototype extending another to execute certain treatments on it. 
+They use a mechanism called \nameword{Duck typing} which states that ``\textit{If it walks like a duck and talks like a duck, it must be a duck}". 
+
+A simple example will be sufficient to show how every language handles such polymorphism. 
+Having a class \textbf{Person} with a method \textbf{talk} and two subclasses \textbf{Student} and \textbf{Professor}:
+\begin{itemize}
+	\item A function \textbf{announce} designed to call \textbf{talk} of \textbf{Person} is passed objects of \textbf{Student} and \textbf{Professor} as argument.
+	\item A table intended to contain objects of \textbf{Person} is filled with objects of its subtypes.
+	\item If the language supports Duck typing: some unrelated classes and objects having the method \textbf{talk} can be used with the two previous propositions.
+\end{itemize}
+
+\subsection{C++}
+
+Lets create our classes
+
+\lstinputlisting[language=C++, linerange={4-13}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+
+Passing objects of these three classes to a function designed for objects of type \textbf{Person} will work just fine. 
+
+\lstinputlisting[language=C++, linerange={15-26, 31-33}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+
+Objects of type \textbf{Person} or any other subclass can be assigned to a variable of type \textbf{Person}.
+
+\lstinputlisting[language=C++, linerange={20-23, 28-33}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
 
 
-\section{Overloading}
+%\subsection{Java}
+%
+%\lstinputlisting[language=Java, style=codeStyle]{../java/src/Type.java}
+%
+%
+%\subsection{Javascript}
+%
+%\lstinputlisting[linerange={3-4}, style=codeStyle]{../javascript/person.js}
+%
+%\lstinputlisting[linerange={17-17}, style=codeStyle]{../javascript/person.js}
+%
+%Methods: 
+%
+%\lstinputlisting[linerange={1-1,8-15}, style=codeStyle]{../javascript/person.js}
+%
+%\lstinputlisting[linerange={9-15}, style=codeStyle]{../javascript/person2.js}
+%
+%getters and setters can be defined using keywords \textbf{get} and \textbf{set} in ES6.
+%
+%\subsection{Lua}
+%
+%\lstinputlisting[language={[5.2]Lua}, linerange={4-9}, style=codeStyle]{../lua/person.lua}
+%
+%\lstinputlisting[language={[5.2]Lua}, linerange={11-17}, style=codeStyle]{../lua/person.lua}
+%
+%\lstinputlisting[language={[5.2]Lua}, linerange={22-24}, style=codeStyle]{../lua/person.lua}
+%
+%
+%\subsection{Perl}
+%
+%\lstinputlisting[language=Perl, linerange={10-13}, style=codeStyle]{../perl/person.pl}
+%
+%\lstinputlisting[language=Perl, linerange={6-6}, style=codeStyle]{../perl/person.pl}
+%
+%Methods
+%
+%\lstinputlisting[language=Perl, linerange={25-32}, style=codeStyle]{../perl/person.pl}
+%
+%\lstinputlisting[language=Perl, linerange={39-41}, style=codeStyle]{../perl/person.pl}
 
-
-\section{Overriding}
-
-
-\section{Object methods overriding}
-
-
-\section{Operator overriding}
-
+%\subsection{PHP}
+%
+%\lstinputlisting[language=PHP, linerange={2-7,27-27}, style=codeStyle]{../php/person.php}
+%
+%\lstinputlisting[language=PHP, linerange={2-2,19-25,27-27}, style=codeStyle]{../php/person.php}
+%
+%\lstinputlisting[language=PHP, linerange={32-34}, style=codeStyle]{../php/person.php}
+%
+%\subsection{Python}
+%
+%\lstinputlisting[language=Python, linerange={4-11}, style=codeStyle]{../python/person.py}
+%
+%\subsection{Ruby}
+%
+%\lstinputlisting[language=Ruby, linerange={3-10,19-19}, style=codeStyle]{../ruby/person.rb}
+%
+%\lstinputlisting[language=Ruby, linerange={3-3,12-19}, style=codeStyle]{../ruby/person.rb}
+%
+%\lstinputlisting[language=Ruby, linerange={24-26}, style=codeStyle]{../ruby/person.rb}
 
 \section{Type manipulation}
 
@@ -32,6 +116,14 @@
 	\item Is instance of
 	\item casting
 \end{itemize}
+
+
+\section{Methods Overloading}
+
+
+\section{Methods Overriding}
+
+
 
 %\subsection{C++}
 %
@@ -77,10 +169,7 @@
 %\lstinputlisting[language=Perl, linerange={25-32}, style=codeStyle]{../perl/person.pl}
 %
 %\lstinputlisting[language=Perl, linerange={39-41}, style=codeStyle]{../perl/person.pl}
-%
-%%TODO reedit
-%``\textit{A static method applies functionality to the class as a whole because it uses the name of the class. Therefore, functionality in static methods is applicable to all objects of the class. Generally, static methods ignore the first argument because they already know which class they are in. Therefore, constructors are static methods.}"
-%
+
 %\subsection{PHP}
 %
 %\lstinputlisting[language=PHP, linerange={2-7,27-27}, style=codeStyle]{../php/person.php}
@@ -101,7 +190,11 @@
 %
 %\lstinputlisting[language=Ruby, linerange={24-26}, style=codeStyle]{../ruby/person.rb}
 
+\section{Not OOP related polymorphism}
 
+\subsection{Operator overloading}
+
+\subsection{Generic programming}
 
 %=====================================================================
 \ifx\wholebook\relax\else
