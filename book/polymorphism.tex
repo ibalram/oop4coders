@@ -60,28 +60,28 @@ Passing objects of these three classes to a function designed for objects of typ
 
 If we use an interface (\textbf{Machine}) and a function \textbf{announce2} similar to \textbf{announce} but taking as parameter \textbf{Machine} instead of \textbf{Person}, this will work as well because interfaces in Java define new types and support type polymorphism.
 
-\lstinputlisting[language={[KB]Java}, linerange={3-3, 8-8, 13-13, 26-34, 42-45, 50-56}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
+\lstinputlisting[language={[KB]Java}, linerange={3-3, 8-8, 13-13, 25-34, 40-44, 48-55}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
 
 Objects of type \textbf{Person} or any other subclass can be assigned to a variable of type \textbf{Person}.
 
 \lstinputlisting[language={[KB]Java}, linerange={3-3, 13-16,22-24,32-33}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
 
+\subsection{Javascript}
 
-%
-%\subsection{Javascript}
-%
-%\lstinputlisting[linerange={3-4}, style=codeStyle]{../javascript/person.js}
-%
-%\lstinputlisting[linerange={17-17}, style=codeStyle]{../javascript/person.js}
-%
-%Methods: 
-%
-%\lstinputlisting[linerange={1-1,8-15}, style=codeStyle]{../javascript/person.js}
-%
-%\lstinputlisting[linerange={9-15}, style=codeStyle]{../javascript/person2.js}
-%
-%getters and setters can be defined using keywords \textbf{get} and \textbf{set} in ES6.
-%
+Lets create our classes: all of them afford a method \textbf{talk}.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-17}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+
+A javascript function does not specify the types of its parameters. 
+In this function, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={19-22}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+
+Then, objects created from class \textbf{Person} and its subclasses can be passed to \textbf{announce} since they all afford the method \textbf{talk}. 
+Also, objects created from a different class (\textbf{Robot}) or created directly containing that method can be passed as well, without causing any problem. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={24-39}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+
 %\subsection{Lua}
 %
 %\lstinputlisting[language={[5.2]Lua}, linerange={4-9}, style=codeStyle]{../lua/person.lua}
