@@ -21,7 +21,7 @@
 
 \section{Subtype polymorphism}
 
-According to the \nameword{Liskov substitution principle}\citep{1987-liskov}, a function written to take an object of a certain type \textbf{T} must work correctly if passed an object of a type \textbf{S} which is a subtype of \textbf{T}.
+According to the \nameword{Liskov substitution principle} \citep{1987-liskov}, a function written to take an object of a certain type \textbf{T} must work correctly if passed an object of a type \textbf{S} which is a subtype of \textbf{T}.
 C++ and Java are examples of \ac{oop} languages with static type checking affording this principle. 
 Some languages do not need an object to be created from a class/prototype extending another to execute certain treatments on it. 
 They use a mechanism called \nameword{Duck typing} which states that ``\textit{If it walks like a duck and talks like a duck, it must be a duck}". 
@@ -38,21 +38,35 @@ Having a class \textbf{Person} with a method \textbf{talk} and two subclasses \t
 
 Lets create our classes
 
-\lstinputlisting[language=C++, linerange={4-13}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+\lstinputlisting[language={[KB]C++}, linerange={4-13}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
 
 Passing objects of these three classes to a function designed for objects of type \textbf{Person} will work just fine. 
 
-\lstinputlisting[language=C++, linerange={15-26, 31-33}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+\lstinputlisting[language={[KB]C++}, linerange={15-26, 31-33}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
 
 Objects of type \textbf{Person} or any other subclass can be assigned to a variable of type \textbf{Person}.
 
-\lstinputlisting[language=C++, linerange={20-23, 28-33}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+\lstinputlisting[language={[KB]C++}, linerange={20-23, 28-33}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+
+\subsection{Java}
+
+Lets create our classes
+
+\lstinputlisting[language={[KB]Java}, linerange={35-40,45-47}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
+
+Passing objects of these three classes to a function designed for objects of type \textbf{Person} will work just fine. 
+
+\lstinputlisting[language={[KB]Java}, linerange={3-7, 13-20, 32-33}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
+
+If we use an interface (\textbf{Machine}) and a function \textbf{announce2} similar to \textbf{announce} but taking as parameter \textbf{Machine} instead of \textbf{Person}, this will work as well because interfaces in Java define new types and support type polymorphism.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-3, 8-8, 13-13, 26-34, 42-45, 50-56}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
+
+Objects of type \textbf{Person} or any other subclass can be assigned to a variable of type \textbf{Person}.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-3, 13-16,22-24,32-33}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
 
 
-%\subsection{Java}
-%
-%\lstinputlisting[language=Java, style=codeStyle]{../java/src/Type.java}
-%
 %
 %\subsection{Javascript}
 %

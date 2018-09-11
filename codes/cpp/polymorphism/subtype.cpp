@@ -13,7 +13,7 @@ class Student: public Person {};
 class Professor: public Person {};
 
 void announce(std::string msg, Person p){
-    std::cout << msg << ":";
+    std::cout << msg << ": ";
     p.talk();
 }
 
