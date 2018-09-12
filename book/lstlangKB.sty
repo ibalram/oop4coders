@@ -111,19 +111,19 @@
 {
 	keywords={
 		package, sub, my, use, our,
-		if, else, unless,
+		if, else, unless, foreach, 
 		die, return, eval, 
-		bless, overload,
+		bless, overload, scalar, 
 	},
 	morekeywords=[2]{
 		shift, @_, @ISA,
-		__PACKAGE__,
+		__PACKAGE__, $@,
 		caller,
 		Scalar, Util,
 		\$ARGV, SUPER,
 	},
 	morekeywords=[3]{
-		eq, exists, print, isa,
+		eq, exists, print, isa, can, 
 		refaddr, defined, undef, DESTROY, qw,
 	},
 	sensitive=true,

@@ -41,10 +41,10 @@ announce("a cat", cat);
 announce("a number", 25);
 
 console.log("A table with different types");
-let people = [pe, st, pr, ro, cat, 25];
-for (let i = 0; i < people.length; i++){
+let elements = [pe, st, pr, ro, cat, 25];
+for (let i = 0; i < elements.length; i++){
     try {
-        people[i].talk();
+        elements[i].talk();
     }
     catch(error){
         console.log("The element n° ", i, " does not talk()");

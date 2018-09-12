@@ -46,9 +46,9 @@ announce("a cat", cat)
 announce("a number", 25)
 
 print("A table with different types")
-local people = {pe, st, pr, cat, 25}
-for i =1, #people do
-    success, res = pcall(function() people[i].talk(); end)
+local elements = {pe, st, pr, cat, 25}
+for i =1, #elements do
+    success, res = pcall(function() elements[i].talk(); end)
     if not success then
         print("The element n°" .. i .. " does not talk()")
     end

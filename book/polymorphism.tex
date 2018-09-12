@@ -90,8 +90,9 @@ Lets try a table with different elements
 
 \subsection{Lua}
 
-
 Lets create our classes: all of them afford a method \textbf{talk}.
+In this code, only the superclass affords the function \textbf{new} by assigning \keyword{self} (the class name) as meta-table of the newly created object(table).  
+The benefit of doing this is to not repeat the same \textbf{new} method for subclasses.
 
 \lstinputlisting[language={[KB]Lua}, linerange={1-23}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
 
@@ -110,7 +111,28 @@ Lets try a table with different elements
 
 \lstinputlisting[language={[KB]Lua}, linerange={48-55}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
 
-%\subsection{Perl}
+\subsection{Perl}
+
+Lets create our classes: all of them afford a method \textbf{talk} even the one not inheriting from \textbf{Person}.
+The \textbf{new} method blesses a hash (our object to be) to the first argument which is the class calling it. 
+When other classes inherit \textbf{new}, each will pass its name when calling this method; and therefore, the new object will be blessed to it.
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-17}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
+
+A perl subroutine does not specify the types of its parameters and either their number.
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+Because we do not know what type the object is, we can verify if it has a method called \textbf{talk} using the UNIVERSAL method \keyword[Perl]{can}.
+
+\lstinputlisting[language={[KB]Perl}, linerange={19-24}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
+
+Any object created from a class affording \textbf{talk}, or one of its subclasses can be passed to the function \textbf{announce}. 
+
+\lstinputlisting[language={[KB]Perl}, linerange={26-35}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
+
+Lets try a table with different elements 
+
+\lstinputlisting[language={[KB]Perl}, linerange={37-42}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
+
 %
 %\lstinputlisting[language=Perl, linerange={10-13}, style=codeStyle]{../perl/person.pl}
 %
