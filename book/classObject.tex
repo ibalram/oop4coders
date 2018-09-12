@@ -326,6 +326,14 @@ Properties can be defined using \keyword{Object.defineProperties} and the keywor
 
 \lstinputlisting[language={[KB]Javascript}, linerange={9-11,13-14,22-25,27-35}, style=codeStyle]{../codes/javascript/clsobj/property.js}
 
+In Javascript, you can create members inside the constructor or inside the prototype. 
+When a member is created inside the constructor, each time you create an object, it will have its \textbf{own} member. 
+In case of fields, it is so natural that each object has its own and do not have to lookup its class for a field.
+But in case of methods, you will end up with duplicates while you can use just one. 
+When a member is created inside the prototype, an object will not have its own while created from a class's constructor; it will lookup that method in its class.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-19}, style=codeStyle]{../codes/javascript/clsobj/proto.js}
+
 \subsection{Lua}
 
 The fields are defined inside the table which will be our object. 
