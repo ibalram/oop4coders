@@ -88,15 +88,28 @@ Lets try a table with different elements
 
 \lstinputlisting[language={[KB]Javascript}, linerange={43-52}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
 
-%\subsection{Lua}
-%
-%\lstinputlisting[language={[5.2]Lua}, linerange={4-9}, style=codeStyle]{../lua/person.lua}
-%
-%\lstinputlisting[language={[5.2]Lua}, linerange={11-17}, style=codeStyle]{../lua/person.lua}
-%
-%\lstinputlisting[language={[5.2]Lua}, linerange={22-24}, style=codeStyle]{../lua/person.lua}
-%
-%
+\subsection{Lua}
+
+
+Lets create our classes: all of them afford a method \textbf{talk}.
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-23}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
+
+A lua function does not specify the types of its parameters. 
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+Because we do not know what type the object is, and if it has a function \textbf{talk}, we can verify if it is a table and if it has a member of type \textbf{function} called \textbf{talk}.
+
+\lstinputlisting[language={[KB]Lua}, linerange={25-32}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
+
+Then, objects created from class \textbf{Person} and its subclasses can be passed to \textbf{announce} since they all afford the method \textbf{talk}. 
+Also, objects created directly using a table affording the same method can be passed without problem.
+
+\lstinputlisting[language={[KB]Lua}, linerange={34-46}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
+
+Lets try a table with different elements 
+
+\lstinputlisting[language={[KB]Lua}, linerange={48-55}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
+
 %\subsection{Perl}
 %
 %\lstinputlisting[language=Perl, linerange={10-13}, style=codeStyle]{../perl/person.pl}
