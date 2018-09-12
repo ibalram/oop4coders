@@ -68,19 +68,25 @@ Objects of type \textbf{Person} or any other subclass can be assigned to a varia
 
 \subsection{Javascript}
 
-Lets create our classes: all of them afford a method \textbf{talk}.
+Lets create our classes (\ac{es6} style, \ac{es5} code is afforded as well): all of them afford a method \textbf{talk}.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={3-17}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
 
 A javascript function does not specify the types of its parameters. 
 In this function, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+Because we do not know what type the object is, and if it has a function \textbf{talk}, we can verify before calling it.
 
-\lstinputlisting[language={[KB]Javascript}, linerange={19-22}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+\lstinputlisting[language={[KB]Javascript}, linerange={19-23}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
 
 Then, objects created from class \textbf{Person} and its subclasses can be passed to \textbf{announce} since they all afford the method \textbf{talk}. 
-Also, objects created from a different class (\textbf{Robot}) or created directly containing that method can be passed as well, without causing any problem. 
+Also, objects created from a different class (\textbf{Robot}) or created directly containing that method can be passed as well, without causing any problem.
+If an object has no method \textbf{talk} (lets say: a number), the function \textbf{announce} will print the other message instead of calling our method.
 
-\lstinputlisting[language={[KB]Javascript}, linerange={24-39}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+\lstinputlisting[language={[KB]Javascript}, linerange={25-41}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+
+Lets try a table with different elements 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={43-52}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
 
 %\subsection{Lua}
 %

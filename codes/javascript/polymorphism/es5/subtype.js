@@ -1,17 +1,20 @@
 #!/usr/bin/env node
 
-class Person {
-    talk() {
-        console.log("I am a person");
-    }
+function Person() {}
+Person.prototype.talk = function() {
+    console.log("I am a person");
 }
 
-class Student extends Person {}
+function Student() {}
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
 
-class Professor extends Person {}
+function Professor() {}
+Professor.prototype = Object.create(Person.prototype);
+Professor.prototype.constructor = Professor;
 
-class Robot {
-    talk() {
+function Robot() {
+    this.talk = function() {
         console.log("I am a robot");
     }
 }
