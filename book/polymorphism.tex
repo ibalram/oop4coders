@@ -133,25 +133,27 @@ Lets try a table with different elements
 
 \lstinputlisting[language={[KB]Perl}, linerange={37-42}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
 
-%
-%\lstinputlisting[language=Perl, linerange={10-13}, style=codeStyle]{../perl/person.pl}
-%
-%\lstinputlisting[language=Perl, linerange={6-6}, style=codeStyle]{../perl/person.pl}
-%
-%Methods
-%
-%\lstinputlisting[language=Perl, linerange={25-32}, style=codeStyle]{../perl/person.pl}
-%
-%\lstinputlisting[language=Perl, linerange={39-41}, style=codeStyle]{../perl/person.pl}
+\subsection{PHP}
 
-%\subsection{PHP}
-%
-%\lstinputlisting[language=PHP, linerange={2-7,27-27}, style=codeStyle]{../php/person.php}
-%
-%\lstinputlisting[language=PHP, linerange={2-2,19-25,27-27}, style=codeStyle]{../php/person.php}
-%
-%\lstinputlisting[language=PHP, linerange={32-34}, style=codeStyle]{../php/person.php}
-%
+Lets create our classes: all of them afford a method \textbf{talk} either directly or by inheritance.
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-17}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
+
+A PHP function does not specify the types of its parameters. 
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+So, we have to verify that using a function called \keyword[PHP]{method\_exists}. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={19-23}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
+
+Then, objects created from any class affording the method \textbf{talk} can be passed to \textbf{announce} without a problem. 
+If an object has no method \textbf{talk} (lets say: a number), the function \textbf{announce} will print the other message instead of calling our method.
+
+\lstinputlisting[language={[KB]PHP}, linerange={25-34}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
+
+Lets try a table with different elements 
+
+\lstinputlisting[language={[KB]PHP}, linerange={36-45}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
+
 %\subsection{Python}
 %
 %\lstinputlisting[language=Python, linerange={4-11}, style=codeStyle]{../python/person.py}

@@ -30,7 +30,7 @@ So, "**Less talking, more coding**"
 
 Back in 2016, I presented the idea of this book on social media seeking some insights, suggestions and of course contributors.
 Well, the idea was not a success: no one cared to respond.
-One of my friends (Adnan) has finally asked me a good question: "***What will be the difference between your book and the huge number of already written books on this matter?***".
+One of my friends (Adnan) has finally asked me a good question: "**_What will be the difference between your book and the huge number of already written books on this matter?_**".
 Maybe I did not present the idea well enough that time; but any book has to outline why its future readers should be interested.
 So, here are some outlines of what this book is about, and what difference it makes from others:
 
