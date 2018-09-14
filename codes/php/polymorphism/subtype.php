@@ -31,7 +31,7 @@ announce("Person", $pe);
 announce("Student", $st);
 announce("Professor", $pr);
 announce("Robot", $ro);
-announce("Machine", 25);
+announce("a number", 25);
 
 echo "A table with different types\n";
 $elements = array($pe, $st, $pr, $ro, 25);

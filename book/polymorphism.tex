@@ -154,10 +154,28 @@ Lets try a table with different elements
 
 \lstinputlisting[language={[KB]PHP}, linerange={36-45}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
 
-%\subsection{Python}
-%
-%\lstinputlisting[language=Python, linerange={4-11}, style=codeStyle]{../python/person.py}
-%
+\subsection{Python}
+
+Lets create our classes: all of them afford a method \textbf{talk} either directly or by inheritance.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-14}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
+
+A Python function does not specify the types of its parameters. 
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+So, we have to retrieve that method using a function called \keyword[Python]{getattr}; if their is no member called \textbf{talk}, the function will return \keyword[Python]{None} as specified in the code.
+To verify if it is a method and not a field, we use the function \keyword[Python]{callable}.
+
+\lstinputlisting[language={[KB]Python}, linerange={16-23}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
+
+Then, objects created from any class affording the method \textbf{talk} can be passed to \textbf{announce} without a problem. 
+If an object has no method \textbf{talk} (lets say: a number), the function \textbf{announce} will print the other message instead of calling our method.
+
+\lstinputlisting[language={[KB]Python}, linerange={25-34}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
+
+Lets try a table with different elements 
+
+\lstinputlisting[language={[KB]Python}, linerange={36-42}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
+
 %\subsection{Ruby}
 %
 %\lstinputlisting[language=Ruby, linerange={3-10,19-19}, style=codeStyle]{../ruby/person.rb}
