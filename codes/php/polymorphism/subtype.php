@@ -35,12 +35,12 @@ announce("a number", 25);
 
 echo "A table with different types\n";
 $elements = array($pe, $st, $pr, $ro, 25);
-foreach($elements as $key=>$value) {
+foreach($elements as $i=>$element) {
     try {
-        $value->talk();
+        $element->talk();
     }
     catch (Error $e) {
-        echo "The element n°$key does not talk()\n";
+        echo "The element n°$i does not talk()\n";
     }
 }
 

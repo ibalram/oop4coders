@@ -35,8 +35,8 @@ announce("a number", 25)
 
 print ("A table with different types")
 elements = [pe, st, pr, ro, 25]
-for key, value in enumerate(elements):
+for i, element in enumerate(elements):
     try:
-        value.talk()
+        element.talk()
     except Exception:
-    	print("The element n°" + str(key) + " does not talk()")
+    	print("The element n°" + str(i) + " does not talk()")

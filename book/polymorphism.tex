@@ -30,7 +30,7 @@ A simple example will be sufficient to show how every language handles such poly
 Having a class \textbf{Person} with a method \textbf{talk} and two subclasses \textbf{Student} and \textbf{Professor}:
 \begin{itemize}
 	\item A function \textbf{announce} designed to call \textbf{talk} of \textbf{Person} is passed objects of \textbf{Student} and \textbf{Professor} as argument.
-	\item A table intended to contain objects of \textbf{Person} is filled with objects of its subtypes.
+	\item An array intended to contain objects of \textbf{Person} is filled with objects of its subtypes.
 	\item If the language supports Duck typing: some unrelated classes and objects having the method \textbf{talk} can be used with the two previous propositions.
 \end{itemize}
 
@@ -84,7 +84,7 @@ If an object has no method \textbf{talk} (lets say: a number), the function \tex
 
 \lstinputlisting[language={[KB]Javascript}, linerange={25-41}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
 
-Lets try a table with different elements 
+Lets try an array with different elements 
 
 \lstinputlisting[language={[KB]Javascript}, linerange={43-52}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
 
@@ -107,7 +107,7 @@ Also, objects created directly using a table affording the same method can be pa
 
 \lstinputlisting[language={[KB]Lua}, linerange={34-46}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
 
-Lets try a table with different elements 
+Lets try an array with different elements 
 
 \lstinputlisting[language={[KB]Lua}, linerange={48-55}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
 
@@ -129,7 +129,7 @@ Any object created from a class affording \textbf{talk}, or one of its subclasse
 
 \lstinputlisting[language={[KB]Perl}, linerange={26-35}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
 
-Lets try a table with different elements 
+Lets try an array with different elements 
 
 \lstinputlisting[language={[KB]Perl}, linerange={37-42}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
 
@@ -150,7 +150,7 @@ If an object has no method \textbf{talk} (lets say: a number), the function \tex
 
 \lstinputlisting[language={[KB]PHP}, linerange={25-34}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
 
-Lets try a table with different elements 
+Lets try an array with different elements 
 
 \lstinputlisting[language={[KB]PHP}, linerange={36-45}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
 
@@ -162,7 +162,7 @@ Lets create our classes: all of them afford a method \textbf{talk} either direct
 
 A Python function does not specify the types of its parameters. 
 In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
-So, we have to retrieve that method using a function called \keyword[Python]{getattr}; if their is no member called \textbf{talk}, the function will return \keyword[Python]{None} as specified in the code.
+So, we have to retrieve that method using a function called \keyword[Python]{getattr}; if there is no member called \textbf{talk}, the function will return \keyword[Python]{None} as specified in the code.
 To verify if it is a method and not a field, we use the function \keyword[Python]{callable}.
 
 \lstinputlisting[language={[KB]Python}, linerange={16-23}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
@@ -172,23 +172,37 @@ If an object has no method \textbf{talk} (lets say: a number), the function \tex
 
 \lstinputlisting[language={[KB]Python}, linerange={25-34}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
 
-Lets try a table with different elements 
+Lets try an array with different elements 
 
 \lstinputlisting[language={[KB]Python}, linerange={36-42}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
 
-%\subsection{Ruby}
-%
-%\lstinputlisting[language=Ruby, linerange={3-10,19-19}, style=codeStyle]{../ruby/person.rb}
-%
-%\lstinputlisting[language=Ruby, linerange={3-3,12-19}, style=codeStyle]{../ruby/person.rb}
-%
-%\lstinputlisting[language=Ruby, linerange={24-26}, style=codeStyle]{../ruby/person.rb}
+\subsection{Ruby}
+
+Lets create our classes: all of them afford a method \textbf{talk} either directly or by inheritance.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-17}, style=codeStyle]{../codes/ruby/polymorphism/subtype.rb}
+
+A Ruby function does not specify the types of its parameters. 
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+So, we have to verify if the object affords this method using a function \keyword[Ruby]{method\_defined?} which is applied to classes  (we have to retrieve the object's class first).
+
+\lstinputlisting[language={[KB]Ruby}, linerange={19-26}, style=codeStyle]{../codes/ruby/polymorphism/subtype.rb}
+
+Then, objects created from any class affording the method \textbf{talk} can be passed to \textbf{announce} without a problem. 
+If an object has no method \textbf{talk} (lets say: a number), the function \textbf{announce} will print the other message instead of calling our method.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={28-37}, style=codeStyle]{../codes/ruby/polymorphism/subtype.rb}
+
+Lets try an array with different elements 
+
+\lstinputlisting[language={[KB]Ruby}, linerange={39-47}, style=codeStyle]{../codes/ruby/polymorphism/subtype.rb}
 
 \section{Type manipulation}
 
 \begin{itemize}
 	\item Get object type
 	\item Is instance of
+	\item check if a member exists 	
 	\item casting
 \end{itemize}
 

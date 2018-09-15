@@ -191,13 +191,13 @@
 		include, case, when, raise, rescue, begin, ensure, module,
 		END, BEGIN,
 		attr_accessor, attr_reader, attr_writer, 
-		alias_method, 
+		alias_method, do, 
 	},
 	morekeywords=[2]{
 		super, Comparable, ObjectSpace, 
 		StandardError, nil, 
 		__FILE__, \$0, ARGV, 
-		self, 
+		self, Exception, 
 	},
 	morekeywords=[3]{
 		puts, initialize, finalize, 
@@ -207,6 +207,7 @@
 		define_finalizer, proc, hash, 
 		instance_method, bind, call,
 		method, super_method, eql?,
+		each_with_index, method_defined?,
 	},
 	sensitive=true,
 	morecomment=[l]{\#},	
