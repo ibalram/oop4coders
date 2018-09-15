@@ -199,13 +199,54 @@ Lets try an array with different elements
 
 \section{Type manipulation}
 
+There exists some methods afforded by \ac{oop} languages to manipulate types. 
+Even languages with dynamic type checking have some of these methods. 
+For each programming language, we will see these points:
 \begin{itemize}
-	\item Get object type
-	\item Is instance of
-	\item check if a member exists 	
-	\item casting
+	\item \textbf{Get object type}: How to get the type of a given object.
+	\item \textbf{Is instance of}: Verify if an object is generated from a class/prototype. 
+	\item \textbf{Members existence}: Check if a member (field or method) exists in a given object.
+	\item \textbf{Type casts}: Downcasting is the act of changing a reference of a base class to one of its derived class.
+	It is useful in case of statically typed languages like C++ and Java.
 \end{itemize}
 
+%\subsection{C++}
+%
+%Lets create our classes
+%
+%\lstinputlisting[language={[KB]C++}, linerange={4-13}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+\subsection{Java}
+
+Lets define some classes
+
+\lstinputlisting[language={[KB]Java}, linerange={66-89}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+To find the class of an object, you can use the method \keyword[Java]{getClass} inherited from the universal class \keyword[Java]{Object}. 
+A class \keyword[Java]{Class} affords a method \keyword[Java]{getName} which returns its name as a \keyword[Java]{String}. 
+
+\lstinputlisting[language={[KB]Java}, linerange={5-5,23-26,31-33,63-64}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+To verify if an object is an instance of a class, the keyword \keyword[Java]{instanceof} is used.
+
+\lstinputlisting[language={[KB]Java}, linerange={38-45}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+It is possible to verify if an object has a field or method in Java using reflection. 
+You have to import \textbf{java.lang.reflect.*} which contains two classes \keyword[Java]{Method} and \keyword[Java]{Field}. 
+A class \keyword[Java]{Class} affords two methods \keyword[Java]{getMethod} which returns a method, and \keyword[Java]{getField} which returns a field. 
+These two methods when they cannot find the member in question, they throw an exception. 
+To execute a \keyword[Java]{Method}, the method \keyword[Java]{invoke} is used, given the first parameter which is the object affording this method and a list of objects used as parameters. 
+Likewise, to recover a value \keyword[Java]{Field}, the method \keyword[Java]{get} which returns an \keyword[Java]{Object}; or you can use other methods which return some other types if you know the type of your field. 
+Reflection is not usually used since your methods, mostly, will have a defined typed parameters.
+
+\lstinputlisting[language={[KB]Java}, linerange={6-22}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+A variable with a type of some class referring an object with a type of its subclass cannot call the subclass's methods. 
+If you try to do that, you will have a compiler error telling you that the object does not afford that method.
+So, you have to tell the compiler that the variable is, in fact, referencing an object of the subclass. 
+This is called: type casting, and more precisely: downcasting.
+
+\lstinputlisting[language={[KB]Java}, linerange={57-62}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
 
 \section{Methods Overloading}
 
