@@ -65,7 +65,7 @@ public class TypeManip {
 
 class Person {
     public void talk(){
-        System.out.println("I am a person");
+        System.out.println("I am talking");
     }
 }
 

@@ -248,6 +248,33 @@ This is called: type casting, and more precisely: downcasting.
 
 \lstinputlisting[language={[KB]Java}, linerange={57-62}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
 
+\subsection{Javascript}
+
+Lets create our classes (\ac{es6} style, \ac{es5} code is afforded as well).
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-23, 35-38}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+
+Using \keyword[Javascript]{typeof}, the type you will get is \textbf{object} for our new objects. 
+If you want to know the prototype used to create an object, each object has a property called \keyword[Javascript]{constructor} which refers to the class/prototype used to create the object.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={44-47}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+
+To verify if an object is an instance of a class, the keyword \keyword[Javascript]{instanceof} is used.
+You can realize that a prototype can inherit just one prototype, and even using \keyword[Javascript]{Object.assign} the first prototype is considered as the superclass and the others are just mixins.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={52-62}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+
+To verify if an object has a method, simply check if the method is of type ``\textbf{function}". 
+To verify if an object has a field (property in Javascript lingua), you can use \keyword[Javascript]{hasOwnProperty} inherited from the universal class \keyword[Javascript]{Object}.
+Some solutions on the web suggest that you verify if a field's type is not ``\textbf{undefined}", but a field can exist for an object with ``undefined" value.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={25-33}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+
+There is no cast on Javascript, all happens in execution time. 
+If you called a non existing method of an object, you will have an error.
+
+
+
 \section{Methods Overloading}
 
 
