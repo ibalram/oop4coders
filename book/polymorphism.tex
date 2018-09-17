@@ -306,6 +306,28 @@ Likewise, to verify the existence of a field, first you have to verify if the ob
 
 There is no cast in Lua, all happens in execution time and you will not be needing it.
 
+\subsection{Perl}
+
+Lets create our classes: Perl's classes are packages and objects are hashes blessed to a package.
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-19}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+
+The function \keyword[Perl]{ref} gives the package's name to which a hash is blessed.
+
+\lstinputlisting[language={[KB]Perl}, linerange={24-27}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+
+There is a built-in method \keyword[Perl]{isa} inherited from the universal class \keyword[Perl]{UNIVERSAL} which is used to determine the type of a reference. 
+But before using it, we have to verify if the object is blessed.
+
+\lstinputlisting[language={[KB]Perl}, linerange={33-37}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+
+To verify if an object has a method, Perl afford a method \keyword[Perl]{can} inherited from the universal class \keyword[Perl]{UNIVERSAL}.
+To verify the existence of a field, a function \keyword[Perl]{exists} can be used.
+
+\lstinputlisting[language={[KB]Perl}, linerange={49-60}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+
+There is no cast in Perl, all happens in execution time and you will not be needing it.
+
 \section{Methods Overloading}
 
 
