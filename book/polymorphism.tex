@@ -273,7 +273,38 @@ Some solutions on the web suggest that you verify if a field's type is not ``\te
 There is no cast on Javascript, all happens in execution time. 
 If you called a non existing method of an object, you will have an error.
 
+\subsection{Lua}
 
+Lets create our classes: classes are simple tables in our case. 
+We add a field called \textbf{\_\_NAME} to each class to afford its name.
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-41}, style=codeStyle]{../codes/lua/polymorphism/type_manip.lua}
+
+Using the function \keyword[Lua]{type}, Lua can afford the type of a given element: nil, boolean, number, string, userdata, function, thread, and table. 
+Which means, creating a table representing a class and setting it as a metatable to another does not create a new type. 
+There are various methods to find the class (metatable) of an object \citep{2013-manura}, one of them is to define a field \textbf{\_\_NAME} in each class. 
+This field must not be overridden in the copies (objects), otherwise it will not function appropriately.
+We can define a new function called \textbf{typeOf} based on this field. 
+But, if we create an object (table) dynamically with a field \textbf{\_\_NAME} equals to one of our classes, you can fool this function. 
+An example of this is the object \textbf{cat} which will be considered as a \textbf{Person}.
+You can go beyond the function afforded in our code by verifying if the object (table) has a metatable. 
+If it does not then its type is, lets say, \textbf{Class} whatever the \textbf{\_\_NAME} is. 
+If it has a metatable, you can check if its name is similar to its metable's. 
+If not, you can consider it as a class; otherwise, the \textbf{\_\_NAME} will be its type.
+
+\lstinputlisting[language={[KB]Lua}, linerange={47-51}, style=codeStyle]{../codes/lua/polymorphism/type_manip.lua}
+
+There is no built-in function to verify if an object is instance of a class in Lua, since objects and classes are just tables.
+But using the solution used to verify the types, we can define a function \textbf{instanceof} which compare \textbf{\_\_NAME} of an object with those of its metatable chains (metatable and metatable of metatable, etc.).
+
+\lstinputlisting[language={[KB]Lua}, linerange={63-71}, style=codeStyle]{../codes/lua/polymorphism/type_manip.lua}
+
+To verify if an object has a method, first you have to verify if the object is a table then if this method is of type \textbf{function}. 
+Likewise, to verify the existence of a field, first you have to verify if the object is a table then if this field is not \keyword[Lua]{nil} (also it is not a function). 
+
+\lstinputlisting[language={[KB]Lua}, linerange={82-96}, style=codeStyle]{../codes/lua/polymorphism/type_manip.lua}
+
+There is no cast in Lua, all happens in execution time and you will not be needing it.
 
 \section{Methods Overloading}
 

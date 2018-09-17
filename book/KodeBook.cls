@@ -679,3 +679,15 @@ title={#1}
 \newcommand{\at}{\makeatletter @\makeatother}
 
 \RequirePackage[bookmarksdepth=3]{hyperref}
+
+\AtEndDocument{
+	\hypersetup{
+		pdftitle    = \@title,
+		pdfkeywords = {OOP;Programming},
+		pdfauthor   = \@author
+	}
+}
+
+\def\setplainversion {
+	
+}
