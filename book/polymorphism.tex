@@ -321,12 +321,37 @@ But before using it, we have to verify if the object is blessed.
 
 \lstinputlisting[language={[KB]Perl}, linerange={33-37}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
 
-To verify if an object has a method, Perl afford a method \keyword[Perl]{can} inherited from the universal class \keyword[Perl]{UNIVERSAL}.
+To verify if an object has a method, Perl affords a method \keyword[Perl]{can} inherited from the universal class \keyword[Perl]{UNIVERSAL}.
 To verify the existence of a field, a function \keyword[Perl]{exists} can be used.
 
 \lstinputlisting[language={[KB]Perl}, linerange={49-60}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
 
 There is no cast in Perl, all happens in execution time and you will not be needing it.
+
+\subsection{PHP}
+
+Lets create our classes and one interface
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-19}, style=codeStyle]{../codes/php/polymorphism/type_manip.php}
+
+The function \keyword[PHP]{gettype} returns the type of a variable: the objects are of type \textbf{object}. 
+To get the class of an object, the function \keyword[PHP]{get\_class} is used; it cannot be used with primitive types such as integers.
+
+\lstinputlisting[language={[KB]PHP}, linerange={25-25,27-27}, style=codeStyle]{../codes/php/polymorphism/type_manip.php}
+
+To verify if an object is an instance of a class (or its parents), the keyword \keyword[PHP]{instanceof} is used.
+Also, there is a function \keyword[PHP]{is\_a} which serves the same purpose, but the class's name is passed as a string or a variable containing the name.
+
+\lstinputlisting[language={[KB]PHP}, linerange={38-41}, style=codeStyle]{../codes/php/polymorphism/type_manip.php}
+
+To verify if an object has a method, PHP affords a function \keyword[PHP]{method\_exists}.
+As for fields, it affords a function \keyword[PHP]{property\_exists}.
+These two functions work on objects; if you pass them another type such as an integer, an error will occur. 
+To test if a variable is an object, the function \keyword[PHP]{is\_object} can be used.
+
+\lstinputlisting[language={[KB]PHP}, linerange={47-57}, style=codeStyle]{../codes/php/polymorphism/type_manip.php}
+
+There is no cast in PHP, all happens in execution time and you will not be needing it.
 
 \section{Methods Overloading}
 

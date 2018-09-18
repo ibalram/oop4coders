@@ -676,18 +676,14 @@ title={#1}
 %\renewcommand{\DefaultLraise}{0.05}
 \renewcommand{\DefaultLoversize}{0.1}
 
-\newcommand{\at}{\makeatletter @\makeatother}
+%\newcommand{\at}{\makeatletter @\makeatother}
 
-\RequirePackage[bookmarksdepth=3]{hyperref}
+\RequirePackage[bookmarksdepth=3,pdfusetitle,colorlinks,urlcolor=blue]{hyperref}
 
-\AtEndDocument{
-	\hypersetup{
-		pdftitle    = \@title,
-		pdfkeywords = {OOP;Programming},
-		pdfauthor   = \@author
-	}
-}
 
 \def\setplainversion {
-	
+	\definecolor{indigo}{RGB}{0,0,0}%indigo
+	\hypersetup{
+		hidelinks
+	}
 }
