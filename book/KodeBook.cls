@@ -181,6 +181,8 @@ title={#1}
 \RequirePackage{lstlangKB}
 \RequirePackage{textcomp} %for textasciitilde
 
+\def\@codeStyle@background{\color{indigo!10!white}}
+
 \lstdefinestyle{codeStyle}{
 	belowcaptionskip=1\baselineskip,
 	breaklines=true,
@@ -194,20 +196,23 @@ title={#1}
 	commentstyle=\itshape\color{black!70!white}, %purple!40!black
 	identifierstyle=\color{black},%blue
 	stringstyle=\color{green!50!black},
-	backgroundcolor=\color{indigo!10!white},%blue!5!white
+	backgroundcolor=\@codeStyle@background ,
 	lineskip=.2em,
 	numbers=left
 	%  frameround=tttt
 }
 
+\def\@shellStyle@background{\color{black}}
+\def\@shellStyle@basicstyle{\scriptsize\codefont\color{green}}
+
 \lstdefinestyle{shellStyle}{
 	belowcaptionskip=1\baselineskip,
 	breaklines=true,
-	frame=shadwbox,
-	rulesepcolor=\color{blue},
+	frame=trbl,
+%	rulesepcolor=\color{blue},
 	xleftmargin=1.25cm,
-	basicstyle=\scriptsize\codefont\color{green},
-	backgroundcolor=\color{black},
+	basicstyle=\@shellStyle@basicstyle ,
+	backgroundcolor=\@shellStyle@background ,
 	lineskip=.2em
 	%	morekeywords={sudo},keywordstyle=\color{red},
 	%  frameround=tttt
@@ -538,39 +543,11 @@ title={#1}
 	
 	\def\nameword##1{``{\itshape\bfseries ##1}"}
 	
-%	\selectcolormodel{gray}
-
-	\lstdefinestyle{codeStyle}{
-		belowcaptionskip=1\baselineskip,
-		breaklines=true,
-		frame=L,
-		xleftmargin=1.5cm,%\parindent,
-		showstringspaces=false,
-		basicstyle=\scriptsize\ttfamily\bfseries, %\codefont, 
-		keywordstyle=\bfseries\color{blue!70!black}, %green!40!black
-		keywordstyle = [2]{\bfseries\color{orange!70!black}},
-		keywordstyle = [3]{\bfseries\color{red!70!black}},
-		commentstyle=\itshape\color{black!70!white}, %purple!40!black
-		identifierstyle=\color{black},%blue
-		stringstyle=\color{green!50!black},
-		backgroundcolor=\color{white},%blue!5!white
-		lineskip=.2em,
-		numbers=left
-		%  frameround=tttt
-	}
+	\def\@codeStyle@background{\color{white}}
+	\def\@shellStyle@background{\color{white}}
+	\def\@shellStyle@basicstyle{\scriptsize\codefont\color{black}}
 	
-	\lstdefinestyle{shellStyle}{
-		belowcaptionskip=1\baselineskip,
-		breaklines=true,
-		frame=lrtb,
-		rulesepcolor=\color{blue},
-		xleftmargin=1.25cm,
-		basicstyle=\scriptsize\codefont\color{black},
-		backgroundcolor=\color{white},
-		lineskip=.2em
-		%	morekeywords={sudo},keywordstyle=\color{red},
-		%  frameround=tttt
-	}
+%	\selectcolormodel{gray}
 	
 	\renewcommand{\langlogo}[3]{}
 	
