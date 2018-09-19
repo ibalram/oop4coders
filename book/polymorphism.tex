@@ -353,10 +353,35 @@ To test if a variable is an object, the function \keyword[PHP]{is\_object} can b
 
 There is no cast in PHP, all happens in execution time and you will not be needing it.
 
-\section{Methods Overloading}
+\subsection{Python}
+
+Lets create our classes
+
+\lstinputlisting[language={[KB]Python}, linerange={4-23}, style=codeStyle]{../codes/python/polymorphism/type_manip.py}
+
+The function \keyword[Python]{type} returns the type of a variable. 
+Because everything in Python is an object, even built-in types such as \textbf{int} accept this function.
+Another mechanism to get an object's class is using the attribute \keyword[Python]{\_\_class\_\_}. 
+To get the name of a class as a string, you can use the  attribute \keyword[Python]{\_\_name\_\_}. 
+
+\lstinputlisting[language={[KB]Python}, linerange={28-29, 32-32}, style=codeStyle]{../codes/python/polymorphism/type_manip.py}
+
+To verify if an object is an instance of a class (or its parents), the function \keyword[Python]{isinstance} is used.
+
+\lstinputlisting[language={[KB]Python}, linerange={41-41,44-44}, style=codeStyle]{../codes/python/polymorphism/type_manip.py}
+
+To verify if an object has a member, Python affords a function \keyword[Python]{hasattr}.
+Another function \keyword[Python]{getattr} is used to get a member if it exists or returns a defined value otherwise.
+To verify if a member is a method, the function \keyword[Python]{callable} can be used.
+
+\lstinputlisting[language={[KB]Python}, linerange={50-62}, style=codeStyle]{../codes/python/polymorphism/type_manip.py}
+
+There is no cast in Python, all happens in execution time and you will not be needing it.
+
+\section{Methods overloading}
 
 
-\section{Methods Overriding}
+\section{Methods overriding}
 
 
 

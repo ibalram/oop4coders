@@ -169,8 +169,8 @@
 	},
 	morekeywords=[2]{
 		object, TypeError, 
-		sys, type, argv, stdout,
-		__name__,
+		sys, argv, stdout,
+		__name__, __class__, 
 		Exception,
 		__metaclass__,
 		abc, ABCMeta, 
@@ -179,7 +179,8 @@
 	morekeywords=[3]{
 		__init__, __str__, __copy__, __eq__, __lt__, __hash__, __del__,
 		print, str, copy, hash, del, len, int, exit, super, enumerate, 
-		isinstance, format, __new__, callable, getattr, write,
+		isinstance, format, __new__, callable, getattr, write, type, 
+		hasattr,
 	},
 	sensitive=true,
 	morecomment=[l]{\#},
