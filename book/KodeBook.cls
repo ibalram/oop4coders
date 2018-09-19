@@ -1,18 +1,6 @@
 %
 %    Copyright (C) 2017  Abdelkrime Aries <kariminfo0@gmail.com>
 %
-%    This program is free software: you can redistribute it and/or modify
-%    it under the terms of the GNU General Public License as published by
-%    the Free Software Foundation, either version 3 of the License, or
-%    any later version.
-%
-%    This program is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
-%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 \NeedsTeXFormat{LaTeX2e} %[2009/09/24]
 \ProvidesClass{KodeBook}[2017/08/17 Create a book with codes]
@@ -42,28 +30,6 @@
 %\definecolor{purpleX11}{RGB}{160,32,240}
 \definecolor{Crimson}{rgb}{0.6471, 0.1098, 0.1882}
 
-%\RequirePackage{verbatim} 
-
-
-%
-%\if@compatibility\else
-%
-%\DeclareOption{a4paper}{%
-%\setlength{\paperheight}{297mm}%
-%\setlength{\paperwidth}{210mm}%
-%}
-%
-%
-%%when the user use a not existing option
-%\DeclareOption*{%
-%}
-%
-%\fi
-%
-%\ProcessOptions\relax
-%
-%\setlength{\textwidth}{6.5in}
-%\setlength{\textheight}{8in}
 
 \def\ptop{2cm}
 \def\pleft{3cm}
@@ -153,16 +119,6 @@ Ligatures=TeX
 %Scale=1.5
 ]{SourceCodePro-Bold} %
 
-%https://www.dafont.com/goudy-initialen.font?l[]=1
-%Goudy Initialen by Dieter Steffmann 
-%First seen on DaFont: July 12, 2006
-%\newfontface\lettrinefont
-%[Path = fonts/goudyInitialen/,
-%Extension = .ttf,
-%Ligatures=TeX
-%%Scale=1.5
-%]{GoudyIni} %
-
 %https://www.dafont.com/decorated-roman-ini.font?l[]=1
 %Decorated Roman Initials by Dieter Steffmann 
 %First seen on DaFont: before 2005
@@ -172,17 +128,6 @@ Extension = .ttf,
 Ligatures=TeX
 %Scale=1.5
 ]{DecoratedRomanInitials} %
-
-
-%\newfontface\codefont
-%[Path = fonts/Inconsolata/,
-%Extension = .ttf,
-%Ligatures=TeX
-%%Scale=1.5
-%]{Inconsolata-Bold} %
-
-% ============================================
-
 
 
 \newtcolorbox{kodequote}[1]{%
@@ -344,8 +289,9 @@ title={#1}
 	\phantomsection
 	\addcontentsline{toc}{part}{\@title}
 	\begin{tikzpicture}[remember picture,overlay]
-	
+	\ifx\isplain\relax\else
 	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
+	\fi
 	
 	\node[anchor=north west,minimum width=1cm,minimum height=12cm,fill=indigo] (vline1)
 	at ([shift={(2cm,-2cm)}] current page.north west)
@@ -362,9 +308,10 @@ title={#1}
 	};
 
 	
-	\node[text=white,text width=8cm,anchor=north west, align=left] at ([shift={(0cm, -.5cm)}] vline1.south west){
+	\node[text width=8cm,anchor=north west, align=left] at ([shift={(0cm, -.5cm)}] vline1.south west){
 		\bfseries
 		\Huge
+		\ifx\isplain\relax\else \color{white}\fi
 		\@author
 	};
 	
@@ -403,41 +350,6 @@ title={#1}
 
 	\fancyhead{\color{indigo}\thepage\hrulefill} 
 	
-%	\fancyhead[E]{
-%		\begin{tikzpicture}[remember picture,overlay]
-%		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
-%		at ([shift={(0cm,-1cm)}] current page.north west){};
-%		%		
-%		\node[anchor=west, fill=white,minimum width=1cm]
-%		at ([shift={(\pright,0cm)}] bx1.north west)
-%		{\large \color{indigo}\textbf{\thepage}};
-%		%		
-%		\node[anchor=east,fill=white,align=left]
-%		at ([shift={(2pt,0cm)}] bx1.south east)
-%		{\color{indigo}\textbf{\@chap@name}};
-%		\end{tikzpicture}
-%	} 
-%	
-%	\fancyhead[O]{
-%		\begin{tikzpicture}[remember picture,overlay]
-%		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
-%		at ([shift={(\pleft,-1cm)}] current page.north west){};
-%		%		
-%		\node[anchor=east, fill=white,minimum width=1cm,align=left]
-%		at ([shift={(-\pright,0cm)}] bx1.north east)
-%		{\large \color{indigo}\textbf{\thepage}};
-%		%		%		
-%		\node[anchor=west,fill=white]
-%		at ([shift={(-2pt,0cm)}] bx1.south west)
-%		{\color{indigo}\textbf{\@chap@name}};
-%		\end{tikzpicture}
-%	}
-%	
-%	\fancypagestyle{plain}{% % <-- this is new
-%		\fancyhf{} 
-%		\fancyfoot[CE, CO]{}
-%	}
-	
 }
 
 \renewcommand{\mainmatter}{
@@ -453,13 +365,6 @@ title={#1}
 	
 	\fancyhf{}
 	
-%	\fancyhead[E]{
-%		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
-%		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,rectangle,very thick,draw=black] at (-2pt,2pt){};
-%		\node[anchor=east,xshift=.1\textwidth+1.5cm, yshift=-1cm,minimum width=1.5cm, inner sep=6pt, fill=white]
-%		{\large \color{indigo}\textbf{\thepage}};
-%		\end{tikzpicture}
-%	} 
 	
 	\fancyhead[E]{
 		\begin{tikzpicture}[remember picture,overlay]
@@ -491,15 +396,6 @@ title={#1}
 		\end{tikzpicture}
 	}
 	
-%	\fancyhead[O]{
-%		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
-%		\begin{scope}[xshift= 2.5cm]
-%		\node[anchor=north west, minimum width=\textwidth+1.5cm, minimum height=1cm,rectangle,very thick,draw=black] at (2pt,2pt){};
-%		\node[anchor=west,xshift=.9\textwidth, yshift=-1cm,minimum width=1.5cm, inner sep=6pt, fill=white]
-%		{\large \color{indigo}\textbf{\thepage}};
-%		\end{scope}
-%		\end{tikzpicture}
-%	}
 	
 	\fancypagestyle{plain}{% % <-- this is new
 		\fancyhf{} 
@@ -507,15 +403,6 @@ title={#1}
 	}
 } 
 
-
-%\RequirePackage[explicit]{titlesec}%
-%\RequirePackage{titletoc} %
-%
-%\titleformat{name = \section, numberless}
-%{\ttfamily\Large\bfseries}
-%{}
-%{0em}
-%{\addcontentsline{toc}{section}{#1}#1}%
 
 \RequirePackage{tocloft}
 
@@ -607,62 +494,6 @@ title={#1}
 
 \makeindex[program=makeindex,columns=2, options={-s KodeBook.ist}]
 
-%\RequirePackage{mdframed}
-%\RequirePackage{titletoc}
-%\RequirePackage{etoolbox}
-%
-%
-%\definecolor{secnum}{RGB}{13,151,225}
-%\definecolor{ptcbackground}{RGB}{212,237,252}
-%\definecolor{ptctitle}{RGB}{0,177,235}
-%
-%\pretocmd{\tableofcontents}{\begin{mdframed}[backgroundcolor=ptcbackground,hidealllines=true]}{}{}
-%	\apptocmd{\tableofcontents}{\end{mdframed}}{}{}
-%\patchcmd{\tableofcontents}{\contentsname}{\color{ptctitle}\contentsname}{}{}
-%
-%\titlecontents{section}
-%[4em]{\sffamily}
-%{\color{secnum}\contentslabel{2.3em}\normalcolor}{}
-%{\titlerule*[1000pc]{.}\contentspage\\\hspace*{-3em}\vspace*{2pt}%
-%	\color{white}\rule{\dimexpr\textwidth-20pt\relax}{1pt}}
-%
-%\titlecontents{lsection}
-%[5.8em]{\sffamily}
-%{\color{secnum}\contentslabel{2.3em}\normalcolor}{}
-%{\titlerule*[1000pc]{.}\contentspage\\\hspace*{-5.8em}\vspace*{2pt}%
-%	\color{white}\rule{\dimexpr\textwidth-15.5pt\relax}{1pt}}
-%
-%\makeatletter
-%\renewcommand*\l@chapter[2]{%
-%	\ifnum \c@tocdepth >\m@ne
-%	\addpenalty{-\@highpenalty}%
-%	\vskip 1.0em \@plus\p@
-%	\setlength\@tempdima{1.5em}%
-%	\begingroup
-%	\parindent \z@ \rightskip \@pnumwidth
-%	\parfillskip -\@pnumwidth
-%	\leavevmode
-%	\advance\leftskip\@tempdima
-%	\hskip -\leftskip
-%	\colorbox{ptctitle}{\strut%
-%		\makebox[\dimexpr\textwidth-2\fboxsep-7pt\relax][l]{%
-%			\color{white}\bfseries\sffamily#1%
-%			\nobreak\hfill\nobreak\hb@xt@\@pnumwidth{\hss #2}}}\par\smallskip
-%	\penalty\@highpenalty
-%	\endgroup
-%	\fi}
-%\makeatother
-%\newcommand\PartialToC{%
-%	\startcontents[chapters]%
-%	\begin{mdframed}[backgroundcolor=ptcbackground,hidealllines=true]
-%		\printcontents[chapters]{l}{1}{\colorbox{ptctitle}{%
-%				\parbox[t]{\dimexpr\textwidth-2\fboxsep\relax}{%
-%					\strut\color{white}\bfseries\sffamily\makebox[5em]{%
-%						Chapter~\thechapter\hfill}Contents}}\vskip5pt}
-%	\end{mdframed}%
-%}
-
-
 \setcounter{tocdepth}{1}
 
 \RequirePackage{lettrine}
@@ -680,10 +511,68 @@ title={#1}
 
 \RequirePackage[bookmarksdepth=3,pdfusetitle,colorlinks,urlcolor=blue]{hyperref}
 
+\newcommand{\langlogo}[3]{%
+	\begin{wrapfigure}{l}{2.25cm}
+		\centering
+		\vspace{#2}
+		\includegraphics[width=2cm]{#1}
+		\vspace{#3}
+	\end{wrapfigure}
+}
 
-\def\setplainversion {
+
+\newcommand\setplainversion{
+	
 	\definecolor{indigo}{RGB}{0,0,0}%indigo
+	
 	\hypersetup{
 		hidelinks
 	}
+	
+	\renewcommand{\lettrine}[2]{##1##2}
+	
+	\renewcommand\merienda{}
+	\renewcommand\quotefont{}
+	
+	\def\@keyword##1{{\itshape\bfseries ##1}}
+	
+	\def\nameword##1{``{\itshape\bfseries ##1}"}
+	
+%	\selectcolormodel{gray}
+
+	\lstdefinestyle{codeStyle}{
+		belowcaptionskip=1\baselineskip,
+		breaklines=true,
+		frame=L,
+		xleftmargin=1.5cm,%\parindent,
+		showstringspaces=false,
+		basicstyle=\scriptsize\ttfamily\bfseries, %\codefont, 
+		keywordstyle=\bfseries\color{blue!70!black}, %green!40!black
+		keywordstyle = [2]{\bfseries\color{orange!70!black}},
+		keywordstyle = [3]{\bfseries\color{red!70!black}},
+		commentstyle=\itshape\color{black!70!white}, %purple!40!black
+		identifierstyle=\color{black},%blue
+		stringstyle=\color{green!50!black},
+		backgroundcolor=\color{white},%blue!5!white
+		lineskip=.2em,
+		numbers=left
+		%  frameround=tttt
+	}
+	
+	\lstdefinestyle{shellStyle}{
+		belowcaptionskip=1\baselineskip,
+		breaklines=true,
+		frame=lrtb,
+		rulesepcolor=\color{blue},
+		xleftmargin=1.25cm,
+		basicstyle=\scriptsize\codefont\color{black},
+		backgroundcolor=\color{white},
+		lineskip=.2em
+		%	morekeywords={sudo},keywordstyle=\color{red},
+		%  frameround=tttt
+	}
+	
+	\renewcommand{\langlogo}[3]{}
+	
+	\let\isplain=\relax
 }
