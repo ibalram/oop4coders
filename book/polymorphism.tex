@@ -378,6 +378,34 @@ To verify if a member is a method, the function \keyword[Python]{callable} can b
 
 There is no cast in Python, all happens in execution time and you will not be needing it.
 
+\subsection{Ruby}
+
+Lets create our classes and a mixin 
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-28}, style=codeStyle]{../codes/ruby/polymorphism/type_manip.rb}
+
+To find the class of an object, you can simply call the method \keyword[Ruby]{class}.
+Then, the method \keyword[Ruby]{to\_s} is used to get the sting representation. 
+In Ruby, everything is an object and even numbers has a class.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={34-34, 37-37}, style=codeStyle]{../codes/ruby/polymorphism/type_manip.rb}
+
+To verify if an object is an instance of a class (or its parents), the functions \keyword[Ruby]{kind\_of?} and \keyword[Ruby]{is\_a?} can be used. 
+The two methods are equivalent; they verify if an object inherit from a mixin as well.
+There is another method \keyword[Ruby]{instance\_of?} which verify if an object was instantiated from a specific class (it does not verify its parents).
+
+\lstinputlisting[language={[KB]Ruby}, linerange={43-43,48-49,54-54}, style=codeStyle]{../codes/ruby/polymorphism/type_manip.rb}
+
+To verify if an object has a method, a class of an object has a method \keyword[Ruby]{method\_defined?}.
+As for fields, they are encapsulated (protected mode) and cannot be accessed outside the class's hierarchy unless you define accessors (getters and setters). 
+The accessors are methods and can be checked the same way a normal method is checked. 
+In our example, \textbf{Professor} class has a field \textbf{nbr} and a reader accessor (getter). 
+To verify the setter (not shown in the example), you write  \textbf{obj.method\_defined? :nbr=}.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={60-68}, style=codeStyle]{../codes/ruby/polymorphism/type_manip.rb}
+
+There is no cast in Ruby because variable type is dynamic.
+
 \section{Methods overloading}
 
 
