@@ -210,11 +210,30 @@ For each programming language, we will see these points:
 	It is useful in case of statically typed languages like C++ and Java.
 \end{itemize}
 
-%\subsection{C++}
-%
-%Lets create our classes
-%
-%\lstinputlisting[language={[KB]C++}, linerange={4-13}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+\subsection{C++}
+
+Lets create our classes. 
+A class is said to be \nameword{polymorphic} if it has at least one virtual method (defined in it or inherited).
+In our example, the class \textbf{Person} has one virtual method, while the class \textbf{Machine} has none.
+
+\lstinputlisting[language={[KB]C++}, linerange={5-24}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+C++ affords a function \keyword[C++]{typeid} from the standard library \nameword{typeinfo}. 
+You can either print the type of a pointer or, dynamically, the type of the object pointed to.
+A type must be polymorphic so this function can operate dynamically on it.
+
+\lstinputlisting[language={[KB]C++}, linerange={31-37, 43-44, 48-48, 50-50}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+To verify if an object pointed to by a pointer is of a certain type dynamically, you can try to cast it to that type and verify if it succeeded.
+A function proposed by \citet{2014-panzenbock} which works polymorphic pointers.
+
+\lstinputlisting[language={[KB]C++}, linerange={26-29}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+Then, a pointer is tested as follows
+
+\lstinputlisting[language={[KB]C++}, linerange={55-55}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+
 
 \subsection{Java}
 
