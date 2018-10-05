@@ -222,7 +222,7 @@ C++ affords a function \keyword[C++]{typeid} from the standard library \nameword
 You can either print the type of a pointer or, dynamically, the type of the object pointed to.
 A type must be polymorphic so this function can operate dynamically on it.
 
-\lstinputlisting[language={[KB]C++}, linerange={31-37, 43-44, 48-48, 50-50}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+\lstinputlisting[language={[KB]C++}, linerange={40-46, 52-53, 57-57, 59-59}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
 
 To verify if an object pointed to by a pointer is of a certain type dynamically, you can try to cast it to that type and verify if it succeeded.
 A function proposed by \citet{2014-panzenbock} which works polymorphic pointers.
@@ -231,9 +231,22 @@ A function proposed by \citet{2014-panzenbock} which works polymorphic pointers.
 
 Then, a pointer is tested as follows
 
-\lstinputlisting[language={[KB]C++}, linerange={55-55}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+\lstinputlisting[language={[KB]C++}, linerange={64-64}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
 
+In C++, you can check if a class has a member using a mechanism called: \ac{sfinae}. 
+For example, this is a template to verify if classes has a method \textbf{learn}.
 
+\lstinputlisting[language={[KB]C++}, linerange={31-38}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+It can be used as follows 
+
+\lstinputlisting[language={[KB]C++}, linerange={76-76}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+There are two types of cast: at compilation time (\keyword[C++]{static\_cast}) or at runtime (\keyword[C++]{dynamic\_cast}). 
+Using the first one, type check is performed during compilation. 
+The dynamic cast check types at runtime and return \keyword[C++]{NULL} in case of pointers, or throw an exception in case of references.
+
+\lstinputlisting[language={[KB]C++}, linerange={83-87}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
 
 \subsection{Java}
 

@@ -9,7 +9,7 @@ public:
 
 class Student: public Person {
 public:
-    void study(){ std::cout << "I am studying" << std::endl; }
+    void learn(){ std::cout << "I am learning" << std::endl; }
 };
 
 class Professor: public Person {
@@ -24,9 +24,18 @@ class Machine {};
 class Mooc: public Machine, public Professor {};
 
 template<typename Class, typename T>
-inline bool instanceof(const T *ptr) {
+bool instanceof(const T *ptr) {
     return dynamic_cast<const Class*>(ptr) != 0;//nullptr with C++11
 }
+
+template<typename T>
+struct HasLearnMethod
+{
+    typedef char Yes[1]; typedef char No[2];
+    template <typename C> static Yes& test(typeof(&C::learn) ) ;
+    template <typename C> static No& test(...);
+    static const bool value = (sizeof(test<T>(0)) == sizeof(Yes)) ;
+};
 
 int main()
 {
@@ -60,6 +69,22 @@ int main()
     std::cout << "instanceof<Person>(pmooc): " <<  instanceof<Person>(pmooc) << std::endl;
     std::cout << "instanceof<Machine>(pmooc): " <<  instanceof<Machine>(pmooc) << std::endl;
 
+    std::cout << "==========================" << std::endl;
+    std::cout << "Member existance" << std::endl;
+    std::cout << "==========================" << std::endl;
+    std::cout << "Person.learn: " << HasLearnMethod<Person>::value << std::endl;
+    std::cout << "Student.learn: " << HasLearnMethod<Student>::value << std::endl;
+    std::cout << "Professor.learn: " << HasLearnMethod<Professor>::value << std::endl;
+    std::cout << "Mooc.learn: " << HasLearnMethod<Professor>::value << std::endl;
+
+    std::cout << "==========================" << std::endl;
+    std::cout << "Casting" << std::endl;
+    std::cout << "==========================" << std::endl;
+    Student * st2 = static_cast<Student*> (pst);
+    st2->learn();
+    ((Student*) pst)->learn();
+    Mooc * mooc2 = dynamic_cast<Mooc*>(pmooc);
+    mooc2->teach();
 
     return 0;
 }
