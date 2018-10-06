@@ -242,9 +242,9 @@ It can be used as follows
 
 \lstinputlisting[language={[KB]C++}, linerange={76-76}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
 
-There are two types of cast: at compilation time (\keyword[C++]{static\_cast}) or at runtime (\keyword[C++]{dynamic\_cast}). 
+There are two types of down-casting (among others): \keyword[C++]{static\_cast} and \keyword[C++]{dynamic\_cast}. 
 Using the first one, type check is performed during compilation. 
-The dynamic cast check types at runtime and return \keyword[C++]{NULL} in case of pointers, or throw an exception in case of references.
+The dynamic cast checks types at runtime and return \keyword[C++]{NULL} in case of pointers, or throw an exception in case of references.
 
 \lstinputlisting[language={[KB]C++}, linerange={83-87}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
 
@@ -439,6 +439,27 @@ To verify the setter (not shown in the example), you write  \textbf{obj.method\_
 There is no cast in Ruby because variable type is dynamic.
 
 \section{Methods overloading}
+
+It is the feature of a class having multiple methods defined by the same identifier and different parameters. 
+Statically-typed programming languages are, usually, the ones affording methods overloading since they enforce type checking during function calls.
+In this section, we will verify these properties:
+\begin{itemize}
+	\item If the programming language supports methods overloading. 
+	If not, how to afford something similar. 
+	\item If we can overload methods over inheritance
+\end{itemize}
+
+\subsection{C++}
+
+In C++, overloading is permitted in the same class 
+
+\lstinputlisting[language={[KB]C++}, linerange={4-8,16-18,22-23,31-32}, style=codeStyle]{../codes/cpp/polymorphism/overloading.cpp}
+
+When the same method is overloaded in a subclass, the new definition will hide those of the parent class;
+if they are called, this will generate a compilation error. 
+To call them, there are two ways: import them using \keyword[C++]{using} declaration, or by calling them explicitly \citep{2009-bailey}.
+\lstinputlisting[language={[KB]C++}, linerange={10-17,19-19,26-32}, style=codeStyle]{../codes/cpp/polymorphism/overloading.cpp}
+
 
 
 \section{Methods overriding}
