@@ -466,6 +466,18 @@ In Java, overloading is permitted in the same class or its subclasses as well.
 
 \lstinputlisting[language={[KB]C++}, linerange={3-6,9-10,13-26}, style=codeStyle]{../codes/java/src/polymorphism/Overloading.java}
 
+\subsection{Javascript}
+
+Javascript does not support method overloading. 
+A similar thing can be achieved by testing arguments types.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-15,31-33}, style=codeStyle]{../codes/javascript/polymorphism/es6/overloading.js}
+
+If there are many arguments, you can use the keyword \keyword[Javascript]{arguments} which is an Array-like object accessible inside functions that contains the values of the arguments passed to that function.
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={17-28,36-40}, style=codeStyle]{../codes/javascript/polymorphism/es6/overloading.js}
+
 \section{Methods overriding}
 
 
