@@ -482,7 +482,7 @@ Subclasses can define the same method, verify the arguments for new definitions 
 
 Lua does not support method overloading. 
 A similar behavior can be achieved by using a \nameword{variadic function} and testing arguments number and types.
-You can select a parameter using the function \keyword[Lua]{select} \citep{2011-berteig}.
+You can select a parameter using the function \keyword[Lua]{select} which returns the nth parameter and its following parameters \citep{2011-berteig}.
 The same function can be used to know te number of parameters.
 
 \lstinputlisting[language={[KB]Lua}, linerange={2-20,37-39}, style=codeStyle]{../codes/lua/polymorphism/overloading.lua}
@@ -507,8 +507,15 @@ Subclasses can define the same method, verify the arguments for new definitions 
 
 \subsection{PHP}
 
-PHP does not support method overloading; Overloading in PHP is entirely a different thing.
+PHP does not support \ac{oop}'s method overloading; Overloading in PHP is entirely a different concept (check PHP documentation). 
+However, there is a mechanism to achieve a similar thing using a \nameword{variadic function}: the number of arguments is recovered using a function \keyword[PHP]{func\_num\_args}, and the arguments are recovered using a function \keyword[PHP]{func\_get\_arg} \citep{2011-tan}. 
 
+\lstinputlisting[language={[KB]PHP}, linerange={3-18, 30-32}, style=codeStyle]{../codes/php/polymorphism/overloading.php}
+
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+Arguments can, also, be passed as a list as follows. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={20-27,35-38}, style=codeStyle]{../codes/php/polymorphism/overloading.php}
 
 \section{Methods overriding}
 
