@@ -481,11 +481,14 @@ Subclasses can define the same method, verify the arguments for new definitions 
 \subsection{Lua}
 
 Lua does not support method overloading. 
-A similar behavior can be achieved by testing arguments number and types.
+A similar behavior can be achieved by using a \nameword{variadic function} and testing arguments number and types.
+You can select a parameter using the function \keyword[Lua]{select} \citep{2011-berteig}.
+The same function can be used to know te number of parameters.
 
-\lstinputlisting[language={[KB]Lua}, linerange={2-19,35-37}, style=codeStyle]{../codes/lua/polymorphism/overloading.lua}
+\lstinputlisting[language={[KB]Lua}, linerange={2-20,37-39}, style=codeStyle]{../codes/lua/polymorphism/overloading.lua}
 
 Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+If you do not want to use \keyword[Lua]{select}, you can put the arguments in a list and access the parameters as list members.
 
 \lstinputlisting[language={[KB]Lua}, linerange={22-32,40-43}, style=codeStyle]{../codes/lua/polymorphism/overloading.lua}
 
@@ -501,6 +504,10 @@ Perl does not make a difference between scalar types (eg. numbers and strings), 
 Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
 
 \lstinputlisting[language={[KB]Perl}, linerange={13-25,34-37}, style=codeStyle]{../codes/perl/polymorphism/overloading.pl}
+
+\subsection{PHP}
+
+PHP does not support method overloading; Overloading in PHP is entirely a different thing.
 
 
 \section{Methods overriding}

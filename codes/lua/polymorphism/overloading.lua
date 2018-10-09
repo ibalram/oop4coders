@@ -8,8 +8,9 @@ function Person:new()    -- The constructor
     return instance
 end
 
-function Person:read(arg1)
-    if not arg1 then
+function Person:read(...)
+    local arg1 = select(1, ...)
+    if not arg1 then -- select("#", ...) for parameters number
         print("I am reading")
     else
         if type(arg1) == "string" then
@@ -23,11 +24,12 @@ local Student = {}
 Student.__index = Student
 setmetatable(Student, Person) -- extends
 
-function Student:read(arg1)
-    if type(arg1) == "number" then
-        print("I read on table n°: " .. arg1)
+function Student:read(...)
+    local args = {...}
+    if type(args[1]) == "number" then
+        print("I read on table n°: " .. args[1])
     else
-        Person.read(self, arg1)
+        Person.read(self, ...)
     end
 end
 
