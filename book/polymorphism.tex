@@ -489,6 +489,19 @@ Subclasses can define the same method, verify the arguments for new definitions 
 
 \lstinputlisting[language={[KB]Lua}, linerange={22-32,40-43}, style=codeStyle]{../codes/lua/polymorphism/overloading.lua}
 
+\subsection{Perl}
+
+Perl does not support method overloading. 
+A subroutine receive its parameters using an array \keyword[Perl]{@\_}; thus, it is possible to verify the number of arguments (the first one is the object). 
+If you pass more than the acceptable amount of arguments, this will not be a problem (as shown in the example).
+Perl does not make a difference between scalar types (eg. numbers and strings), so you can just verify blessed objects using \keyword[Perl]{ref}. 
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-11,28-31}, style=codeStyle]{../codes/perl/polymorphism/overloading.pl}
+
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+
+\lstinputlisting[language={[KB]Perl}, linerange={13-25,34-37}, style=codeStyle]{../codes/perl/polymorphism/overloading.pl}
+
 
 \section{Methods overriding}
 
