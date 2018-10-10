@@ -517,6 +517,18 @@ Arguments can, also, be passed as a list as follows.
 
 \lstinputlisting[language={[KB]PHP}, linerange={20-27,35-38}, style=codeStyle]{../codes/php/polymorphism/overloading.php}
 
+\subsection{Python}
+
+Python does not support method overloading. 
+Using default values and type checking, you can achieve a similar behavior. 
+
+\lstinputlisting[language={[KB]Python}, linerange={4-10,21-23}, style=codeStyle]{../codes/python/polymorphism/overloading.py}
+
+You can, also, use a \nameword{variadic function} for unknown amount of parameters.
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+
+\lstinputlisting[language={[KB]Python}, linerange={11-18,26-29}, style=codeStyle]{../codes/python/polymorphism/overloading.py}
+
 \section{Methods overriding}
 
 
