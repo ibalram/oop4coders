@@ -754,18 +754,18 @@ There is no internal hash code method for classes.
 
 \subsection{Python}
 
-In new Python syntax, all classes inherit from the class \keyword{object}. 
+In new Python syntax, all classes inherit from the class \keyword[Python]{object}. 
 There exists many magic methods in Python, which are called upon using an object as argument to a built-in function. 
-For example, the magic method \keyword{\_\_str\_\_} of a class is called when an instance of that class is passed as argument to the built-in function \keyword{str}.
+For example, the magic method \keyword[Python]{\_\_str\_\_} of a class is called when one of its instances is used to create an object of type \keyword[Python]{str}.
 Besides the methods we are presenting here, there exists many magic methods such those for arithmetic operations, for built-in unary methods, etc.
 
 \subsubsection{String representation}
 
-To use an object as a string, you have to define the magic method \keyword{\_\_str\_\_}.
+To use an object as a string, you have to define the magic method \keyword[Python]{\_\_str\_\_}.
 
 \lstinputlisting[language={[KB]Python}, linerange={4-4,10-11}, style=codeStyle]{../codes/python/clsobj/objmeth.py}
 
-Then, you can use it by calling the method \keyword{str}
+Then, you can use it by creating an \keyword[Python]{str} object out of another existing object
 
 \lstinputlisting[language={[KB]Python}, linerange={27-27,29-29}, style=codeStyle]{../codes/python/clsobj/objmeth.py}
 
