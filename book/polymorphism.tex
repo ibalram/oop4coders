@@ -529,6 +529,21 @@ Subclasses can define the same method, verify the arguments for new definitions 
 
 \lstinputlisting[language={[KB]Python}, linerange={11-18,26-29}, style=codeStyle]{../codes/python/polymorphism/overloading.py}
 
+You can define an \ac{api} for methods overloading such as \nameword{pythonlangutil}\footnote{pythonlangutil: \url{https://github.com/ehsan-keshavarzian/pythonlangutil}}.
+
+\subsection{Ruby}
+
+Ruby does not support method overloading. 
+Using default values and type checking, you can achieve a similar behavior. 
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-14,29-31}, style=codeStyle]{../codes/ruby/polymorphism/overloading.rb}
+
+You can, also, use a \nameword{variadic function} for unknown amount of parameters.
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={15-27,34-37}, style=codeStyle]{../codes/ruby/polymorphism/overloading.rb}
+
+
 \section{Methods overriding}
 
 
