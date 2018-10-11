@@ -505,6 +505,8 @@ Subclasses can define the same method, verify the arguments for new definitions 
 
 \lstinputlisting[language={[KB]Perl}, linerange={13-25,34-37}, style=codeStyle]{../codes/perl/polymorphism/overloading.pl}
 
+You can check out \nameword{MooseX::MultiMethods}\footnote{MooseX::MultiMethods: \url{https://metacpan.org/pod/MooseX::MultiMethods}} for Multi Method Dispatch based on Moose type constraints.
+
 \subsection{PHP}
 
 PHP does not support \ac{oop}'s method overloading; Overloading in PHP is entirely a different concept (check PHP documentation). 
@@ -546,71 +548,21 @@ Subclasses can define the same method, verify the arguments for new definitions 
 
 \section{Methods overriding}
 
+Method overriding allows a subclass to provide a specific implementation of an existing parent's method. 
+The method must have the same signature (name and arguments) and return type (if the language allows it) as the parent's. 
+Some methods can be abstract or final: abstract methods must be overridden and final methods cannot be overridden (see inheritance chapter).
 
-%\subsection{C++}
-%
-%\lstinputlisting[language=C++, style=codeStyle]{../cpp/type.cpp}
-%
-%
-%\subsection{Java}
-%
-%\lstinputlisting[language=Java, style=codeStyle]{../java/src/Type.java}
-%
-%
-%\subsection{Javascript}
-%
-%\lstinputlisting[linerange={3-4}, style=codeStyle]{../javascript/person.js}
-%
-%\lstinputlisting[linerange={17-17}, style=codeStyle]{../javascript/person.js}
-%
-%Methods: 
-%
-%\lstinputlisting[linerange={1-1,8-15}, style=codeStyle]{../javascript/person.js}
-%
-%\lstinputlisting[linerange={9-15}, style=codeStyle]{../javascript/person2.js}
-%
-%getters and setters can be defined using keywords \textbf{get} and \textbf{set} in ES6.
-%
-%\subsection{Lua}
-%
-%\lstinputlisting[language={[5.2]Lua}, linerange={4-9}, style=codeStyle]{../lua/person.lua}
-%
-%\lstinputlisting[language={[5.2]Lua}, linerange={11-17}, style=codeStyle]{../lua/person.lua}
-%
-%\lstinputlisting[language={[5.2]Lua}, linerange={22-24}, style=codeStyle]{../lua/person.lua}
-%
-%
-%\subsection{Perl}
-%
-%\lstinputlisting[language=Perl, linerange={10-13}, style=codeStyle]{../perl/person.pl}
-%
-%\lstinputlisting[language=Perl, linerange={6-6}, style=codeStyle]{../perl/person.pl}
-%
-%Methods
-%
-%\lstinputlisting[language=Perl, linerange={25-32}, style=codeStyle]{../perl/person.pl}
-%
-%\lstinputlisting[language=Perl, linerange={39-41}, style=codeStyle]{../perl/person.pl}
+\subsection{Java}
 
-%\subsection{PHP}
-%
-%\lstinputlisting[language=PHP, linerange={2-7,27-27}, style=codeStyle]{../php/person.php}
-%
-%\lstinputlisting[language=PHP, linerange={2-2,19-25,27-27}, style=codeStyle]{../php/person.php}
-%
-%\lstinputlisting[language=PHP, linerange={32-34}, style=codeStyle]{../php/person.php}
-%
-%\subsection{Python}
-%
-%\lstinputlisting[language=Python, linerange={4-11}, style=codeStyle]{../python/person.py}
-%
-%\subsection{Ruby}
-%
-%\lstinputlisting[language=Ruby, linerange={3-10,19-19}, style=codeStyle]{../ruby/person.rb}
-%
-%\lstinputlisting[language=Ruby, linerange={3-3,12-19}, style=codeStyle]{../ruby/person.rb}
-%
-%\lstinputlisting[language=Ruby, linerange={24-26}, style=codeStyle]{../ruby/person.rb}
+In Java, you can override a method using the same signature and return type. 
+As mentioned in Encapsulation chapter, the visibility mode can be set to more permissive one (for example, from private to public).
+To be sure you overrode an existing method, you can use the annotation \keyword[Java]{@Override} which tells the compiler to check if the method actually exists in one of the superclasses.
+
+\lstinputlisting[language={[KB]Java}, linerange={12-19}, style=codeStyle]{../codes/java/src/polymorphism/Overriding.java}
+
+An object of a class referred by a reference of its superclass will execute its specific implementation and not that of the reference. 
+
+\lstinputlisting[language={[KB]Java}, linerange={3-10}, style=codeStyle]{../codes/java/src/polymorphism/Overriding.java}
 
 \section{Not OOP related polymorphism}
 
