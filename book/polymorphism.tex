@@ -620,7 +620,158 @@ The object of the subclass will use the new defined method.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-18}, style=codeStyle]{../codes/ruby/polymorphism/overriding.rb}
 
-
+\begin{discussion}
+	
+	Polymorphism allows us to process objects differently depending on their data type or class. 
+	Based on type compatibility and equivalence, three type systems can be determined:
+	\begin{itemize}
+		\item \textbf{Nominal type system}: The compatibility and equivalence of data types is is determined by explicit declarations or name.
+		Example: C++, C\#, Java.
+		\item \textbf{Structural type system}: The compatibility and equivalence of data types is is determined by their structures or definitions: if they have the same definition then they are equivalent. 
+		Example: OCaml, Scala, Go.
+		\item \textbf{Duck typing}: The compatibility is determined by the presence of certain methods and fields.
+		``\textit{If it walks like a duck and talks like a duck, it must be a duck}".
+		Example: Javascript, Python, Ruby.
+	\end{itemize}
+	
+	Table~\ref{tab-polymorphism} represents a comparison between some OOP languages based on their polymorphism capacities: 
+	\begin{itemize}
+		\item \textbf{Type compatibility}: Nominal, structural or duck.
+		\item \textbf{Get object type}: How to get the type of a given object.
+		\item \textbf{Is instance of}: Verify if an object is generated from a class/prototype. 
+		\item \textbf{Members existence}: Check if a member (field or method) exists in a given object.
+		\item \textbf{Type casts}: Downcasting is the act of changing a reference of a base class to one of its derived class.
+		\item \textbf{Overloading}: Having methods overloading or not.
+	\end{itemize}
+	As for overriding, no need to compare since all of our languages afford this property.
+	
+	\begin{landscape}
+		\extrarowsep = 0pt 
+		
+		%	\doublerawsep = 1.5pt
+		\begin{longtabu} to \linewidth %
+			{
+				X[1,p]|[5pt white]
+				X[0.75,p]|[5pt white]
+				X[2,p]|[5pt white]
+				X[2,p]|[5pt white]
+				X[2,p]|[5pt white]
+				X[2,p]|[5pt white]
+				X[0.5,p]|[5pt white]
+			} %{llllllll} 
+			%	\begin{longtabu} {p{1cm}p{1cm}p{5cm}p{1cm}p{1cm}p{2cm}p{2cm}p{1cm}}
+			\caption{Polymorphism comparison}%
+			\label{tab-polymorphism}\\
+			
+			%		\hline\hline
+			\rowcolor{indigo}
+			\rowfont{\bfseries\color{white}}
+			{Language} &
+			{Type compatibility} &
+			{Object's type} &
+			{Instance of} &
+			{members existence} & 
+			{cast} &
+			{overloading}\\
+			%		\hline\hline
+			&&&&&&\\
+			\endfirsthead
+			
+			%		\hline\hline
+			\rowcolor{indigo}
+			\rowfont{\bfseries\color{white}}
+			{Language} &
+			{Type system} &
+			{Object's type} &
+			{Instance of} &
+			{members existence} & 
+			{cast} &
+			{overloading}\\
+			%		\hline\hline
+			&&&&&&\\
+			\endhead
+			
+			\taburowcolors{indigo!20!white .. black!10!white}
+			
+			{\bfseries\color{indigo}C++} & %Language
+			Nominal& %type system
+			typeid(obj)& %object's type
+			Using cast& %Instance of
+			/ & %members existance
+			(Cls) obj; \newline 
+			static\_cast<Cls*> (ptr) \newline 
+			dynamic\_cast<Cls*> (ptr) & %cast
+			Yes\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Java} & %Language
+			Nominal& %Type system
+			obj.getClass()& %object's type
+			obj instanceof Cls& %Instance of 
+			using reflection & %member existance
+			(Cls) obj & %cast
+			Yes\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Javascript} & %Language
+			Duck& %Type system
+			Type: typeof obj \newline Class: obj.constructor.name& %object's type
+			obj instanceof Cls& %instance of
+			obj.hasOwnProperty ("property")& %member existance
+			/& %cast
+			/\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Lua} & %Language
+			Duck& %Type system
+			Type: type(obj) \newline Class: /& %object's type
+			/& %Instance of
+			access and verify type& %Member existance
+			/& %cast
+			/\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Perl} & %Language
+			& %Type system
+			ref(obj)& %Object's type 
+			obj->isa(Cls)& % instance of
+			obj->can("method")& %member existance
+			/& % cast
+			/\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}PHP} & %Language
+			Duck?& %Type system
+			Type: gettype(obj) \newline Class: get\_class(obj) & %object's type
+			obj instanceof Cls \newline is\_a(obj, "Cls") & % Instance of
+			method\_exists(obj, "method") \newline property\_exists(obj, "field") & % member existance
+			/ & %cast
+			/ \\%overloading
+					\hline
+			
+			{\bfseries\color{indigo}Python} & %Language
+			Duck& %Type system
+			type(obj) \newline obj.\_\_class\_\_& %Object's type
+			isinstance(obj, Cls)& % instance of
+			hasattr(obj, "property")& %member existance
+			/& %cast
+			/\\%oveloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Ruby} & %Language
+			Duck& %Type system
+			obj.class& %Object's type
+			obj.is\_a?(Cls) \newline instance\_of?(Cls) \newline kind\_of?(Cls)& %instance of
+			obj.class.method\_defined? :method & %member existance 
+			/& %cast
+			/\\%overloading
+			%		\hline
+			
+			%		\hline\hline
+		\end{longtabu}
+	\end{landscape}
+	
+\end{discussion}
 
 %=====================================================================
 \ifx\wholebook\relax\else
