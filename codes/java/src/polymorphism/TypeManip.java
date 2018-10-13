@@ -64,26 +64,18 @@ public class TypeManip {
 }
 
 class Person {
-    public void talk(){
-        System.out.println("I am talking");
-    }
+    public void talk(){ System.out.println("I am talking"); }
 }
 
 class Student extends Person {
-    public void learn(){
-        System.out.println("I am learning");
-    }
+    public void learn(){ System.out.println("I am learning"); }
 }
 
 interface Worker {
-    default public void work(){
-        System.out.println("I am working");
-    }
+    default public void work(){ System.out.println("I am working"); }
 }
 
 class Professor extends Person implements Worker {
     public int nbr = 5;
-    public void teach(){
-        System.out.println("I am teaching");
-    }
+    public void teach(){ System.out.println("I am teaching"); }
 }

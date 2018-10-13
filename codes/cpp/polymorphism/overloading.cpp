@@ -3,7 +3,7 @@
 
 class Person {
 public:
-    void read(){ std::cout << "I am a reading" << std::endl; }
+    void read(){ std::cout << "I am reading" << std::endl; }
     void read(std::string text){ std::cout << "A text: " << text << std::endl; }
 };
 

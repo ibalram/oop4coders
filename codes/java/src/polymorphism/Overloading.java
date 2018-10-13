@@ -17,7 +17,7 @@ public class Overloading {
 }
 
 class Person {
-    public void read(){ System.out.println("I am a reading"); }
+    public void read(){ System.out.println("I am reading"); }
     public void read(String  text){ System.out.println("A text: " + text); }
 }
 

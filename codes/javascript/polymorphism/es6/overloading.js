@@ -4,7 +4,7 @@ class Person {
     read(arg1) {
         switch (typeof arg1) {
             case "undefined":
-                console.log("I am a reading");
+                console.log("I am reading");
                 break;
             case "string":
                 console.log("A text: ", arg1);

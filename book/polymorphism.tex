@@ -16,7 +16,6 @@
 	Some languages afford functionalities to verify if a certain object is instantiated from a class, to get its class or to cast the variable using it to another subclass.
 	Methods can express polymorphism in two ways: overloading (same name with multiple signatures) and overriding (same signature, different implementation). 
 	Not every language affords overloading, but methods overriding is a core task of \ac{oop}.
-	Beside \ac{oop} polymorphism, some languages afford some other forms of polymorphism.
 \end{introduction} 
 
 \section{Subtype polymorphism}
@@ -252,16 +251,16 @@ The dynamic cast checks types at runtime and return \keyword[C++]{NULL} in case 
 
 Lets define some classes
 
-\lstinputlisting[language={[KB]Java}, linerange={66-89}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+\lstinputlisting[language={[KB]Java}, linerange={66-81}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
 
 To find the class of an object, you can use the method \keyword[Java]{getClass} inherited from the universal class \keyword[Java]{Object}. 
 A class \keyword[Java]{Class} affords a method \keyword[Java]{getName} which returns its name as a \keyword[Java]{String}. 
 
-\lstinputlisting[language={[KB]Java}, linerange={5-5,23-26,31-33,63-64}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+\lstinputlisting[language={[KB]Java}, linerange={5-5,23-26,32-32,63-64}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
 
 To verify if an object is an instance of a class, the keyword \keyword[Java]{instanceof} is used.
 
-\lstinputlisting[language={[KB]Java}, linerange={38-45}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+\lstinputlisting[language={[KB]Java}, linerange={41-41}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
 
 It is possible to verify if an object has a field or method in Java using reflection. 
 You have to import \textbf{java.lang.reflect.*} which contains two classes \keyword[Java]{Method} and \keyword[Java]{Field}. 
@@ -289,12 +288,12 @@ Lets create our classes (\ac{es6} style, \ac{es5} code is afforded as well).
 Using \keyword[Javascript]{typeof}, the type you will get is \textbf{object} for our new objects. 
 If you want to know the prototype used to create an object, each object has a property called \keyword[Javascript]{constructor} which refers to the class/prototype used to create the object.
 
-\lstinputlisting[language={[KB]Javascript}, linerange={44-47}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+\lstinputlisting[language={[KB]Javascript}, linerange={45-45}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
 
 To verify if an object is an instance of a class, the keyword \keyword[Javascript]{instanceof} is used.
 You can realize that a prototype can inherit just one prototype, and even using \keyword[Javascript]{Object.assign} the first prototype is considered as the superclass and the others are just mixins.
 
-\lstinputlisting[language={[KB]Javascript}, linerange={52-62}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+\lstinputlisting[language={[KB]Javascript}, linerange={53-53}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
 
 To verify if an object has a method, simply check if the method is of type ``\textbf{function}". 
 To verify if an object has a field (property in Javascript lingua), you can use \keyword[Javascript]{hasOwnProperty} inherited from the universal class \keyword[Javascript]{Object}.
@@ -346,7 +345,7 @@ Lets create our classes: Perl's classes are packages and objects are hashes bles
 
 The function \keyword[Perl]{ref} gives the package's name to which a hash is blessed.
 
-\lstinputlisting[language={[KB]Perl}, linerange={24-27}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+\lstinputlisting[language={[KB]Perl}, linerange={25-25}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
 
 There is a built-in method \keyword[Perl]{isa} inherited from the universal class \keyword[Perl]{UNIVERSAL} which is used to determine the type of a reference. 
 But before using it, we have to verify if the object is blessed.

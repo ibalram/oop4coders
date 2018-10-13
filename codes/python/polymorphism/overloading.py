@@ -4,7 +4,7 @@
 class Person(object):
     def read(self, text=None):
         if text == None:
-            print("I am a reading")
+            print("I am reading")
         elif type(text) is str:
             print("A text: " + text)
 

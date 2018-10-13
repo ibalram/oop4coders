@@ -4,7 +4,7 @@ class Person {
     public function read(){
         switch (func_num_args()) {
             case 0:
-                echo "I am a reading\n";
+                echo "I am reading\n";
                 break;
             case 1:
                 $arg1 = func_get_arg(0);
