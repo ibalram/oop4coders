@@ -552,6 +552,20 @@ Method overriding allows a subclass to provide a specific implementation of an e
 The method must have the same signature (name and arguments) and return type (if the language allows it) as the parent's. 
 Some methods can be abstract or final: abstract methods must be overridden and final methods cannot be overridden (see inheritance chapter).
 
+\subsection{C++}
+
+To override a method, you have to define a subclass with the same method's signature and return type. 
+A method to be overridden can be defined using the keyword \keyword[C++]{virtual} or not. 
+A virtual method is resolved at run-time using a mechanism called \nameword{Late binding}. 
+While a normal method is resolved at compilation-time using a mechanism called \nameword{Early (Static) binding}.
+
+\lstinputlisting[language={[KB]C++}, linerange={4-14}, style=codeStyle]{../codes/cpp/polymorphism/overriding.cpp}
+
+Early binding follows the pointer's type when the method is called; therefore, if the pointer's type is a superclass, the implementation which will be used is that of the superclass are not the object's. 
+In the contrary, a method defined using \keyword[C++]{virtual} (Late binding) will be called based on the object's real type and not that of the pointer. 
+
+\lstinputlisting[language={[KB]C++}, linerange={16-31}, style=codeStyle]{../codes/cpp/polymorphism/overriding.cpp}
+
 \subsection{Java}
 
 In Java, you can override a method using the same signature and return type. 
@@ -605,6 +619,8 @@ In Ruby, you can override a method by just defining it using the same signature.
 The object of the subclass will use the new defined method.
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-18}, style=codeStyle]{../codes/ruby/polymorphism/overriding.rb}
+
+
 
 %=====================================================================
 \ifx\wholebook\relax\else

@@ -3,30 +3,29 @@
 
 class Person {
 public:
-    void read(){ std::cout << "I am a reading" << std::endl; }
-    void say(std::string text){ std::cout << "A text: " << text << std::endl; }
+    virtual void talk(){ std::cout << "I am a person" << std::endl; }
+    void type(){ std::cout << "Person" << std::endl; }
 };
 
 class Student: public Person {
 public:
-    void read(int nbr){ std::cout << "I read on table n°: " << nbr << std::endl; }
-    
+    void talk(){ std::cout << "I am a student" << std::endl; }
+    void type(){ std::cout << "Student" << std::endl; }
 };
 
 int main()
 {
-    Person pe;
-    Student st;
+    Person *pe = new Person();
+    Student *st = new Student();
+    Person *pst = st;
 
-    std::cout << "PERSON" << std::endl;
-    pe.read();
-    pe.read("I am a person");
+    pe->talk(); // I am a person
+    st->talk(); // I am a student
+    pst->talk(); //I am a student
 
-    std::cout << "STUDENT" << std::endl;
-    st.read(); // using Person::read; or error
-    st.Person::read(); // Without using Person::read;
-    st.read("I am a student"); // using Person::read; or error
-    st.read(5);
+    pe->type(); //Person
+    st->type(); //Student
+    pst->type(); //Person
 
     return 0;
 }
