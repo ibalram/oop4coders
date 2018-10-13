@@ -700,11 +700,11 @@ We can define three types of multiple inheritance; a given language can afford a
 \begin{itemize}
 	\item \textbf{Type multiple inheritance}: A class can inherit many types at once.  
 	When an instance of this class is tested against these types, it belongs to all of them. 
-	Languages affording this capacity are: C++ (class inheritance), Java (interfaces), Perl (\keyword{@ISA}), PHP (interfaces) and Python (class inheritance).
+	Languages affording this capacity are: C++ (class inheritance), Java (interfaces), Perl (\keyword[Perl]{@ISA}), PHP (interfaces) and Python (class inheritance).
 	
 	\item \textbf{Behavior multiple inheritance}: A class can inherit behavior from many sources. 
 	In this case, we can consider code reuse via composition mechanisms such as traits and mixins as a form of inheritance. 
-	Languages affording this capacity are: C++ (class inheritance), Java (defaults via interfaces), javascript (merging prototypes), Lua (using \keyword{\_\_index}), Perl (\keyword{@ISA}), PHP (traits), Python (class inheritance) and Ruby (mixins). 
+	Languages affording this capacity are: C++ (class inheritance), Java (defaults via interfaces), javascript (merging prototypes), Lua (using \keyword[Lua]{\_\_index}), Perl (\keyword[Perl]{@ISA}), PHP (traits), Python (class inheritance) and Ruby (mixins). 
 	It is important to point out that Java and Ruby's behavior multiple inheritance is limited. 
 	Java's default methods are limited when it comes to operate on class's state: they can be totally independent from class's fields, or they can be dependent on final fields which have to be initialized in the interface. 
 	Ruby's mixins can have calls to superclass's methods; but when including consecutive mixins, their super will refer to the previous included mixin.

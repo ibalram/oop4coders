@@ -459,7 +459,7 @@ In Javascript, the entire file is a big main, which can contain declarations (va
 The declarations are processed first, then the statements. 
 This is why a function can be called before it is defined without the need to declare its header first. 
 Being executed inside HTML, Javascript does not need arguments; But in case of Node.js, arguments are needed sometimes. 
-The arguments passed by Node.js are stored in an array of strings \keyword[Javascript]{process.argv} which has \keyword{node} as its first elements, the name of the script as the second, and the rest are the command-line arguments.
+The arguments passed by Node.js are stored in an array of strings \keyword[Javascript]{process.argv} which has \textbf{node} as its first elements, the name of the script as the second, and the rest are the command-line arguments.
 
 \lstinputlisting[language={[KB]Javascript}, linerange={1-9}, style=codeStyle]{../codes/javascript/hello/entry.js}
 
@@ -574,7 +574,7 @@ Then, capture it
 
 If you want to specify the type of the exception, here comes the OOP solution. 
 You have to define new types by inheritance from \keyword[C++]{std::exception}. 
-Then, redefine the function \keyword{what()} which affords the error message.
+Then, redefine the function \keyword{what} which affords the error message.
 
 \lstinputlisting[language={[KB]C++}, linerange={6-16}, style=codeStyle]{../codes/cpp/hello/except2.cpp}
 
@@ -592,7 +592,7 @@ We catch them either by they parent's type \textbf{std::exception}, or by catchi
 In Java, you can define exceptions by defining some classes which inherit from the class \keyword[Java]{Exception}. 
 Or you can throw a new instance of the latter. 
 The message in your new exception classes can be passed to the superclass, by the keyword \keyword[Java]{super} in their constructors. 
-Also, you can redefine the function \keyword{getMessage()} as shown in our example.
+Also, you can redefine the function \keyword{getMessage} as shown in our example.
 
 \lstinputlisting[language={[KB]Java}, linerange={42-53}, style=codeStyle]{../codes/java/src/hello/Except.java}
 

@@ -211,7 +211,7 @@ There is no protected members in Lua, but you can use a naming convention to spe
 
 Perl can capture the caller (the location or package where a method was called) using the keyword \keyword[Perl]{caller}. 
 Also, the base class \keyword[Perl]{UNIVERSAL} provides a method \keyword[Perl]{isa} which returns true if the object is blessed to the given type or inherits from it.
-Adding to it the keyword \keyword[Perl]{\_\_PACKAGE\_\_} which captures the current package and exception management \keyword{die}, Bingo! we can limit access. 
+Adding to it the keyword \keyword[Perl]{\_\_PACKAGE\_\_} which captures the current package and exception management \keyword[Perl]{die}, Bingo! we can limit access. 
 We cannot limit visibility: the method is still visible, but we raise an exception if the access does not serve our purpose \citep{2006-rir}.
 
 \begin{lstlisting}[language={[KB]Perl}, style=codeStyle]
