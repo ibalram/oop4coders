@@ -1,0 +1,858 @@
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+\fi
+%=====================================================================
+
+%Introduction
+\chapter{Hello World}
+
+\begin{introduction}
+	 
+	\lettrine{I}{ntroducing} the different \ac{oop} languages used in this book is something which should be done before starting our journey.
+	First of all, installing instructions must be presented to help anyone with zero knowledge about these languages get staring. 
+	Then, some coding features will be presented from a simple ``Hello world" passing through functions and entry point to exception handling. 
+	It is important to point out that this chapter introduces the basic syntax without diving in different \ac{oop} concepts.
+	Unless, of course, in case of ``exceptions" which are based on classes in some languages such as Java.
+\end{introduction}
+
+
+\section{Getting started}
+
+To be able to execute the examples afforded in this book, it is strongly recommended to install the languages compilers or interpreters.
+Here some instructions on how to get them (``\textbf{Gotta Catch 'Em All}").
+
+\subsection{C++}
+
+\langlogo{../img/C++.pdf}{-20pt}{-30pt}
+
+C++ is a general-purpose compiled programming language which affords object-oriented paradigm among others. 
+It was developed by \nameword{Bjarne Stroustrup} at Bell Labs since 1979 \citep{1993-stroustrup}.
+To use C++ you have to install its compiler. 
+The most used one is GNU g++\footnote{GNU g++: \url{gcc.gnu.org/}} which is distributed freely and available for most systems.
+
+\subsubsection{Linux}
+Simply install g++ on your system; on Ubuntu you, simply, type:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install g++
+\end{lstlisting}
+
+\subsubsection{Windows}
+
+If you want to use g++ on Windows, you can install:
+\begin{itemize}
+	\item MinGW: \url{http://www.mingw.org} 
+	\item CygWin: \url{http://www.cygwin.com} if you want to use Linux on Windows
+\end{itemize}
+
+You can use Microsoft Visual studio: \url{https://www.visualstudio.com/vs/visual-studio-express/}
+Also, you can install Turbo C++ on \url{https://turboc.codeplex.com}
+
+\subsection{Java}
+
+\langlogo{../img/Java.pdf}{-20pt}{-30pt}
+
+Java is a general-purpose compiled programming language which is concurrent, class-based, object-oriented. 
+It is intended to generate platform-independent programs. 
+That is, the same compiled program called bytecodes will be able to execute in different machines and operating systems using a virtual machine. 
+Developed by \nameword{James Gosling} at Sun Microsystems (acquired by Oracle Corporation) in 1991 under the name of ``Oak", in 1995 its name was changed to Java, then its initial release was in 1996 \citep{2014-panigraphy}.
+
+This is a detailed description on how to install Java \url{https://www.java.com/en/download/help/download_options.xml}.
+Simply, to install Oracle JDK, download it from this link: \url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}. 
+
+As for OpenJDK, you can install it on Linux distributions following these instructions: \url{http://openjdk.java.net/install/}. 
+On some distributions such as \textbf{Linux Mint}, it is installed by default.
+It can be found on repositories, for example in Ubuntu you type:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install openjdk-8-jdk
+\end{lstlisting}
+
+It is recommended to use an IDE:
+\begin{itemize}
+	\item Eclipse: which is used in our case. \url{http://www.eclipse.org}
+	\item IntelliJ IDEA: \url{https://www.jetbrains.com/idea/}
+	\item NetBeans: \url{https://netbeans.org}
+\end{itemize}
+
+In the examples afforded with this book, you have to compile and execute from \textbf{src} folder, if you use a command line. 
+This is because the examples use packages to organize different codes of every chapter. 
+So, if you want to compile \textbf{ObjMeth.java} in \textbf{codes/java/src/clsobj/}, you will have  to do it as:
+\begin{lstlisting}[style=shellStyle]
+cd codes/java/src/
+javac clsobj/ObjMath.java 
+\end{lstlisting}
+
+\subsection{Javascript}
+
+\langlogo{../img/Javascript.pdf}{-20pt}{0pt}
+
+JavaScript is an interpreted programming language for the web, which supports object-oriented paradigm. 
+It is meant to be used as client-side programming language executed on different browser, but it can also execute on server side using NodeJs for example.
+It was developed by Netscape Communications Corporation, and designed by \nameword{Brendan Eich} in 1995, the it was standardized by \ac{ecma} \citep{2018-rubens}. 
+
+
+Javascript can be used directly on any browser. 
+Suppose we have a file called ``\textbf{func.js}" containing a function ``\textbf{fact(n)}" which calculates the factorial of a number. 
+To use it, all you have to do is linking the file and calling the function in an HTML file:
+\begin{lstlisting}[language={[KB]Javascript}, style=codeStyle]
+<html>
+  <head>
+    <title>Functions</title>
+      <script type="text/javascript" src="func.js">
+      </script>
+      <script type="text/javascript">
+          function exec(){
+              var n = document.getElementById("n").value;
+              var res = "Fact(" + n + ")= ";
+              res += fact(n);
+              document.getElementById("result").innerHTML = res;
+          }
+      </script>
+  </head>
+    <body>
+        Please enter an integer value: 
+        <input type="number" id="n" />
+        <button id="func" onclick="exec()">Factorial</button>
+        <div id="result"></div>
+    </body>
+</html>
+\end{lstlisting}
+
+
+Or you can use \nameword{NodeJs} to execute it directly on the shell which is the case in our late examples. 
+You can download it here: \url{https://nodejs.org/en/download/}. 
+In case of some Linux distributions, you can install it from their repositories:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install nodejs
+\end{lstlisting}
+
+\subsection{Lua}
+
+\langlogo{../img/Lua.pdf}{-20pt}{-20pt}
+
+Lua is an interpreted programming language, which supports object-oriented paradigm.
+It was designed primarily for embedded systems.
+Designed by \nameword{Roberto Ierusalimschy}, \nameword{Luiz Henrique de Figueiredo} and \nameword{Waldemar Celes} in 1993.
+It is mostly used as a scripting language for games development \citep{2018-lua}.
+
+Download it from here: \url{http://lua-users.org/wiki/LuaBinaries}. 
+In Ubuntu, you can install it by using its version number as:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install lua5.2
+\end{lstlisting}
+
+
+\subsection{Perl}
+
+%\langlogo{../img/Perl.pdf}{-20pt}{0pt}
+
+Lua is a general-purpose interpreted programming language, which supports oriented-object paradigm. 
+It was developed by \nameword{Larry Wall} in 1987 to simplify report processing on Unix \citep{2001-ashton}.
+It is used as a \ac{cgi} scripting language for web servers.
+
+To install Perl, please refer to this page: \url{https://www.perl.org/get.html}. 
+It is high probable that you have Perl installed on your Linux. 
+As for Windows users, there are two projects: 
+\begin{itemize}
+	\item Strawberry Perl: \url{http://strawberryperl.com}
+	\item ActiveState Perl: \url{http://www.activestate.com/activeperl/downloads}
+\end{itemize}
+
+\subsection{PHP}
+
+\langlogo{../img/PHP.pdf}{-20pt}{-10pt}
+
+PHP ``PHP: Hypertext Preprocessor" is a general-purpose server-side scripting language which supports oriented-object programming since version 3.0  and improved in version 5.0.
+It was originally created by \nameword{Rasmus Lerdorf} in 1994 as a simple \ac{cgi} \citep{2018-cowburn}. 
+
+For a detailed description on how to install the server, please refer to this page: \url{http://php.net/manual/en/install.php}.
+On Ubuntu, we just need the language:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install php
+\end{lstlisting}
+It will install a \ac{cli} called ``php"; used to execute a php file directly from the shell.
+
+\subsection{Python}
+
+\langlogo{../img/Python.pdf}{-20pt}{-20pt}
+
+Python is an interpreted general-purpose programming language, support multiple paradigms including OOP. 
+It was created by \nameword{Guido van Rossum} and released in the early 1990s \cite{2018-python2.7}.
+It supports code readability as a design philosophy by using indentations as a mean of defining code blocks.
+
+Refer to this page: \url{https://www.python.org/downloads/}. 
+For Ubuntu, you can type:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install python
+\end{lstlisting}
+Or, you can refer to this page for further information: \url{http://docs.python-guide.org/en/latest/starting/install3/linux/}.
+You have to verify if it is already installed (Linux Mint has it by default).
+
+\subsection{Ruby}
+
+\langlogo{../img/Ruby.pdf}{-20pt}{-20pt}
+
+Ruby is an interpreted, object-oriented, general-purpose programming language. 
+It was designed and developed by \nameword{Yukihiro Matsumoto} and released to the public in 1995 \citep{2001-thomas-hunt}.
+
+To install it, please refer to this page: \url{http://www.ruby-lang.org/en/documentation/installation/}. 
+On Windows, you can use RubyInstaller: \url{https://rubyinstaller.org}.
+On Linux systems, you can find it on their repositories, such as Ubuntu:
+\begin{lstlisting}[style=shellStyle]
+$ sudo apt-get update
+$ sudo apt-get install ruby
+\end{lstlisting}
+You have to verify if it is already installed (Linux Mint has it by default).
+
+\section{Hello world}
+
+Let's start with a Hello World introductory set of codes. 
+
+
+\subsection{C++}
+
+A C++ program always has a main function, which represents the interface with the operating system. 
+When you call a program (from shell for example), you actually calling this function. 
+The main function is defined directly in the file and not inside a class or a structure.
+%
+\lstinputlisting[language={[KB]C++}, style=codeStyle]{../codes/cpp/hello/helloworld.cpp}
+%
+
+Suppose we use g++ for C++. 
+To compile this code, you can specify the output file's name or not
+\begin{lstlisting}[style=shellStyle]
+$ g++ helloworld.cpp 
+$ g++ helloworld.cpp -o exec 
+\end{lstlisting}
+This will create a file \textbf{a.out}, which we can execute as follows
+\begin{lstlisting}[style=shellStyle]
+$ ./a.out
+$ ./exec 
+\end{lstlisting}
+
+\subsection{Java}
+
+In Java, a .java file can contain many classes, but only one with a public keyword. 
+The public class must have the same name as the file. 
+The main function is defined inside the main class.
+
+\lstinputlisting[language={[KB]Java}, style=codeStyle]{../codes/java/src/hello/HelloWorld.java}
+
+To compile this code using command-line
+\begin{lstlisting}[style=shellStyle]
+$ javac HelloWorld.java
+\end{lstlisting}
+This will create a file \textbf{HelloWorld.class}, which we can be executed as follows
+\begin{lstlisting}[style=shellStyle]
+$ java HelloWorld
+\end{lstlisting}
+
+\subsection{Javascript}
+
+Javascript is a scripting language; the instructions are written directly without a main class or a main function.
+The program can be used side-by-side HTML, and therefore executed in a browser.
+
+\lstinputlisting[language={[KB]Javascript}, style=codeStyle, firstline=6, lastline=9]{../codes/javascript/hello/helloworld.htm}
+
+It can, also, be executed using nodeJs. 
+
+\lstinputlisting[language={[KB]Javascript}, style=codeStyle]{../codes/javascript/hello/helloworld.js}
+
+To execute it in command-line, you can use either one of these two commands
+\begin{lstlisting}[style=shellStyle]
+$ node helloworld.js
+$ nodejs helloworld.js
+\end{lstlisting}
+
+\subsection{Lua}
+
+Lua is a scripting language; the instructions are written directly without a main class or a main function.
+
+\lstinputlisting[language={[KB]Lua}, style=codeStyle]{../codes/lua/hello/helloworld.lua}
+
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ lua helloworld.lua
+\end{lstlisting}
+
+\subsection{Perl}
+
+Perl is a scripting language; the instructions are written directly without a main class or a main function.
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/hello/helloworld.pl}
+
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ perl helloworld.pl
+\end{lstlisting}
+
+\subsection{PHP}
+
+PHP is a scripting language; the instructions are written directly without a main class or a main function.
+A code in PHP is delimited by \keyword{<?php} and \keyword{?>}
+
+\lstinputlisting[language={[KB]PHP}, style=codeStyle]{../codes/php/hello/helloworld.php}
+
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ php helloworld.php
+\end{lstlisting}
+
+\subsection{Python}
+
+Python is a scripting language; the instructions are written directly without a main class or a main function.
+
+\lstinputlisting[language={[KB]Python}, style=codeStyle]{../codes/python/hello/helloworld.py}
+
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ python helloworld.py
+\end{lstlisting}
+
+\subsection{Ruby}
+
+Ruby is a scripting language; the instructions are written directly without a main class or a main function.
+
+\lstinputlisting[language={[KB]Ruby}, style=codeStyle]{../codes/ruby/hello/helloworld.rb}
+
+To execute it in command-line:
+\begin{lstlisting}[style=shellStyle]
+$ ruby helloworld.rb
+\end{lstlisting}
+
+\section{Functions}
+
+Let's take the factorial function as an example. 
+We implement the recursive version.  
+The program, first, ask the user to introduce an integer number via the keyboard. 
+Then it will call our function and print the result. 
+We will print the code just for the function and not the entire program.
+Please check the code to see how to read the keyboard.
+
+\subsection{C++}
+
+A function, mainly, contains a return type, its name and parameters. 
+The language uses \keyword{\{\}} to define instructions blocks.
+To return a value, the language uses the keyword \keyword[C++]{return}.
+Statements end with a semicolon (\keyword{;}).
+
+\lstinputlisting[language={[KB]C++}, linerange={12-15}, style=codeStyle]{../codes/cpp/hello/func.cpp}
+
+\subsection{Java}
+
+A function contains a modifier, a return type, its name and parameters.
+It is always included in a class.
+The language uses \keyword{\{\}} to define instructions blocks.
+To return a value, the language uses the keyword \keyword[Java]{return}.
+Statements end with a semicolon (\keyword{;}).
+
+\lstinputlisting[language={[KB]Java}, linerange={5-5,15-21}, style=codeStyle]{../codes/java/src/hello/Func.java}
+
+\subsection{Javascript}
+
+A function starts with the keyword \keyword[Javascript]{function}, its name and parameters.
+The language uses \keyword{\{\}} to define instructions blocks.
+To return a value, the language uses the keyword \keyword[Javascript]{return}.
+Statements end with a semicolon (\keyword{;}).
+
+\lstinputlisting[language={[KB]Javascript}, style=codeStyle]{../codes/javascript/hello/func.js}
+
+\subsection{Lua}
+
+A function starts with the keyword \keyword[Lua]{function}, its name and parameters.
+All blocks are ended with the keyword \keyword[Lua]{end}.
+To return a value, the language uses the keyword \keyword[Lua]{return}.
+Each line contains at most one statement, but it can contains many separated by a semicolon.
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-6}, style=codeStyle]{../codes/lua/hello/func.lua}
+
+\subsection{Perl}
+
+A function starts with the keyword \keyword[Perl]{sub} and its name.
+The parameters can be recovered by shifting them from an array \keyword[Perl]{@\_}.
+The language uses \keyword{\{\}} to define instructions blocks.
+To return a value, the language uses the keyword \keyword[Perl]{return}.
+Statements end with a semicolon (\keyword{;}).
+
+\lstinputlisting[language={[KB]Perl}, linerange={7-13}, style=codeStyle]{../codes/perl/hello/func.pl}
+
+\subsection{PHP}
+
+A function starts with the keyword \keyword[PHP]{function},its name and parameters.
+The language uses \keyword{\{\}} to define statements blocks.
+To return a value, the language uses the keyword \keyword[PHP]{return}.
+Statements end with a semicolon (\keyword{;}).
+
+\lstinputlisting[language={[KB]PHP}, linerange={2-6}, style=codeStyle]{../codes/php/hello/func.php}
+
+\subsection{Python}
+
+A function starts with the keyword \keyword[Python]{def},its name and parameters.
+The language uses indentation to define statements blocks.
+To return a value, the language uses the keyword \keyword[Python]{return}.
+Each line contains at most one statement, but simple statements can be separated by a semicolon.
+
+\lstinputlisting[language={[KB]Python}, linerange={12-15}, style=codeStyle]{../codes/python/hello/func.py}
+
+\subsection{Ruby}
+
+A function starts with the keyword \keyword[Ruby]{def},its name and parameters.
+All blocks are ended with the keyword \keyword[Ruby]{end}.
+To return a value, you can either use the keyword \keyword[Ruby]{return} or put the value directly in a line.
+Each line contains at most one statement, but simple statements can be separated by a semicolon.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={9-15}, style=codeStyle]{../codes/ruby/hello/func.rb}
+
+
+\section{Entry point}
+
+When a program is called from command-line, it searches for a function as entry-point. 
+This is not the case for all languages; for instance, scripting languages execute without needing one. 
+Nevertheless, they need a mechanism to recover the command-line parameters. 
+Also, some languages, such as Python, afford a main function for entry-point lovers.
+
+\subsection{C++}
+
+In C++, main function is obligatory,  it can have parameters or not. 
+The return type is an integer which indicates how the program exited. 
+The normal state is 0; Otherwise, it indicates that there was an error during the process.
+Contrary to C, in C++ you do not need to return explicitly.
+In this case, the return value is an implicit 0.
+\begin{lstlisting}[language={[KB]C++}, style=codeStyle]
+int main()
+int main(int argc, char * argv[])
+\end{lstlisting}
+
+When we want to recover command-line parameters, we have to use the main with arguments. 
+\begin{itemize}
+	\item argv (argument vector): is a table of pointers on chars (a table of strings).
+	The first entry is the name of the program, and the others are parameters. 
+	\item argc (argument count): is the size of that table
+\end{itemize}
+
+\lstinputlisting[language={[KB]C++}, linerange={1-17}, style=codeStyle]{../codes/cpp/hello/entry.cpp}
+
+The header of our function \textbf{fact} is put ahead of the main, so we can use it. 
+The compiler needs function declarations before the point of use (forward declaration). 
+In our case, the implementation is after the main function.
+
+\subsection{Java}
+
+The main function is mandatory if we want an executable out of our class. 
+It returns nothing (void) and have a list of string arguments. 
+The main function must be always defined in the \keyword[Java]{public} class (which have the same name as the file). 
+Also, it has to be \keyword[Java]{static}, so it can be executed without the need to create an instance of its containing class.
+
+\lstinputlisting[language={[KB]Java}, style=codeStyle]{../codes/java/src/hello/Entry.java}
+
+\subsection{Javascript}
+
+In Javascript, the entire file is a big main, which can contain declarations (variables and functions) and statements.
+The declarations are processed first, then the statements. 
+This is why a function can be called before it is defined without the need to declare its header first. 
+Being executed inside HTML, Javascript does not need arguments; But in case of Node.js, arguments are needed sometimes. 
+The arguments passed by Node.js are stored in an array of strings \keyword[Javascript]{process.argv} which has \textbf{node} as its first elements, the name of the script as the second, and the rest are the command-line arguments.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={1-9}, style=codeStyle]{../codes/javascript/hello/entry.js}
+
+\subsection{Lua}
+
+Lua does not have a main function, since all the code can be considered as one. 
+Also, functions must be defined before being called, because functions in lua are just values stored in a variable.
+To recover command-line arguments, \keyword[Lua]{arg} array is used. 
+
+\lstinputlisting[language={[KB]Lua}, style=codeStyle]{../codes/lua/hello/entry.lua}
+
+\subsection{Perl}
+
+The whole file is a main in Perl, and functions can be called before being defined.
+The command-line arguments are stored in a vector \keyword[Perl]{\$ARGV}. 
+In this code, we showed two methods to print the results.
+The first one is the more interesting: it interpolates the function's call and the variable inside a string. 
+The second one is a simple concatenation-based one. 
+
+\lstinputlisting[language={[KB]Perl}, linerange={3-7}, style=codeStyle]{../codes/perl/hello/entry.pl}
+
+\subsection{PHP}
+
+PHP does not have a main function; the first line of code encountered in the file will be executed an on.
+A function can be called before it was defined. 
+To get command-line arguments, \keyword[PHP]{\$argv} vector is used; Where the first element is the name of the script.
+
+\lstinputlisting[language={[KB]PHP}, linerange={4-10}, style=codeStyle]{../codes/php/hello/entry.php}
+
+\subsection{Python}
+
+Python does not need a main function; The statements are executed one by one. 
+But to prevent instructions from executing when the file is exported as a library, there is a main mechanism. 
+A test if a built-in variable \keyword[Python]{\_\_name\_\_} contains the string \keyword[Python]{\_\_main\_\_} which means the module is being run directly from command-line.
+Otherwise, this variable will contain the current module's name.
+
+A function $ f1 $ can not be called before it was defined unless it is called inside another function $ f2 $. 
+Even so, the second function $ f2 $ must be called after the definition of $ f1 $ and not before. 
+In our example, if we define the factorial function after the \textbf{main} mechanism, we will get an error. 
+
+To get the command-line arguments, we must import \keyword[Python]{sys} module and recover the vector \keyword[Python]{sys.argv}. 
+The first element contains the name of the script and the rest contains the arguments.
+
+\lstinputlisting[language={[KB]Python}, style=codeStyle]{../codes/python/hello/entry.py}
+
+If you want to put the function in the end so badly, there is a solution. 
+Just import the function from the same file under the main mechanism. 
+In the following example, our file is called \textbf{entry.py}.
+
+\begin{lstlisting}[language={[KB]Python}, style=codeStyle]
+if __name__ == "__main__":
+	from entry import fact
+	...
+def fact(i):
+	...
+	
+\end{lstlisting}
+
+\subsection{Ruby}
+
+In Ruby, there is no main function, but there is a mechanism to prevent execution when the file is called as a module. 
+There is a variable called \keyword[Ruby]{\_\_FILE\_\_} which contains the file name which is stored in \keyword[Ruby]{\$0} and \keyword[Ruby]{\$PROGRAM\_NAME}. 
+The command-line arguments are stored in a variable \keyword[Ruby]{ARGV}.
+Functions must be defined before being used, otherwise you will get an error.
+
+\lstinputlisting[language={[KB]Ruby}, style=codeStyle]{../codes/ruby/hello/entry.rb}
+
+For those who want it so badly to define a function after it is being called.
+If you import the file using \keyword[Ruby]{require} keyword inside the main block, you will get a warning about the method being redefined. 
+Another solution is to use the blocks: \keyword[Ruby]{BEGIN} or \keyword[Ruby]{END}. 
+The former tells the interpreter to begin with this code, and the latter tells it to finish with it.
+
+\begin{lstlisting}[language={[KB]Ruby}, style=codeStyle]
+END {
+	if __FILE__ == $0
+		...
+	end
+}
+
+def fact(i)
+	...
+end
+\end{lstlisting}
+
+\begin{lstlisting}[language={[KB]Ruby}, style=codeStyle]
+if __FILE__ == $0
+...
+end
+
+BEGIN {
+	def fact(i)
+		...
+	end
+}
+\end{lstlisting}
+
+
+\section{Exceptions}
+
+\subsection{C++}
+
+In C++, exceptions can be of any type. 
+They are thrown using the keyword \keyword[C++]{throw}, and handled using \keyword[C++]{try} and \keyword[C++]{catch}.
+You can throw a string as an exception.
+
+\lstinputlisting[language={[KB]C++}, linerange={4-6}, style=codeStyle]{../codes/cpp/hello/except.cpp}
+
+Then, capture it
+
+\lstinputlisting[language={[KB]C++}, linerange={23-29}, style=codeStyle]{../codes/cpp/hello/except.cpp}
+
+
+If you want to specify the type of the exception, here comes the OOP solution. 
+You have to define new types by inheritance from \keyword[C++]{std::exception}. 
+Then, redefine the function \keyword{what} which affords the error message.
+
+\lstinputlisting[language={[KB]C++}, linerange={6-16}, style=codeStyle]{../codes/cpp/hello/except2.cpp}
+
+The exceptions can be thrown by creating a new instance of the defined classes. 
+
+\lstinputlisting[language={[KB]C++}, linerange={19-20}, style=codeStyle]{../codes/cpp/hello/except2.cpp}
+
+We catch them either by they parent's type \textbf{std::exception}, or by catching each type apart. 
+
+\lstinputlisting[language={[KB]C++}, linerange={35-41}, style=codeStyle]{../codes/cpp/hello/except2.cpp}
+
+
+\subsection{Java}
+
+In Java, you can define exceptions by defining some classes which inherit from the class \keyword[Java]{Exception}. 
+Or you can throw a new instance of the latter. 
+The message in your new exception classes can be passed to the superclass, by the keyword \keyword[Java]{super} in their constructors. 
+Also, you can redefine the function \keyword{getMessage} as shown in our example.
+
+\lstinputlisting[language={[KB]Java}, linerange={42-53}, style=codeStyle]{../codes/java/src/hello/Except.java}
+
+The function which throw new instances of our exceptions, using the keyword \keyword[Java]{throw}, must declare that it have the potential to throw them in its header via the keyword \keyword[Java]{throws}. 
+
+\lstinputlisting[language={[KB]Java}, linerange={33-35}, style=codeStyle]{../codes/java/src/hello/Except.java}
+
+To capture these exceptions, you must use \keyword[Java]{try} and \keyword[Java]{catch}, or you can send them to an upper caller using \textbf{throws}. 
+There is a keyword \keyword[Java]{finally} which is used to execute code in either cases: exception or not. 
+Its benefit is to clean up before exiting; for instance: closing a file.
+
+\lstinputlisting[language={[KB]Java}, linerange={20-29}, style=codeStyle]{../codes/java/src/hello/Except.java}
+
+There are some other types of exceptions called \nameword{unchecked exceptions} which they don't force the programmer to capture them. 
+You can define your own unchecked exceptions by inheriting from \keyword[Java]{RuntimeException}. 
+In this case, you will not need to declare that your function is capable of throwing them. 
+There are some built-in unchecked exceptions relative to arrays and number conversion as shown in this example.
+
+\lstinputlisting[language={[KB]Java}, linerange={7-18}, style=codeStyle]{../codes/java/src/hello/Except.java}
+
+\subsection{Javascript}
+
+Using \keyword[Javascript]{throw} statement, you can throw an exception of any type: integer, string, object, etc. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={21-23}, style=codeStyle]{../codes/javascript/hello/except.js}
+
+The function's execution will stop and the control will be passed to the first catch block where it is being called.
+If the error is not captured, the program will terminate.
+To capture an exception, you need to call the function inside \keyword[Javascript]{try} and \keyword[Javascript]{catch}. 
+You can add \keyword[Javascript]{finally} which will execute in both cases: failure or success.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={10-19}, style=codeStyle]{../codes/javascript/hello/except.js}
+
+You can throw an error  using the class \keyword[Javascript]{error}
+
+\begin{lstlisting}[language={[KB]Javascript}, style=codeStyle]
+new Error([message[, fileName[, lineNumber]]])
+\end{lstlisting}
+
+\subsection{Lua}
+
+As mentioned in Lua manual: you do not need error handling for most applications. 
+But in case you want to throw an error, you can use the function \keyword[Lua]{error}
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-3}, style=codeStyle]{../codes/lua/hello/except.lua}
+
+Then, if you want to handle this error, you can use the function \keyword[Lua]{pcall} to encapsulate your previous code. 
+It will return a success indicator and the returned value from your function.
+The value, here, is either the result from te function or the raised error. 
+
+\lstinputlisting[language={[KB]Lua}, linerange={14-20}, style=codeStyle]{../codes/lua/hello/except.lua}
+
+\subsection{Perl}
+
+Perl does not have a good built-in mechanism for exceptions. 
+This is why there are some perl modules designed specially for exception handling.
+If you want to throw errors, you can use the keyword \keyword[Perl]{die}. 
+
+\lstinputlisting[language={[KB]Perl}, linerange={14-17}, style=codeStyle]{../codes/perl/hello/except.pl}
+
+Using \keyword[Perl]{eval}, you can capture the error into \keyword[Perl]{\$@}.
+
+\lstinputlisting[language={[KB]Perl}, linerange={6-12}, style=codeStyle]{../codes/perl/hello/except.pl}
+
+\subsection{PHP}
+
+In PHP, Exception handling is available in version 5 and greater.
+To raise an exception, either you create an instance of the class \keyword[PHP]{Exception} with a message as parameter, 
+or you create custom exceptions by inheriting from that class.
+
+\lstinputlisting[language={[KB]PHP}, linerange={4-14}, style=codeStyle]{../codes/php/hello/except.php}
+
+To raise the exception, all you have to do is calling the keyword \keyword[PHP]{throw} followed by an instance of the custom exception.
+
+\lstinputlisting[language={[KB]PHP}, linerange={16-18}, style=codeStyle]{../codes/php/hello/except.php}
+
+Then, to capture the exception, you can use \keyword[PHP]{try} and \keyword[PHP]{catch}.
+
+\lstinputlisting[language={[KB]PHP}, linerange={30-39}, style=codeStyle]{../codes/php/hello/except.php}
+
+From PHP5.5, a block of \keyword[PHP]{finally} can be specified to execute code after normal execution or exception handling.
+
+\subsection{Python}
+
+The exceptions inherit from the class \keyword[Python]{Exception}.
+
+\lstinputlisting[language={[KB]Python}, linerange={6-12}, style=codeStyle]{../codes/python/hello/except.py}
+
+To throw an exception, use the keyword \keyword[Python]{raise}
+
+\lstinputlisting[language={[KB]Python}, linerange={14-18}, style=codeStyle]{../codes/python/hello/except.py}
+
+To capture these exceptions, use \keyword[Python]{try} and \keyword[Python]{except}. 
+You have to capture the most specific exception first, then the generic ones. 
+After \keyword[Python]{except} blocks, you can use a clean-up block: \keyword[Python]{finally}.
+
+\lstinputlisting[language={[KB]Python}, linerange={28-32}, style=codeStyle]{../codes/python/hello/except.py}
+
+There are some built-in exceptions you can use, such as this example.
+
+\lstinputlisting[language={[KB]Python}, linerange={34-38}, style=codeStyle]{../codes/python/hello/except.py}
+
+\subsection{Ruby}
+
+In Ruby, you can throw an exception affording just a message which will create a new instance of \keyword[Ruby]{RuntimeError}. 
+To throw an exception, you need to use the keyword \keyword[Ruby]{raise}
+
+\lstinputlisting[language={[KB]Ruby}, linerange={1-6}, style=codeStyle]{../codes/ruby/hello/except.rb}
+
+To handle the exception, you can use the keywords: 
+\begin{itemize}
+	\item begin: to begin the block
+	\item rescue: to process the exception (you may have many of this)
+	\item else: executes if there was no exception
+	\item ensure: executes always in the end
+	\item end: to close the block
+\end{itemize}
+
+\lstinputlisting[language={[KB]Ruby}, linerange={21-30}, style=codeStyle]{../codes/ruby/hello/except.rb}
+
+You can specify custom classes to handle exceptions which can inherit from \keyword[Ruby]{StandardError}. 
+It is a good practice to regroup these errors all together.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={1-12}, style=codeStyle]{../codes/ruby/hello/except2.rb}
+
+To throw them, all you have to do is creating an instance after calling \keyword[Ruby]{raise}.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={16-19}, style=codeStyle]{../codes/ruby/hello/except2.rb}
+
+You can capture them by their parent exception class \keyword[Ruby]{Exception}, or each by its class.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={37-40}, style=codeStyle]{../codes/ruby/hello/except2.rb}
+
+\begin{discussion}
+
+Before introducing oriented-object concepts of each language, how about a little comparison between our programming languages.
+Table~\ref{tab-hello} represents a general comparison between \ac{oo} languages based on these criteria:
+\begin{itemize}
+	\item \textbf{Type safety}: is the extent to which a programming language prevents type errors. 
+	\item \textbf{Type expression}: represents the type declaration. If it is explicit, the programmer have to specify the type of a variable or a method. If it is implicit, the type is inferred based on how the variables are being used.
+	\item \textbf{Type checking}: When the code is verified for type constrains, this can be happen in compile-time (static check) or run-time (dynamic check).
+	\item \textbf{Implementation}: An implementation can be compiled or interpreted. A language cannot be considered compiled or interpreted, but its implementation can. Since a language can have many implementations, here we present the most used and known implementation for it.
+%	\item \textbf{Memory management}: Garbage collected, manual or deterministic.
+	
+\end{itemize}
+
+
+\begin{landscape}
+\extrarowsep = 0pt 
+
+%	\doublerawsep = 1.5pt
+\begin{longtabu} to \linewidth %
+	{
+		X[p]|[5pt white]
+		X[2,p]|[5pt white]
+		X[2,p]|[5pt white]
+		X[2,p]|[5pt white]
+		X[2,p]|[5pt white]
+	} %{llllllll} 
+	%	\begin{longtabu} {p{1cm}p{1cm}p{5cm}p{1cm}p{1cm}p{2cm}p{2cm}p{1cm}}
+	\caption{General comparison}%
+	\label{tab-hello}\\
+	
+	%		\hline\hline
+	\rowcolor{indigo}
+	\rowfont{\bfseries\color{white}}
+	{Language} &
+	{Type safety} &
+	{Type expression} &
+	{Type checking} &
+	{Implementation} \\
+	%		\hline\hline
+	&&&&\\
+	\endfirsthead
+	
+	%		\hline\hline
+	\rowcolor{indigo}
+	\rowfont{\bfseries\color{white}}
+	{Language} &
+	{Type safety} &
+	{Type expression} &
+	{Type checking} &
+	{Implementation} \\
+	%		\hline\hline
+	&&&&\\
+	\endhead
+	
+	\taburowcolors{indigo!20!white .. black!10!white}
+	
+	{\bfseries\color{indigo}C++} & %Language
+	Weak & 
+	Explicit & 
+	Static &
+	Compiled \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Java} & %Language
+	Strong & 
+	Explicit & 
+	Static &
+	Compiled (bytecode) \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Javascript} & %Language
+	Weak & 
+	Implicit & 
+	Dynamic & 
+	Interpreted\\
+	%		\hline
+	
+	{\bfseries\color{indigo}Lua} & %Language
+	Strong & 
+	Implicit & 
+	Dynamic & 
+	Compiled (bytecode)\\
+	%		\hline
+	
+	{\bfseries\color{indigo}Perl} & %Language
+	& 
+	Implicit & 
+	Dynamic &
+	Interpreted\\
+	%https://stackoverflow.com/questions/5376559/is-perl-a-compiled-or-an-interpreted-programming-language
+	%		\hline
+	
+	{\bfseries\color{indigo}PHP} & %Language
+	& 
+	implicit/optional explicit & 
+	Dynamic &
+	Interpreted \\
+	
+	%		\hline
+	
+	{\bfseries\color{indigo}Python} & %Language
+	Strong & 
+	implicit/(v3.5+ optional explicit) & 
+	Dynamic & 
+	Interpreted \\
+	%		\hline
+	
+	{\bfseries\color{indigo}Ruby} & %Language
+	Strong & 
+	implicit & 
+	Dynamic & 
+	Interpreted \\
+	%		\hline
+	
+	%		\hline\hline
+	
+\end{longtabu}
+\end{landscape}
+	
+\end{discussion}
+
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

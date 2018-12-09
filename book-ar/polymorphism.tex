@@ -1,0 +1,782 @@
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+\fi
+%=====================================================================
+
+\chapter{Polymorphism}
+
+\begin{introduction}
+	\lettrine{P}{olymorphism} is another key concept of \ac{oop}. 
+	In general, the term refers to the ability to assign a different meaning or usage to something in many contexts.
+	Hence, it is not a concept specific to \ac{oop} since you can find other forms such as parametric polymorphism (generic programming). 
+	In languages with type inheritance, an object of a class can be considered as an object of its superclass; and therefore, the same applications can be executed on it.
+	Some languages afford functionalities to verify if a certain object is instantiated from a class, to get its class or to cast the variable using it to another subclass.
+	Methods can express polymorphism in two ways: overloading (same name with multiple signatures) and overriding (same signature, different implementation). 
+	Not every language affords overloading, but methods overriding is a core task of \ac{oop}.
+\end{introduction} 
+
+\section{Subtype polymorphism}
+
+According to the \nameword{Liskov substitution principle} \citep{1987-liskov}, a function written to take an object of a certain type \textbf{T} must work correctly if passed an object of a type \textbf{S} which is a subtype of \textbf{T}.
+C++ and Java are examples of \ac{oop} languages with static type checking affording this principle. 
+Some languages do not need an object to be created from a class/prototype extending another to execute certain treatments on it. 
+They use a mechanism called \nameword{Duck typing} which states that ``\textit{If it walks like a duck and talks like a duck, it must be a duck}". 
+
+A simple example will be sufficient to show how every language handles such polymorphism. 
+Having a class \textbf{Person} with a method \textbf{talk} and two subclasses \textbf{Student} and \textbf{Professor}:
+\begin{itemize}
+	\item A function \textbf{announce} designed to call \textbf{talk} of \textbf{Person} is passed objects of \textbf{Student} and \textbf{Professor} as argument.
+	\item An array intended to contain objects of \textbf{Person} is filled with objects of its subtypes.
+	\item If the language supports Duck typing: some unrelated classes and objects having the method \textbf{talk} can be used with the two previous propositions.
+\end{itemize}
+
+\subsection{C++}
+
+Lets create our classes
+
+\lstinputlisting[language={[KB]C++}, linerange={4-13}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+
+Passing objects of these three classes to a function designed for objects of type \textbf{Person} will work just fine. 
+
+\lstinputlisting[language={[KB]C++}, linerange={15-26, 31-33}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+
+Objects of type \textbf{Person} or any other subclass can be assigned to a variable of type \textbf{Person}.
+
+\lstinputlisting[language={[KB]C++}, linerange={20-23, 28-33}, style=codeStyle]{../codes/cpp/polymorphism/subtype.cpp}
+
+\subsection{Java}
+
+Lets create our classes
+
+\lstinputlisting[language={[KB]Java}, linerange={35-40,45-47}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
+
+Passing objects of these three classes to a function designed for objects of type \textbf{Person} will work just fine. 
+
+\lstinputlisting[language={[KB]Java}, linerange={3-7, 13-20, 32-33}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
+
+If we use an interface (\textbf{Machine}) and a function \textbf{announce2} similar to \textbf{announce} but taking as parameter \textbf{Machine} instead of \textbf{Person}, this will work as well because interfaces in Java define new types and support type polymorphism.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-3, 8-8, 13-13, 25-34, 40-44, 48-55}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
+
+Objects of type \textbf{Person} or any other subclass can be assigned to a variable of type \textbf{Person}.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-3, 13-16,22-24,32-33}, style=codeStyle]{../codes/java/src/polymorphism/Subtype.java}
+
+\subsection{Javascript}
+
+Lets create our classes (\ac{es6} style, \ac{es5} code is afforded as well): all of them afford a method \textbf{talk}.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-17}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+
+A javascript function does not specify the types of its parameters. 
+In this function, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+Because we do not know what type the object is, and if it has a function \textbf{talk}, we can verify before calling it.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={19-23}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+
+Then, objects created from class \textbf{Person} and its subclasses can be passed to \textbf{announce} since they all afford the method \textbf{talk}. 
+Also, objects created from a different class (\textbf{Robot}) or created directly containing that method can be passed as well, without causing any problem.
+If an object has no method \textbf{talk} (lets say: a number), the function \textbf{announce} will print the other message instead of calling our method.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={25-41}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+
+Lets try an array with different elements 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={43-52}, style=codeStyle]{../codes/javascript/polymorphism/es6/subtype.js}
+
+\subsection{Lua}
+
+Lets create our classes: all of them afford a method \textbf{talk}.
+In this code, only the superclass affords the function \textbf{new} by assigning \keyword{self} (the class name) as meta-table of the newly created object(table).  
+The benefit of doing this is to not repeat the same \textbf{new} method for subclasses.
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-23}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
+
+A lua function does not specify the types of its parameters. 
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+Because we do not know what type the object is, and if it has a function \textbf{talk}, we can verify if it is a table and if it has a member of type \textbf{function} called \textbf{talk}.
+
+\lstinputlisting[language={[KB]Lua}, linerange={25-32}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
+
+Then, objects created from class \textbf{Person} and its subclasses can be passed to \textbf{announce} since they all afford the method \textbf{talk}. 
+Also, objects created directly using a table affording the same method can be passed without problem.
+
+\lstinputlisting[language={[KB]Lua}, linerange={34-46}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
+
+Lets try an array with different elements 
+
+\lstinputlisting[language={[KB]Lua}, linerange={48-55}, style=codeStyle]{../codes/lua/polymorphism/subtype.lua}
+
+\subsection{Perl}
+
+Lets create our classes: all of them afford a method \textbf{talk} even the one not inheriting from \textbf{Person}.
+The \textbf{new} method blesses a hash (our object to be) to the first argument which is the class calling it. 
+When other classes inherit \textbf{new}, each will pass its name when calling this method; and therefore, the new object will be blessed to it.
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-17}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
+
+A perl subroutine does not specify the types of its parameters and either their number.
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+Because we do not know what type the object is, we can verify if it has a method called \textbf{talk} using the UNIVERSAL method \keyword[Perl]{can}.
+
+\lstinputlisting[language={[KB]Perl}, linerange={19-24}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
+
+Any object created from a class affording \textbf{talk}, or one of its subclasses can be passed to the function \textbf{announce}. 
+
+\lstinputlisting[language={[KB]Perl}, linerange={26-35}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
+
+Lets try an array with different elements 
+
+\lstinputlisting[language={[KB]Perl}, linerange={37-42}, style=codeStyle]{../codes/perl/polymorphism/subtype.pl}
+
+\subsection{PHP}
+
+Lets create our classes: all of them afford a method \textbf{talk} either directly or by inheritance.
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-17}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
+
+A PHP function does not specify the types of its parameters. 
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+So, we have to verify that using a function called \keyword[PHP]{method\_exists}. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={19-23}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
+
+Then, objects created from any class affording the method \textbf{talk} can be passed to \textbf{announce} without a problem. 
+If an object has no method \textbf{talk} (lets say: a number), the function \textbf{announce} will print the other message instead of calling our method.
+
+\lstinputlisting[language={[KB]PHP}, linerange={25-34}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
+
+Lets try an array with different elements 
+
+\lstinputlisting[language={[KB]PHP}, linerange={36-45}, style=codeStyle]{../codes/php/polymorphism/subtype.php}
+
+\subsection{Python}
+
+Lets create our classes: all of them afford a method \textbf{talk} either directly or by inheritance.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-14}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
+
+A Python function does not specify the types of its parameters. 
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+So, we have to retrieve that method using a function called \keyword[Python]{getattr}; if there is no member called \textbf{talk}, the function will return \keyword[Python]{None} as specified in the code.
+To verify if it is a method and not a field, we use the function \keyword[Python]{callable}.
+
+\lstinputlisting[language={[KB]Python}, linerange={16-23}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
+
+Then, objects created from any class affording the method \textbf{talk} can be passed to \textbf{announce} without a problem. 
+If an object has no method \textbf{talk} (lets say: a number), the function \textbf{announce} will print the other message instead of calling our method.
+
+\lstinputlisting[language={[KB]Python}, linerange={25-34}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
+
+Lets try an array with different elements 
+
+\lstinputlisting[language={[KB]Python}, linerange={36-42}, style=codeStyle]{../codes/python/polymorphism/subtype.py}
+
+\subsection{Ruby}
+
+Lets create our classes: all of them afford a method \textbf{talk} either directly or by inheritance.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-17}, style=codeStyle]{../codes/ruby/polymorphism/subtype.rb}
+
+A Ruby function does not specify the types of its parameters. 
+In \textbf{announce}, it is clear that the object named \textbf{talker} must define a method called \textbf{talk}. 
+So, we have to verify if the object affords this method using a function \keyword[Ruby]{method\_defined?} which is applied to classes  (we have to retrieve the object's class first).
+
+\lstinputlisting[language={[KB]Ruby}, linerange={19-26}, style=codeStyle]{../codes/ruby/polymorphism/subtype.rb}
+
+Then, objects created from any class affording the method \textbf{talk} can be passed to \textbf{announce} without a problem. 
+If an object has no method \textbf{talk} (lets say: a number), the function \textbf{announce} will print the other message instead of calling our method.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={28-37}, style=codeStyle]{../codes/ruby/polymorphism/subtype.rb}
+
+Lets try an array with different elements 
+
+\lstinputlisting[language={[KB]Ruby}, linerange={39-47}, style=codeStyle]{../codes/ruby/polymorphism/subtype.rb}
+
+\section{Type manipulation}
+
+There exists some methods afforded by \ac{oop} languages to manipulate types. 
+Even languages with dynamic type checking have some of these methods. 
+For each programming language, we will see these points:
+\begin{itemize}
+	\item \textbf{Get object type}: How to get the type of a given object.
+	\item \textbf{Is instance of}: Verify if an object is generated from a class/prototype. 
+	\item \textbf{Members existence}: Check if a member (field or method) exists in a given object.
+	\item \textbf{Type casts}: Downcasting is the act of changing a reference of a base class to one of its derived class.
+	It is useful in case of statically typed languages like C++ and Java.
+\end{itemize}
+
+\subsection{C++}
+
+Lets create our classes. 
+A class is said to be \nameword{polymorphic} if it has at least one virtual method (defined in it or inherited).
+In our example, the class \textbf{Person} has one virtual method, while the class \textbf{Machine} has none.
+
+\lstinputlisting[language={[KB]C++}, linerange={5-24}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+C++ affords a function \keyword[C++]{typeid} from the standard library \nameword{typeinfo}. 
+You can either print the type of a pointer or, dynamically, the type of the object pointed to.
+A type must be polymorphic so this function can operate dynamically on it.
+
+\lstinputlisting[language={[KB]C++}, linerange={40-46, 52-53, 57-57, 59-59}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+To verify if an object pointed to by a pointer is of a certain type dynamically, you can try to cast it to that type and verify if it succeeded.
+A function proposed by \citet{2014-panzenbock} which works polymorphic pointers.
+
+\lstinputlisting[language={[KB]C++}, linerange={26-29}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+Then, a pointer is tested as follows
+
+\lstinputlisting[language={[KB]C++}, linerange={64-64}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+In C++, you can check if a class has a member using a mechanism called: \ac{sfinae}. 
+For example, this is a template to verify if classes has a method \textbf{learn}.
+
+\lstinputlisting[language={[KB]C++}, linerange={31-38}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+It can be used as follows 
+
+\lstinputlisting[language={[KB]C++}, linerange={76-76}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+There are two types of down-casting (among others): \keyword[C++]{static\_cast} and \keyword[C++]{dynamic\_cast}. 
+Using the first one, type check is performed during compilation. 
+The dynamic cast checks types at runtime and return \keyword[C++]{NULL} in case of pointers, or throw an exception in case of references.
+
+\lstinputlisting[language={[KB]C++}, linerange={83-87}, style=codeStyle]{../codes/cpp/polymorphism/type_manip.cpp}
+
+\subsection{Java}
+
+Lets define some classes
+
+\lstinputlisting[language={[KB]Java}, linerange={66-81}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+To find the class of an object, you can use the method \keyword[Java]{getClass} inherited from the universal class \keyword[Java]{Object}. 
+A class \keyword[Java]{Class} affords a method \keyword[Java]{getName} which returns its name as a \keyword[Java]{String}. 
+
+\lstinputlisting[language={[KB]Java}, linerange={5-5,23-26,32-32,63-64}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+To verify if an object is an instance of a class, the keyword \keyword[Java]{instanceof} is used.
+
+\lstinputlisting[language={[KB]Java}, linerange={41-41}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+It is possible to verify if an object has a field or method in Java using reflection. 
+You have to import \textbf{java.lang.reflect.*} which contains two classes \keyword[Java]{Method} and \keyword[Java]{Field}. 
+A class \keyword[Java]{Class} affords two methods \keyword[Java]{getMethod} which returns a method, and \keyword[Java]{getField} which returns a field. 
+These two methods when they cannot find the member in question, they throw an exception. 
+To execute a \keyword[Java]{Method}, the method \keyword[Java]{invoke} is used, given the first parameter which is the object affording this method and a list of objects used as parameters. 
+Likewise, to recover a value \keyword[Java]{Field}, the method \keyword[Java]{get} which returns an \keyword[Java]{Object}; or you can use other methods which return some other types if you know the type of your field. 
+Reflection is not usually used since your methods, mostly, will have a defined typed parameters.
+
+\lstinputlisting[language={[KB]Java}, linerange={6-22}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+A variable with a type of some class referring an object with a type of its subclass cannot call the subclass's methods. 
+If you try to do that, you will have a compiler error telling you that the object does not afford that method.
+So, you have to tell the compiler that the variable is, in fact, referencing an object of the subclass. 
+This is called: type casting, and more precisely: downcasting.
+
+\lstinputlisting[language={[KB]Java}, linerange={57-62}, style=codeStyle]{../codes/java/src/polymorphism/TypeManip.java}
+
+\subsection{Javascript}
+
+Lets create our classes (\ac{es6} style, \ac{es5} code is afforded as well).
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-23, 35-38}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+
+Using \keyword[Javascript]{typeof}, the type you will get is \textbf{object} for our new objects. 
+If you want to know the prototype used to create an object, each object has a property called \keyword[Javascript]{constructor} which refers to the class/prototype used to create the object.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={45-45}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+
+To verify if an object is an instance of a class, the keyword \keyword[Javascript]{instanceof} is used.
+You can realize that a prototype can inherit just one prototype, and even using \keyword[Javascript]{Object.assign} the first prototype is considered as the superclass and the others are just mixins.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={53-53}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+
+To verify if an object has a method, simply check if the method is of type ``\textbf{function}". 
+To verify if an object has a field (property in Javascript lingua), you can use \keyword[Javascript]{hasOwnProperty} inherited from the universal class \keyword[Javascript]{Object}.
+Some solutions on the web suggest that you verify if a field's type is not ``\textbf{undefined}", but a field can exist for an object with ``undefined" value.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={25-33}, style=codeStyle]{../codes/javascript/polymorphism/es6/type_manip.js}
+
+There is no cast on Javascript, all happens in execution time. 
+If you called a non existing method of an object, you will have an error.
+
+\subsection{Lua}
+
+Lets create our classes: classes are simple tables in our case. 
+We add a field called \textbf{\_\_NAME} to each class to afford its name.
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-41}, style=codeStyle]{../codes/lua/polymorphism/type_manip.lua}
+
+Using the function \keyword[Lua]{type}, Lua can afford the type of a given element: nil, boolean, number, string, userdata, function, thread, and table. 
+Which means, creating a table representing a class and setting it as a metatable to another does not create a new type. 
+There are various methods to find the class (metatable) of an object \citep{2013-manura}, one of them is to define a field \textbf{\_\_NAME} in each class. 
+This field must not be overridden in the copies (objects), otherwise it will not function appropriately.
+We can define a new function called \textbf{typeOf} based on this field. 
+But, if we create an object (table) dynamically with a field \textbf{\_\_NAME} equals to one of our classes, you can fool this function. 
+An example of this is the object \textbf{cat} which will be considered as a \textbf{Person}.
+You can go beyond the function afforded in our code by verifying if the object (table) has a metatable. 
+If it does not then its type is, lets say, \textbf{Class} whatever the \textbf{\_\_NAME} is. 
+If it has a metatable, you can check if its name is similar to its metable's. 
+If not, you can consider it as a class; otherwise, the \textbf{\_\_NAME} will be its type.
+
+\lstinputlisting[language={[KB]Lua}, linerange={47-51}, style=codeStyle]{../codes/lua/polymorphism/type_manip.lua}
+
+There is no built-in function to verify if an object is instance of a class in Lua, since objects and classes are just tables.
+But using the solution used to verify the types, we can define a function \textbf{instanceof} which compare \textbf{\_\_NAME} of an object with those of its metatable chains (metatable and metatable of metatable, etc.).
+
+\lstinputlisting[language={[KB]Lua}, linerange={63-71}, style=codeStyle]{../codes/lua/polymorphism/type_manip.lua}
+
+To verify if an object has a method, first you have to verify if the object is a table then if this method is of type \textbf{function}. 
+Likewise, to verify the existence of a field, first you have to verify if the object is a table then if this field is not \keyword[Lua]{nil} (also it is not a function). 
+
+\lstinputlisting[language={[KB]Lua}, linerange={82-96}, style=codeStyle]{../codes/lua/polymorphism/type_manip.lua}
+
+There is no cast in Lua, all happens in execution time and you will not be needing it.
+
+\subsection{Perl}
+
+Lets create our classes: Perl's classes are packages and objects are hashes blessed to a package.
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-19}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+
+The function \keyword[Perl]{ref} gives the package's name to which a hash is blessed.
+
+\lstinputlisting[language={[KB]Perl}, linerange={25-25}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+
+There is a built-in method \keyword[Perl]{isa} inherited from the universal class \keyword[Perl]{UNIVERSAL} which is used to determine the type of a reference. 
+But before using it, we have to verify if the object is blessed.
+
+\lstinputlisting[language={[KB]Perl}, linerange={33-37}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+
+To verify if an object has a method, Perl affords a method \keyword[Perl]{can} inherited from the universal class \keyword[Perl]{UNIVERSAL}.
+To verify the existence of a field, a function \keyword[Perl]{exists} can be used.
+
+\lstinputlisting[language={[KB]Perl}, linerange={49-60}, style=codeStyle]{../codes/perl/polymorphism/type_manip.pl}
+
+There is no cast in Perl, all happens in execution time and you will not be needing it.
+
+\subsection{PHP}
+
+Lets create our classes and one interface
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-19}, style=codeStyle]{../codes/php/polymorphism/type_manip.php}
+
+The function \keyword[PHP]{gettype} returns the type of a variable: the objects are of type \textbf{object}. 
+To get the class of an object, the function \keyword[PHP]{get\_class} is used; it cannot be used with primitive types such as integers.
+
+\lstinputlisting[language={[KB]PHP}, linerange={25-25,27-27}, style=codeStyle]{../codes/php/polymorphism/type_manip.php}
+
+To verify if an object is an instance of a class (or its parents), the keyword \keyword[PHP]{instanceof} is used.
+Also, there is a function \keyword[PHP]{is\_a} which serves the same purpose, but the class's name is passed as a string or a variable containing the name.
+
+\lstinputlisting[language={[KB]PHP}, linerange={38-41}, style=codeStyle]{../codes/php/polymorphism/type_manip.php}
+
+To verify if an object has a method, PHP affords a function \keyword[PHP]{method\_exists}.
+As for fields, it affords a function \keyword[PHP]{property\_exists}.
+These two functions work on objects; if you pass them another type such as an integer, an error will occur. 
+To test if a variable is an object, the function \keyword[PHP]{is\_object} can be used.
+
+\lstinputlisting[language={[KB]PHP}, linerange={47-57}, style=codeStyle]{../codes/php/polymorphism/type_manip.php}
+
+There is no cast in PHP, all happens in execution time and you will not be needing it.
+
+\subsection{Python}
+
+Lets create our classes
+
+\lstinputlisting[language={[KB]Python}, linerange={4-23}, style=codeStyle]{../codes/python/polymorphism/type_manip.py}
+
+The function \keyword[Python]{type} returns the type of a variable. 
+Because everything in Python is an object, even built-in types such as \textbf{int} accept this function.
+Another mechanism to get an object's class is using the attribute \keyword[Python]{\_\_class\_\_}. 
+To get the name of a class as a string, you can use the  attribute \keyword[Python]{\_\_name\_\_}. 
+
+\lstinputlisting[language={[KB]Python}, linerange={28-29, 32-32}, style=codeStyle]{../codes/python/polymorphism/type_manip.py}
+
+To verify if an object is an instance of a class (or its parents), the function \keyword[Python]{isinstance} is used.
+
+\lstinputlisting[language={[KB]Python}, linerange={41-41,44-44}, style=codeStyle]{../codes/python/polymorphism/type_manip.py}
+
+To verify if an object has a member, Python affords a function \keyword[Python]{hasattr}.
+Another function \keyword[Python]{getattr} is used to get a member if it exists or returns a defined value otherwise.
+To verify if a member is a method, the function \keyword[Python]{callable} can be used.
+
+\lstinputlisting[language={[KB]Python}, linerange={50-62}, style=codeStyle]{../codes/python/polymorphism/type_manip.py}
+
+There is no cast in Python, all happens in execution time and you will not be needing it.
+
+\subsection{Ruby}
+
+Lets create our classes and a mixin 
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-28}, style=codeStyle]{../codes/ruby/polymorphism/type_manip.rb}
+
+To find the class of an object, you can simply call the method \keyword[Ruby]{class}.
+Then, the method \keyword[Ruby]{to\_s} is used to get the sting representation. 
+In Ruby, everything is an object and even numbers has a class.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={34-34, 37-37}, style=codeStyle]{../codes/ruby/polymorphism/type_manip.rb}
+
+To verify if an object is an instance of a class (or its parents), the functions \keyword[Ruby]{kind\_of?} and \keyword[Ruby]{is\_a?} can be used. 
+The two methods are equivalent; they verify if an object inherit from a mixin as well.
+There is another method \keyword[Ruby]{instance\_of?} which verify if an object was instantiated from a specific class (it does not verify its parents).
+
+\lstinputlisting[language={[KB]Ruby}, linerange={43-43,48-49,54-54}, style=codeStyle]{../codes/ruby/polymorphism/type_manip.rb}
+
+To verify if an object has a method, a class of an object has a method \keyword[Ruby]{method\_defined?}.
+As for fields, they are encapsulated (protected mode) and cannot be accessed outside the class's hierarchy unless you define accessors (getters and setters). 
+The accessors are methods and can be checked the same way a normal method is checked. 
+In our example, \textbf{Professor} class has a field \textbf{nbr} and a reader accessor (getter). 
+To verify the setter (not shown in the example), you write  \textbf{obj.method\_defined? :nbr=}.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={60-68}, style=codeStyle]{../codes/ruby/polymorphism/type_manip.rb}
+
+There is no cast in Ruby because variable type is dynamic.
+
+\section{Methods overloading}
+
+It is the feature of a class having multiple methods defined by the same identifier and different parameters. 
+Statically-typed programming languages are, usually, the ones affording methods overloading since they enforce type checking during function calls.
+In this section, we will verify these properties:
+\begin{itemize}
+	\item If the programming language supports methods overloading. 
+	If not, how to afford something similar. 
+	\item If we can overload methods over inheritance
+\end{itemize}
+
+\subsection{C++}
+
+In C++, overloading is permitted in the same class 
+
+\lstinputlisting[language={[KB]C++}, linerange={4-8,16-18,22-23,31-32}, style=codeStyle]{../codes/cpp/polymorphism/overloading.cpp}
+
+When the same method is overloaded in a subclass, the new definition will hide those of the parent class;
+if they are called, this will generate a compilation error. 
+To call them, there are two ways: import them using \keyword[C++]{using} declaration, or by calling them explicitly \citep{2009-bailey}.
+\lstinputlisting[language={[KB]C++}, linerange={10-17,19-19,26-32}, style=codeStyle]{../codes/cpp/polymorphism/overloading.cpp}
+
+\subsection{Java}
+
+In Java, overloading is permitted in the same class or its subclasses as well.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-6,9-10,13-26}, style=codeStyle]{../codes/java/src/polymorphism/Overloading.java}
+
+\subsection{Javascript}
+
+Javascript does not support method overloading. 
+A similar thing can be achieved by testing arguments types.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-15,31-33}, style=codeStyle]{../codes/javascript/polymorphism/es6/overloading.js}
+
+If there are many arguments, you can use the keyword \keyword[Javascript]{arguments} which is an Array-like object accessible inside functions that contains the values of the arguments passed to that function.
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={17-28,36-40}, style=codeStyle]{../codes/javascript/polymorphism/es6/overloading.js}
+
+\subsection{Lua}
+
+Lua does not support method overloading. 
+A similar behavior can be achieved by using a \nameword{variadic function} and testing arguments number and types.
+You can select a parameter using the function \keyword[Lua]{select} which returns the nth parameter and its following parameters \citep{2011-berteig}.
+The same function can be used to know te number of parameters.
+
+\lstinputlisting[language={[KB]Lua}, linerange={2-20,37-39}, style=codeStyle]{../codes/lua/polymorphism/overloading.lua}
+
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+If you do not want to use \keyword[Lua]{select}, you can put the arguments in a list and access the parameters as list members.
+
+\lstinputlisting[language={[KB]Lua}, linerange={22-32,40-43}, style=codeStyle]{../codes/lua/polymorphism/overloading.lua}
+
+\subsection{Perl}
+
+Perl does not support method overloading. 
+A subroutine receive its parameters using an array \keyword[Perl]{@\_}; thus, it is possible to verify the number of arguments (the first one is the object). 
+If you pass more than the acceptable amount of arguments, this will not be a problem (as shown in the example).
+Perl does not make a difference between scalar types (eg. numbers and strings), so you can just verify blessed objects using \keyword[Perl]{ref}. 
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-11,28-31}, style=codeStyle]{../codes/perl/polymorphism/overloading.pl}
+
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+
+\lstinputlisting[language={[KB]Perl}, linerange={13-25,34-37}, style=codeStyle]{../codes/perl/polymorphism/overloading.pl}
+
+You can check out \nameword{MooseX::MultiMethods}\footnote{MooseX::MultiMethods: \url{https://metacpan.org/pod/MooseX::MultiMethods}} for Multi Method Dispatch based on Moose type constraints.
+
+\subsection{PHP}
+
+PHP does not support \ac{oop}'s method overloading; Overloading in PHP is entirely a different concept (check PHP documentation). 
+However, there is a mechanism to achieve a similar thing using a \nameword{variadic function}: the number of arguments is recovered using a function \keyword[PHP]{func\_num\_args}, and the arguments are recovered using a function \keyword[PHP]{func\_get\_arg} \citep{2011-tan}. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-18, 30-32}, style=codeStyle]{../codes/php/polymorphism/overloading.php}
+
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+Arguments can, also, be passed as a list as follows. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={20-27,35-38}, style=codeStyle]{../codes/php/polymorphism/overloading.php}
+
+\subsection{Python}
+
+Python does not support method overloading. 
+Using default values and type checking, you can achieve a similar behavior. 
+
+\lstinputlisting[language={[KB]Python}, linerange={4-10,21-23}, style=codeStyle]{../codes/python/polymorphism/overloading.py}
+
+You can, also, use a \nameword{variadic function} for unknown amount of parameters.
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+
+\lstinputlisting[language={[KB]Python}, linerange={11-18,26-29}, style=codeStyle]{../codes/python/polymorphism/overloading.py}
+
+You can define an \ac{api} for methods overloading such as \nameword{pythonlangutil}\footnote{pythonlangutil: \url{https://github.com/ehsan-keshavarzian/pythonlangutil}}.
+
+\subsection{Ruby}
+
+Ruby does not support method overloading. 
+Using default values and type checking, you can achieve a similar behavior. 
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-14,29-31}, style=codeStyle]{../codes/ruby/polymorphism/overloading.rb}
+
+You can, also, use a \nameword{variadic function} for unknown amount of parameters.
+Subclasses can define the same method, verify the arguments for new definitions and delegate the control to the super's methods.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={15-27,34-37}, style=codeStyle]{../codes/ruby/polymorphism/overloading.rb}
+
+
+\section{Methods overriding}
+
+Method overriding allows a subclass to provide a specific implementation of an existing parent's method. 
+The method must have the same signature (name and arguments) and return type (if the language allows it) as the parent's. 
+Some methods can be abstract or final: abstract methods must be overridden and final methods cannot be overridden (see inheritance chapter).
+
+\subsection{C++}
+
+To override a method, you have to define a subclass with the same method's signature and return type. 
+A method to be overridden can be defined using the keyword \keyword[C++]{virtual} or not. 
+A virtual method is resolved at run-time using a mechanism called \nameword{Late binding}. 
+While a normal method is resolved at compilation-time using a mechanism called \nameword{Early (Static) binding}.
+
+\lstinputlisting[language={[KB]C++}, linerange={4-14}, style=codeStyle]{../codes/cpp/polymorphism/overriding.cpp}
+
+Early binding follows the pointer's type when the method is called; therefore, if the pointer's type is a superclass, the implementation which will be used is that of the superclass are not the object's. 
+In the contrary, a method defined using \keyword[C++]{virtual} (Late binding) will be called based on the object's real type and not that of the pointer. 
+
+\lstinputlisting[language={[KB]C++}, linerange={16-31}, style=codeStyle]{../codes/cpp/polymorphism/overriding.cpp}
+
+\subsection{Java}
+
+In Java, you can override a method using the same signature and return type. 
+As mentioned in Encapsulation chapter, the visibility mode can be set to more permissive one (for example, from private to public).
+To be sure you overrode an existing method, you can use the annotation \keyword[Java]{@Override} which tells the compiler to check if the method actually exists in one of the superclasses.
+
+\lstinputlisting[language={[KB]Java}, linerange={12-19}, style=codeStyle]{../codes/java/src/polymorphism/Overriding.java}
+
+An object of a class referred by a reference of its superclass will execute its specific implementation and not that of the reference. 
+
+\lstinputlisting[language={[KB]Java}, linerange={3-10}, style=codeStyle]{../codes/java/src/polymorphism/Overriding.java}
+
+\subsection{Javascript}
+
+In Javascript, you can override a method by just defining it using the same signature. 
+The object of the subclass will use the new defined method.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-14}, style=codeStyle]{../codes/javascript/polymorphism/es6/overriding.js}
+
+\subsection{Lua}
+
+In Lua, you can override a method by just defining it using the same signature. 
+The object of the subclass will use the new defined method.
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-27}, style=codeStyle]{../codes/lua/polymorphism/overriding.lua}
+
+\subsection{Perl}
+
+In Perl, you can override a method by just defining it using the same name. 
+The object of the subclass will use the new defined method.
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-14}, style=codeStyle]{../codes/perl/polymorphism/overriding.pl}
+
+\subsection{PHP}
+
+In PHP, you can override a method by just defining it using the same signature. 
+The object of the subclass will use the new defined method.
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-14}, style=codeStyle]{../codes/php/polymorphism/overriding.php}
+
+\subsection{Python}
+
+In Python, you can override a method by just defining it using the same signature. 
+The object of the subclass will use the new defined method.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-15}, style=codeStyle]{../codes/python/polymorphism/overriding.py}
+
+\subsection{Ruby}
+
+In Ruby, you can override a method by just defining it using the same signature. 
+The object of the subclass will use the new defined method.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-18}, style=codeStyle]{../codes/ruby/polymorphism/overriding.rb}
+
+\begin{discussion}
+	
+	Polymorphism allows us to process objects differently depending on their data type or class. 
+	Based on type compatibility and equivalence, three type systems can be determined:
+	\begin{itemize}
+		\item \textbf{Nominal type system}: The compatibility and equivalence of data types is is determined by explicit declarations or name.
+		Example: C++, C\#, Java.
+		\item \textbf{Structural type system}: The compatibility and equivalence of data types is is determined by their structures or definitions: if they have the same definition then they are equivalent. 
+		Example: OCaml, Scala, Go.
+		\item \textbf{Duck typing}: The compatibility is determined by the presence of certain methods and fields.
+		``\textit{If it walks like a duck and talks like a duck, it must be a duck}".
+		Example: Javascript, Python, Ruby.
+	\end{itemize}
+	
+	Table~\ref{tab-polymorphism} represents a comparison between some OOP languages based on their polymorphism capacities: 
+	\begin{itemize}
+		\item \textbf{Type compatibility}: Nominal, structural or duck.
+		\item \textbf{Get object type}: How to get the type of a given object.
+		\item \textbf{Is instance of}: Verify if an object is generated from a class/prototype. 
+		\item \textbf{Members existence}: Check if a member (field or method) exists in a given object.
+		\item \textbf{Type casts}: Downcasting is the act of changing a reference of a base class to one of its derived class.
+		\item \textbf{Overloading}: Having methods overloading or not.
+	\end{itemize}
+	As for overriding, no need to compare since all of our languages afford this property.
+	
+	\begin{landscape}
+		\extrarowsep = 0pt 
+		
+		%	\doublerawsep = 1.5pt
+		\begin{longtabu} to \linewidth %
+			{
+				X[1,p]|[5pt white]
+				X[0.75,p]|[5pt white]
+				X[2,p]|[5pt white]
+				X[2,p]|[5pt white]
+				X[2,p]|[5pt white]
+				X[2,p]|[5pt white]
+				X[0.5,p]|[5pt white]
+			} %{llllllll} 
+			%	\begin{longtabu} {p{1cm}p{1cm}p{5cm}p{1cm}p{1cm}p{2cm}p{2cm}p{1cm}}
+			\caption{Polymorphism comparison}%
+			\label{tab-polymorphism}\\
+			
+			%		\hline\hline
+			\rowcolor{indigo}
+			\rowfont{\bfseries\color{white}}
+			{Language} &
+			{Type compatibility} &
+			{Object's type} &
+			{Instance of} &
+			{members existence} & 
+			{cast} &
+			{overloading}\\
+			%		\hline\hline
+			&&&&&&\\
+			\endfirsthead
+			
+			%		\hline\hline
+			\rowcolor{indigo}
+			\rowfont{\bfseries\color{white}}
+			{Language} &
+			{Type system} &
+			{Object's type} &
+			{Instance of} &
+			{members existence} & 
+			{cast} &
+			{overloading}\\
+			%		\hline\hline
+			&&&&&&\\
+			\endhead
+			
+			\taburowcolors{indigo!20!white .. black!10!white}
+			
+			{\bfseries\color{indigo}C++} & %Language
+			Nominal& %type system
+			typeid(obj)& %object's type
+			Using cast& %Instance of
+			/ & %members existance
+			(Cls) obj; \newline 
+			static\_cast<Cls*> (ptr) \newline 
+			dynamic\_cast<Cls*> (ptr) & %cast
+			Yes\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Java} & %Language
+			Nominal& %Type system
+			obj.getClass()& %object's type
+			obj instanceof Cls& %Instance of 
+			using reflection & %member existance
+			(Cls) obj & %cast
+			Yes\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Javascript} & %Language
+			Duck& %Type system
+			Type: typeof obj \newline Class: obj.constructor.name& %object's type
+			obj instanceof Cls& %instance of
+			obj.hasOwnProperty ("property")& %member existance
+			/& %cast
+			/\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Lua} & %Language
+			Duck& %Type system
+			Type: type(obj) \newline Class: /& %object's type
+			/& %Instance of
+			access and verify type& %Member existance
+			/& %cast
+			/\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Perl} & %Language
+			& %Type system
+			ref(obj)& %Object's type 
+			obj->isa(Cls)& % instance of
+			obj->can("method")& %member existance
+			/& % cast
+			/\\%overloading
+			%		\hline
+			
+			{\bfseries\color{indigo}PHP} & %Language
+			Duck?& %Type system
+			Type: gettype(obj) \newline Class: get\_class(obj) & %object's type
+			obj instanceof Cls \newline is\_a(obj, "Cls") & % Instance of
+			method\_exists(obj, "method") \newline property\_exists(obj, "field") & % member existance
+			/ & %cast
+			/ \\%overloading
+					\hline
+			
+			{\bfseries\color{indigo}Python} & %Language
+			Duck& %Type system
+			type(obj) \newline obj.\_\_class\_\_& %Object's type
+			isinstance(obj, Cls)& % instance of
+			hasattr(obj, "property")& %member existance
+			/& %cast
+			/\\%oveloading
+			%		\hline
+			
+			{\bfseries\color{indigo}Ruby} & %Language
+			Duck& %Type system
+			obj.class& %Object's type
+			obj.is\_a?(Cls) \newline instance\_of?(Cls) \newline kind\_of?(Cls)& %instance of
+			obj.class.method\_defined? :method & %member existance 
+			/& %cast
+			/\\%overloading
+			%		\hline
+			
+			%		\hline\hline
+		\end{longtabu}
+	\end{landscape}
+	
+\end{discussion}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================

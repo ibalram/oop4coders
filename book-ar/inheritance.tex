@@ -1,0 +1,867 @@
+%=====================================================================
+\ifx\wholebook\relax\else
+	\documentclass{KodeBook}
+	\input{calls}
+	\begin{document}
+		\mainmatter
+	
+\fi
+%=====================================================================
+
+\chapter{Inheritance}
+
+\begin{introduction}
+	\lettrine{O}{ne} of the most controversial core concepts of \ac{oop} is inheritance.
+	It enables the definition of a new class called subclass based on an existing one called superclass. 
+	This allows reusing visible members of the superclass and add additional specific ones. 
+	Many languages create a relationship ``isa" between a subclass and its superclass (which is called subtyping).
+	When a class inherits from many superclasses at once, that is called multiple inheritance. 
+	This is not possible in all languages, since it leads to many problems such as diamond problem.
+	In this chapter, the journey begins by a little walk through single harmless inheritance. 
+	Then, you will have an incursion into the jungle of abstract and final classes and methods. 
+	Finally, you will meet the monster: multiple inheritance. 
+\end{introduction} 
+
+
+\section{Single inheritance}
+
+In this section, simple inheritance will be presented by trying to answer some questions for each programming language:
+\begin{itemize}
+	\item Do you have to define a constructor for the new subclass? i.e. can the constructor be inherited?
+	\item Can we change members visibility?
+	\item How to access superclass's and grandparent class's members?
+\end{itemize}
+
+\subsection{C++}
+
+If the superclass has the default constructor (without parameters), you do not have to define a constructor explicitly unless you want to include some other initializations. 
+If the superclass defines just constructors with parameters, you have to define the constructor of your new subclass. 
+
+\lstinputlisting[language={[KB]C++}, linerange={7-11,13-17}, style=codeStyle]{../codes/cpp/inheritance/single/person.h}
+
+In C++11, you can inherit the constructor using the keyword \keyword[C++]{using}; 
+
+\lstinputlisting[language={[KB]C++}, linerange={5-7,9-9,12-12}, style=codeStyle]{../codes/cpp/inheritance/single/professor.h}
+
+
+In C++, to extend a class, you have to define a visibility mode: public, protected or private.
+Public mode preserves members access as they are defined in the superclass.
+As for Protected mode, public members of the superclass will be considered as protected in the new class. 
+While Private mode considers every member of the superclass as private.
+
+\lstinputlisting[language={[KB]C++}, linerange={5-14}, style=codeStyle]{../codes/cpp/inheritance/single/student.h}
+
+Since C++ accepts multiple inheritance, there is no keyword for superclass. 
+Instead, you can call a method of the parent or grandparent using their names followed by \keyword{::} then the methods name.
+
+\lstinputlisting[language={[KB]C++}, linerange={3-14}, style=codeStyle]{../codes/cpp/inheritance/single/student.cpp}
+
+
+\subsection{Java}
+
+When extending a class which has the default constructor (without parameters), you do not have to define a constructor explicitly unless you want to include some other initializations. 
+But, if the superclass defines just constructors with parameters, you have to define the constructor of your new subclass.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-8,11-13,16-18,20-22}, style=codeStyle]{../codes/java/src/inheritance/single/Person.java}
+
+In this example, if we want to extend the class, we have to define a constructor explicitly. 
+This constructor has to call the superclass's explicitly using the keyword \keyword[Java]{super}.
+This call must be the first thing to do before any other instruction.
+Also, we can override its methods and reuse those of the superclass using the keyword \keyword[Java]{super}.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-17}, style=codeStyle]{../codes/java/src/inheritance/single/Student.java}
+
+You cannot assign weaker access privileges when overriding a method, but the inverse is permitted. 
+As for fields, you cannot override a field. 
+If you define a field with the same name as in the superclass, you will still access that of the superclass inside the subclass using the keyword \keyword[Java]{super}; this is called \nameword{variable hiding}.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-16}, style=codeStyle]{../codes/java/src/inheritance/single/Professor.java}
+
+If the field of the superclass is public and you define a private field with the same name in its subclass, you will no longer be able to access it outside the subclass.
+
+\lstinputlisting[language={[KB]Java}, linerange={5-11,20-20}, style=codeStyle]{../codes/java/src/inheritance/single/App.java}
+
+You cannot access grandparent's members directly using \keyword{super.super}, you can just access the parent's using \keyword[Java]{super}. 
+
+\lstinputlisting[language={[KB]Java}, linerange={3-11,19-19}, style=codeStyle]{../codes/java/src/inheritance/single/GradStudent.java}
+
+
+\subsection{Javascript} 
+
+In Javascript, all class members are public.
+So, visibility modes stay as they are when extending a class.
+
+\subsubsection{ECMAScript 5 (ES5)}
+
+Lets define a class by using a function as a constructor (as usual: \ac{es5}).
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-11}, style=codeStyle]{../codes/javascript/inheritance/single/es5/person.js}
+
+To call the superclass's constructor, we use the function \keyword[Javascript]{call} which takes the context of the current object \keyword[Javascript]{this} as its first argument. 
+This will allow the superclass to assign and initialize new fields to the current object (this).
+To inherit a class's methods, the subclass's prototype must be an instance of this class's one.
+So, a new object based on the superclass's prototype must be created and assigned to the new class's prototype. 
+Be aware not to assign the superclass's prototype directly (the two prototypes will refer to the same object).
+If you do that, any method specific to the subclass will be defined to the superclass too.
+After assigning the prototype, you have to set the constructor to the current class because the cloned prototype's constructor will be referring the superclass's constructor.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-11}, style=codeStyle]{../codes/javascript/inheritance/single/es5/student.js}
+
+To call a method from the superclass's prototype, you can use the function \keyword[Javascript]{call} by passing the context as first argument. 
+In fact, you can call methods of any class even if it is not an ancestor and apply it to the current context, in condition that it uses compatible fields.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={13-16}, style=codeStyle]{../codes/javascript/inheritance/single/es5/student.js}
+
+The constructor of the superclass can be called anywhere inside the subclass's constructor. 
+You have to be cautious when doing that, because the fields values can be overridden. 
+Also, not calling the superclass's constructor will not result in an error, but some fields and initializations may be found missing. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-10}, style=codeStyle]{../codes/javascript/inheritance/single/es5/professor.js}
+
+\subsubsection{ECMAScript 2015 (ES6)}
+
+Classes in new Javascript are primarily syntactical sugar over its existing prototype-based inheritance \citep{2018-mdn-docs}. 
+The class syntax does not introduce a new object-oriented inheritance model to JavaScript.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={1-11}, style=codeStyle]{../codes/javascript/inheritance/single/es6/person.js}
+
+To call the superclass's constructor, we use the keyword \keyword[Javascript]{super}. 
+This keyword allows us to access the superclass's methods as well. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-15}, style=codeStyle]{../codes/javascript/inheritance/single/es6/student.js}
+
+Like old Javascript, the constructor of the superclass can be omitted without errors. 
+But, some fields which must be defined in the superclass can be absent from the object resulting in malfunctioning of the methods using them.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-3}, style=codeStyle]{../codes/javascript/inheritance/single/es6/professor.js}
+
+\subsection{Lua}
+
+In lua, the constructor is a method which creates a new object (table) and assign the class as its meta-table.
+In our case, the new object will have a field named \textbf{luckyNumber} which is the same as its meta-table (a reference to it).
+If you want this object to have its own, you have to set the field using the same name.
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-13}, style=codeStyle]{../codes/lua/inheritance/single/person.lua}
+
+To extend a class, all you have to do is creating the table representing it, then set the superclass as its meta-table. 
+In this case, if you call a member (field or method) on this new class and it is not found, it will lookup its meta-table.
+You have to create the object from the superclass, so it will contain the same fields, and add specific fields to it.
+Then, set the current class as its meta-table; otherwise, the new object will lookup its methods in the superclass and not in the current class.
+ 
+As for calling superclass's methods, you can use the dot call (\keyword{.}) instead of the colon (\keyword{:}) and pass the context (current object, \keyword[Lua]{self}) as first parameter.
+
+\lstinputlisting[language={[KB]Lua}, linerange={3-17}, style=codeStyle]{../codes/lua/inheritance/single/student.lua}
+
+A fancy method to instantiate a class is to pass an object containing some predefined fields to its constructor.
+But, if we do not pass a field needed by one of its methods, this will result in an error when calling that method.
+One way to fix this is by verifying if the field has been passed or not; if it was not, create a default one.
+
+\lstinputlisting[language={[KB]Lua}, linerange={3-11}, style=codeStyle]{../codes/lua/inheritance/single/professor.lua}
+
+As for accessing other classes' methods, you can call their methods and pass the object as context.
+
+\subsection{Perl}
+
+A class (package) can extend another using a special variable \keyword[Perl]{@ISA}.
+In the extended class's constructor, you can create a new object using the superclass's constructor.
+This will allow it to have the same fields as its superclass and add specific fields to it.
+You can call superclass's methods, including the constructor, using the keyword \keyword[Perl]{SUPER}. 
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/inheritance/single/Student.pm}
+
+Like any method, the constructor can be inherited if not overridden. 
+The new class will be created similarly to its superclass.
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/inheritance/single/Professor.pm}
+
+\subsection{PHP}
+
+Lets define a class with some private/public fields and methods. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={2-20}, style=codeStyle]{../codes/php/inheritance/single/person.php}
+
+To extend this class, you have to use the keyword \keyword[PHP]{extends}. 
+To call the superclass's methods, you need to use a special keyword \keyword[PHP]{parent}.
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-19}, style=codeStyle]{../codes/php/inheritance/single/student.php}
+
+If you do not define a constructor for the subclass, it will inherit the constructor of its superclass. 
+As for methods visibility, you can pass from more restricted access to less restricted.
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-11}, style=codeStyle]{../codes/php/inheritance/single/professor.php}
+
+If you define a field with the same name as one of the superclass, it will override it and not hide it as in Java; which means the parent's methods will use the new one instead \citep{2014-deschenes}. 
+Using the keyword \keyword[PHP]{parent}, you can access just the superclass's methods and not those of grandparent class.
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-17}, style=codeStyle]{../codes/php/inheritance/single/gradstudent.php}
+
+\subsection{Python}
+
+You can call a superclass method (including the constructor) using two ways:
+\begin{itemize}
+	\item Using the name of the superclass to call the method and pass the context as first argument
+	\item Using the function \keyword[Python]{super} which takes two arguments: the type and the context.
+	It returns a proxy object that delegates method calls to a parent or sibling class of type.
+\end{itemize}
+
+\lstinputlisting[language={[KB]Python}, linerange={6-17}, style=codeStyle]{../codes/python/inheritance/single/student.py}
+
+A constructor can be inherited; if you do not define one in the subclass, the superclass's will be used. 
+The \keyword[Python]{pass} statement does nothing; it is required when there is no code to afford.
+
+\lstinputlisting[language={[KB]Python}, linerange={6-7}, style=codeStyle]{../codes/python/inheritance/single/professor.py}
+
+\subsection{Ruby}
+
+You can call a superclass's method (including the constructor) from a method of the same name using the keyword \keyword[Ruby]{super}. 
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-15}, style=codeStyle]{../codes/ruby/inheritance/single/student.rb}
+
+If the constructor is not defined, the class will inherit its superclass's.
+Also, when you override a method, you can change its visibility mode.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-9}, style=codeStyle]{../codes/ruby/inheritance/single/professor.rb}
+
+To access a superclass method which does not have the same name, there are two ways \citep{2013-mayer}:
+\begin{itemize}
+	\item either by aliasing it before overriding, using \keyword[Ruby]{alias\_method}.
+	\item or by binding the current context to a class's method. 
+	Using this, you call call even grandparents methods.
+\end{itemize}
+
+\lstinputlisting[language={[KB]Ruby}, linerange={4-21}, style=codeStyle]{../codes/ruby/inheritance/single/gradstudent.rb}
+
+
+\section{Abstract class}
+
+An abstract class is a class which cannot be instantiated, but can be extended.
+An abstract method is a method which has to be overridden before it can be used. 
+
+\subsection{C++}
+
+A class is abstract when it has at least one pure virtual method. 
+Hence, you cannot have an abstract class with only fields.
+
+\lstinputlisting[language={[KB]C++}, linerange={4-9}, style=codeStyle]{../codes/cpp/inheritance/abst/person.h}
+
+The pure methods must be overridden in a concrete subclasses (do not forget to override them in the headers). 
+
+\lstinputlisting[language={[KB]C++}, linerange={3-9}, style=codeStyle]{../codes/cpp/inheritance/abst/professor.h}
+
+If a class does not override all abstract methods of its superclass, it will be implicitly considered as abstract. 
+
+\lstinputlisting[language={[KB]C++}, linerange={5-7}, style=codeStyle]{../codes/cpp/inheritance/abst/student.h}
+
+
+\subsection{Java}
+
+An abstract class is defined by the keyword \keyword[Java]{abstract}. 
+It does not have to contain an abstract method, which means you can have an abstract class with just fields. 
+If the class has at least one abstract method, you have to define it as abstract explicitly or you will have an error.
+
+\lstinputlisting[language={[KB]Java}, linerange={3-12}, style=codeStyle]{../codes/java/src/inheritance/abst/Person.java}
+
+The abstract methods must be overridden in the concrete subclasses
+
+\lstinputlisting[language={[KB]Java}, linerange={3-9}, style=codeStyle]{../codes/java/src/inheritance/abst/Professor.java}
+
+If a class does not override all abstract methods of its superclass, it has to be defined explicitly as abstract. 
+
+\lstinputlisting[language={[KB]Java}, linerange={3-4}, style=codeStyle]{../codes/java/src/inheritance/abst/Student.java}
+
+You can instantiate just the non-abstract classes
+
+\lstinputlisting[language={[KB]Java}, linerange={6-9}, style=codeStyle]{../codes/java/src/inheritance/abst/App.java}
+
+\subsection{Javascript} 
+
+There is no abstract classes or methods either in ECMAScript 5 or ECMAScript 2015. 
+But, you can prevent instantiating a class by verifying if the new object's constructor is the class's \citep{2016-Kazarian}. 
+If so, you throw an exception.
+As for methods, you throw the exception anyways.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={3-16}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/person.js}
+
+If you want a subclass to be abstract too, you have to do the same thing with its constructor. 
+Otherwise, it can be instantiated even if you did not override the abstract method. 
+In this case, you cannot call the abstract method or any other method using it. 
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-10}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/student.js}
+
+\lstinputlisting[language={[KB]Javascript}, linerange={5-14}, style=codeStyle]{../codes/javascript/inheritance/abst/es5/gradstudent.js}
+
+The same analogy goes with ECMAScript 2015 (codes are afforded).
+
+\subsection{Lua}
+
+There are no abstract classes or methods in Lua. 
+You can define a method which always throws an error when called, and consider it as abstract.
+As for abstract classes, I could not find or think of a mechanism to prevent calling the constructor of a class and creating a new object (table) without preventing it to be called inside a subclass constructor.
+You can prevent the new object from calling the class's methods (all of them) by not setting the class as its meta-table. 
+
+\lstinputlisting[language={[KB]Lua}, linerange={1-17}, style=codeStyle]{../codes/lua/inheritance/abst/person.lua}
+
+\subsection{Perl}
+
+You cannot prevent calling the constructor definitely because it has to be called from its subclasses. 
+But, you can define the constructor as protected: cannot be accessed unless the caller is a subclass. 
+As for methods, you can throw an exception if it is not overridden \citep{2007-glasswalk3r}.
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/inheritance/abst/Person.pm}
+
+The abstract method must be overridden; if not, there will be errors when calling them.
+
+\lstinputlisting[language={[KB]Perl}, style=codeStyle]{../codes/perl/inheritance/abst/Student.pm}
+
+\subsection{PHP}
+
+Classes defined as abstract may not be instantiated.
+To define an abstract method or class, you have to use the keyword \keyword[PHP]{abstract}.
+
+\lstinputlisting[language={[KB]PHP}, linerange={2-11}, style=codeStyle]{../codes/php/inheritance/abst/person.php}
+
+Any class that contains at least one abstract method, or does not override one, must also be abstract. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-5}, style=codeStyle]{../codes/php/inheritance/abst/student.php}
+
+To override an abstract method, you just delete the keyword abstract and afford an implementation.
+
+\lstinputlisting[language={[KB]PHP}, linerange={5-11}, style=codeStyle]{../codes/php/inheritance/abst/professor.php}
+
+
+\subsection{Python}
+
+To create abstract classes and methods, there exists a module called \nameword{abc} (abstract base classes). 
+A class's meta-class can be set to be \keyword[Python]{ABCMeta}, but the class can be instantiated unless there is at least one abstract method.
+This means, you cannot have an abstract class with just fields. 
+An abstract method is marked by the decorator \keyword[Python]{@abstractmethod}.
+The abstract methods, contrarily to the usual definition of the word, can have implementations which can be called from the subclasses methods.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-15}, style=codeStyle]{../codes/python/inheritance/abst/person.py}
+
+If all the abstract methods are overridden, the class can be instantiated 
+
+\lstinputlisting[language={[KB]Python}, linerange={6-9}, style=codeStyle]{../codes/python/inheritance/abst/professor.py}
+
+If not all abstract methods are overridden, the new class cannot be instantiated
+
+\lstinputlisting[language={[KB]Python}, linerange={6-7}, style=codeStyle]{../codes/python/inheritance/abst/student.py}
+
+\subsection{Ruby}
+
+There are no abstract classes or methods in Ruby. 
+If you want to prohibit instantiating a class, you can raise an exception whenever its constructor is called. 
+But, the constructor will not be useful to other subclasses \citep{2009-rajhans}. 
+To handle this, you have to verify if the object's class is the current class. 
+As for methods, you raise an exception preventing them from being called.
+
+\lstinputlisting[language={[KB]Ruby}, style=codeStyle]{../codes/ruby/inheritance/abst/person.rb}
+
+Even if you don not override the constructor, the subclass will be accessible because the object's class no longer will be the superclass.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-9}, style=codeStyle]{../codes/ruby/inheritance/abst/professor.rb}
+
+If you do not override the abstract method, the subclass can be instantiated but the abstract method and the methods using it will raise an exception.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-9}, style=codeStyle]{../codes/ruby/inheritance/abst/student.rb}
+
+
+\section{Final class and method}
+
+A final class is a class which cannot be extended. 
+Likewise, a final method is a method which cannot be overridden. 
+Having final methods does not imply the class has to be final. 
+
+\subsection{C++}
+
+\subsubsection{Final class}
+
+In early versions, there were no final classes. 
+But, there is a hack to prevent subclasses from instantiating; it does not prevent inheriting directly.
+You can define a class with a private constructor and a friend type, which means: you cannot instantiate this class but the friend class (type) can \citep{2009-sbi}. 
+
+\lstinputlisting[language={[KB]C++}, linerange={2-8}, style=codeStyle]{../codes/cpp/inheritance/fin/finalcls1.cpp}
+
+Then, you extend that class to make the subclass final: it can access the constructor of its superclass which means you can instantiate it. 
+You can extend that class with no problem, but your new class will be useless since it cannot be instantiated (friend property is not inherited).
+
+\lstinputlisting[language={[KB]C++}, linerange={11-13}, style=codeStyle]{../codes/cpp/inheritance/fin/finalcls1.cpp}
+
+In C++11, life is more easy: just use the keyword \keyword[C++]{final} after the class's name. 
+In this case, the compiler will complain when you extend a final class.
+
+\lstinputlisting[language={[KB]C++}, linerange={1-3}, style=codeStyle]{../codes/cpp/inheritance/fin/finalcls2.cpp}
+
+\subsubsection{Final method}
+
+In early C++, a method which is not defined as \keyword[C++]{virtual} should not be overridden \citep{2010-torok}. 
+If you try to override it, you are actually creating a new method with the same name and hiding the super-method. 
+This is not how final methods should act, but the new method will not be accessible from a reference on the superclass (it is not polymorphic).
+
+C++11 comes to the rescue with its new \keyword[C++]{final} keyword, which must be positioned in the end of the method's header.
+To be final, a method has to be virtual.
+
+\lstinputlisting[language={[KB]C++}, linerange={1-7,14-18,25-25}, style=codeStyle]{../codes/cpp/inheritance/fin/finalmth.cpp}
+
+
+\subsection{Java}
+
+A final class is marked using the keyword \keyword[Java]{final}. 
+It cannot be extended, and if you try to extend it you will throw a compile error.
+
+\lstinputlisting[language={[KB]Java}, linerange={11-13}, style=codeStyle]{../codes/java/src/inheritance/fin/FinalCls.java}
+
+A final method is also marked using the keyword \keyword[Java]{final}. 
+It cannot be overridden, otherwise you will have a compile error.
+
+\lstinputlisting[language={[KB]Java}, linerange={18-18,22-27,31-32}, style=codeStyle]{../codes/java/src/inheritance/fin/FinalMth.java}
+
+
+\subsection{Javascript} 
+
+There are no final classes (objects) in Javascript. 
+But, you can limit instantiating to only the current class by verifying if the new objects constructor is the class itself or not. 
+This is the inverse of what we did in abstract class.
+
+\lstinputlisting[language={[KB]Javascript}, style=codeStyle]{../codes/javascript/inheritance/fin/es6/finalcls.js}
+
+As for final functions, good luck finding a mechanism to do that!
+
+\subsection{Lua}
+
+No final classes and methods in Lua. 
+As far as I know, there is no way to emulate them either. 
+
+%\lstinputlisting[language={[KB]Lua}, linerange={1-6}, style=codeStyle]{../codes/lua/inheritance/app.lua}
+
+\subsection{Perl}
+
+In Perl, you can prevent a class from being instantiated. 
+This can be done using the class name in the constructor and the package name.
+If they are equal, then it is OK; otherwise, this will raise an exception.
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-11}, style=codeStyle]{../codes/perl/inheritance/fin/finalcls.pl}
+
+You can create a subclass out of our previous class. 
+But, when you try to instantiate it, this will raise an exception. 
+Unless you do not call the parent constructor inside its constructor.
+
+\lstinputlisting[language={[KB]Perl}, linerange={13-26}, style=codeStyle]{../codes/perl/inheritance/fin/finalcls.pl}
+
+There is no easy way to define a final method. 
+
+\subsection{PHP}
+
+A final class can be defined using the keyword \keyword[PHP]{final}. 
+
+\lstinputlisting[language={[KB]PHP}, linerange={2-4}, style=codeStyle]{../codes/php/inheritance/fin/finalcls.php}
+
+Likewise, the same keyword is used for final methods
+
+\lstinputlisting[language={[KB]PHP}, linerange={2-2,6-11,15-16}, style=codeStyle]{../codes/php/inheritance/fin/finalmth.php}
+
+\subsection{Python}
+
+Finals are not Pythonic; there is no standard way to do it. 
+But, you can define a meta-class which prevents extending a specific class \citep{2010-byers}.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-9}, style=codeStyle]{../codes/python/inheritance/fin/finalcls.py}
+
+When applying this meta to a class, the latter can no longer be extended
+
+\lstinputlisting[language={[KB]Python}, linerange={11-15}, style=codeStyle]{../codes/python/inheritance/fin/finalcls.py}
+
+As for final methods, there a hack using meta-class but too much \citep{2008-alinkaya}. 
+The code is afforded with this book.
+
+\subsection{Ruby}
+
+In Ruby, there is no final classes and methods. 
+However, there is a hack to prevent a method from being overridden by a subclass (but not recommended) \citep{2016-mvp}. 
+
+%\lstinputlisting[language={[KB]Ruby}, linerange={6-9,14-14,20-20}, style=codeStyle]{../codes/ruby/inheritance/app.rb}
+
+\section{Multiple inheritance}
+
+\subsection{C++}
+
+C++ supports multiple inheritance: the constructors of inherited classes are called in the same order in which they are inherited \citep{2012-g4g1}. 
+
+\lstinputlisting[language={[KB]C++}, linerange={4-23}, style=codeStyle]{../codes/cpp/inheritance/multiple/multiple1.cpp}
+
+If you have two classes (\textbf{Person} and \textbf{Machine}) with the same method signature (\textbf{void info()}) and a third one (\textbf{Android}) extending both of them, calling this method from an object of the third class (\textit{Android}) will generate a compile error indicating ambiguity.
+A solution is to define a method with the same signature in the third class.
+
+\lstinputlisting[language={[KB]C++}, linerange={4-5,10-10,13-13,17-20,24-24,26-26,29-31,35-36,67-72}, style=codeStyle]{../codes/cpp/inheritance/multiple/multiple2.cpp}
+
+Also, if your parent classes each has a field with the same name, the subclass cannot access it directly by its name since there is a conflict. 
+Instead, it must indicate the field of which parent. 
+
+\lstinputlisting[language={[KB]C++}, linerange={4-4,14-14,16-19,27-30,37-38,42-42,44-49}, style=codeStyle]{../codes/cpp/inheritance/multiple/multiple2.cpp}
+
+One of multiple inheritance's problems is the diamond problem. 
+Suppose we have a class called \textbf{Person} with a field \textbf{name} and the constructor to initialize it. 
+This class has two subclasses: \textbf{Student} and \textbf{Professor} which will inherit its fields and methods. 
+Then, a class \textbf{PhdStudent} which inherits from \textbf{Student} and \textbf{Professor}. 
+When this class's constructor is called, it will call the constructors of its superclasses, which in their turn each will call the constructor of \textbf{Person}. 
+This will create two copies of all the members of \textbf{Person} causing ambiguities. 
+To fix this problem, the two classes \textbf{Student} and \textbf{Professor} have to be virtual using the keyword \keyword[C++]{virtual}.
+In this case, when the constructor of \textbf{PhdStudent} calls its parents', it has to call its grandparent's as well.
+
+\lstinputlisting[language={[KB]C++}, linerange={5-8,10-17,20-27,30-38,41-46}, style=codeStyle]{../codes/cpp/inheritance/multiple/diamond2.cpp}
+
+\subsection{Java}
+
+Prior to version 8, Java did not support multiple inheritance as we know it. 
+But, it supports multiple inheritance of type using interfaces; a class implementing many interfaces is considered as having all these types at once. 
+Version 8 introduces \keyword[Java]{default} methods to the interfaces, which means a class implementing an interface can inherit some behavior. 
+It is called: multiple inheritance of implementation; as for multiple inheritance of state, it is not supported and thus you can extend one class \citep{nd-oracle1}.
+
+If a class inherits the same method signature more than twice, then it has to override this same function in order to avoid ambiguity.  
+In case of method ambiguity between its parent types (class and/or interfaces), it can access the method of its superclass by simply using \keyword[Java]{super}, and the defaults of its parent interfaces by using the name of the interface followed by \keyword{.super.} followed by the name of the method.
+
+\lstinputlisting[language={[KB]Java}, linerange={22-52}, style=codeStyle]{../codes/java/src/inheritance/multiple/Multiple1.java}
+
+As for diamond problem: if we have an interface \textbf{HumanBehavior} with a default method \textbf{void info()} and two interfaces (\textbf{StudentBehaviour} and \textbf{ProfessorBehavior}) extending it, then a class \textbf{PhdStudent} implementing these two, we will have these cases \citep{2012-naftalin}: 
+\begin{itemize}
+	\item The two interfaces do not override their parent's method: in this case, the class will inherit its grandparent's implementation.
+	\item One of the two interfaces overrides its parent's method: in this case, the class will inherit the more specific implementation which is that of its parent.
+	\item The two interfaces override their parent's method: in this case, the class must override it as well.
+\end{itemize}
+
+\lstinputlisting[language={[KB]Java}, linerange={12-26}, style=codeStyle]{../codes/java/src/inheritance/multiple/Diamond1.java}
+
+\subsection{Javascript} 
+
+In EcmaScript5, a constructor of a class can call any other constructor by passing itself (the context) to that constructor. 
+If there are any fields initialization, they will be assigned to the context. 
+If you call more than one constructor and they assign the same field, there will be one unique field with the last assigned value. 
+To inherit methods, a class assigns to its prototype a new instance of its parent's using \keyword[Javascript]{Object.create}. 
+To inherit more than one prototype, you can use the method \keyword[Javascript]{Object.assign} \citep{2018-mdn-create}.
+If there is a conflict between parents methods, the subclass will inherit the last assigned one since its definition will overwrite the first ones.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={1-26}, style=codeStyle]{../codes/javascript/inheritance/multiple/es5/multiple1.js}
+
+As for diamond problem, a certain context has only one copy of a field, which will take the last value assigned to it.
+Suppose we have a class \textbf{Person} which creates a field \textbf{name} and two other classes (\textbf{Student} and \textbf{Professor}) which inherits from it. 
+If a class \textbf{PhdStudent} extends these two classes, the field \textbf{name} is created once and updated each time it is assigned.
+In our example, it will take the value assigned to \textbf{Student}'s constructor.
+
+\lstinputlisting[language={[KB]Javascript}, linerange={28-41}, style=codeStyle]{../codes/javascript/inheritance/multiple/es5/diamond1.js}
+
+In EcmaScript 2015, \keyword[Javascript]{extends} does not accept more than one superclass. 
+So, you have to work around this as in \citep{2016-dorin}.
+
+\subsection{Lua}
+
+One way to implement multiple inheritance is to use the meta-method \keyword[Lua]{\_\_index}, which is called whenever Lua cannot find a key in the current table \citep{2003-ierusalimschy}.
+But, an object has to own its fields; this is why we should create an object with all its parents fields.
+To create a new object in the constructor, we have to create new objects from parents then merge them into a single one. 
+If a key is available for many classes, it will get the last value assigned to it. 
+
+Suppose we have two classes (\textbf{Person} and \textbf{Machine}), each has its own fields and methods.
+You can create a function which returns an index function based on a list of given parents. 
+In our example, the index will favor the first parents if a key is not available in the current table (object).
+Also, when it finds a key in a parent class, it will link it to the current object so next time it will not loop again.
+Do not forget to pass the current class first; otherwise, the object will start searching in its parents and not its class first.
+
+\lstinputlisting[language={[KB]Lua}, linerange={31-58}, style=codeStyle]{../codes/lua/inheritance/multiple/multiple1.lua}
+
+Using this code, you will have unique fields even if there is a diamond inheritance. 
+As for methods inheritance, the subclass will inherit the first appropriate method encountered in its parents.
+
+\subsection{Perl}
+
+Perl supports multiple inheritance via its keyword \keyword[Perl]{@ISA} by searching for all methods of the first class and its ancestors, then it passes to the next \citep{2003-schwartz-phoenix}.
+So, ambiguity between methods is solved. 
+As for the fields, you can create an object (hash) from each parent and merge them into one object. 
+
+\lstinputlisting[language={[KB]Perl}, linerange={1-38}, style=codeStyle]{../codes/perl/inheritance/multiple/multiple1.pl}
+
+Using this code, you will have unique fields even if there is a diamond inheritance. 
+As for methods inheritance, the subclass will inherit the first appropriate method encountered in its parents.
+
+\subsection{PHP}
+
+In PHP, there is no multiple inheritance, but using interfaces we can achieve multiple inheritance of type.
+Innterfaces can define behavior without implementing it; it can even declare the constructor.
+Prior to PHP 5.3.9, a class could not implement two interfaces that specified a method with the same name, since it would cause ambiguity. 
+More recent versions of PHP allow this as long as the duplicate methods have the same signature \citep{2018-cowburn}.
+
+Another mechanism is traits: they are used as mean to reuse code, but they do not support polymorphism. 
+If two traits are used and they have conflicting methods, an error is produced. 
+To solve the problem, you can choose which one to use using the operator \keyword[PHP]{insteadof}; or you can add an alias to one of them using the operator \keyword[PHP]{as}  \citep{2018-cowburn}.
+
+We can use both of them to achieve something close to multiple inheritance: interfaces for type and traits for code reuse.
+In our example, we define two interfaces \textbf{iPerson} and \textbf{iMachine} to represent the types. 
+Then, two traits \textbf{tPerson} and \textbf{tMachine} implementing the behavior \textbf{info()}. 
+A trait \textbf{iConstruct} which implements a constructor calling \textbf{info()} of the parent class if it exists, then calling \textbf{info()} of the current class.
+Two concrete classes \textbf{Person} and \textbf{Machine} implementing the last interfaces respectively using the defined traits.
+An \textbf{Android} is a \textbf{Machine} which has behavior similar to a \textbf{Person}. 
+A \textbf{Cyborg} is a \textbf{Person} which has behavior similar to a \textbf{Machine}.
+
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-36}, style=codeStyle]{../codes/php/inheritance/multiple/multiple1.php}
+
+As for diamond problem, PHP supports the extension of one class. 
+You can create an interface \textbf{iPerson} to represent persons type, and two others extending it: \textbf{iStudent} and \textbf{iProfessor}.
+Then, a class \textbf{Person} implementing the interface \textbf{iPerson} which will serve as a base to other classes.
+
+\lstinputlisting[language={[KB]PHP}, linerange={3-15}, style=codeStyle]{../codes/php/inheritance/multiple/diamond.php}
+
+Then, we can create two traits (\textbf{tStudent} and \textbf{tProfessor}) to contain members unique to classes \textbf{Student} and \textbf{Professor} respectively.
+These two classes extend the class \textbf{Person} and add their unique characteristics using their respective traits.
+
+\lstinputlisting[language={[KB]PHP}, linerange={17-49}, style=codeStyle]{../codes/php/inheritance/multiple/diamond.php}
+
+Finally, \textbf{PhdStudent} extends \textbf{Person} and adds its characteristics using the two previously defined traits.
+
+\lstinputlisting[language={[KB]PHP}, linerange={51-69}, style=codeStyle]{../codes/php/inheritance/multiple/diamond.php}
+
+\textbf{P.S.} I used interfaces just to maintain inheritance of type in case someone uses \keyword[PHP]{instanceof}, otherwise you can drop them.
+
+\subsection{Python}
+
+Python supports a limited form of multiple inheritance. 
+For old-style classes, the only rule is depth-first, left-to-right. 
+Thus, if an attribute is not found in the subclass, it is searched in the left superclass, then (recursively) in its ancestors, and so on.
+For new-style classes, the method resolution order changes dynamically to support cooperative calls to \keyword[Python]{super} \citep{2018-python2.7}.
+
+\lstinputlisting[language={[KB]Python}, linerange={4-16}, style=codeStyle]{../codes/python/inheritance/multiple/multiple1.py}
+
+Since fields are initialized by pushing them into the context object (\keyword{self} by convention), the attribute will not be defined twice: one in the subclass and one in the superclass of a given object. 
+In this case, when we have multiple inheritance, the last constructor to be called among superclasses' is the one which will set the value of a shared field.
+
+Lets try to create a beautiful scary diamond by defining a class \textbf{Person}, two classes (\textbf{Student} and \textbf{Professor}) extending it, and a fourth class \textbf{PhdStudent}. 
+The name attribute of an instance of \textbf{PhdStudent} will have the last value assigned to it via \textbf{Student}'s constructor. 
+Also, \textbf{PhdStudent} will inherit the method \textbf{info()} of \textbf{Student}, not because it is the most specific but because it is the left one (when defining inheritance).
+
+\lstinputlisting[language={[KB]Python}, linerange={4-32}, style=codeStyle]{../codes/python/inheritance/multiple/diamond.py}
+
+\subsection{Ruby}
+
+Ruby does not support multiple inheritance; a class can inherit from one class. 
+There is an alternative called \nameword{mixins} which are some modules included inside a class's definition to enhance code reuse \citep{2001-thomas-hunt}.
+
+Lets define behavior using mixins: \textbf{PersonMixin} to define methods applied to persons, and \textbf{MachineMixin} to define mmethods apllied to machines. 
+Another mixin which defines the initializer: its function is to search for \textbf{info()} in the superclass, if found it will be called; then call the current info; finally, call \textbf{moreInfo} which is useful in case the specific class wants to add more information.
+\textbf{Person} and \textbf{Machine} are classes with \textbf{PersonMixin} and \textbf{MachineMixin} behaviors respectively; they have both an initializer afforded via \textbf{InitMixin}.
+Then \textbf{Android} and \textbf{Cyborg} which are \textbf{Machine} with \textbf{PersonMixin} behavior and \textbf{Person} with \textbf{MachineMixin} behavior respectively.
+
+\lstinputlisting[language={[KB]Ruby}, linerange={3-33}, style=codeStyle]{../codes/ruby/inheritance/multiple/multiple1.rb}
+
+\begin{discussion}
+
+Inheritance is a mean to reuse code from parent classes.
+Constructors can be considered as behaviors too, so they must be inherited too. 
+Not every language allows constructor inheritance, thus we can categorize languages into three groupes:
+\begin{itemize}
+	\item \textbf{Out of box}: These are the languages designed to support constructor inheritance. 
+	Most of our languages are among this category: C++11, Perl, PHP, Python and Ruby.
+	\item \textbf{Can be done}: These are the languages which have many ways of doing inheritance. 
+	Lua belongs to this category. 
+	\item \textbf{Cannot be done}: These are the languages which forces constructor override. 
+	Java and Javascript are examples of this category along with C++ prior to version 11.
+\end{itemize}
+
+When inheriting members from a superclass, a class can change their visibility mode in some OOP languages. 
+Based on this ability, we can divide OOP languages into three categories:
+\begin{itemize}
+	\item \textbf{Allowed}: A language allows visibility mode change either for methods or fields. 
+	C++ can restrict original visibility of all members upon inheritance without selecting each one apart. 
+	PHP can exceed original visibility of methods upon overriding, and fields by defining them again (real overriding).
+	\item \textbf{Just methods}: A language allows visibility mode change just for methods. 
+	Java and Ruby do so upon overriding methods. 
+	Java can only exceed original visibility; as for fields it does not change its visibility, but it creates a new field with the same name as its parent's and preserve the latter.
+	\item \textbf{Not allowed}: These are languages which do not allow visibility change either for methods or fields. 
+	In our case, they are the languages with just public members: Javascript, Lua, Perl and Python.
+\end{itemize}
+
+When you try to override a field in C++ and Java, you actually defining a new field while the parent's still exists. 
+Other languages just override the value of the field if it exists, or create it otherwise. 
+
+An abstract class is a class which cannot be instantiated and has to be extended. 
+It can be abstract because it cannot exist in the current context or because it has some unfinished methods implementations. 
+Based on this criterion, a programming language can be one of these three categories:
+\begin{itemize}
+	\item \textbf{Class-level abstraction}: In this category, we can define a class as abstract even if all its methods have implementations.
+	Java and PHP belong to this category.
+	\item \textbf{Method-level abstraction}: In this category, a class is considered as abstract if it has at least one abstract method.
+	This category contains: C++ and Python (via \nameword{abc} module).
+	\item \textbf{No abstraction}: All the languages which do not afford a built-in mechanism to support abstract classes. 
+	Javascript, Lua, Perl and Ruby are examples of this category.
+\end{itemize}
+
+Final classes are those which cannot be extended, and final methods are those which cannot be overridden. 
+Languages such as Java and PHP affords this capacity; C++11 does too. 
+
+Multiple inheritance is the capacity to extend many classes at once. 
+We can define three types of multiple inheritance; a given language can afford all of these types.
+\begin{itemize}
+	\item \textbf{Type multiple inheritance}: A class can inherit many types at once.  
+	When an instance of this class is tested against these types, it belongs to all of them. 
+	Languages affording this capacity are: C++ (class inheritance), Java (interfaces), Perl (\keyword[Perl]{@ISA}), PHP (interfaces) and Python (class inheritance).
+	
+	\item \textbf{Behavior multiple inheritance}: A class can inherit behavior from many sources. 
+	In this case, we can consider code reuse via composition mechanisms such as traits and mixins as a form of inheritance. 
+	Languages affording this capacity are: C++ (class inheritance), Java (defaults via interfaces), javascript (merging prototypes), Lua (using \keyword[Lua]{\_\_index}), Perl (\keyword[Perl]{@ISA}), PHP (traits), Python (class inheritance) and Ruby (mixins). 
+	It is important to point out that Java and Ruby's behavior multiple inheritance is limited. 
+	Java's default methods are limited when it comes to operate on class's state: they can be totally independent from class's fields, or they can be dependent on final fields which have to be initialized in the interface. 
+	Ruby's mixins can have calls to superclass's methods; but when including consecutive mixins, their super will refer to the previous included mixin.
+	
+	\item \textbf{State multiple inheritance}: A class can inherit fields from multiple classes or sources. 
+	These languages afford this capacity: C++ and PPython(class inheritance); Javascript, Lua and Perl (by combining parents objects); and PHP (traits).
+	
+\end{itemize}
+
+Table~\ref{tab-inheritance} represents a comparison between some OOP languages based on their inheritance capacities: 
+\begin{itemize}
+	\item \textbf{Constructor inheritance}: Can a subclass inherit its parent's constructor? (no need to define it again).
+	\item \textbf{Visibility change}: Can a subclass change the visibility modes of its parent's members?
+	\item \textbf{Field hiding}: If a subclass defines the same field, will be two fields of the same name: one of the subclass and one of its parent?
+	\item \textbf{Abstract}: Can the language afford abstract classes and methods?
+	\item \textbf{Final}: Can the language afford final classes and methods?
+	\item \textbf{Multiple inheritance}: How far a language can afford multiple inheritance (including code reuse from sources other than classes)?
+\end{itemize}
+
+\begin{landscape}
+	\extrarowsep = 0pt 
+	
+	%	\doublerawsep = 1.5pt
+	\begin{longtabu} to \linewidth %
+		{
+			X[p]|[5pt white]
+			X[1.5,p]|[5pt white]
+			X[1.5,p]|[5pt white]
+			X[0.5,p]|[5pt white]
+			X[2,p]|[5pt white]
+			X[2,p]|[5pt white]
+			X[2,p]|[5pt white]
+		} %{llllllll} 
+		%	\begin{longtabu} {p{1cm}p{1cm}p{5cm}p{1cm}p{1cm}p{2cm}p{2cm}p{1cm}}
+		\caption{Inheritance comparison}%
+		\label{tab-inheritance}\\
+		
+		%		\hline\hline
+		\rowcolor{indigo}
+		\rowfont{\bfseries\color{white}}
+		{Language} &
+		{Constructor inheritance} &
+		{Visibility change} &
+		{Field hide} &
+		{Abstract} & 
+		{Final} &
+		{Multiple inheritance}\\
+		%		\hline\hline
+		&&&&&&\\
+		\endfirsthead
+		
+		%		\hline\hline
+		\rowcolor{indigo}
+		\rowfont{\bfseries\color{white}}
+		{Language} &
+		{Constructor inheritance} &
+		{Visibility change} &
+		{Field hide} &
+		{Abstract} & 
+		{Final} &
+		{Multiple inheritance}\\
+		%		\hline\hline
+		&&&&&&\\
+		\endhead
+		
+		\taburowcolors{indigo!20!white .. black!10!white}
+		
+		{\bfseries\color{indigo}C++} & %Language
+		C++11: via keyword \keyword{using}& %Constructor
+		Yes& %Visibility
+		Yes& %field hide
+		method: virtual myMethod = 0; \newline 
+		class: at least one abstract method & %Abstract
+		method: (C++11) virtual myMethod final \newline 
+		class: (C++11) class MyClass final \{\}& %final
+		All\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Java} & %Language
+		No& %Constructor
+		Methods: after overriding them& %Visibility
+		Yes& %field hide
+		method: abstract myMethod \newline 
+		class: abstract class MyClass & %Abstract
+		method: final myMMethod \newline 
+		class: final class MyClass & %final
+		Type (interfaces), Behavior(defaults in interfaces)\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Javascript} & %Language
+		No way (since the class is its own constructor)& %Constructor
+		No& %Visibility
+		No& %Fields hide
+		No& %Abstract
+		No& %final
+		State (combine parents new objects) and Behavior: (combine parents prototypes)\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Lua} & %Language
+		Can be done: using colon notation for new& %Constructor
+		No& %Visibility
+		No& %Fields hide
+		No& %Abstract
+		No& %final
+		State (combine parents new objects) and Behavior: (using \keyword{\_\_index})\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Perl} & %Language
+		Yes& %Constructor
+		No& %Visibility
+		No& % Fields hide
+		No& %Abstract
+		No& %final
+		Type and Behavior (\keyword{@ISA}), State (combine parents new objects)\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}PHP} & %Language
+		Yes& %Constructor
+		Methods: after overriding them; Fields& %Visibility
+		No& % Fields hide
+		method: abstract myMethod \newline
+		class: abstract class MyClass& %Abstract
+		method: final myMethod \newline 
+		class: final MyClass & %final
+		Type (interfaces), State and Behavior (traits)\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Python} & %Language
+		Yes& %Constructor
+		No& %Visibility
+		No& % Field hiding
+		using abc module& %Abstract
+		No& %final
+		All\\%Multiple
+		%		\hline
+		
+		{\bfseries\color{indigo}Ruby} & %Language
+		Yes& %Constructor
+		Methods: after overriding& %Visibility
+		No& %Double member
+		No& %Abstract
+		No& %final
+		Behavior (via mixins)\\%Multiple
+		%		\hline
+		
+		%		\hline\hline
+		
+	\end{longtabu}
+\end{landscape}
+
+\end{discussion}
+
+%=====================================================================
+\ifx\wholebook\relax\else
+% \cleardoublepage
+% \bibliographystyle{../use/ESIbib}
+% \bibliography{../bib/RATstat}
+	\end{document}
+\fi
+%=====================================================================
