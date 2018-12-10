@@ -23,7 +23,7 @@
 %\RequirePackage{ruby}
 \RequirePackage{xstring}
 
-\RequirePackage{fancyhdr} 
+\RequirePackage{fancyhdr}
 \RequirePackage[T1]{fontenc}
 
 \definecolor{indigo}{RGB}{75,0,130}%indigo
@@ -86,7 +86,7 @@
 \setmainfont
 [Path = fonts/CrimsonText/,
 Extension = .ttf,
-Ligatures=TeX, 
+Ligatures=TeX,
 UprightFont=*-Regular,
 BoldFont=*-Bold,
 ItalicFont=*-Italic,
@@ -120,7 +120,7 @@ Ligatures=TeX
 ]{SourceCodePro-Bold} %
 
 %https://www.dafont.com/decorated-roman-ini.font?l[]=1
-%Decorated Roman Initials by Dieter Steffmann 
+%Decorated Roman Initials by Dieter Steffmann
 %First seen on DaFont: before 2005
 \newfontface\lettrinefont
 [Path = fonts/decoratedRomanIni/,
@@ -189,7 +189,7 @@ title={#1}
 	frame=L,
 	xleftmargin=1.5cm,%\parindent,
 	showstringspaces=false,
-	basicstyle=\scriptsize\ttfamily\bfseries, %\codefont, 
+	basicstyle=\scriptsize\ttfamily\bfseries, %\codefont,
 	keywordstyle=\bfseries\color{blue!70!black}, %green!40!black
 	keywordstyle = [2]{\bfseries\color{orange!70!black}},
 	keywordstyle = [3]{\bfseries\color{red!70!black}},
@@ -222,7 +222,7 @@ title={#1}
 \def\@keyword#1{{\itshape\bfseries\color{blue} #1}}
 %\def\@@keyword[#1]#2{\@keyword#2\index{#1!#2}}
 
-\usepackage{ifthen} 
+\usepackage{ifthen}
 
 \def\@escapeall@idx#1#2\relax{"#1\ifx\relax#2\relax\else\@escapeall@idx#2\relax\fi}
 
@@ -295,14 +295,14 @@ title={#1}
 	\addcontentsline{toc}{part}{\@title}
 	\begin{tikzpicture}[remember picture,overlay]
 	\ifx\isplain\relax\else
-	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
+	\node[inner sep=0] at (current page.center) {\the\@coverimage};
 	\fi
-	
+
 	\node[anchor=north west,minimum width=1cm,minimum height=12cm,fill=indigo] (vline1)
 	at ([shift={(2cm,-2cm)}] current page.north west)
-	{}; 
-	
-	\node[anchor=north west, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.5] (title1) 
+	{};
+
+	\node[anchor=north west, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.5] (title1)
 	at ([shift={(0.5cm,0cm)}] vline1.north east)
 	{
 		\bfseries
@@ -312,14 +312,14 @@ title={#1}
 		\replace\@title
 	};
 
-	
+
 	\node[text width=8cm,anchor=north west, align=left] at ([shift={(0cm, -.5cm)}] vline1.south west){
 		\bfseries
 		\Huge
 		\ifx\isplain\relax\else \color{white}\fi
 		\@author
 	};
-	
+
 	\node[text=white,text width=8cm,anchor=north west] at ([shift={(-5cm,2cm)}] current page.south east){
 		\the\@licenseimage
 	};
@@ -336,8 +336,8 @@ title={#1}
 	\phantomsection
 	\addcontentsline{toc}{part}{Front Matter}
 	\fancyhf{} % sets both header and footer to nothing
-	\fancyfoot[CE, CO]{\thepage} 
-%	\fancyhead{} 
+	\fancyfoot[CE, CO]{\thepage}
+%	\fancyhead{}
 }
 
 
@@ -347,66 +347,66 @@ title={#1}
 %	\pagestyle{empty}
 	\phantomsection
 	\addcontentsline{toc}{part}{Back Matter}
-	%\fancyfoot{} 
-	%\fancyhead{} 
-	
+	%\fancyfoot{}
+	%\fancyhead{}
+
 	\fancyhf{}
 %	\fancyfoot[CE, CO]{}
 
-	\fancyhead{\color{indigo}\thepage\hrulefill} 
-	
+	\fancyhead{\color{indigo}\thepage\hrulefill}
+
 }
 
 \renewcommand{\mainmatter}{
-	
+
 	\cleardoublepage
-	
+
 	\pagenumbering{arabic}
 	\phantomsection
 	\addcontentsline{toc}{part}{Main Matter}
-	
+
 	\pagestyle{fancy}                       % Sets fancy header and footer
 %	\fancyfoot{}                            % Delete current footer settings
-	
+
 	\fancyhf{}
-	
-	
+
+
 	\fancyhead[E]{
 		\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
 		at ([shift={(0cm,-1cm)}] current page.north west){};
-%		
+%
 		\node[anchor=west, fill=white,minimum width=1cm]
 		at ([shift={(\pright,0cm)}] bx1.north west)
 		{\large \color{indigo}\textbf{\thepage}};
-%		
+%
 		\node[anchor=east,fill=white,align=left]
 		at ([shift={(2pt,0cm)}] bx1.south east)
 		{\color{indigo}\textbf{\nouppercase{\rightmark}}};
 		\end{tikzpicture}
-	} 
-	
+	}
+
 	\fancyhead[O]{
 		\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=north west, minimum width=\textwidth+\pright-2pt, minimum height=0.5cm,rectangle,very thick,draw=black] (bx1)
 		at ([shift={(\pleft,-1cm)}] current page.north west){};
-		%		
+		%
 		\node[anchor=east, fill=white,minimum width=1cm,align=left]
 		at ([shift={(-\pright,0cm)}] bx1.north east)
 		{\large \color{indigo}\textbf{\thepage}};
-%		%		
+%		%
 		\node[anchor=west,fill=white]
 		at ([shift={(-2pt,0cm)}] bx1.south west)
 		{\color{indigo}\textbf{\nouppercase{\leftmark}}};
 		\end{tikzpicture}
 	}
-	
-	
+
+
 	\fancypagestyle{plain}{% % <-- this is new
-		\fancyhf{} 
+		\fancyhf{}
 		\fancyfoot[LE,RO]{} % same placement as with page style "fancy"
 	}
-} 
+}
 
 
 \RequirePackage{tocloft}
@@ -420,10 +420,10 @@ title={#1}
 \renewcommand{\cftsecfont}{\normalfont\slshape}           % \section font in ToC
 
 \def\kodetoc{%
-	
+
 	\chapter*{Contents}
 	\addcontentsline{toc}{section}{Contents}
-	
+
 	{
 		\hypersetup{linkcolor=black}
 		\tableofcontents
@@ -431,25 +431,25 @@ title={#1}
 }
 
 \def\kodelof{%
-	
+
 	\chapter*{List of figures}
 	\addcontentsline{toc}{section}{List of figures}
 	{
 		\hypersetup{linkcolor=black}
 		\listoffigures
 	}
-	
+
 }
 
 \def\kodelot{%
-	
+
 	\chapter*{List of tables}
 	\addcontentsline{toc}{section}{List of tables}
 		{
 			\hypersetup{linkcolor=black}
 			\listoftables
 		}
-		
+
 }
 
 \RequirePackage{acro}
@@ -482,15 +482,15 @@ title={#1}
 %\ExplSyntaxOff
 
 \def\kodeabbrev{%
-	
+
 	\chapter*{List of abbreviations}
 	\addcontentsline{toc}{section}{List of abbreviations}
-	
+
 	\printacronyms[include-classes=abbrev,name=]
 %	\printglossaries
 %	\printglossary[type=\acronymtype]
 %	\printglossary
-	
+
 }
 
 \RequirePackage{imakeidx}
@@ -527,29 +527,29 @@ title={#1}
 
 
 \newcommand\setplainversion{
-	
+
 	\definecolor{indigo}{RGB}{0,0,0}%indigo
-	
+
 	\hypersetup{
 		hidelinks
 	}
-	
+
 	\renewcommand{\lettrine}[2]{##1##2}
-	
+
 	\renewcommand\merienda{}
 	\renewcommand\quotefont{}
-	
+
 	\def\@keyword##1{{\itshape\bfseries ##1}}
-	
+
 	\def\nameword##1{``{\itshape\bfseries ##1}"}
-	
+
 	\def\@codeStyle@background{\color{white}}
 	\def\@shellStyle@background{\color{white}}
 	\def\@shellStyle@basicstyle{\scriptsize\codefont\color{black}}
-	
+
 %	\selectcolormodel{gray}
-	
+
 	\renewcommand{\langlogo}[3]{}
-	
+
 	\let\isplain=\relax
 }

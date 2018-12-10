@@ -1,16 +1,21 @@
 %
-%    Copyright (C) 2017  Abdelkrime Aries <kariminfo0@gmail.com>
+%    Copyright (C) 2018  Abdelkrime Aries <kariminfo0@gmail.com>
 %
 
 \NeedsTeXFormat{LaTeX2e} %[2009/09/24]
-\ProvidesClass{KodeBook}[2017/08/17 Create a book with codes]
+\ProvidesClass{KodeBookAr}[2018/12/10 Create a book with codes]
 \LoadClass[12pt, a4paper]{book}
 
 \raggedbottom
 
-%\RequirePackage[utf8]{inputenc}
-%\RequirePackage[arabic,french,english]{babel}
+%\RequirePackage{cmap}
+\RequirePackage[utf8]{inputenc}
+%\RequirePackage[T1]{fontenc}
+
+%\RequirePackage[arabic,english]{babel}
 %\RequirePackage{CJKutf8}
+
+%\RequirePackage{arabtex}
 
 \RequirePackage[table]{xcolor}
 
@@ -24,7 +29,7 @@
 \RequirePackage{xstring}
 
 \RequirePackage{fancyhdr} 
-\RequirePackage[T1]{fontenc}
+
 
 \definecolor{indigo}{RGB}{75,0,130}%indigo
 %\definecolor{purpleX11}{RGB}{160,32,240}
@@ -80,54 +85,54 @@
 }
 
 
-\RequirePackage{fontspec}
-\defaultfontfeatures{Mapping=tex-text}
+%\RequirePackage{fontspec}
+%\defaultfontfeatures{Mapping=tex-text}
 
-\setmainfont
-[Path = fonts/CrimsonText/,
-Extension = .ttf,
-Ligatures=TeX, 
-UprightFont=*-Regular,
-BoldFont=*-Bold,
-ItalicFont=*-Italic,
-BoldItalicFont=*-BoldItalic
-]{CrimsonText} %
-
-\newfontfamily\merienda
-[Path = fonts/Merienda/,
-Extension = .ttf,
-Ligatures=TeX,
-UprightFont=*-Regular,
-BoldFont=*-Bold,
-Scale=1
-]{Merienda} %
-
-
-\newfontface\quotefont
-[Path = fonts/Handlee/,
-Extension = .ttf,
-Ligatures=TeX,
-Scale=1.
-]{Handlee-Regular} %
-
-
-
-\newfontface\codefont
-[Path = fonts/SourceCodePro/,
-Extension = .ttf,
-Ligatures=TeX
-%Scale=1.5
-]{SourceCodePro-Bold} %
-
-%https://www.dafont.com/decorated-roman-ini.font?l[]=1
-%Decorated Roman Initials by Dieter Steffmann 
-%First seen on DaFont: before 2005
-\newfontface\lettrinefont
-[Path = fonts/decoratedRomanIni/,
-Extension = .ttf,
-Ligatures=TeX
-%Scale=1.5
-]{DecoratedRomanInitials} %
+%\setmainfont
+%[Path = fonts/CrimsonText/,
+%Extension = .ttf,
+%Ligatures=TeX, 
+%UprightFont=*-Regular,
+%BoldFont=*-Bold,
+%ItalicFont=*-Italic,
+%BoldItalicFont=*-BoldItalic
+%]{CrimsonText} %
+%
+%\newfontfamily\merienda
+%[Path = fonts/Merienda/,
+%Extension = .ttf,
+%Ligatures=TeX,
+%UprightFont=*-Regular,
+%BoldFont=*-Bold,
+%Scale=1
+%]{Merienda} %
+%
+%
+%\newfontface\quotefont
+%[Path = fonts/Handlee/,
+%Extension = .ttf,
+%Ligatures=TeX,
+%Scale=1.
+%]{Handlee-Regular} %
+%
+%
+%
+%\newfontface\codefont
+%[Path = fonts/SourceCodePro/,
+%Extension = .ttf,
+%Ligatures=TeX
+%%Scale=1.5
+%]{SourceCodePro-Bold} %
+%
+%%https://www.dafont.com/decorated-roman-ini.font?l[]=1
+%%Decorated Roman Initials by Dieter Steffmann 
+%%First seen on DaFont: before 2005
+%\newfontface\lettrinefont
+%[Path = fonts/decoratedRomanIni/,
+%Extension = .ttf,
+%Ligatures=TeX
+%%Scale=1.5
+%]{DecoratedRomanInitials} %
 
 
 \newtcolorbox{kodequote}[1]{%
@@ -135,7 +140,7 @@ colback=white,
 colframe=black,
 colbacktitle=indigo!10!white,
 coltitle=indigo,
-fontupper=\quotefont,
+%fontupper=\quotefont,
 title={#1}
 }
 
@@ -203,7 +208,7 @@ title={#1}
 }
 
 \def\@shellStyle@background{\color{black}}
-\def\@shellStyle@basicstyle{\scriptsize\codefont\color{green}}
+\def\@shellStyle@basicstyle{\scriptsize\color{green}}%\codefont
 
 \lstdefinestyle{shellStyle}{
 	belowcaptionskip=1\baselineskip,
@@ -211,8 +216,8 @@ title={#1}
 	frame=trbl,
 %	rulesepcolor=\color{blue},
 	xleftmargin=1.25cm,
-	basicstyle=\@shellStyle@basicstyle ,
-	backgroundcolor=\@shellStyle@background ,
+%	basicstyle=\@shellStyle@basicstyle ,
+%	backgroundcolor=\@shellStyle@background ,
 	lineskip=.2em
 	%	morekeywords={sudo},keywordstyle=\color{red},
 	%  frameround=tttt
@@ -265,66 +270,7 @@ title={#1}
 }
 }
 
-\newcounter{coverind}
 
-\def\replace#1{%
-	\setcounter{coverind}{0}
-	\begingroup
-	\edef\@tempa{#1 }%
-	\expandafter\endgroup
-	\expandafter\replaceit\@tempa\relax
-}
-
-\def\replaceit#1 #2\relax{%replace blanks in a string
-	#1
-	\begingroup
-	\ifx\relax#2\relax  % is #2 empty?
-	\def\next{\endgroup\endit}% your own end-macro if required
-	\else
-	\def\next{\endgroup\\[0.25cm]\hspace{\arabic{coverind}cm}\replaceit#2\relax}%
-	\stepcounter{coverind}%
-%	\addtocounter{coverind}{5}
-	\fi
-	\next
-}
-\def\endit{}
-
-
-\def\maketitle {
-	\phantomsection
-	\addcontentsline{toc}{part}{\@title}
-	\begin{tikzpicture}[remember picture,overlay]
-	\ifx\isplain\relax\else
-	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
-	\fi
-	
-	\node[anchor=north west,minimum width=1cm,minimum height=12cm,fill=indigo] (vline1)
-	at ([shift={(2cm,-2cm)}] current page.north west)
-	{}; 
-	
-	\node[anchor=north west, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.5] (title1) 
-	at ([shift={(0.5cm,0cm)}] vline1.north east)
-	{
-		\bfseries
-		\Huge
-		\merienda
-%		\@title
-		\replace\@title
-	};
-
-	
-	\node[text width=8cm,anchor=north west, align=left] at ([shift={(0cm, -.5cm)}] vline1.south west){
-		\bfseries
-		\Huge
-		\ifx\isplain\relax\else \color{white}\fi
-		\@author
-	};
-	
-	\node[text=white,text width=8cm,anchor=north west] at ([shift={(-5cm,2cm)}] current page.south east){
-		\the\@licenseimage
-	};
-	\end{tikzpicture}
-}
 
 %fancyhdr horizontal rule
 \renewcommand{\headrulewidth}{0pt}
@@ -536,8 +482,8 @@ title={#1}
 	
 	\renewcommand{\lettrine}[2]{##1##2}
 	
-	\renewcommand\merienda{}
-	\renewcommand\quotefont{}
+	\def\merienda{}
+	\def\quotefont{}
 	
 	\def\@keyword##1{{\itshape\bfseries ##1}}
 	
@@ -553,3 +499,92 @@ title={#1}
 	
 	\let\isplain=\relax
 }
+
+
+\RequirePackage{amsmath,amssymb}             % AMS Math
+%\usepackage[T1]{fontenc}
+
+%\usepackage[pdftex]{graphicx}
+
+%\usepackage{listingsutf8}
+%\usepackage{xcolor}
+%\usepackage{times}
+\RequirePackage{array}
+\RequirePackage{natbib}
+\RequirePackage{lscape}%to flip tables in a page
+\RequirePackage{pdflscape}
+\RequirePackage{longtable}
+\RequirePackage{tabu}
+\RequirePackage{wrapfig}
+
+\RequirePackage{arabxetex}
+%\usepackage[english]{babel}
+
+
+\newcounter{coverind}
+
+\def\replace#1{%
+	\setcounter{coverind}{0}
+	\begingroup
+	\edef\@tempa{#1 }%
+	\expandafter\endgroup
+	\expandafter\replaceit\@tempa\relax
+}
+
+\def\replaceit#1 #2\relax{%replace blanks in a string
+	\textarab{#1}
+	\begingroup
+	\ifx\relax#2\relax  % is #2 empty?
+	\def\next{\endgroup\endit}% your own end-macro if required
+	\else
+	\def\next{\endgroup\\[0.25cm]\hspace{\arabic{coverind}cm}\replaceit#2\relax}%
+	\stepcounter{coverind}%
+	%	\addtocounter{coverind}{5}
+	\fi
+	\next
+}
+\def\endit{}
+
+\def\@titleFP{}
+
+\def\title#1{
+	\def\@title{\textarab{#1}}
+	\def\@titleFP{\replace{#1}}
+}
+
+\def\maketitle {
+	\phantomsection
+	\addcontentsline{toc}{part}{\@title}
+	\begin{tikzpicture}[remember picture,overlay]
+	\ifx\isplain\relax\else
+	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
+	\fi
+	
+	\node[anchor=north west,minimum width=1cm,minimum height=12cm,fill=indigo] (vline1)
+	at ([shift={(2cm,-2cm)}] current page.north west)
+	{}; 
+	
+	\node[anchor=north west, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.5] (title1) 
+	at ([shift={(0.5cm,0cm)}] vline1.north east)
+	{
+		\bfseries
+		\Huge
+%		\merienda
+		%		\@title
+		\@titleFP
+	};
+	
+	
+	\node[text width=8cm,anchor=north west, align=left] at ([shift={(0cm, -.5cm)}] vline1.south west){
+		\bfseries
+		\Huge
+		\ifx\isplain\relax\else \color{white}\fi
+		\@author
+	};
+	
+	\node[text=white,text width=8cm,anchor=north west] at ([shift={(-5cm,2cm)}] current page.south east){
+		\the\@licenseimage
+	};
+	\end{tikzpicture}
+}
+
