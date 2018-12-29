@@ -3,7 +3,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e} %[2009/09/24]
-\ProvidesClass{KodeBook}[2017/08/17 Create a book with codes]
+\ProvidesClass{KodeBookFR}[2018/12/29 Create a book with codes]
 \LoadClass[12pt, a4paper]{book}
 
 \raggedbottom
@@ -49,6 +49,18 @@
 
 \RequirePackage{etoolbox}
 
+%Quotes, introduction
+\RequirePackage[many]{tcolorbox}
+
+\RequirePackage{listings}
+\RequirePackage{lstlangKB}
+\RequirePackage{textcomp} %for textasciitilde
+
+\RequirePackage{tocloft}
+
+\usepackage{polyglossia}
+\setmainlanguage{french}
+
 %\makeatletter
 \patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
 \patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
@@ -60,8 +72,6 @@
 \patchcmd{\DOTI}{\mghrulefill}{\color{black}\mghrulefill}{}{}
 %\makeatother
 
-%Quotes, introduction
-\RequirePackage[many]{tcolorbox}
 
 
 \def\thesection{\arabic{section}}
@@ -84,7 +94,7 @@
 \defaultfontfeatures{Mapping=tex-text}
 
 \setmainfont
-[Path = fonts/CrimsonText/,
+[Path = ../book/fonts/CrimsonText/,
 Extension = .ttf,
 Ligatures=TeX, 
 UprightFont=*-Regular,
@@ -94,7 +104,7 @@ BoldItalicFont=*-BoldItalic
 ]{CrimsonText} %
 
 \newfontfamily\merienda
-[Path = fonts/Merienda/,
+[Path = ../book/fonts/Merienda/,
 Extension = .ttf,
 Ligatures=TeX,
 UprightFont=*-Regular,
@@ -104,7 +114,7 @@ Scale=1
 
 
 \newfontface\quotefont
-[Path = fonts/Handlee/,
+[Path = ../book/fonts/Handlee/,
 Extension = .ttf,
 Ligatures=TeX,
 Scale=1.
@@ -113,7 +123,7 @@ Scale=1.
 
 
 \newfontface\codefont
-[Path = fonts/SourceCodePro/,
+[Path = ../book/fonts/SourceCodePro/,
 Extension = .ttf,
 Ligatures=TeX
 %Scale=1.5
@@ -123,7 +133,7 @@ Ligatures=TeX
 %Decorated Roman Initials by Dieter Steffmann 
 %First seen on DaFont: before 2005
 \newfontface\lettrinefont
-[Path = fonts/decoratedRomanIni/,
+[Path = ../book/fonts/decoratedRomanIni/,
 Extension = .ttf,
 Ligatures=TeX
 %Scale=1.5
@@ -176,10 +186,6 @@ title={#1}
 \setlength\parindent{0pt}
 \setlength{\parskip}{\baselineskip}%
 
-
-\RequirePackage{listings}
-\RequirePackage{lstlangKB}
-\RequirePackage{textcomp} %for textasciitilde
 
 \def\@codeStyle@background{\color{indigo!10!white}}
 
@@ -409,7 +415,6 @@ title={#1}
 } 
 
 
-\RequirePackage{tocloft}
 
 \renewcommand{\contentsname}{}
 \renewcommand{\listfigurename}{}
