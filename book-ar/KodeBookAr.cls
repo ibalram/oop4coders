@@ -8,18 +8,24 @@
 
 \raggedbottom
 
+\def\ptop{2cm}
+\def\pleft{3cm}
+\def\pright{1cm}
+\def\pbottom{2cm}
+
 %\RequirePackage{cmap}
-\RequirePackage[utf8]{inputenc}
+%\RequirePackage[utf8]{inputenc}
 %\RequirePackage[T1]{fontenc}
 
 
-
-%\RequirePackage[arabic,english]{babel}
-%\RequirePackage{CJKutf8}
-
-%\RequirePackage{arabtex}
+\RequirePackage[bookmarksdepth=3,pdfusetitle,colorlinks,urlcolor=blue]{hyperref}
 
 \RequirePackage[table]{xcolor}
+
+%Quotes, introduction
+\RequirePackage[many]{tcolorbox}
+
+\RequirePackage{amsmath,amssymb}             % AMS Math
 
 \RequirePackage{multirow}
 \RequirePackage{array}
@@ -31,6 +37,42 @@
 \RequirePackage{xstring}
 
 \RequirePackage{fancyhdr} 
+\RequirePackage[left=\pleft,right=\pright,top=\ptop,bottom=\pbottom]{geometry}
+
+\RequirePackage[Glenn]{fncychap}
+
+\RequirePackage{listings}
+\RequirePackage{lstlangKB}
+\RequirePackage{textcomp} %for textasciitilde
+
+\RequirePackage{tocloft}
+
+\RequirePackage{acro}
+
+
+%\usepackage{listingsutf8}
+%\usepackage{xcolor}
+%\usepackage{times}
+\RequirePackage{array}
+\RequirePackage{natbib}
+\RequirePackage{lscape}%to flip tables in a page
+\RequirePackage{pdflscape}
+\RequirePackage{longtable}
+\RequirePackage{tabu}
+\RequirePackage{wrapfig}
+
+\RequirePackage{etoolbox}
+
+\RequirePackage{imakeidx}
+\indexsetup{level=\chapter*,toclevel=chapter}
+\makeindex[program=makeindex,columns=2, options={-s KodeBook.ist}]
+
+\setcounter{tocdepth}{1}
+
+\RequirePackage{arabxetex}
+%\usepackage[english]{babel}
+
+\def\ar#1{\textarab{#1}}
 
 
 \definecolor{indigo}{RGB}{75,0,130}%indigo
@@ -38,23 +80,14 @@
 \definecolor{Crimson}{rgb}{0.6471, 0.1098, 0.1882}
 
 
-\def\ptop{2cm}
-\def\pleft{3cm}
-\def\pright{1cm}
-\def\pbottom{2cm}
-
 %\pagenumbering{arabic} % needed even though this class will not show page numbers
 \pagestyle{empty}
 
 
-\RequirePackage[left=\pleft,right=\pright,top=\ptop,bottom=\pbottom]{geometry}
 
-\RequirePackage[Glenn]{fncychap}
 \ChTitleVar{\bfseries\Large\scshape\color{indigo}}
 \ChNumVar{\bfseries\Huge\color{indigo}}
 \ChNameVar{\bfseries\Large\color{indigo}}
-
-\RequirePackage{etoolbox}
 
 %\makeatletter
 \patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
@@ -67,8 +100,7 @@
 \patchcmd{\DOTI}{\mghrulefill}{\color{black}\mghrulefill}{}{}
 %\makeatother
 
-%Quotes, introduction
-\RequirePackage[many]{tcolorbox}
+
 
 
 \def\thesection{\arabic{section}}
@@ -87,54 +119,6 @@
 }
 
 
-%\RequirePackage{fontspec}
-%\defaultfontfeatures{Mapping=tex-text}
-
-%\setmainfont
-%[Path = fonts/CrimsonText/,
-%Extension = .ttf,
-%Ligatures=TeX, 
-%UprightFont=*-Regular,
-%BoldFont=*-Bold,
-%ItalicFont=*-Italic,
-%BoldItalicFont=*-BoldItalic
-%]{CrimsonText} %
-%
-%\newfontfamily\merienda
-%[Path = fonts/Merienda/,
-%Extension = .ttf,
-%Ligatures=TeX,
-%UprightFont=*-Regular,
-%BoldFont=*-Bold,
-%Scale=1
-%]{Merienda} %
-%
-%
-%\newfontface\quotefont
-%[Path = fonts/Handlee/,
-%Extension = .ttf,
-%Ligatures=TeX,
-%Scale=1.
-%]{Handlee-Regular} %
-%
-%
-%
-%\newfontface\codefont
-%[Path = fonts/SourceCodePro/,
-%Extension = .ttf,
-%Ligatures=TeX
-%%Scale=1.5
-%]{SourceCodePro-Bold} %
-%
-%%https://www.dafont.com/decorated-roman-ini.font?l[]=1
-%%Decorated Roman Initials by Dieter Steffmann 
-%%First seen on DaFont: before 2005
-%\newfontface\lettrinefont
-%[Path = fonts/decoratedRomanIni/,
-%Extension = .ttf,
-%Ligatures=TeX
-%%Scale=1.5
-%]{DecoratedRomanInitials} %
 
 
 \newtcolorbox{kodequote}[1]{%
@@ -183,10 +167,6 @@ title={#1}
 \setlength\parindent{0pt}
 \setlength{\parskip}{\baselineskip}%
 
-
-\RequirePackage{listings}
-\RequirePackage{lstlangKB}
-\RequirePackage{textcomp} %for textasciitilde
 
 \def\@codeStyle@background{\color{indigo!10!white}}
 
@@ -257,7 +237,7 @@ title={#1}
 		\@coverimage={\noindent\includegraphics[width=\paperwidth, height=\paperheight]{#1} } %
 	}{
 	\@coverimage={}
-}
+    }
 }
 
 \newtoks\@licenseimage
@@ -269,7 +249,7 @@ title={#1}
 		\@licenseimage={\noindent\includegraphics[width=4cm]{#1} } %
 	}{
 	\@licenseimage={}
-}
+    }
 }
 
 
@@ -357,8 +337,6 @@ title={#1}
 } 
 
 
-\RequirePackage{tocloft}
-
 \renewcommand{\contentsname}{}
 \renewcommand{\listfigurename}{}
 \renewcommand{\listtablename}{}
@@ -403,34 +381,6 @@ title={#1}
 		
 }
 
-\RequirePackage{acro}
-%\RequirePackage[acronyms]{glossaries}
-%\glsenablehyper
-%\acsetup{tooltip=true}
-%\acsetup{
-%	page-ref    = none,% Seitennummer in Klammern
-%	extra-style = comma,% extra-Informationen mit Komma anhÃ€ngen
-%	only-used   = false,% fÃŒr das Beispiel auch die nicht verwendeten in die Liste aufnehmen
-%	sort        = true,  % Liste sortieren
-%	hyperref  = {true}
-%}
-
-%\ExplSyntaxOn
-%\cs_set_protected:Npn \acro_activate_hyperref_support:
-%{
-%	\bool_if:nT { \l__acro_hyperref_loaded_bool && \l__acro_use_hyperref_bool }
-%	{
-%		\sys_if_engine_xetex:TF
-%		{
-%			\cs_set:Npn \acro_hyper_link:nn ##1##2
-%			{ \hyperlink { \XeTeXLinkBox {##1} } {##2} }
-%		}
-%		{ \cs_set_eq:NN \acro_hyper_link:nn \hyperlink }
-%		\cs_set:Npn \acro_hyper_target:nn ##1##2
-%		{ \raisebox { 3ex } [ 0pt ] { \hypertarget {##1} { } } ##2 }
-%	}
-%}
-%\ExplSyntaxOff
 
 \def\kodeabbrev{%
 	
@@ -444,18 +394,10 @@ title={#1}
 	
 }
 
-\RequirePackage{imakeidx}
-
-\indexsetup{level=\chapter*,toclevel=chapter}
-
-\makeindex[program=makeindex,columns=2, options={-s KodeBook.ist}]
-
-\setcounter{tocdepth}{1}
 
 
 %\newcommand{\at}{\makeatletter @\makeatother}
 
-\RequirePackage[bookmarksdepth=3,pdfusetitle,colorlinks,urlcolor=blue]{hyperref}
 
 \newcommand{\langlogo}[3]{%
 	\begin{wrapfigure}{l}{2.25cm}
@@ -494,24 +436,9 @@ title={#1}
 	\let\isplain=\relax
 }
 
-
-\RequirePackage{amsmath,amssymb}             % AMS Math
 %\usepackage[T1]{fontenc}
 
 %\usepackage[pdftex]{graphicx}
-
-%\usepackage{listingsutf8}
-%\usepackage{xcolor}
-%\usepackage{times}
-\RequirePackage{array}
-\RequirePackage{natbib}
-\RequirePackage{lscape}%to flip tables in a page
-\RequirePackage{pdflscape}
-\RequirePackage{longtable}
-\RequirePackage{tabu}
-\RequirePackage{wrapfig}
-
-
 
 \newcounter{coverind}
 
@@ -579,9 +506,3 @@ title={#1}
 	};
 	\end{tikzpicture}
 }
-
-
-\RequirePackage{arabxetex}
-%\usepackage[english]{babel}
-
-\def\ar#1{\ar{#1}}
