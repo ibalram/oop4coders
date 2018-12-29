@@ -12,6 +12,8 @@
 \RequirePackage[utf8]{inputenc}
 %\RequirePackage[T1]{fontenc}
 
+
+
 %\RequirePackage[arabic,english]{babel}
 %\RequirePackage{CJKutf8}
 
@@ -169,9 +171,9 @@ title={#1}
 }
 
 \newenvironment{discussion}{%
-	\section*{Discussion}
-	\addcontentsline{toc}{section}{Discussion}
-	\markright{Discussion}
+	\section*{\ar{مناقشة}}
+	\addcontentsline{toc}{section}{\ar{مناقشة}}
+	\markright{\ar{مناقشة}}
 }{%
 }
 
@@ -280,7 +282,7 @@ title={#1}
 	\pagenumbering{roman}
 	\pagestyle{fancy}
 	\phantomsection
-	\addcontentsline{toc}{part}{Front Matter}
+	\addcontentsline{toc}{part}{\ar{التصديرات}}
 	\fancyhf{} % sets both header and footer to nothing
 	\fancyfoot[CE, CO]{\thepage} 
 %	\fancyhead{} 
@@ -292,7 +294,7 @@ title={#1}
 %	\pagenumbering{roman}
 %	\pagestyle{empty}
 	\phantomsection
-	\addcontentsline{toc}{part}{Back Matter}
+	\addcontentsline{toc}{part}{\ar{الحواشي}}
 	%\fancyfoot{} 
 	%\fancyhead{} 
 	
@@ -309,7 +311,7 @@ title={#1}
 	
 	\pagenumbering{arabic}
 	\phantomsection
-	\addcontentsline{toc}{part}{Main Matter}
+	\addcontentsline{toc}{part}{\ar{نص الكتاب}}
 	
 	\pagestyle{fancy}                       % Sets fancy header and footer
 %	\fancyfoot{}                            % Delete current footer settings
@@ -371,6 +373,7 @@ title={#1}
 	\addcontentsline{toc}{section}{Contents}
 	
 	{
+		\RTL
 		\hypersetup{linkcolor=black}
 		\tableofcontents
 	}
@@ -381,6 +384,7 @@ title={#1}
 	\chapter*{List of figures}
 	\addcontentsline{toc}{section}{List of figures}
 	{
+		\RTL
 		\hypersetup{linkcolor=black}
 		\listoffigures
 	}
@@ -392,6 +396,7 @@ title={#1}
 	\chapter*{List of tables}
 	\addcontentsline{toc}{section}{List of tables}
 		{
+			\RTL
 			\hypersetup{linkcolor=black}
 			\listoftables
 		}
@@ -447,16 +452,6 @@ title={#1}
 
 \setcounter{tocdepth}{1}
 
-\RequirePackage{lettrine}
-
-\renewcommand{\LettrineFontHook}{\color{indigo}\lettrinefont}
-\renewcommand{\LettrineTextFont}{\color{indigo}\bfseries}
-\setlength{\DefaultNindent}{2pt}
-\setlength{\DefaultFindent}{2pt}
-\setlength{\DefaultSlope}{0pt}
-\setcounter{DefaultLines}{3}
-%\renewcommand{\DefaultLraise}{0.05}
-\renewcommand{\DefaultLoversize}{0.1}
 
 %\newcommand{\at}{\makeatletter @\makeatother}
 
@@ -480,7 +475,6 @@ title={#1}
 		hidelinks
 	}
 	
-	\renewcommand{\lettrine}[2]{##1##2}
 	
 	\def\merienda{}
 	\def\quotefont{}
@@ -517,8 +511,6 @@ title={#1}
 \RequirePackage{tabu}
 \RequirePackage{wrapfig}
 
-\RequirePackage{arabxetex}
-%\usepackage[english]{babel}
 
 
 \newcounter{coverind}
@@ -532,12 +524,12 @@ title={#1}
 }
 
 \def\replaceit#1 #2\relax{%replace blanks in a string
-	\textarab{#1}
+	\ar{#1}\hspace{\arabic{coverind}cm}.
 	\begingroup
 	\ifx\relax#2\relax  % is #2 empty?
 	\def\next{\endgroup\endit}% your own end-macro if required
 	\else
-	\def\next{\endgroup\\[0.25cm]\hspace{\arabic{coverind}cm}\replaceit#2\relax}%
+	\def\next{\endgroup\\[0.25cm]\replaceit#2\relax}%
 	\stepcounter{coverind}%
 	%	\addtocounter{coverind}{5}
 	\fi
@@ -548,7 +540,7 @@ title={#1}
 \def\@titleFP{}
 
 \def\title#1{
-	\def\@title{\textarab{#1}}
+	\def\@title{\ar{#1}}
 	\def\@titleFP{\replace{#1}}
 }
 
@@ -560,12 +552,12 @@ title={#1}
 	\node[inner sep=0] at (current page.center) {\the\@coverimage}; 
 	\fi
 	
-	\node[anchor=north west,minimum width=1cm,minimum height=12cm,fill=indigo] (vline1)
-	at ([shift={(2cm,-2cm)}] current page.north west)
+	\node[anchor=north east,minimum width=1cm,minimum height=12cm,fill=indigo] (vline1)
+	at ([shift={(-2cm,-2cm)}] current page.north east)
 	{}; 
 	
-	\node[anchor=north west, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.5] (title1) 
-	at ([shift={(0.5cm,0cm)}] vline1.north east)
+	\node[anchor=north east, text=indigo,text width =15cm,fill=white,opacity=0.4,text opacity=1,scale=1.5,align=right] (title1) 
+	at ([shift={(-0.5cm,0cm)}] vline1.north west)
 	{
 		\bfseries
 		\Huge
@@ -575,16 +567,21 @@ title={#1}
 	};
 	
 	
-	\node[text width=8cm,anchor=north west, align=left] at ([shift={(0cm, -.5cm)}] vline1.south west){
+	\node[anchor=north east, align=left] at ([shift={(0cm, -.5cm)}] vline1.south east){
 		\bfseries
 		\Huge
 		\ifx\isplain\relax\else \color{white}\fi
 		\@author
 	};
 	
-	\node[text=white,text width=8cm,anchor=north west] at ([shift={(-5cm,2cm)}] current page.south east){
+	\node[anchor=north east] at ([shift={(5cm,2cm)}] current page.south west){
 		\the\@licenseimage
 	};
 	\end{tikzpicture}
 }
 
+
+\RequirePackage{arabxetex}
+%\usepackage[english]{babel}
+
+\def\ar#1{\ar{#1}}

@@ -6,10 +6,10 @@
 \fi
 %=====================================================================
 
-\chapter{\textarab{التعليب}}
+\chapter{\ar{التعليب}}
 
 \begin{introduction}
-	\lettrine{E}{ncapsulation} is an important concept of \ac{oop}. 
+	Encapsulation is an important concept of \ac{oop}. 
 	It is the mechanism of restricting direct access to some members of a class.
 	It helps managing complexity when the source code is debugged. 
 	If a field is set to be accessed everywhere in a source code, it will be difficult to find errors related to it. 
@@ -19,7 +19,7 @@
 	So, a programming language may fall into one or another.
 \end{introduction} 
 
-\section{Public members}
+\section{\ar{قابلية وصول عامة}}
 
 Public visibility mode is used to access a member of a class everywhere. 
 Public methods of a class provide an interface that allows them to be called so the object can afford some behavior. 
@@ -148,7 +148,7 @@ Actually, the field is accessed via a getter and a setter which are public by de
 \lstinputlisting[language={[KB]Ruby}, linerange={6-9,14-14,20-20}, style=codeStyle]{../codes/ruby/encapsulation/app.rb}
 
 
-\section{Protected members}
+\section{\ar{قابلية وصول محمية}}
 
 Protected visibility mode is used to access a member of a class from the class itself and its subclasses. 
 It is used to allow a class accessing its superclass's members directly. 
@@ -288,7 +288,7 @@ The fields and the protected methods cannot be accessed outside the class and it
 
 \lstinputlisting[language={[KB]Ruby}, linerange={6-6,10-11,17-18}, style=codeStyle]{../codes/ruby/encapsulation/app.rb}
 
-\section{Private members}
+\section{\ar{قابلية وصول خاصة}}
 
 Fields are set to be private so they can not be changed directly.
 Instead, setters and getters can be used to access them because they are more appropriate for that. 
@@ -451,7 +451,7 @@ This is because the field itself is protected and \keyword[Ruby]{attr\_reader} c
 
 \lstinputlisting[language={[KB]Ruby}, linerange={3-3,5-6,9-9,19-19}, style=codeStyle]{../codes/ruby/encapsulation/student.rb}
 
-\section{Other visibility modes}
+\section{\ar{قابليات وصول أخرى}}
 
 \subsection{C++}
 

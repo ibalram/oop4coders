@@ -6,10 +6,10 @@
 \fi
 %=====================================================================
 
-\chapter{\textarab{الصنف والكائن}}
+\chapter{\ar{الفئة والكائن}}
 
 \begin{introduction}
-	\lettrine{A}{bstraction} is the first pillar of \ac{oop}. 
+	Abstraction is the first pillar of \ac{oop}. 
 	From a perception of an entity in a system or a context, certain aspects must be retained while others must be ignored.
 	This entity is represented by a class or a prototype, with a state (attributes) and behavior (methods).
 	This chapter will present how a class or prototype is implemented in each language. 
@@ -18,7 +18,7 @@
 	Finally, there are special methods which can be implemented for an object, mostly, inherited from a universal base class.
 \end{introduction}
 
-\section{Class declaration}
+\section{\ar{تصريح فئة}}
 
 Class declaration in the following examples is self explanatory. 
 As for prototype-based implementations, a concise explanation must be afforded.
@@ -70,7 +70,7 @@ If you want to create many packages inside one file, you can put their definitio
 \lstinputlisting[language={[KB]Ruby}, linerange={3-3,25-25}, style=codeStyle]{../codes/ruby/clsobj/person.rb}
 
 
-\section{Constructors and destructors}
+\section{\ar{دوال البناء ودوال التدمير}}
 
 A constructor is a special function which is responsible for preparing the object to be created. 
 The preparation, mostly, is concerned by initializing variables or calling some functions.
@@ -224,7 +224,7 @@ To free a reference from an object, you can assign it the \keyword[Ruby]{nil} va
 
 \lstinputlisting[language={[KB]Ruby}, linerange={35-35}, style=codeStyle]{../codes/ruby/clsobj/person.rb}
 
-\section{Members}
+\section{\ar{الأعضاء}}
 
 There are three types of members: 
 \begin{itemize}
@@ -474,7 +474,7 @@ class Rectangle
 end 
 \end{lstlisting} 
 
-\section{Object methods}
+\section{\ar{دوال الكائن}}
 
 These are methods inherited from the Object class, or as called by some languages: magic methods.
 Most programming languages agree on the following methods:

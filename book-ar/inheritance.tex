@@ -11,7 +11,7 @@
 \chapter{\textarab{الوراثة}}
 
 \begin{introduction}
-	\lettrine{O}{ne} of the most controversial core concepts of \ac{oop} is inheritance.
+	One of the most controversial core concepts of \ac{oop} is inheritance.
 	It enables the definition of a new class called subclass based on an existing one called superclass. 
 	This allows reusing visible members of the superclass and add additional specific ones. 
 	Many languages create a relationship ``isa" between a subclass and its superclass (which is called subtyping).
@@ -23,7 +23,7 @@
 \end{introduction} 
 
 
-\section{Single inheritance}
+\section{\ar{الوراثة الأحادية}}
 
 In this section, simple inheritance will be presented by trying to answer some questions for each programming language:
 \begin{itemize}
@@ -232,7 +232,7 @@ To access a superclass method which does not have the same name, there are two w
 \lstinputlisting[language={[KB]Ruby}, linerange={4-21}, style=codeStyle]{../codes/ruby/inheritance/single/gradstudent.rb}
 
 
-\section{Abstract class}
+\section{\ar{الفئة المجردة}}
 
 An abstract class is a class which cannot be instantiated, but can be extended.
 An abstract method is a method which has to be overridden before it can be used. 
@@ -366,7 +366,7 @@ If you do not override the abstract method, the subclass can be instantiated but
 \lstinputlisting[language={[KB]Ruby}, linerange={3-9}, style=codeStyle]{../codes/ruby/inheritance/abst/student.rb}
 
 
-\section{Final class and method}
+\section{\ar{الفئة والدالة النهائيتان}}
 
 A final class is a class which cannot be extended. 
 Likewise, a final method is a method which cannot be overridden. 
@@ -481,7 +481,7 @@ However, there is a hack to prevent a method from being overridden by a subclass
 
 %\lstinputlisting[language={[KB]Ruby}, linerange={6-9,14-14,20-20}, style=codeStyle]{../codes/ruby/inheritance/app.rb}
 
-\section{Multiple inheritance}
+\section{\ar{الوراثة المتعددة}}
 
 \subsection{C++}
 
